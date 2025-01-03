@@ -25,6 +25,26 @@ export const AppRouting: Routes = [
         loadChildren: () =>
           import('../app/admin/components/contrat/contrat.module').then(m => m.ContratModule)
       },
+      {
+        path: 'locataire',
+        loadChildren: () =>
+          import('../app/admin/components/locataire/locataire.module').then(m => m.LocataireModule)
+      },
+      {
+        path: 'operation',
+        loadChildren: () =>
+          import('../app/admin/components/operation/operation.module').then(m => m.OperationModule)
+      },
+      {
+        path: 'reservation',
+        loadChildren: () =>
+          import('../app/admin/components/reservation/reservation.module').then(m => m.ReservationModule)
+      },
+      {
+        path: 'utilisateur',
+        loadChildren: () =>
+          import('../app/admin/components/utilisateurs/utilisateurs.module').then(m => m.UtilisateursModule)
+      },
 
 
     ]
