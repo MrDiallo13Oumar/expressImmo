@@ -20,6 +20,11 @@ export const AppRouting: Routes = [
         loadChildren: () =>
           import('../app/admin/components/propriete/propriete.module').then(m => m.ProprieteModule)
       },
+      {
+        path: 'contrat',
+        loadChildren: () =>
+          import('../app/admin/components/contrat/contrat.module').then(m => m.ContratModule)
+      },
 
 
     ]
