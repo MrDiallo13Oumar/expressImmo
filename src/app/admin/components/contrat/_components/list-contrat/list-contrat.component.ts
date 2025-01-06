@@ -15,21 +15,10 @@ import { DeletePopupComponent } from 'src/app/shared/dialogs/delete-popup/delete
   styleUrls: ['./list-contrat.component.scss']
 })
 export class ListContratComponent {
-displayedColumns: string[] = ['id', 'name', 'status', 'date', 'price', 'action'];
-  dataSource = new MatTableDataSource( [
-    { id: 1, name: 'Kolor Tea Shirt For Man', status: 'Sale', date: '2023-01-22', price: 21.56 },
-    { id: 2, name: 'Kolor Tea Shirt For Women', status: 'Tax', date: '2023-01-30', price: 55.32 },
-    { id: 3, name: 'Blue Backpack For Baby', status: 'Extended', date: '2023-01-25', price: 14.85 },
-  ]);
+displayedColumns: string[] = ['id', 'reservation',  'date_signature', 'montant_total', 'status','action'];
+  dataSource = new MatTableDataSource([]);
 
 
-  updateItem(id: number) {
-    console.log('Update item with id:', id);
-  }
-
-  deleteItem(id: number) {
-    console.log('Delete item with id:', id);
-  }
 
   constructor (private dialog : MatDialog ,
                 private service :ContratService,
