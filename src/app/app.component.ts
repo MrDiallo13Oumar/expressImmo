@@ -44,7 +44,30 @@ export class AppComponent {
     }
   }
 
+  export function convertObjectInFormData (tab: any) {
+    const formData = new FormData()
 
+    for (const key in tab) {
+      if (tab.hasOwnProperty(key)) {
+        const value = tab[key]
+
+        if (Array.isArray(value)) {
+          for (let i = 0; i < value.length; i++) {
+            formData.append(key, value[i])
+          }
+        } else if (typeof value === 'object' && value !== null) {
+          const nestedFormData = convertObjectInFormData(value)
+          nestedFormData.forEach((nestedValue, nestedKey) => {
+            formData.append(key + '.' + nestedKey, nestedValue)
+          })
+        } else {
+          formData.append(key, value)
+        }
+      }
+    }
+
+    return formData
+  }
 
 
 

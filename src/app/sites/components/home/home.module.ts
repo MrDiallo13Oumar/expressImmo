@@ -5,17 +5,13 @@ import { homeRouting } from './home.routing';
 import { AccueilComponent } from './accueil/accueil.component';
 import { ProprieteComponent } from './propriete/propriete.component';
 import { DemoMaterialModule } from 'src/app/demo-material-module';
-import { ServiceComponent } from './service/service.component';
-import { ContactComponent } from './contact/contact.component';
 
 
 
 @NgModule({
   declarations: [
     AccueilComponent,
-    ProprieteComponent,
-    ServiceComponent,
-    ContactComponent
+    ProprieteComponent
   ],
   imports: [
     CommonModule,

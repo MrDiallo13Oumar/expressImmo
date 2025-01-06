@@ -1,0 +1,70 @@
+.modal-content {
+  background-color: #f8f9fa; /* Couleur de fond douce */
+  border-radius: 8px; /* Coins arrondis pour un look moderne */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Légère ombre pour ajouter de la profondeur */
+  padding: 20px;
+}
+
+.modal-header {
+  .text-center {
+    margin-bottom: 10px;
+  }
+
+  h4 {
+    font-family: "Montserrat", sans-serif; /* Police moderne */
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #343a40; /* Texte sombre pour un bon contraste */
+  }
+}
+
+.modal-body {
+  padding: 10px 20px;
+  text-align: center;
+
+  p {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 20px;
+    font-family: "Roboto", sans-serif; /* Police élégante */
+    i {
+      font-style: italic;
+      color: #6c757d; /* Légèrement plus clair pour l'italique */
+    }
+  }
+}
+
+.card-footer {
+  padding-top: 15px;
+  display: flex;
+  flex-direction: column;
+
+  button {
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px; /* Arrondir les coins des boutons */
+    text-transform: uppercase; /* Mettre le texte des boutons en majuscules */
+    transition: background-color 0.3s ease;
+
+    &:first-of-type {
+      background-color: #007bff;
+      border-color: #007bff;
+
+      &:hover {
+        background-color: #0056b3;
+      }
+    }
+
+    &:last-of-type {
+      background-color: #dc3545;
+      border-color: #dc3545;
+
+      &:hover {
+        background-color: #c82333;
+      }
+    }
+  }
+}
