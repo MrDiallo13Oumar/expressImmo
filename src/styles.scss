@@ -37,3 +37,96 @@ $expressimmo-theme: mat.define-light-theme((
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+// Global table styles
+#maTable {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+
+  // Table header styles
+  th {
+    background-color:  rgb(32, 159, 195);
+    color: rgb(7, 0, 0);
+    text-align: left;
+    padding: 12px 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  // Table row styles
+  tr {
+    &:nth-child(even) {
+      background-color: #f9f9f9; // Couleur de fond pour les lignes paires
+    }
+    &:nth-child(odd) {
+      background-color: #ffffff; // Couleur de fond pour les lignes impaires
+    }
+  }
+
+  // Table cell styles
+  td {
+    padding: 12px 16px;
+    border-bottom: 1px solid #dee2e6;
+    vertical-align: middle;
+  }
+
+  // Action column styles
+  td.text-center {
+    text-align: center;
+    button {
+      margin: 0 4px;
+      &:hover {
+        transform: scale(1.1);
+        transition: transform 0.2s ease-in-out;
+      }
+    }
+  }
+
+  // Highlight selected row
+  tr:hover {
+    background-color: rgba(0, 123, 255, 0.1); // Bleu clair pour le survol
+    transition: background-color 0.2s ease-in-out;
+  }
+}
+
+// Paginator styles
+mat-paginator {
+  margin-top: 16px;
+
+  .mat-paginator-container {
+    justify-content: space-between;
+
+    .mat-paginator-range-label {
+      font-weight: 500;
+    }
+
+    .mat-paginator-icon {
+      color: var(--bs-info);
+    }
+  }
+
+  .mat-paginator-page-size-select {
+    .mat-select-value-text {
+      color: var(--bs-info);
+    }
+  }
+
+  .mat-paginator-navigation-button {
+    &.mat-paginator-navigation-previous, &.mat-paginator-navigation-next {
+      color: var(--bs-info);
+    }
+  }
+}
+
+// Responsive design for table
+@media (max-width: 768px) {
+  table {
+    font-size: 0.75rem;
+
+    th, td {
+      padding: 8px;
+    }
+  }
+}
