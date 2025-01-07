@@ -2,35 +2,36 @@
 <div class="card">
   <div class="card-body">
     <div class="card-title">
-      <h4>Add New Item</h4>
+      <h4>LOCATAIRE</h4>
     </div>
     <form>
       <div class="form-group mb-3">
-        <label for="itemName">Name</label>
-        <input type="text" class="form-control form-control-lg" id="itemName" placeholder="Enter item name" />
+        <label for="itemName">NOM & PRENOM</label>
+        <input type="text" class="form-control form-control-lg" id="itemName" placeholder="Enter le nom complet" />
       </div>
 
       <div class="form-group mb-3">
-        <label for="itemStatus">Status</label>
-        <select class="form-control form-control-lg" id="itemStatus">
-          <option value="sale">Sale</option>
-          <option value="tax">Tax</option>
-          <option value="extended">Extended</option>
-        </select>
+        <label for="itemStatus">TELEPHONE</label>
+        <input type="text" class="form-control form-control-lg" id="itemName" placeholder="Enter le numero du telephone" />
       </div>
 
       <div class="form-group mb-3">
-        <label for="itemDate">Date</label>
-        <input type="date" class="form-control form-control-lg" id="itemDate" />
+        <label for="itemDate">EMAIL</label>
+        <input type="text" class="form-control form-control-lg" id="itemDate" placeholder="Enter l'email"/>
       </div>
 
       <div class="form-group mb-3">
-        <label for="itemPrice">Price</label>
-        <input type="number" class="form-control form-control-lg" id="itemPrice" placeholder="Enter price" step="0.01" />
+        <label for="itemPrice">NATIONNALITE</label>
+        <input type="text" class="form-control form-control-lg" id="itemPrice" placeholder="Enter la nationnalite" step="0.01" />
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="itemPrice">PROPRIETE</label>
+        <input type="text" class="form-control form-control-lg" id="itemPrice" placeholder="Enter propriete" step="0.01" />
       </div>
 
       <div class="text-center">
-        <button type="submit" class="btn btn-rounded btn-primary btn-lg mt-3">Add Item</button>
+        <button type="submit" class="btn btn-rounded btn-primary btn-lg mt-3" (click)="saveDataLocataire()">Add Item</button>
         <button type="reset" class="btn btn-rounded btn-outline-secondary btn-lg mt-3">Reset</button>
       </div>
     </form>
