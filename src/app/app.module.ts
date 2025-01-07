@@ -12,6 +12,7 @@ import { FooterComponent } from './shared/components/footer/footer.component';
 import { DemoMaterialModule } from './demo-material-module';
 import { DeletePopupComponent } from './shared/dialogs/delete-popup/delete-popup.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,6 +20,7 @@ import { DeletePopupComponent } from './shared/dialogs/delete-popup/delete-popup
     TopBarComponent,
     FooterComponent,
     DeletePopupComponent
+
   ],
   imports: [
     BrowserModule,

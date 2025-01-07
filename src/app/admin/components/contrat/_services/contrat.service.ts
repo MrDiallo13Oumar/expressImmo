@@ -16,7 +16,7 @@ export class ContratService {
   }
 
 
- 
+
   update(api: string, suffixUrl: string, data: any): Observable<any> {
     const url = `${BASE_URL}${api}/${suffixUrl}`;
     return this.http.post(url, data);

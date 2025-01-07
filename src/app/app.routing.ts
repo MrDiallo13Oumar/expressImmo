@@ -25,6 +25,7 @@ export const AppRouting: Routes = [
         loadChildren: () =>
           import('../app/admin/components/contrat/contrat.module').then(m => m.ContratModule)
       },
+
       {
         path: 'locataire',
         loadChildren: () =>
@@ -45,6 +46,7 @@ export const AppRouting: Routes = [
         loadChildren: () =>
           import('../app/admin/components/utilisateurs/utilisateurs.module').then(m => m.UtilisateursModule)
       },
+
 
 
     ]

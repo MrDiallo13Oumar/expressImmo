@@ -4,12 +4,10 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { AddContratComponent } from '../../dialogs/add-contrat/add-contrat.component';
-
 import { ContratService } from '../../_services/contrat.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { convertObjectInFormData } from 'src/app/app.component';
 import { DeletePopupComponent } from 'src/app/shared/dialogs/delete-popup/delete-popup.component';
-
 
 @Component({
   selector: 'app-list-contrat',
@@ -17,16 +15,12 @@ import { DeletePopupComponent } from 'src/app/shared/dialogs/delete-popup/delete
   styleUrls: ['./list-contrat.component.scss']
 })
 export class ListContratComponent {
-
 displayedColumns: string[] = ['id', 'reservation',  'date_signature', 'montant_total', 'status','action'];
   dataSource = new MatTableDataSource([]);
-
-
 
   constructor (private dialog : MatDialog ,
                 private service :ContratService,
                 private snackBar : MatSnackBar
-
 ){}
 
 @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -43,7 +37,6 @@ applyFilter (event: Event) {
    this.dataSource.paginator.firstPage()
  }
 }
-
 ngOnInit() {
   this.getContrat()
  }
@@ -126,5 +119,4 @@ getContrat () {
           }
         });
     }
-
 }
