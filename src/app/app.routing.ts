@@ -46,7 +46,11 @@ export const AppRouting: Routes = [
         loadChildren: () =>
           import('../app/admin/components/utilisateurs/utilisateurs.module').then(m => m.UtilisateursModule)
       },
-
+      {
+        path: 'partenaire',
+        loadChildren: () =>
+          import('../app/admin/components/partenaire/partenaire.module').then(m => m.PartenaireModule)
+      },
 
 
     ]

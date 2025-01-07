@@ -6,11 +6,11 @@ import { environment } from 'src/environments/environment'
 
 
 // LIEN POUR LES APIs
-//  const LINK_PROD: string = 'http://192.168.0.105/expresseimmo/api/'
-//  const LINK_DEVS: string = 'http://192.168.0.105/expresseimmo/api/'
+//  const LINK_PROD: string = 'http://192.168.0.105/expressimmo/api/'
+//  const LINK_DEVS: string = 'http://192.168.0.105/expressimmo/api/'
 
-const LINK_PROD: string = 'http://localhost/expresseimmo/api/'
-const LINK_DEVS: string = 'http://localhost/expresseimmo/api/'
+const LINK_PROD: string = 'http://localhost/expressimmo/api/'
+const LINK_DEVS: string = 'http://localhost/expressimmo/api/'
 
 
 
