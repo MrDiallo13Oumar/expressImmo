@@ -15,7 +15,7 @@ import { DeletePopupComponent } from 'src/app/shared/dialogs/delete-popup/delete
   styleUrls: ['./list-contrat.component.scss']
 })
 export class ListContratComponent {
-displayedColumns: string[] = ['id', 'reservation',  'date_signature', 'montant_total', 'status','action'];
+displayedColumns: string[] = ['id', 'reservation', 'montant_total', 'status','action'];
   dataSource = new MatTableDataSource([]);
 
   constructor (private dialog : MatDialog ,
