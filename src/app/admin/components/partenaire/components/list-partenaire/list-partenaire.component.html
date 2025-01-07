@@ -32,10 +32,17 @@
               </ng-container>
 
               <!-- Name Column -->
-              <ng-container matColumnDef="libelle">
-                <th mat-header-cell *matHeaderCellDef>Libelle</th>
-                <td mat-cell *matCellDef="let element">{{ element.libelle }}</td>
+              <ng-container matColumnDef="nom">
+                <th mat-header-cell *matHeaderCellDef>Nom</th>
+                <td mat-cell *matCellDef="let element">{{ element.nom }}</td>
               </ng-container>
+                <!-- prenom Column -->
+                <ng-container matColumnDef="prenom">
+                  <th mat-header-cell *matHeaderCellDef>Prenom</th>
+                  <td mat-cell *matCellDef="let element">
+                    <span >{{ element.prenom }}</span>
+                  </td>
+                </ng-container>
 
               <!-- adresse Column -->
               <ng-container matColumnDef="adresse">
@@ -44,24 +51,18 @@
                   <span >{{ element.adresse }}</span>
                 </td>
               </ng-container>
-               <!-- description Column -->
-               <ng-container matColumnDef="description">
-                <th mat-header-cell *matHeaderCellDef>Description</th>
-                <td mat-cell *matCellDef="let element">
-                  <span >{{ element.description }}</span>
-                </td>
-              </ng-container>
+
               <!-- Date Column -->
-              <ng-container matColumnDef="etat">
-                <th mat-header-cell *matHeaderCellDef>Etat</th>
-                <td mat-cell *matCellDef="let element">{{ element.etat }}</td>
+              <ng-container matColumnDef="email">
+                <th mat-header-cell *matHeaderCellDef>Email </th>
+                <td mat-cell *matCellDef="let element">{{ element.email }}</td>
               </ng-container>
 
-               <!-- partenaire Column -->
-               <ng-container matColumnDef="partenaire">
+               <!-- telephone Column -->
+               <ng-container matColumnDef="telephone">
                 <th mat-header-cell *matHeaderCellDef>Proprietaire</th>
                 <td mat-cell *matCellDef="let element">
-                  <span >{{ element.partenaire }}</span>
+                  <span >{{ element.telephone }}</span>
                 </td>
               </ng-container>
 
@@ -72,7 +73,7 @@
                   <button mat-icon-button color="primary" >
                     <mat-icon>edit</mat-icon>
                   </button>
-                  <button mat-icon-button color="warn"  (click)="deleteFunction(element.id ,'proprietes')">
+                  <button mat-icon-button color="warn"  (click)="deleteFunction(element.id ,'partenaires')">
                     <mat-icon>delete</mat-icon>
                   </button>
                 </td>

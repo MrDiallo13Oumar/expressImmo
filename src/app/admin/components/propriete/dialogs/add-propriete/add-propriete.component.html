@@ -1,39 +1,54 @@
 
-    <div class="card">
+    <div class="card ">
       <div class="card-body">
         <div class="card-title">
           <h4>Add New Item</h4>
         </div>
-        <form>
-          <div class="form-group mb-3">
-            <label for="itemName">Name</label>
-            <input type="text" class="form-control form-control-lg" id="itemName" placeholder="Enter item name" />
+        <form [formGroup]="Propriete">
+          <div class=" mb-3">
+            <label for="libelle">Libelle</label>
+            <input type="text" class="form-control form-control-lg" formControlName="libelle" id="libelle" placeholder="Enter le libelle" />
           </div>
 
-          <div class="form-group mb-3">
-            <label for="itemStatus">Status</label>
-            <select class="form-control form-control-lg" id="itemStatus">
-              <option value="sale">Sale</option>
-              <option value="tax">Tax</option>
-              <option value="extended">Extended</option>
-            </select>
+          <div class=" mb-3">
+
+              <label for="type" >Choisir Le partenaire</label>
+              <select class="form-select" id="partenaire_id"  required formControlName="partenaire_id">
+                <option selected disabled>-- Liste G&#233;n&#233;rale --</option>
+                <option *ngFor="let partenaire of Partenaire " [value]="partenaire.id"> {{partenaire.nom  }} - {{partenaire.prenom}} </option>
+
+              </select>
+
           </div>
 
-          <div class="form-group mb-3">
-            <label for="itemDate">Date</label>
-            <input type="date" class="form-control form-control-lg" id="itemDate" />
+          <div class=" mb-3">
+            <label for="adresse">Adresse</label>
+            <input type="text" class="form-control form-control-lg" formControlName="adresse" id="adresse" placeholder="Enter le libelle" />
           </div>
 
-          <div class="form-group mb-3">
-            <label for="itemPrice">Price</label>
-            <input type="number" class="form-control form-control-lg" id="itemPrice" placeholder="Enter price" step="0.01" />
+          <div class=" mb-3">
+            <label for="description">Description</label>
+            <input type="text" class="form-control form-control-lg" formControlName="description" id="description" placeholder="Enter le libelle" />
+          </div>
+          <div class=" mb-3">
+            <label for="etat">Etat</label>
+            <input type="text" class="form-control form-control-lg" formControlName="etat" id="etat" placeholder="Enter le libelle" />
+          </div>
+
+          <div class=" mb-3">
+            <label for="prix_journalier">Price</label>
+            <input type="number" class="form-control form-control-lg" id="prix_journalier" formControlName="prix_journalier" placeholder="Enter price" step="0.01" />
+          </div>
+          <div class=" mb-3">
+            <label for="prix_mensuel">Price</label>
+            <input type="number" class="form-control form-control-lg" id="prix_mensuel" formControlName="prix_mensuel" placeholder="Enter price" step="0.01" />
           </div>
 
           <div class="text-center">
-            <button type="submit" class="btn btn-rounded btn-primary btn-lg mt-3">Add Item</button>
-            <button type="reset" class="btn btn-rounded btn-outline-secondary btn-lg mt-3">Reset</button>
+            <button type="submit" class="btn btn-rounded btn-primary btn-lg mt-3" (click)="saveDataPropriete()">Ajouter</button>
+            <button type="reset" class="btn btn-rounded btn-outline-secondary btn-lg mt-3">Annuler</button>
           </div>
         </form>
       </div>
     </div>
- 
+

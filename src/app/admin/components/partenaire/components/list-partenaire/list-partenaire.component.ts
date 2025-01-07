@@ -1,28 +1,28 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { AddProprieteComponent } from '../../dialogs/add-propriete/add-propriete.component';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { ProprieteService } from '../../_services/propriete.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { convertObjectInFormData } from 'src/app/app.component';
 import { DeletePopupComponent } from 'src/app/shared/dialogs/delete-popup/delete-popup.component';
+import { AddPartenaireComponent } from '../../dialogs/add-partenaire/add-partenaire.component';
+import { PartenaireService } from '../../services/partenaire.service';
 
 @Component({
-  selector: 'app-list-propriete',
-  templateUrl: './list-propriete.component.html',
-  styleUrls: ['./list-propriete.component.scss']
+  selector: 'app-list-partenaire',
+  templateUrl: './list-partenaire.component.html',
+  styleUrls: ['./list-partenaire.component.scss']
 })
-export class ListProprieteComponent {
-  displayedColumns: string[] = ['id','libelle', 'adresse', 'description', 'etat', 'partenaire', 'action'];
+export class ListPartenaireComponent {
+  displayedColumns: string[] = ['id','nom', 'prenom', 'email', 'telephone', 'adresse', 'action'];
   dataSource = new MatTableDataSource([]);
 
 
 
 
   constructor (private dialog : MatDialog ,
-                private service :ProprieteService,
+                private service :PartenaireService,
                 private snackBar :MatSnackBar,
 ){}
 
@@ -41,10 +41,10 @@ applyFilter (event: Event) {
  }
 }
 ngOnInit() {
-  this.getPropriete()
+  this.getPartenaire()
  }
-getPropriete () {
-   this.service.getall('propriete', 'readAll.php').subscribe({
+getPartenaire () {
+   this.service.getall('partenaire', 'readAll.php').subscribe({
      next: (reponse: any) => {
         console.log('REPONSE SUCCESS : ', reponse)
        this.dataSource.data = reponse
@@ -58,7 +58,7 @@ getPropriete () {
 
 
   openDialog() {
-    this.dialog.open(AddProprieteComponent, {
+    this.dialog.open(AddPartenaireComponent, {
      }) .afterClosed()
       .subscribe((result) => {
         if (result?.event && result.event === "insert") {
@@ -66,7 +66,7 @@ getPropriete () {
            const formData = convertObjectInFormData(result.data);
           this.dataSource.data.splice(0, this.dataSource.data.length);
           //Envoyer dans la Base
-          this.service.create('propriete','create.php', formData).subscribe({
+          this.service.create('partenaire','create.php', formData).subscribe({
             next: (response) => {
               this.snackBar.open("Propriété enregistré avec succès !", "Okay", {
                 duration: 3000,
@@ -75,7 +75,7 @@ getPropriete () {
                 panelClass: ['bg-success', 'text-white']
 
               })
-              this.getPropriete()
+              this.getPartenaire()
             },
             error: (err: any) => {
               this.snackBar.open("Echec de l'ajout !", "Okay", {
@@ -119,7 +119,7 @@ getPropriete () {
                   console.error('Error : ', err);
                 },
               });
-              this.getPropriete()
+              this.getPartenaire()
             }
           });
       }
