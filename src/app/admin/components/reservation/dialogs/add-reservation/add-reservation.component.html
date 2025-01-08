@@ -4,38 +4,35 @@
     <div class="card-title">
       <h4>RESERVATION</h4>
     </div>
-    <form>
+    <form [formGroup]="reservation">
       <div class="form-group mb-3">
         <label for="itemName">Name & Prenom</label>
-        <input type="text" class="form-control form-control-lg" id="itemName" placeholder="Entrer le nom complet" />
-      </div>
-
-      <div class="form-group mb-3">
-        <label for="itemStatus">Status</label>
-        <select class="form-control form-control-lg" id="itemStatus">
-          <option value="sale">Sale</option>
-          <option value="tax">Tax</option>
-          <option value="extended">Extended</option>
-        </select>
+        <input type="text" class="form-control form-control-lg" id="nomComplet" placeholder="Entrer le nom complet" formControlName="nomComplet" />
       </div>
 
       <div class="form-group mb-3">
         <label for="itemDate">Date Reservation</label>
-        <input type="date" class="form-control form-control-lg" id="itemDate" />
+        <input type="date" class="form-control form-control-lg" id="date_reservation" formControlName="date_reservation"/>
       </div>
 
       <div class="form-group mb-3">
         <label for="itemPrice">Telephone</label>
-        <input type="text" class="form-control form-control-lg" id="itemPrice" placeholder="Entrer le numero telephone" step="0.01" />
+        <input type="text" class="form-control form-control-lg" id="telephone" placeholder="Entrer le numero telephone" formControlName="telephone" />
       </div>
 
       <div class="form-group mb-3">
-        <label for="itemPropriete">Propriete</label>
-        <input type="text" class="form-control form-control-lg" id="itemPrice" placeholder="Entrer le proprietaire" step="0.01" />
+        <label for="itemPrice">Adresse</label>
+        <input type="text" class="form-control form-control-lg" id="adresse" placeholder="Entrer l'adresse'" formControlName="adresse" />
       </div>
 
+      <label for="type" >Propriete</label>
+              <select class="form-select" id="propriete_id"  required formControlName="propriete_id">
+                <option selected disabled>-- Liste G&#233;n&#233;rale --</option>
+                <option *ngFor="let propriete of Propriete " [value]="propriete.id"> {{propriete.libelle }} </option>
+              </select>
+
       <div class="text-center">
-        <button type="submit" class="btn btn-rounded btn-primary btn-lg mt-3">Add Item</button>
+        <button type="submit" class="btn btn-rounded btn-primary btn-lg mt-3" (click)="saveDataReservation()">Add Item</button>
         <button type="reset" class="btn btn-rounded btn-outline-secondary btn-lg mt-3">Reset</button>
       </div>
     </form>
