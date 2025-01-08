@@ -13,7 +13,7 @@
           <div class=" mb-3">
 
               <label for="type" >Choisir Le partenaire</label>
-              <select class="form-select" id="partenaire_id"  required formControlName="partenaire_id">
+              <select class="form-select" id="partenaire_id"  required formControlName="partenaire_id" placeholder="partenaire">
                 <option selected disabled>-- Liste G&#233;n&#233;rale --</option>
                 <option *ngFor="let partenaire of Partenaire " [value]="partenaire.id"> {{partenaire.nom  }} - {{partenaire.prenom}} </option>
 

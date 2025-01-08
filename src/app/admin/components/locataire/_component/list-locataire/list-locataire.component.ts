@@ -15,28 +15,16 @@ import { DeletePopupComponent } from 'src/app/shared/dialogs/delete-popup/delete
   styleUrls: ['./list-locataire.component.scss']
 })
 export class ListLocataireComponent {
-displayedColumns: string[] = ['id', 'nomComplet', 'telephone', 'email', 'nationnalite', 'propriete'];
-  dataSource = new MatTableDataSource( [
-    { id: 1, nomComplet: 'Kolor Tea Shirt For Man', telephone: 'Sale', email: '2023-01-22',nationnalite: '2023-01-22', propriete: 21.56 },
-    { id: 2, nomComplet: 'Kolor Tea Shirt For Women', telephone: 'Tax', email: '2023-01-30',nationnalite: '2023-01-22', propriete: 55.32 },
-    { id: 3, nomComplet: 'Blue Backpack For Baby', telephone: 'Extended', email: '2023-01-25',nationnalite: '2023-01-22', propriete: 14.85 },
-  ]);
+displayedColumns: string[] = ['id', 'nomComplet','adresse', 'telephone', 'email',  'action'];
+  dataSource = new MatTableDataSource([]);
 
-  
-  updateItem(id : number){
-    console.log("Modification", id);
-    
-  }
 
-  deleteItem(id: number){
-    console.log("Supprimer", id);
-    
-  }
+
     constructor (private dialog : MatDialog ,
                   private locataire :LocataireService,
                   private snackBar : MatSnackBar
   ){}
-  
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   ngAfterViewInit () {
@@ -46,7 +34,7 @@ displayedColumns: string[] = ['id', 'nomComplet', 'telephone', 'email', 'nationn
   applyFilter (event: Event) {
    const filterValue = (event.target as HTMLInputElement).value
    this.dataSource.filter = filterValue.trim().toLowerCase()
-  
+
    if (this.dataSource.paginator) {
      this.dataSource.paginator.firstPage()
    }
@@ -65,7 +53,7 @@ displayedColumns: string[] = ['id', 'nomComplet', 'telephone', 'email', 'nationn
        }
      })
    }
-  
+
     openDialog() {
       this.dialog.open(AddLocataireComponent, {
        }) .afterClosed()
@@ -82,7 +70,7 @@ displayedColumns: string[] = ['id', 'nomComplet', 'telephone', 'email', 'nationn
                   horizontalPosition: "right",
                   verticalPosition: "top",
                   panelClass: ['bg-success', 'text-white']
-  
+
                 })
                 this.getLocataire()
               },
@@ -98,7 +86,7 @@ displayedColumns: string[] = ['id', 'nomComplet', 'telephone', 'email', 'nationn
           }
        })
     }
-  
+
       // DELETE
       deleteFunction(id: any, table: string) {
         this.dialog

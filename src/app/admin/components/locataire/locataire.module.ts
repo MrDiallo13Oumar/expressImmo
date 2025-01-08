@@ -5,13 +5,15 @@ import { DemoMaterialModule } from 'src/app/demo-material-module';
 import { RouterModule } from '@angular/router';
 import { locataireRouting } from './locataire.routing';
 import { AddLocataireComponent } from './dialogs/add-locataire/add-locataire.component';
+import { DetailsLocataireComponent } from './_component/details-locataire/details-locataire.component';
 
 
 
 @NgModule({
   declarations: [
     ListLocataireComponent,
-    AddLocataireComponent
+    AddLocataireComponent,
+    DetailsLocataireComponent
   ],
   imports: [
     CommonModule,
