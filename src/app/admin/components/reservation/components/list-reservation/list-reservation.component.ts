@@ -16,11 +16,7 @@ import { DeletePopupComponent } from 'src/app/shared/dialogs/delete-popup/delete
 })
 export class ListReservationComponent {
 displayedColumns: string[] = ['id', 'nomComplet', 'status','telephone', 'date_reservation', 'propriete', 'action'];
-  dataSource = new MatTableDataSource( [
-    { id: 1, nomComplet: 'Kolor Tea Shirt For Man', status: 'Sale', telephone: '2023-01-22', date_reservation: '2023-01-22', propriete: 21.56 },
-    { id: 2, nomComplet: 'Kolor Tea Shirt For Women', status: 'Tax', telephone: '2023-01-22', date_reservation: '2023-01-30', propriete: 55.32 },
-    { id: 3, nomComplet: 'Blue Backpack For Baby', status: 'Extended', telephone: '2023-01-22', date_reservation: '2023-01-25', propriete: 14.85 },
-  ]);
+  dataSource = new MatTableDataSource( [] );
 
 
   updateItem(id : number){
@@ -52,9 +48,9 @@ displayedColumns: string[] = ['id', 'nomComplet', 'status','telephone', 'date_re
      }
     }
     ngOnInit() {
-      this.getLocataire()
+      this.getReservation()
      }
-    getLocataire () {
+    getReservation () {
        this.reservation.getall('reservation', 'readAll.php').subscribe({
          next: (reponse: any) => {
             console.log('REPONSE SUCCESS : ', reponse)
@@ -84,7 +80,7 @@ displayedColumns: string[] = ['id', 'nomComplet', 'status','telephone', 'date_re
                     panelClass: ['bg-success', 'text-white']
     
                   })
-                  this.getLocataire()
+                  this.getReservation()
                 },
                 error: (err: any) => {
                   this.snackBar.open("Echec de l'ajout !", "Okay", {
@@ -129,7 +125,7 @@ displayedColumns: string[] = ['id', 'nomComplet', 'status','telephone', 'date_re
                     console.error('Error : ', err);
                   },
                 });
-                this.getLocataire()
+                this.getReservation()
               }
             });
         }
