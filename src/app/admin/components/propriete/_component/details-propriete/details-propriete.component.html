@@ -1,0 +1,248 @@
+<div class="content-body">
+  <div class="container-fluid">
+    <div class="card col rounded p-3 mt-3">
+      <div class="card-body d-flex align-items-center justify-content-between">
+        <h4 class="card-title mb-0">Details Propriétés</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 col-xl-3">
+        <div class="card">
+          <div class="card-body">
+            <div class="media align-items-center mb-4">
+              <img
+                class="mr-3"
+                src="assets/admin/images/avatar/11.png"
+                width="80"
+                height="80"
+                alt=""
+              />
+              <div class="media-body">
+                <h3 class="mb-0">Pikamy Cha</h3>
+                <p class="text-muted mb-0">Canada</p>
+              </div>
+            </div>
+
+            <div class="row mb-5">
+              <div class="col">
+                <div class="card card-profile text-center">
+                  <span class="mb-1 text-primary"
+                    ><i class="icon-people"></i
+                  ></span>
+                  <h3 class="mb-0">263</h3>
+                  <p class="text-muted px-4">Following</p>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card card-profile text-center">
+                  <span class="mb-1 text-warning"
+                    ><i class="icon-user-follow"></i
+                  ></span>
+                  <h3 class="mb-0">263</h3>
+                  <p class="text-muted">Followers</p>
+                </div>
+              </div>
+              <div class="col-12 text-center">
+                <button class="btn btn-danger px-5">Follow Now</button>
+              </div>
+            </div>
+
+            <h4>About Me</h4>
+            <p class="text-muted">
+              Hi, I'm Pikamy, has been the industry standard dummy text ever
+              since the 1500s.
+            </p>
+            <ul class="card-profile__info">
+              <li class="mb-1">
+                <strong class="text-dark mr-4">Mobile</strong>
+                <span>01793931609</span>
+              </li>
+              <li>
+                <strong class="text-dark mr-4">Email</strong>
+                <span>namedomain.com</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8 col-xl-9">
+        <div class="card">
+          <div class="card-body " >
+            <form  [formGroup]="Propriete" class="text-center">
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="libelle">Libelle</label>
+                  <input
+                    type="text"
+                    class="form-control form-control-lg"
+                    formControlName="libelle"
+                    id="libelle"
+                    placeholder="Enter le libelle"
+                  />
+                </div>
+
+                <div class="col-md-6 mb-3">
+                  <label for="type">Choisir Le partenaire</label>
+                  <select
+                    class="form-select"
+                    id="partenaire_id"
+                    required
+                    formControlName="partenaire_id"
+                    placeholder="partenaire"
+                  >
+                    <option selected disabled>-- Liste G&#233;n&#233;rale --</option>
+                    <option
+                      *ngFor="let partenaire of Partenaire"
+                      [value]="partenaire.id"
+                    >
+                      {{ partenaire.nom }} - {{ partenaire.prenom }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="adresse">Adresse</label>
+                  <input
+                    type="text"
+                    class="form-control form-control-lg"
+                    formControlName="adresse"
+                    id="adresse"
+                    placeholder="Enter le libelle"
+                  />
+                </div>
+
+                <div class="col-md-6 mb-3">
+                  <label for="description">Description</label>
+                  <input
+                    type="text"
+                    class="form-control form-control-lg"
+                    formControlName="description"
+                    id="description"
+                    placeholder="Enter le libelle"
+                  />
+                </div>
+              </div>
+              <div class=" mb-3">
+                <label for="etat">Etat</label>
+                <input
+                  type="text"
+                  class="form-control form-control-lg"
+                  formControlName="etat"
+                  id="etat"
+                  placeholder="Enter le libelle"
+                />
+              </div>
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="prix_journalier">Price</label>
+                  <input
+                    type="number"
+                    class="form-control form-control-lg"
+                    id="prix_journalier"
+                    formControlName="prix_journalier"
+                    placeholder="Enter price"
+                  />
+                </div>
+
+                <div class="col-md-6 mb-3">
+                  <label for="prix_mensuel">Price</label>
+                  <input
+                    type="number"
+                    class="form-control form-control-lg"
+                    id="prix_mensuel"
+                    formControlName="prix_mensuel"
+                    placeholder="Enter price"
+                  />
+                </div>
+              </div>
+              <div class="text-center">
+                <button
+                  type="submit"
+                  class="btn btn-rounded btn-primary btn-lg mt-3"
+
+                >
+                  Ajouter
+                </button>
+                <button
+                  type="reset"
+                  class="btn btn-rounded btn-outline-secondary btn-lg mt-3"
+                >
+                  Annuler
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-body">
+            <h4>Détails Complémentaires</h4>
+            <div class="row mt-3">
+              <div class="col-md-3">
+                <img
+                  src="assets/sites/img/room-1.jpg"
+                  class="img-fluid rounded"
+                  alt="Photo 1"
+                />
+              </div>
+              <div class="col-md-3">
+                <img
+                  src="assets/sites/img/room-2.jpg"
+                  class="img-fluid rounded"
+                  alt="Photo 2"
+                />
+              </div>
+              <div class="col-md-3">
+                <img
+                  src="assets/sites/img/room-3.jpg"
+                  class="img-fluid rounded"
+                  alt="Photo 3"
+                />
+              </div>
+              <div class="col-md-3">
+                <img
+                  src="assets/sites/img/room-1.jpg"
+                  class="img-fluid rounded"
+                  alt="Photo 4"
+                />
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-md-3">
+                <img
+                  src="assets/sites/img/room-1.jpg"
+                  class="img-fluid rounded"
+                  alt="Photo 1"
+                />
+              </div>
+              <div class="col-md-3">
+                <img
+                  src="assets/sites/img/room-2.jpg"
+                  class="img-fluid rounded"
+                  alt="Photo 2"
+                />
+              </div>
+              <div class="col-md-3">
+                <img
+                  src="assets/sites/img/room-3.jpg"
+                  class="img-fluid rounded"
+                  alt="Photo 3"
+                />
+              </div>
+              <div class="col-md-3">
+                <img
+                  src="assets/sites/img/room-1.jpg"
+                  class="img-fluid rounded"
+                  alt="Photo 4"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- #/ container -->
+</div>
