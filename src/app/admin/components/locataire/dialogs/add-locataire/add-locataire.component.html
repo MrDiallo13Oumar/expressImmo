@@ -56,7 +56,7 @@
         <label for="type" >Choisir Le contrat</label>
         <select class="form-select" id="propriete_id"  required formControlName="contrat_id" placeholder="contrat">
           <option selected disabled>-- Liste G&#233;n&#233;rale --</option>
-          <option *ngFor="let contrat of Contrat " [value]="contrat.id"> {{contrat.resservation_id.nomComplet  }} </option>
+          <option *ngFor="let contrat of Contrat " [value]="contrat.id"> {{contrat.reservation  }} </option>
 
         </select>
 

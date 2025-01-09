@@ -5,6 +5,7 @@ import { AddLocataireComponent } from '../../../locataire/dialogs/add-locataire/
 import { ProprieteService } from '../../../propriete/_services/propriete.service';
 
 
+
 @Component({
   selector: 'app-add-reservation',
   templateUrl: './add-reservation.component.html',
@@ -26,8 +27,7 @@ saveDataPropriete: any;
     public dialogRef: MatDialogRef<AddLocataireComponent>,
     @Optional() @Inject(MAT_DIALOG_DATA) public data: any,
     private service :ProprieteService ,
-
-   ) { }
+     ) { }
 
   ngOnInit(): void {
     this.getPropriete()

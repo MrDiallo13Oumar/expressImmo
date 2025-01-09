@@ -45,6 +45,8 @@ export class DetailsProprieteComponent {
         console.log('Info : ', response);
         this.infoPropriete = response;
         this.Propriete.patchValue(this.infoPropriete);
+        console.log("Email partenaire",this.infoPropriete.partenaire.email);
+        
       },
       error: (error: any) => {
         console.log('Error : ', error);

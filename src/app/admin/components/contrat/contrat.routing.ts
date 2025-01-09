@@ -1,5 +1,6 @@
 import { Routes } from "@angular/router";
 import { ListContratComponent } from "./_components/list-contrat/list-contrat.component";
+import { DetailsContratComponent } from "./_components/details-contrat/details-contrat.component";
 
 export const contratRouting: Routes = [
 
@@ -8,7 +9,11 @@ export const contratRouting: Routes = [
     component:ListContratComponent ,
 
   },
+  {
+    path: 'detail-contrat',
+    component:DetailsContratComponent ,
 
+  },
 
 
 ]

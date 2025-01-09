@@ -20,7 +20,6 @@ export class AddLocataireComponent {
       lieu_naissance: new FormControl(''),
       typePiece :new FormControl(''),
       numeroPiece :new FormControl(''),
-      codePin :new FormControl(''),
       adresse :new FormControl(''),
       contrat_id : new FormControl('')
     })
