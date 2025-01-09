@@ -5,13 +5,15 @@ import { DemoMaterialModule } from 'src/app/demo-material-module';
 import { RouterModule } from '@angular/router';
 import { contratRouting } from './contrat.routing';
 import { AddContratComponent } from './dialogs/add-contrat/add-contrat.component';
+import { DetailsContratComponent } from './_components/details-contrat/details-contrat.component';
 
 
 
 @NgModule({
   declarations: [
     ListContratComponent,
-    AddContratComponent
+    AddContratComponent,
+    DetailsContratComponent
   ],
   imports: [
     CommonModule,

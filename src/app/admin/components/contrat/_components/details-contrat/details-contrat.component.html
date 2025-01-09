@@ -68,108 +68,14 @@
       <div class="col-lg-8 col-xl-9">
         <div class="card">
           <div class="card-body " >
-            <form [formGroup]="Propriete">
-              <div class="row">
-                <div class="col-md-6 mb-3">
-                  <label for="libelle">Libelle</label>
-                  <input
-                    type="text"
-                    class="form-control form-control-lg"
-                    formControlName="libelle"
-                    [value]="infoPropriete.libelle"
-
-                  />
-                </div>
-
-                <div class="col-md-6 mb-3">
-                  <label for="type">Choisir Le partenaire</label>
-                  <select
-                    class="form-select"
-                    id="partenaire_id"
-                    required
-                    formControlName="partenaire_id"
-                    placeholder="partenaire"
-                    [value]="infoPropriete.partenaire_id"
-                  >
-                    <option selected disabled>-- Liste G&#233;n&#233;rale --</option>
-                    <option
-                      *ngFor="let partenaire of Partenaire"
-                      [value]="partenaire.id"
-                    >
-                      {{ partenaire.nom }} - {{ partenaire.prenom }}
-                    </option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="col-md-6 mb-3">
-                  <label for="adresse">Adresse</label>
-                  <input
-                    type="text"
-                    class="form-control form-control-lg"
-                    formControlName="adresse"
-                  [value]="infoPropriete.adresse"
-
-                  />
-                </div>
-                <div class=" col-md-6 mb-3">
-                  <label for="etat">Etat</label>
-                  <input
-                    type="text"
-                    class="form-control form-control-lg"
-                    formControlName="etat"
-                    [value]="infoPropriete.etat"
-
-                  />
-                </div>
-
-              </div>
-
-              <div class="row">
-                <div class="col-md-6 mb-3">
-                  <label for="prix_journalier">Prix Journalier</label>
-                  <input
-                    type="number"
-                    class="form-control form-control-lg"
-                    id="prix_journalier"
-                    [value]="infoPropriete.prix_journalier"
-                    formControlName="prix_journalier"
-
-                  />
-                </div>
-
-                <div class="col-md-6 mb-3">
-                  <label for="prix_mensuel">Prix mensuel</label>
-                  <input
-                    type="number"
-                    class="form-control form-control-lg"
-                    id="prix_mensuel"
-                    [value]="infoPropriete.prix_mensuel"
-                    formControlName="prix_mensuel"
-
-                  />
-                </div>
-              </div>
-              <div class=" mb-3">
-                <label for="description">Description</label>
-                <textarea
-
-                  class="form-control form-control-lg"
-                  formControlName="description"
-                  [value]="infoPropriete.description"
-
-                > </textarea>
-              </div>
-
-            </form>
+           <!-- formulaire -->
           </div>
           <div class="card-footer">
             <div class="d-flex justify-content-between">
               <button
                 type="submit"
                 class="btn btn-rounded btn-primary btn-lg mt-3"
-                (click)="confirmEditing(Propriete)"
+               
               >
                 Ajouter
               </button>
