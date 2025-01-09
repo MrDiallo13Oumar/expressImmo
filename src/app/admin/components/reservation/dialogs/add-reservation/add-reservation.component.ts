@@ -3,8 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { AddLocataireComponent } from '../../../locataire/dialogs/add-locataire/add-locataire.component';
 import { ProprieteService } from '../../../propriete/_services/propriete.service';
-import { PartenaireService } from '../../../partenaire/services/partenaire.service';
-import { SweetAlert2LoaderService } from '@sweetalert2/ngx-sweetalert2';
+
 
 @Component({
   selector: 'app-add-reservation',
@@ -27,7 +26,8 @@ saveDataPropriete: any;
     public dialogRef: MatDialogRef<AddLocataireComponent>,
     @Optional() @Inject(MAT_DIALOG_DATA) public data: any,
     private service :ProprieteService ,
-    private sweetAlert2Service: SweetAlert2LoaderService ) { }
+
+   ) { }
 
   ngOnInit(): void {
     this.getPropriete()
@@ -40,7 +40,7 @@ saveDataPropriete: any;
         console.log('LISTE DES PROPRIETES REPONSE SUCCESS : ', reponse)
         this.Propriete = reponse
         console.log(this.Propriete);
-        
+
       },
       error: (err: any) => {
         console.log('REPONSE ERROR : ', err)
@@ -54,7 +54,7 @@ saveDataPropriete: any;
         event: "insert",
         data: this.reservation.value
       })
-      
+
     }
   }
 
