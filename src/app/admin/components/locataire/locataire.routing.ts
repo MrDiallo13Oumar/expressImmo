@@ -1,5 +1,6 @@
 import { Routes } from "@angular/router";
 import { ListLocataireComponent } from "./_component/list-locataire/list-locataire.component";
+import { DetailsLocataireComponent } from "./_component/details-locataire/details-locataire.component";
 
 export const locataireRouting: Routes = [
 
@@ -8,4 +9,9 @@ export const locataireRouting: Routes = [
     component:ListLocataireComponent ,
 
   },
+  {
+        path :'detail-locataire/:id',
+        component: DetailsLocataireComponent,
+  
+    }
 ]

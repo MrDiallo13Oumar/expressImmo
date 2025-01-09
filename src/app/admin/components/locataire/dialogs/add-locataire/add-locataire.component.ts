@@ -22,6 +22,7 @@ export class AddLocataireComponent {
       numeroPiece :new FormControl(''),
       codePin :new FormControl(''),
       adresse :new FormControl(''),
+      contrat_id : new FormControl('')
     })
 
     constructor(
@@ -32,6 +33,7 @@ export class AddLocataireComponent {
 
     ngOnInit(){
       this.getPropriete()
+      this.getContrat ()
     }
 
     Propriete : any =[]
@@ -40,6 +42,19 @@ export class AddLocataireComponent {
         next: (reponse: any) => {
            console.log('REPONSE SUCCESS : ', reponse)
           this.Propriete = reponse
+
+        },
+        error: (err: any) => {
+          console.log('REPONSE ERROR : ', err)
+        }
+      })
+    }
+    Contrat : any =[]
+    getContrat () {
+      this.service.getall('contrat', 'readAll.php').subscribe({
+        next: (reponse: any) => {
+           console.log('REPONSE SUCCESS : ', reponse)
+          this.Contrat = reponse
 
         },
         error: (err: any) => {

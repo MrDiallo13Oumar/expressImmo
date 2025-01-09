@@ -15,7 +15,7 @@ import { DeletePopupComponent } from 'src/app/shared/dialogs/delete-popup/delete
   styleUrls: ['./list-reservation.component.scss']
 })
 export class ListReservationComponent {
-displayedColumns: string[] = ['id', 'nomComplet', 'status','telephone', 'date_reservation', 'propriete', 'action'];
+displayedColumns: string[] = ['id', 'nom', 'prenom', 'status','telephone', 'created_at', 'propriete', 'action'];
   dataSource = new MatTableDataSource( [] );
 
 
@@ -55,6 +55,8 @@ displayedColumns: string[] = ['id', 'nomComplet', 'status','telephone', 'date_re
          next: (reponse: any) => {
             console.log('REPONSE SUCCESS : ', reponse)
            this.dataSource.data = reponse
+           console.log('Liste reservation',this.dataSource.data);
+           
          },
          error: (err: any) => {
            console.log('REPONSE ERROR : ', err)
