@@ -4,6 +4,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { AddLocataireComponent } from '../../../locataire/dialogs/add-locataire/add-locataire.component';
 import { ProprieteService } from '../../../propriete/_services/propriete.service';
 import { PartenaireService } from '../../../partenaire/services/partenaire.service';
+import { SweetAlert2LoaderService } from '@sweetalert2/ngx-sweetalert2';
 
 @Component({
   selector: 'app-add-reservation',
@@ -13,9 +14,9 @@ import { PartenaireService } from '../../../partenaire/services/partenaire.servi
 export class AddReservationComponent implements OnInit{
 
   reservation = new FormGroup({
-    nomComplet: new FormControl(''),
+    nom: new FormControl(''),
+    prenom: new FormControl(''),
     telephone: new FormControl(''),
-    date_reservation: new FormControl(''),
     adresse: new FormControl(''),
     statut: new FormControl(''),
     propriete_id: new FormControl(''),
@@ -25,7 +26,8 @@ saveDataPropriete: any;
   constructor(
     public dialogRef: MatDialogRef<AddLocataireComponent>,
     @Optional() @Inject(MAT_DIALOG_DATA) public data: any,
-    private service :ProprieteService  ) { }
+    private service :ProprieteService ,
+    private sweetAlert2Service: SweetAlert2LoaderService ) { }
 
   ngOnInit(): void {
     this.getPropriete()
@@ -35,7 +37,7 @@ saveDataPropriete: any;
   getPropriete() {
     this.service.getall('propriete', 'readAll.php').subscribe({
       next: (reponse: any) => {
-        console.log('REPONSE SUCCESS : ', reponse)
+        console.log('LISTE DES PROPRIETES REPONSE SUCCESS : ', reponse)
         this.Propriete = reponse
         console.log(this.Propriete);
         
@@ -52,6 +54,7 @@ saveDataPropriete: any;
         event: "insert",
         data: this.reservation.value
       })
+      
     }
   }
 
