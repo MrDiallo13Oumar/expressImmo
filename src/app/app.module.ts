@@ -11,7 +11,7 @@ import { TopBarComponent } from './shared/components/top-bar/top-bar.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { DemoMaterialModule } from './demo-material-module';
 import { DeletePopupComponent } from './shared/dialogs/delete-popup/delete-popup.component';
-import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+
 
 
 @NgModule({
@@ -28,7 +28,6 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     AppRoutingModule,
     BrowserAnimationsModule,
     DemoMaterialModule,
-    SweetAlert2Module.forRoot(),
     RouterModule.forRoot(AppRouting),
   ],
   providers: [],

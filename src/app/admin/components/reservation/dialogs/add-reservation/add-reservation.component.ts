@@ -5,6 +5,7 @@ import { AddLocataireComponent } from '../../../locataire/dialogs/add-locataire/
 import { ProprieteService } from '../../../propriete/_services/propriete.service';
 
 
+
 @Component({
   selector: 'app-add-reservation',
   templateUrl: './add-reservation.component.html',
@@ -39,7 +40,7 @@ saveDataPropriete: any;
         console.log('LISTE DES PROPRIETES REPONSE SUCCESS : ', reponse)
         this.Propriete = reponse
         console.log(this.Propriete);
-        
+
       },
       error: (err: any) => {
         console.log('REPONSE ERROR : ', err)
@@ -53,7 +54,7 @@ saveDataPropriete: any;
         event: "insert",
         data: this.reservation.value
       })
-      
+
     }
   }
 

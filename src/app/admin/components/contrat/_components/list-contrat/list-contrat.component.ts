@@ -15,7 +15,7 @@ import { DeletePopupComponent } from 'src/app/shared/dialogs/delete-popup/delete
   styleUrls: ['./list-contrat.component.scss']
 })
 export class ListContratComponent {
-displayedColumns: string[] = ['id', 'nomComplet','telephone','adresse', 'montant_total', 'status','action'];
+displayedColumns: string[] = ['id', 'reservation','partenaire','propriete', 'montant_total', 'statut','action'];
   dataSource = new MatTableDataSource([]);
 
   constructor (private dialog : MatDialog ,
@@ -44,7 +44,9 @@ getContrat () {
    this.service.getall('contrat', 'readAll.php').subscribe({
      next: (reponse: any) => {
         console.log('REPONSE SUCCESS : ', reponse)
-       this.dataSource.data = reponse
+       this.dataSource = reponse
+       console.log("dataSource.data",this.dataSource);
+       
      },
      error: (err: any) => {
        console.log('REPONSE ERROR : ', err)
