@@ -10,8 +10,7 @@ import { PartenaireService } from '../../services/partenaire.service';
 })
 export class AddPartenaireComponent {
 Partenaire = new FormGroup({
-    nom :new FormControl(''),
-    prenom: new FormControl(''),
+    libelle :new FormControl(''),
     email: new FormControl(''),
     telephone: new FormControl(''),
     adresse :new FormControl(''),
@@ -24,7 +23,7 @@ Partenaire = new FormGroup({
     private service :PartenaireService
 
   ) { }
- 
+
 
 
   saveDataPartenaire() {

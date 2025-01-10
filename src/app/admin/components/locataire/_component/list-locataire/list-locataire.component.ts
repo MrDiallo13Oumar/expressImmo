@@ -15,7 +15,7 @@ import { DeletePopupComponent } from 'src/app/shared/dialogs/delete-popup/delete
   styleUrls: ['./list-locataire.component.scss']
 })
 export class ListLocataireComponent {
-displayedColumns: string[] = ['id', 'nomComplet','adresse', 'telephone', 'email',  'action'];
+displayedColumns: string[] = ['id', 'nom','prenom','adresse', 'telephone', 'email',  'action'];
   dataSource = new MatTableDataSource([]);
 
 
