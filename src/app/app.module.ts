@@ -26,6 +26,7 @@ import { DeletePopupComponent } from './shared/dialogs/delete-popup/delete-popup
   imports: [
     BrowserModule,
     AppRoutingModule,
+    // AppRoutingModule,
     BrowserAnimationsModule,
     DemoMaterialModule,
     RouterModule.forRoot(AppRouting),

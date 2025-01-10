@@ -6,7 +6,7 @@
         <button
           type="button"
           class="btn btn-info btn-sm btn-rounded text-white px-3"
-          (click)="openDialog()">
+          routerLink="/contrat/detail-contrat">
           Nouveau
         </button>
       </div>
@@ -31,17 +31,22 @@
               </ng-container>
 
               <!-- Name Column -->
-              <ng-container matColumnDef="reservation">
-                <th mat-header-cell *matHeaderCellDef>Proprietaire</th>
-                <td mat-cell *matCellDef="let element">{{ element.reservation }}</td>
-              </ng-container>
-              <ng-container matColumnDef="partenaire">
-                <th mat-header-cell *matHeaderCellDef>Le Bailleur</th>
-                <td mat-cell *matCellDef="let element">{{ element.partenaire }}</td>
+              <ng-container matColumnDef="locataire">
+                <th mat-header-cell *matHeaderCellDef>Locataire</th>
+                <td mat-cell *matCellDef="let element">{{ element.locataire }}</td>
               </ng-container>
               <ng-container matColumnDef="propriete">
                 <th mat-header-cell *matHeaderCellDef>Propriete</th>
                 <td mat-cell *matCellDef="let element">{{ element.propriete }}</td>
+              </ng-container>
+              <ng-container matColumnDef="date_debut">
+                <th mat-header-cell *matHeaderCellDef>Debut</th>
+                <td mat-cell *matCellDef="let element">{{ element.propriete }}</td>
+              </ng-container>
+
+              <ng-container matColumnDef="date_fin">
+                <th mat-header-cell *matHeaderCellDef>FIN</th>
+                <td mat-cell *matCellDef="let element">{{ element.date_fin }}</td>
               </ng-container>
               <!-- Status Column -->
               <ng-container matColumnDef="statut">
@@ -52,11 +57,7 @@
               </ng-container>
 
               <!-- Date Column -->
-              <ng-container matColumnDef="date_signature">
-                <th mat-header-cell *matHeaderCellDef>Date</th>
-                <td mat-cell *matCellDef="let element">{{ element.date_signature }}</td>
-              </ng-container>
-
+              
               <!-- Price Column -->
               <ng-container matColumnDef="montant_total">
                 <th mat-header-cell *matHeaderCellDef>Montant total</th>
@@ -69,7 +70,7 @@
               <ng-container matColumnDef="action">
                 <th mat-header-cell *matHeaderCellDef class="text-center">Action</th>
                 <td mat-cell *matCellDef="let element" class="text-center">
-                  <button mat-icon-button color="primary" >
+                  <button mat-icon-button color="primary">
                     <mat-icon>edit</mat-icon>
                   </button>
                   <button mat-icon-button color="warn" (click)="deleteFunction(element.id ,'contrats')" >

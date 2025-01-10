@@ -6,146 +6,166 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-lg-4 col-xl-3">
+      <div class="col-lg-5 col-xl-4">
+
+      <!-- LOCATAIRE -->
         <div class="card">
           <div class="card-body">
-            <div class="media align-items-center mb-4">
-              <img
-                class="mr-3"
-                src="assets/admin/images/avatar/11.png"
-                width="80"
-                height="80"
-                alt=""
-              />
-              <div class="media-body">
-                <h3 class="mb-0">Pikamy Cha</h3>
-                <p class="text-muted mb-0">Canada</p>
-              </div>
+            <div class="card-title">
+              <h4>LOCATAIRE</h4>
             </div>
+            <form >
+              <div class="row">
+                <!-- <div class="col-md-6 mb-3">
 
-            <div class="row mb-5">
-              <div class="col">
-                <div class="card card-profile text-center">
-                  <span class="mb-1 text-primary"
-                    ><i class="icon-people"></i
-                  ></span>
-                  <h3 class="mb-0">263</h3>
-                  <p class="text-muted px-4">Following</p>
+                  <label for="type">Locataire</label>
+                  <select class="form-select" id="locataire_id" required formControlName="locataire_id"
+                    placeholder="Choisir le locataire">
+                    <option selected disabled>-- Liste G&#233;n&#233;rale --</option>
+                  </select>
+
+                </div> -->
+                
+              </div>
+              <div class="row">
+                <div class="col-md-6 mb-3">
+
+                  <label for="type">Choisir La propriété</label>
+                  <select class="form-select" id="propriete_id" required formControlName="propriete_id"
+                    placeholder="Propriete">
+                    <option selected disabled>-- Liste G&#233;n&#233;rale --</option>    
+                  </select>
+                </div>
+                <div class=" form-group mb-3">
+                  <label for="nom">Nom</label>
+                  <input type="text" class="form-control form-control-lg" id="nom"
+                    formControlName="nom" placeholder="Enter le nom" step="0.01" />
+                </div>
+                <div class=" form-group mb-3">
+                  <label for="prenom">Prenom</label>
+                  <input type="text" class="form-control form-control-lg" id="prenom"
+                    formControlName="prenom" placeholder="Enter le prenom" step="0.01" />
+                </div>
+                <div class=" form-group mb-3">
+                  <label for="telephone">Telephone</label>
+                  <input type="text" class="form-control form-control-lg" id="telephone"
+                    formControlName="telephone" placeholder="Entrer le numero telephone" step="0.01" />
+                </div>
+                <div class=" form-group mb-3">
+                  <label for="adresse">adresse</label>
+                  <input type="text" class="form-control form-control-lg" id="adresse"
+                    formControlName="adresse" placeholder="Entrer le numero adresse" step="0.01" />
+                </div>
+                <div class="col-md-6 form-group mb-3">
+                  <label for="statut">Statut</label>
+                  <select class="form-control form-control-lg" id="statut" formControlName="statut">
+                    <option value="actif">Actif</option>
+                    <option value="terminer">Terminer</option>
+                    <option value="annulé"> Annuler </option>
+                  </select>
                 </div>
               </div>
-              <div class="col">
-                <div class="card card-profile text-center">
-                  <span class="mb-1 text-warning"
-                    ><i class="icon-user-follow"></i
-                  ></span>
-                  <h3 class="mb-0">263</h3>
-                  <p class="text-muted">Followers</p>
+              <div class=" form-group mb-3">
+                <label for="montant_total">Montant</label>
+                <input type="number" class="form-control form-control-lg" id="montant_total"
+                  formControlName="montant_total" placeholder="Enter le montant" step="0.01" />
+              </div>
+              <div class="row">
+                <div class=" col-md-6form-group mb-3">
+                  <label for="date_debut ">Date Debut</label>
+                  <input type="date" class="form-control form-control-lg" id="date_debut"
+                    formControlName="date_debut" placeholder="Enter la date de debut" />
+                </div>
+
+                <div class="form-group mb-3">
+                  <label for="date_fin ">Date Fin</label>
+                  <input type="date" class="form-control form-control-lg" id="date_fin" formControlName="date_fin"
+                    placeholder="Enter la date de Fin" />
                 </div>
               </div>
-              <div class="col-12 text-center">
-                <button class="btn btn-danger px-5">Follow Now</button>
-              </div>
-            </div>
 
-            <h4>About Me</h4>
-            <p class="text-muted">
-              Hi, I'm Pikamy, has been the industry standard dummy text ever
-              since the 1500s.
-            </p>
-            <ul class="card-profile__info">
-              <li class="mb-1">
-                <strong class="text-dark mr-4">Mobile</strong>
-                <span>01793931609</span>
-              </li>
-              <li>
-                <strong class="text-dark mr-4">Email</strong>
-                <span>namedomain.com</span>
-              </li>
-            </ul>
+              <div class="d-flex justify-content-between">
+                <button type="submit" class="btn btn-rounded btn-primary btn-lg mt-3">Add </button>
+                <button type="reset" class="btn btn-rounded btn-outline-secondary btn-lg mt-3">Reset</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
-      <div class="col-lg-8 col-xl-9">
-        <div class="card">
-          <div class="card-body " >
-           <!-- formulaire -->
-          </div>
-          <div class="card-footer">
-            <div class="d-flex justify-content-between">
-              <button
-                type="submit"
-                class="btn btn-rounded btn-primary btn-lg mt-3"
-               
-              >
-                Ajouter
-              </button>
-            </div>
-          </div>
-        </div>
-
+      <div class="col-lg-7 col-xl-8">
+        
+        <!-- CONTRAT -->
         <div class="card">
           <div class="card-body">
-            <h4>Détails Complémentaires</h4>
-            <div class="row mt-3">
-              <div class="col-md-3">
-                <img
-                  src="assets/sites/img/room-1.jpg"
-                  class="img-fluid rounded"
-                  alt="Photo 1"
-                />
-              </div>
-              <div class="col-md-3">
-                <img
-                  src="assets/sites/img/room-2.jpg"
-                  class="img-fluid rounded"
-                  alt="Photo 2"
-                />
-              </div>
-              <div class="col-md-3">
-                <img
-                  src="assets/sites/img/room-3.jpg"
-                  class="img-fluid rounded"
-                  alt="Photo 3"
-                />
-              </div>
-              <div class="col-md-3">
-                <img
-                  src="assets/sites/img/room-1.jpg"
-                  class="img-fluid rounded"
-                  alt="Photo 4"
-                />
-              </div>
+            <div class="card-title">
+              <h4>CONTRAT</h4>
             </div>
-            <div class="row mt-3">
-              <div class="col-md-3">
-                <img
-                  src="assets/sites/img/room-1.jpg"
-                  class="img-fluid rounded"
-                  alt="Photo 1"
-                />
+            <form  ><!--[formGroup]="Contrat" -->
+              <div class="row">
+                <div class="col-md-6 mb-3">
+
+                  <label for="type">Choisir La reservation</label>
+                  <select class="form-select" id="reservation_id" required formControlName="reservation_id"
+                    placeholder="reservation">
+                    <option selected disabled>-- Liste G&#233;n&#233;rale --</option>
+                  </select>
+
+                </div>
+                <div class="col-md-6 mb-3">
+
+                  <label for="type">Choisir Le partenaire</label>
+                  <select class="form-select" id="partenaire_id" required formControlName="partenaire_id"
+                    placeholder="reservation">
+                    <option selected disabled>-- Liste G&#233;n&#233;rale --</option>
+
+                  </select>
+
+                </div>
               </div>
-              <div class="col-md-3">
-                <img
-                  src="assets/sites/img/room-2.jpg"
-                  class="img-fluid rounded"
-                  alt="Photo 2"
-                />
+              <div class="row">
+                <div class="col-md-6 mb-3">
+
+                  <label for="type">Choisir La propriété</label>
+                  <select class="form-select" id="propriete_id" required formControlName="propriete_id"
+                    placeholder="reservation">
+                    <option selected disabled>-- Liste G&#233;n&#233;rale --</option>
+                      
+                  </select>
+
+                </div>
+                <div class="col-md-6 form-group mb-3">
+                  <label for="statut">Statut</label>
+                  <select class="form-control form-control-lg" id="statut" formControlName="statut">
+                    <option value="actif">Actif</option>
+                    <option value="terminer">Terminer</option>
+                    <option value="annulé"> Annuler </option>
+                  </select>
+                </div>
               </div>
-              <div class="col-md-3">
-                <img
-                  src="assets/sites/img/room-3.jpg"
-                  class="img-fluid rounded"
-                  alt="Photo 3"
-                />
+              <div class=" form-group mb-3">
+                <label for="montant_total">Montant</label>
+                <input type="number" class="form-control form-control-lg" id="montant_total"
+                  formControlName="montant_total" placeholder="Enter le montant" step="0.01" />
               </div>
-              <div class="col-md-3">
-                <img
-                  src="assets/sites/img/room-1.jpg"
-                  class="img-fluid rounded"
-                  alt="Photo 4"
-                />
+              <div class="row">
+                <div class=" col-md-6form-group mb-3">
+                  <label for="date_debut ">Date Debut</label>
+                  <input type="date" class="form-control form-control-lg" id="date_debut"
+                    formControlName="date_debut" placeholder="Enter la date de debut" />
+                </div>
+
+                <div class="form-group mb-3">
+                  <label for="date_fin ">Date Fin</label>
+                  <input type="date" class="form-control form-control-lg" id="date_fin" formControlName="date_fin"
+                    placeholder="Enter la date de Fin" />
+                </div>
               </div>
-            </div>
+
+              <div class="d-flex justify-content-between">
+                <button type="submit" class="btn btn-rounded btn-primary btn-lg mt-3">Add </button>
+                <button type="reset" class="btn btn-rounded btn-outline-secondary btn-lg mt-3">Reset</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>

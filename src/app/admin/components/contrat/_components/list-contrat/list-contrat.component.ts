@@ -15,7 +15,7 @@ import { DeletePopupComponent } from 'src/app/shared/dialogs/delete-popup/delete
   styleUrls: ['./list-contrat.component.scss']
 })
 export class ListContratComponent {
-displayedColumns: string[] = ['id', 'reservation','partenaire','propriete', 'montant_total', 'statut','action'];
+displayedColumns: string[] = ['id', 'locataire','propriete','montant_total','date_debut', 'date_fin', 'statut','action'];
   dataSource = new MatTableDataSource([]);
 
   constructor (private dialog : MatDialog ,
@@ -41,7 +41,7 @@ ngOnInit() {
   this.getContrat()
  }
 getContrat () {
-   this.service.getall('contrat', 'readAll.php').subscribe({
+   this.service.getall('contrats', 'readAll.php').subscribe({
      next: (reponse: any) => {
         console.log('REPONSE SUCCESS : ', reponse)
        this.dataSource = reponse
@@ -54,38 +54,38 @@ getContrat () {
    })
  }
 
-  openDialog() {
-    this.dialog.open(AddContratComponent, {
-     }) .afterClosed()
-      .subscribe((result) => {
-        if (result?.event && result.event === "insert") {
-          // console.log(result.data);
-           const formData = convertObjectInFormData(result.data);
-          this.dataSource.data.splice(0, this.dataSource.data.length);
-          //Envoyer dans la Base
-          this.service.create('contrat','create.php', formData).subscribe({
-            next: (response) => {
-              this.snackBar.open("Contrat enregistré avec succès !", "Okay", {
-                duration: 3000,
-                horizontalPosition: "right",
-                verticalPosition: "top",
-                panelClass: ['bg-success', 'text-white']
+  // openDialog() {
+  //   this.dialog.open(AddContratComponent, {
+  //    }) .afterClosed()
+  //     .subscribe((result) => {
+  //       if (result?.event && result.event === "insert") {
+  //         // console.log(result.data);
+  //          const formData = convertObjectInFormData(result.data);
+  //         this.dataSource.data.splice(0, this.dataSource.data.length);
+  //         //Envoyer dans la Base
+  //         this.service.create('contrats','create.php', formData).subscribe({
+  //           next: (response) => {
+  //             this.snackBar.open("Contrat enregistré avec succès !", "Okay", {
+  //               duration: 3000,
+  //               horizontalPosition: "right",
+  //               verticalPosition: "top",
+  //               panelClass: ['bg-success', 'text-white']
 
-              })
-              this.getContrat()
-            },
-            error: (err: any) => {
-              this.snackBar.open("Echec de l'ajout !", "Okay", {
-                duration: 3000,
-                horizontalPosition: "right",
-                verticalPosition: "top",
-                panelClass: ['bg-danger', 'text-white']
-              })
-            }
-          })
-        }
-     })
-  }
+  //             })
+  //             this.getContrat()
+  //           },
+  //           error: (err: any) => {
+  //             this.snackBar.open("Echec de l'ajout !", "Okay", {
+  //               duration: 3000,
+  //               horizontalPosition: "right",
+  //               verticalPosition: "top",
+  //               panelClass: ['bg-danger', 'text-white']
+  //             })
+  //           }
+  //         })
+  //       }
+  //    })
+  // }
 
     // DELETE
     deleteFunction(id: any, table: string) {

@@ -7,21 +7,24 @@ import { ProprieteComponent } from './propriete/propriete.component';
 import { DemoMaterialModule } from 'src/app/demo-material-module';
 import { ServiceComponent } from './service/service.component';
 import { ContactComponent } from './contact/contact.component';
-
+import { ReservationSiteComponent } from './propriete/components/reservation-site/reservation-site.component';
+import { InscriptionSiteComponent } from './propriete/components/inscription-site/inscription-site.component';
 
 
 
 @NgModule({
   declarations: [
     AccueilComponent,
-
     ProprieteComponent,
     ServiceComponent,
-    ContactComponent
+    ContactComponent,
+    ReservationSiteComponent,
+    InscriptionSiteComponent,
   ],
   imports: [
     CommonModule,
     DemoMaterialModule,
+
     RouterModule.forChild(homeRouting)
   ]
 })
