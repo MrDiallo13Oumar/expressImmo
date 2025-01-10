@@ -16,22 +16,13 @@
           </select>
 
       </div>
-      <div class="col-md-6 mb-3">
-
-        <label for="type" >Choisir Le partenaire</label>
-        <select class="form-select" id="partenaire_id"  required formControlName="partenaire_id" placeholder="reservation">
-          <option selected disabled>-- Liste G&#233;n&#233;rale --</option>
-          <option *ngFor="let partenaire of Partenaire " [value]="partenaire.id"> {{partenaire.nom  }} - {{partenaire.prenom}} </option>
-
-        </select>
-
-    </div>
+      
       </div>
       <div class="row">
         <div class="col-md-6 mb-3">
 
-          <label for="type" >Choisir La propriété</label>
-          <select class="form-select" id="propriete_id"  required formControlName="propriete_id" placeholder="reservation">
+          <label for="type" >Propriété</label>
+          <select class="form-select" id="propriete_id"  required formControlName="propriete_id" placeholder="Choisir la propriete">
             <option selected disabled>-- Liste G&#233;n&#233;rale --</option>
             <option *ngFor="let propriete of Propriete " [value]="propriete.id"> {{propriete.libelle}} - {{propriete.adresse}} </option>
 
@@ -62,11 +53,6 @@
           <input type="date" class="form-control form-control-lg" id="date_fin" formControlName="date_fin" placeholder="Enter la date de Fin" />
         </div>
       </div>
-
-
-
-
-
 
       <div class="d-flex justify-content-between">
         <button type="submit" class="btn btn-rounded btn-primary btn-lg mt-3" (click)="saveDataContrat()">Add </button>

@@ -12,9 +12,10 @@ import { ActivatedRoute } from '@angular/router';
 export class AddContratComponent implements OnInit{
 
   Contrat = new FormGroup({
-    reservation_id: new FormControl(''),
+    locataire_id: new FormControl(''),
     propriete_id: new FormControl(''),
-    partenaire_id: new FormControl(''),
+    caution: new FormControl(''),
+    prix_journalier: new FormControl(''),
     date_debut: new FormControl(''),
     date_fin: new FormControl(''),
     montant_total: new FormControl(''),
