@@ -5,13 +5,15 @@ import { AddReservationComponent } from './dialogs/add-reservation/add-reservati
 import { DemoMaterialModule } from 'src/app/demo-material-module';
 import { RouterModule } from '@angular/router';
 import { reservationRouting } from './reservation.routing';
+import { DetailReservationComponent } from './components/detail-reservation/detail-reservation.component';
 
 
 
 @NgModule({
   declarations: [
     ListReservationComponent,
-    AddReservationComponent
+    AddReservationComponent,
+    DetailReservationComponent
   ],
   imports: [
     CommonModule,

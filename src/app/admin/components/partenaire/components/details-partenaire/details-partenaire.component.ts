@@ -13,8 +13,7 @@ import { PartenaireService } from '../../services/partenaire.service';
 export class DetailsPartenaireComponent {
   Partenaire = new FormGroup({
       id :new FormControl(''),
-      nom :new FormControl(''),
-      prenom: new FormControl(''),
+      libelle :new FormControl(''),
       email: new FormControl(''),
       telephone: new FormControl(''),
       adresse :new FormControl(''),

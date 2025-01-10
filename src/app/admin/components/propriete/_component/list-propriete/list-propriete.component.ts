@@ -8,6 +8,7 @@ import { ProprieteService } from '../../_services/propriete.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { convertObjectInFormData } from 'src/app/app.component';
 import { DeletePopupComponent } from 'src/app/shared/dialogs/delete-popup/delete-popup.component';
+import { AddTypeProprieteComponent } from '../../dialogs/add-type-propriete/add-type-propriete.component';
 
 @Component({
   selector: 'app-list-propriete',
@@ -69,6 +70,38 @@ getPropriete () {
           this.service.create('propriete','create.php', formData).subscribe({
             next: (response) => {
               this.snackBar.open("Propriété enregistré avec succès !", "Okay", {
+                duration: 3000,
+                horizontalPosition: "right",
+                verticalPosition: "top",
+                panelClass: ['bg-success', 'text-white']
+
+              })
+              this.getPropriete()
+            },
+            error: (err: any) => {
+              this.snackBar.open("Echec de l'ajout !", "Okay", {
+                duration: 3000,
+                horizontalPosition: "right",
+                verticalPosition: "top",
+                panelClass: ['bg-danger', 'text-white']
+              })
+            }
+          })
+        }
+     })
+  }
+  openDialog2() {
+    this.dialog.open(AddTypeProprieteComponent, {
+     }) .afterClosed()
+      .subscribe((result) => {
+        if (result?.event && result.event === "insert") {
+          // console.log(result.data);
+           const formData = convertObjectInFormData(result.data);
+          this.dataSource.data.splice(0, this.dataSource.data.length);
+          //Envoyer dans la Base
+          this.service.create('typePropriete','create.php', formData).subscribe({
+            next: (response) => {
+              this.snackBar.open("Type de Propriété enregistré avec succès !", "Okay", {
                 duration: 3000,
                 horizontalPosition: "right",
                 verticalPosition: "top",

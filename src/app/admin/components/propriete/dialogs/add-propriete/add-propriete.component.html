@@ -5,6 +5,26 @@
     </div>
     <form [formGroup]="Propriete">
       <div class="row">
+        <div class="col mb-3">
+          <label for="type">Choisir Le Type de propriete</label>
+          <select
+            class="form-select"
+            id="typeProprietes_id"
+            required
+            formControlName="typeProprietes_id"
+            placeholder="type de Propriete"
+          >
+            <option selected disabled>-- Liste G&#233;n&#233;rale --</option>
+            <option
+              *ngFor="let typePropriete of typePropriete"
+              [value]="typePropriete.id"
+            >
+              {{ typePropriete.libelle }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
         <div class="col-md-6 mb-3">
           <label for="libelle">Libelle</label>
           <input
@@ -30,7 +50,7 @@
               *ngFor="let partenaire of Partenaire"
               [value]="partenaire.id"
             >
-              {{ partenaire.nom }} - {{ partenaire.prenom }}
+              {{ partenaire.libelle }}
             </option>
           </select>
         </div>

@@ -18,6 +18,7 @@ export class AddProprieteComponent {
     disponible :new FormControl(''),
     prix_journalier :new FormControl(''),
     prix_mensuel :new FormControl(''),
+    typeProprietes_id :new FormControl(''),
 
   })
 
@@ -28,9 +29,21 @@ export class AddProprieteComponent {
 
   ) { }
   ngOnInit(){
-    this.getPartenaire()
+    this.getPartenaire();
+    this.getTypePropriete();
   }
-
+  typePropriete :any =[]
+  getTypePropriete () {
+    this.service.getall('typePropriete', 'readAll.php').subscribe({
+      next: (reponse: any) => {
+         console.log('REPONSE SUCCESS : ', reponse)
+        this.typePropriete = reponse
+      },
+      error: (err: any) => {
+        console.log('REPONSE ERROR : ', err)
+      }
+    })
+  }
   Partenaire : any =[]
    getPartenaire () {
      this.service.getall('partenaire', 'readAll.php').subscribe({

@@ -13,8 +13,10 @@ import { convertObjectInFormData } from 'src/app/app.component';
 export class DetailsLocataireComponent {
 
   Locataire = new FormGroup({
+              id: new FormControl(''),
               propriete_id: new FormControl(''),
-              nomComplet: new FormControl(''),
+              nom: new FormControl(''),
+              prenom: new FormControl(''),
               telephone: new FormControl(''),
               email: new FormControl(''),
               nationalite :new FormControl(''),
@@ -22,10 +24,9 @@ export class DetailsLocataireComponent {
               lieu_naissance: new FormControl(''),
               typePiece :new FormControl(''),
               numeroPiece :new FormControl(''),
-              codePin :new FormControl(''),
               adresse :new FormControl(''),
       })
-  
+
       constructor(
         private service: LocataireService,
         private snackBar: MatSnackBar,
@@ -33,16 +34,17 @@ export class DetailsLocataireComponent {
         private router :Router
       ) // protected location: Location
       {}
-  
+
       idLocataire: any;
       ngOnInit(): void {
         (this.idLocataire = this.activeroute.snapshot.params['id']),
           this.getOneLocataire();
+          this.getPropriete();
       }
       infoLocataire: any = {};
       getOneLocataire() {
         console.log('ID en GET : ', this.idLocataire);
-        this.service.getOne('partenaire', 'getOne.php', this.idLocataire).subscribe({
+        this.service.getOne('locataire', 'getOne.php', this.idLocataire).subscribe({
           next: (response: any) => {
             console.log('Info : ', response);
             this.infoLocataire = response;
@@ -53,24 +55,25 @@ export class DetailsLocataireComponent {
           },
         });
       }
-      Society :any =[]
-      getLocataire () {
-        this.service.getall('locataire', 'readAll.php').subscribe({
-          next: (reponse: any) => {
-             console.log('REPONSE SUCCESS : ', reponse)
-            this.Society = reponse
-          },
-          error: (err: any) => {
-            console.log('REPONSE ERROR : ', err)
-          }
-        })
-      }
+      Propriete : any =[]
+    getPropriete () {
+      this.service.getall('propriete', 'readAll.php').subscribe({
+        next: (reponse: any) => {
+           console.log('REPONSE SUCCESS : ', reponse)
+          this.Propriete = reponse
+
+        },
+        error: (err: any) => {
+          console.log('REPONSE ERROR : ', err)
+        }
+      })
+    }
       confirmEditing(form: FormGroup): void {
         // Appliquez la transformation
-  
+
         const formData = convertObjectInFormData(this.Locataire.value);
         console.log('Form Data Before Sending:', formData); // Vérifiez les données après la transformation
-  
+
         this.service
           .update('locataire', 'update.php', formData)
           .subscribe({
@@ -84,7 +87,7 @@ export class DetailsLocataireComponent {
                 panelClass: ['bg-success', 'text-white'],
               });
               this.router.navigate(['/locataire/list-locataire']);
-  
+
             },
             error: (error: any) => {
               console.log('Error : ', error);
@@ -95,12 +98,12 @@ export class DetailsLocataireComponent {
                 panelClass: ['bg-danger', 'text-white'],
               });
             },
-  
+
           });
-  
+
       }
       cancel(){
         this.router.navigate(['/locataire/list-Locataire']);
       }
-  
+
 }

@@ -12,7 +12,8 @@ export class AddLocataireComponent {
 
     Locataire = new FormGroup({
       propriete_id: new FormControl(''),
-      nomComplet: new FormControl(''),
+      nom: new FormControl(''),
+      prenom: new FormControl(''),
       telephone: new FormControl(''),
       email: new FormControl(''),
       nationalite :new FormControl(''),
@@ -21,7 +22,7 @@ export class AddLocataireComponent {
       typePiece :new FormControl(''),
       numeroPiece :new FormControl(''),
       adresse :new FormControl(''),
-      contrat_id : new FormControl('')
+
     })
 
     constructor(
@@ -32,7 +33,7 @@ export class AddLocataireComponent {
 
     ngOnInit(){
       this.getPropriete()
-      this.getContrat ()
+     
     }
 
     Propriete : any =[]
@@ -48,19 +49,7 @@ export class AddLocataireComponent {
         }
       })
     }
-    Contrat : any =[]
-    getContrat () {
-      this.service.getall('contrat', 'readAll.php').subscribe({
-        next: (reponse: any) => {
-           console.log('REPONSE SUCCESS : ', reponse)
-          this.Contrat = reponse
 
-        },
-        error: (err: any) => {
-          console.log('REPONSE ERROR : ', err)
-        }
-      })
-    }
 
     saveDataLocataire() {
       if (this.Locataire.valid) {

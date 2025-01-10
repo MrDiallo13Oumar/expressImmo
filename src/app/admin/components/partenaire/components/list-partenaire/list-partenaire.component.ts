@@ -15,7 +15,7 @@ import { PartenaireService } from '../../services/partenaire.service';
   styleUrls: ['./list-partenaire.component.scss']
 })
 export class ListPartenaireComponent {
-  displayedColumns: string[] = ['id','nom', 'prenom', 'email', 'telephone', 'adresse', 'action'];
+  displayedColumns: string[] = ['id','libelle', 'email', 'telephone', 'adresse', 'action'];
   dataSource = new MatTableDataSource([]);
 
 

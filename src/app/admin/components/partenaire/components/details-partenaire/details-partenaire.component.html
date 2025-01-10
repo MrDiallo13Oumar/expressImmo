@@ -12,16 +12,15 @@
             <div class="media align-items-center mb-4">
               <img class="mr-3" src="assets/admin/images/avatar/11.png" width="80" height="80" alt="Propriétaire">
               <div class="media-body">
-                <h3 class="mb-0"> {{infoPartenaire.nom}} <br>
-                  {{infoPartenaire.prenom}} </h3>
+                <h3 class="mb-0"> {{infoPartenaire.libelle}} <br>
+                  </h3>
 
               </div>
             </div>
-            <h4>Informations de Contact</h4>
-            <ul class="card-profile__info">
-              <li class="mb-1"><strong class="text-dark mr-4">Mobile :</strong> <span>{{infoPartenaire.telephone}}</span></li>
-              <li><strong class="text-dark mr-4">Email :</strong> <span>{{infoPartenaire.email}}</span></li>
-              <li class="mb-1"><strong class="text-dark mr-4">Adresse :</strong> <span>{{infoPartenaire.adresse}}</span></li>
+            <ul class=" list-unstyled custom-list">
+              <li ><strong >Mobile : <span>{{infoPartenaire.telephone}}</span></strong></li>
+              <li><strong >Email : <span>{{infoPartenaire.email}}</span></strong></li>
+              <li ><strong >Adresse : <span>{{infoPartenaire.adresse}}</span></strong></li>
 
 
             </ul>
@@ -34,14 +33,11 @@
           <div class="card-body">
             <form [formGroup]="Partenaire">
              <div class="row">
-              <div class="col-md-6 mb-3">
-                <label for="nom">Nom</label>
-                <input type="text" class="form-control form-control-lg" [value]="infoPartenaire.nom" formControlName="nom"  />
+              <div class=" mb-3">
+                <label for="libelle">Libelle</label>
+                <input type="text" class="form-control form-control-lg" [value]="infoPartenaire.libelle" formControlName="libelle"  />
               </div>
-              <div class="col-md-6 mb-3">
-                <label for="prenom">Prenom</label>
-                <input type="text" class="form-control form-control-lg" [value]="infoPartenaire.prenom" formControlName="prenom"  />
-              </div>
+
              </div>
 
             <div class="row">

@@ -5,67 +5,148 @@
       <h4>LOCATAIRE</h4>
     </div>
     <form [formGroup]="Locataire">
-      <div class="form-group mb-3">
-        <label for="nomComplet">NOM & PRENOM</label>
-        <input type="text" class="form-control form-control-lg" id="nomComplet" formControlName="nomComplet" placeholder="Enter le nom complet" />
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="nom">NOM</label>
+          <input
+            type="text"
+            class="form-control form-control-lg"
+            id="nom"
+            formControlName="nom"
+            placeholder="Enter le nom"
+          />
+        </div>
+        <div class="col-md-6">
+          <label for="prenom">PRENOM</label>
+          <input
+            type="text"
+            class="form-control form-control-lg"
+            id="prenom"
+            formControlName="prenom"
+            placeholder="Enter le prenom"
+          />
+        </div>
       </div>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="telephone">TELEPHONE</label>
+          <input
+            type="text"
+            class="form-control form-control-lg"
+            formControlName="telephone"
+            id="telephone"
+            placeholder="Enter le numero du telephone"
+          />
+        </div>
+        <div class="col-md-6">
+          <label for="email">EMAIL</label>
+          <input
+            type="email"
+            class="form-control form-control-lg"
+            formControlName="email"
+            id="email"
+            placeholder="Enter l'email"
+          />
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="adresse">Adresse</label>
+          <input
+            type="text"
+            class="form-control form-control-lg"
+            formControlName="adresse"
+            id="adresse"
+            placeholder="Enter l'adresse"
+          />
+        </div>
+        <div class="col-md-6">
+          <label for="date_naissance">Date de Naissance</label>
+          <input
+            type="date"
+            class="form-control form-control-lg"
+            formControlName="date_naissance"
+            id="date_naissance"
+            placeholder="Enter la date de naissance"
+          />
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="lieu_naissance">Lieu de Naissance</label>
+          <input
+            type="text"
+            class="form-control form-control-lg"
+            formControlName="lieu_naissance"
+            id="lieu_naissance"
+            placeholder="Enter le lieu de naissance"
+          />
+        </div>
+        <div class="col-md-6">
+          <label for="nationalite">NATIONALITÉ</label>
+          <input
+            type="text"
+            class="form-control form-control-lg"
+            formControlName="nationalite"
+            id="nationalite"
+            placeholder="Enter la nationalité"
+          />
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="typePiece">Type De Pièce</label>
+          <input
+            type="text"
+            class="form-control form-control-lg"
+            formControlName="typePiece"
+            id="typePiece"
+            placeholder="Enter le Type de Pièce"
+          />
+        </div>
+        <div class="col-md-6">
+          <label for="numeroPiece">Numéro De Pièce</label>
+          <input
+            type="text"
+            class="form-control form-control-lg"
+            formControlName="numeroPiece"
+            id="numeroPiece"
+            placeholder="Enter le Numéro de Pièce"
+          />
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col">
+          <label for="propriete_id">Choisir La Propriété</label>
+          <select
+            class="form-select"
+            id="propriete_id"
+            required
+            formControlName="propriete_id"
+            placeholder="propriete"
+          >
+            <option selected disabled>-- Liste Générale --</option>
+            <option *ngFor="let propriete of Propriete" [value]="propriete.id">
+              {{ propriete.libelle }} - {{ propriete.adresse }}
+            </option>
+          </select>
+        </div>
 
-      <div class="form-group mb-3">
-        <label for="telephone">TELEPHONE</label>
-        <input type="text" class="form-control form-control-lg"formControlName="telephone" id="telephone" placeholder="Enter le numero du telephone" />
       </div>
-
-      <div class="form-group mb-3">
-        <label for="email">EMAIL</label>
-        <input type="email" class="form-control form-control-lg"formControlName="email" id="email" placeholder="Enter l'email"/>
-      </div>
-      <div class="form-group mb-3">
-        <label for="adresse">Adresse</label>
-        <input type="text" class="form-control form-control-lg"formControlName="adresse" id="adresse" placeholder="Enter l'adresse"/>
-      </div>
-      <div class="form-group mb-3">
-        <label for="date_naissance">Date de Naissance</label>
-        <input type="date" class="form-control form-control-lg"formControlName="date_naissance" id="date_naissance" placeholder="Enter la date de naissance"/>
-      </div>
-
-      <div class="form-group mb-3">
-        <label for="lieu_naissance">Lieu de Naissance</label>
-        <input type="text" class="form-control form-control-lg"formControlName="lieu_naissance" id="lieu_naissance" placeholder="Enter le lieu de naissance" />
-      </div>
-
-      <div class="form-group mb-3">
-        <label for="nationalite">NATIONNALITE</label>
-        <input type="text" class="form-control form-control-lg"formControlName="nationalite" id="nationalite" placeholder="Enter la nationnalite" />
-      </div>
-      <div class="form-group mb-3">
-        <label for="typePiece">Type De Piece</label>
-        <input type="text" class="form-control form-control-lg"formControlName="typePiece" id="typePiece" placeholder="Enter le Type de Piece"  />
-      </div>
-      <div class="form-group mb-3">
-        <label for="numeroPiece">Numero De Piece</label>
-        <input type="text" class="form-control form-control-lg"formControlName="numeroPiece" id="numeroPiece" placeholder="Enter le Numero de Piece"  />
-      </div>
-      <div class=" mb-3">
-
-        <label for="type" >Choisir La propriete</label>
-        <select class="form-select" id="propriete_id"  required formControlName="propriete_id" placeholder="propriete">
-          <option selected disabled>-- Liste G&#233;n&#233;rale --</option>
-          <option *ngFor="let propriete of Propriete " [value]="propriete.id"> {{propriete.libelle  }} - {{propriete.adresse}} </option>
-
-        </select>
-        <label for="type" >Choisir Le contrat</label>
-        <select class="form-select" id="propriete_id"  required formControlName="contrat_id" placeholder="contrat">
-          <option selected disabled>-- Liste G&#233;n&#233;rale --</option>
-          <option *ngFor="let contrat of Contrat " [value]="contrat.id"> {{contrat.reservation  }} </option>
-
-        </select>
-
-    </div>
-      <div class="text-center">
-        <button type="submit" class="btn btn-rounded btn-primary btn-lg mt-3" (click)="saveDataLocataire()">Add Item</button>
-        <button type="reset" class="btn btn-rounded btn-outline-secondary btn-lg mt-3">Reset</button>
+      <div class="d-flex justify-content-between">
+        <button
+          type="submit"
+          class="btn btn-rounded btn-primary btn-lg mt-3"
+          (click)="saveDataLocataire()"
+        >
+          Add Item
+        </button>
+        <button type="reset" class="btn btn-rounded btn-outline-secondary btn-lg mt-3">
+          Reset
+        </button>
       </div>
     </form>
+
   </div>
 </div>
 

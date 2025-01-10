@@ -6,6 +6,7 @@ import { proprieteRouting } from './propriete.routing';
 import { AddProprieteComponent } from './dialogs/add-propriete/add-propriete.component';
 import { DemoMaterialModule } from 'src/app/demo-material-module';
 import { DetailsProprieteComponent } from './_component/details-propriete/details-propriete.component';
+import { AddTypeProprieteComponent } from './dialogs/add-type-propriete/add-type-propriete.component';
 
 
 
@@ -13,7 +14,8 @@ import { DetailsProprieteComponent } from './_component/details-propriete/detail
   declarations: [
     ListProprieteComponent,
     AddProprieteComponent,
-    DetailsProprieteComponent
+    DetailsProprieteComponent,
+    AddTypeProprieteComponent
   ],
   imports: [
     CommonModule,

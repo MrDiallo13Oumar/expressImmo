@@ -18,8 +18,8 @@
                 alt=""
               />
               <div class="media-body">
-                <h3 class="mb-0">Pikamy Cha</h3>
-                <p class="text-muted mb-0">Canada</p>
+                <h3 class="mb-0"><strong><span>{{infoPropriete.libelle}}</span></strong></h3>
+                <p class="text-muted mb-0"><strong>Adresse : <span>{{infoPropriete.adresse}}</span></strong></p>
               </div>
             </div>
 
@@ -46,21 +46,14 @@
                 <button class="btn btn-danger px-5">Follow Now</button>
               </div>
             </div>
+            
+            <ul class="list-unstyled mt-2 custom-list">
 
-            <h4>About Me</h4>
-            <p class="text-muted">
-              Hi, I'm Pikamy, has been the industry standard dummy text ever
-              since the 1500s.
-            </p>
-            <ul class="card-profile__info">
-              <li class="mb-1">
-                <strong class="text-dark mr-4">Mobile</strong>
-                <span>01793931609</span>
-              </li>
-              <li>
-                <strong class="text-dark mr-4">Email</strong>
-                <span>namedomain.com</span>
-              </li>
+              <li><strong><h4>Proprietaire :</h4> <span>{{infoPropriete.partenaire.libelle}}</span></strong></li>
+
+              <li><strong>Etat  : <span>{{infoPropriete.etat}}</span></strong></li>
+              <li><strong>Prix Journalier : <span>{{infoPropriete.prix_journalier}}</span></strong></li>
+              <li><strong>prix Mensuel : <span>{{infoPropriete.prix_mensuel  }}</span></strong></li>
             </ul>
           </div>
         </div>
@@ -96,7 +89,7 @@
                       *ngFor="let partenaire of Partenaire"
                       [value]="partenaire.id"
                     >
-                      {{ partenaire.nom }} - {{ partenaire.prenom }}
+                      {{ partenaire.libelle }}
                     </option>
                   </select>
                 </div>
@@ -130,7 +123,7 @@
                 <div class="col-md-6 mb-3">
                   <label for="prix_journalier">Prix Journalier</label>
                   <input
-                    type="number"
+                    type="text"
                     class="form-control form-control-lg"
                     id="prix_journalier"
                     [value]="infoPropriete.prix_journalier"
@@ -142,7 +135,7 @@
                 <div class="col-md-6 mb-3">
                   <label for="prix_mensuel">Prix mensuel</label>
                   <input
-                    type="number"
+                    type="text"
                     class="form-control form-control-lg"
                     id="prix_mensuel"
                     [value]="infoPropriete.prix_mensuel"
@@ -165,13 +158,13 @@
             </form>
           </div>
           <div class="card-footer">
-            <div class="d-flex justify-content-between">
+            <div class="d-flex justify-content-center">
               <button
                 type="submit"
                 class="btn btn-rounded btn-primary btn-lg mt-3"
                 (click)="confirmEditing(Propriete)"
               >
-                Ajouter
+                Modifier
               </button>
             </div>
           </div>
