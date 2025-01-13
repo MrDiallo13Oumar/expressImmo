@@ -9,7 +9,8 @@ import { InscriptionSiteComponent } from "./propriete/components/inscription-sit
 
 export const homeRouting: Routes = [
 
- {
+ 
+  {
     path: 'accueil',
     component: AccueilComponent,
 

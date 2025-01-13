@@ -1,10 +1,18 @@
 import { Routes } from '@angular/router';
 
 export const AppRouting: Routes = [
+ 
+ {path: '',
+  redirectTo:'/home/accueil',
+  pathMatch :'full'
+ },
+
   {
+    
+    
     path: '',
     children: [
-    //  { path: '', redirectTo: 'accueil', pathMatch: 'full' }, // Redirection
+
       {
         path: 'home',
         loadChildren: () =>
@@ -51,7 +59,11 @@ export const AppRouting: Routes = [
         loadChildren: () =>
           import('../app/admin/components/partenaire/partenaire.module').then(m => m.PartenaireModule)
       },
-
+      {
+        path: 'rapport',
+        loadChildren: () =>
+          import('../app/admin/components/rapport/rapport.module').then(m => m.RapportModule)
+      },
 
     ]
   }

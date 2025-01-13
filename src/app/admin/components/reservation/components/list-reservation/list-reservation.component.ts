@@ -18,21 +18,11 @@ export class ListReservationComponent {
 displayedColumns: string[] = ['id', 'nom', 'prenom', 'status','telephone', 'created_at', 'propriete', 'action'];
   dataSource = new MatTableDataSource( [] );
 
-
-  updateItem(id : number){
-      console.log("Modification", id);
-      
-    }
-  
-    deleteItem(id: number){
-      console.log("Supprimer", id);
-      
-    }
       constructor (private dialog : MatDialog ,
-                    private reservation :ReservationService,
+                    private service :ReservationService,
                     private snackBar : MatSnackBar
     ){}
-    
+
     @ViewChild(MatPaginator) paginator!: MatPaginator;
     @ViewChild(MatSort) sort!: MatSort;
     ngAfterViewInit () {
@@ -42,7 +32,7 @@ displayedColumns: string[] = ['id', 'nom', 'prenom', 'status','telephone', 'crea
     applyFilter (event: Event) {
      const filterValue = (event.target as HTMLInputElement).value
      this.dataSource.filter = filterValue.trim().toLowerCase()
-    
+
      if (this.dataSource.paginator) {
        this.dataSource.paginator.firstPage()
      }
@@ -51,19 +41,19 @@ displayedColumns: string[] = ['id', 'nom', 'prenom', 'status','telephone', 'crea
       this.getReservation()
      }
     getReservation () {
-       this.reservation.getall('reservation', 'readAll.php').subscribe({
+       this.service.getall('reservation', 'readAll.php').subscribe({
          next: (reponse: any) => {
             console.log('REPONSE SUCCESS : ', reponse)
            this.dataSource.data = reponse
            console.log('Liste reservation',this.dataSource.data);
-           
+
          },
          error: (err: any) => {
            console.log('REPONSE ERROR : ', err)
          }
        })
      }
-    
+
       openDialog() {
         this.dialog.open(AddReservationComponent, {
          }) .afterClosed()
@@ -73,14 +63,14 @@ displayedColumns: string[] = ['id', 'nom', 'prenom', 'status','telephone', 'crea
                const formData = convertObjectInFormData(result.data);
               this.dataSource.data.splice(0, this.dataSource.data.length);
               //Envoyer dans la Base
-              this.reservation.create('reservation','create.php', formData).subscribe({
+              this.service.create('reservation','create.php', formData).subscribe({
                 next: (response) => {
                   this.snackBar.open("Reservation enregistré avec succès !", "Okay", {
                     duration: 3000,
                     horizontalPosition: "right",
                     verticalPosition: "top",
                     panelClass: ['bg-success', 'text-white']
-    
+
                   })
                   this.getReservation()
                 },
@@ -96,7 +86,7 @@ displayedColumns: string[] = ['id', 'nom', 'prenom', 'status','telephone', 'crea
             }
          })
       }
-    
+
         // DELETE
         deleteFunction(id: any, table: string) {
           this.dialog
@@ -112,7 +102,7 @@ displayedColumns: string[] = ['id', 'nom', 'prenom', 'status','telephone', 'crea
             .afterClosed()
             .subscribe((data: any) => {
               if (data) {
-                this.reservation.delete('public', 'delete.php', table, id).subscribe({
+                this.service.delete('public', 'delete.php', table, id).subscribe({
                   next: (response: any) => {
                     const messageClass =
                       response.status == 1 ? ['bg-success', 'text-white'] : ['bg-danger', 'text-white'];

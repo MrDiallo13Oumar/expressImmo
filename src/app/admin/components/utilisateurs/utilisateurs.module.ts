@@ -5,13 +5,15 @@ import { AddUserComponent } from './dialogs/add-user/add-user.component';
 import { DemoMaterialModule } from 'src/app/demo-material-module';
 import { RouterModule } from '@angular/router';
 import { userRouting } from './utilisateur.routing';
+import { DetailUtilisateurComponent } from './components/detail-utilisateur/detail-utilisateur.component';
 
 
 
 @NgModule({
   declarations: [
     ListUserComponent,
-    AddUserComponent
+    AddUserComponent,
+    DetailUtilisateurComponent
   ],
   imports: [
     CommonModule,

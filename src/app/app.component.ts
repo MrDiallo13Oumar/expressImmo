@@ -16,9 +16,6 @@ export class AppComponent {
     canShowMenu = true;
 
     constructor(public location: Location, private router: Router) {
-      // if ( this.router.url === '/') {
-      //   this.router.navigate(['/home/accueil']);
-      // }
 
       this.router.events
         .pipe(filter((event: any) => event instanceof NavigationEnd))

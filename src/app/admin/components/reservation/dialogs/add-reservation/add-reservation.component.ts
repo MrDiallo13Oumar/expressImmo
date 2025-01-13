@@ -13,7 +13,7 @@ import { ProprieteService } from '../../../propriete/_services/propriete.service
 })
 export class AddReservationComponent implements OnInit{
 
-  reservation = new FormGroup({
+  Reservation = new FormGroup({
     nom: new FormControl(''),
     prenom: new FormControl(''),
     telephone: new FormControl(''),
@@ -49,10 +49,10 @@ saveDataPropriete: any;
   }
 
   saveDataReservation() {
-    if (this.reservation.valid) {
+    if (this.Reservation.valid) {
       this.dialogRef.close({
         event: "insert",
-        data: this.reservation.value
+        data: this.Reservation.value
       })
 
     }

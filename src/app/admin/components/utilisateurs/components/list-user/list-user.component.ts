@@ -4,6 +4,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { UtilisateurService } from '../../services/utilisateur.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { convertObjectInFormData } from 'src/app/app.component';
 
 @Component({
   selector: 'app-list-user',
@@ -12,22 +15,14 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class ListUserComponent {
 displayedColumns: string[] = ['id', 'name', 'status', 'date', 'price', 'action'];
-  dataSource = new MatTableDataSource( [
-    { id: 1, name: 'Kolor Tea Shirt For Man', status: 'Sale', date: '2023-01-22', price: 21.56 },
-    { id: 2, name: 'Kolor Tea Shirt For Women', status: 'Tax', date: '2023-01-30', price: 55.32 },
-    { id: 3, name: 'Blue Backpack For Baby', status: 'Extended', date: '2023-01-25', price: 14.85 },
-  ]);
+  dataSource = new MatTableDataSource([]);
 
 
-  updateItem(id: number) {
-    console.log('Update item with id:', id);
-  }
 
-  deleteItem(id: number) {
-    console.log('Delete item with id:', id);
-  }
 
   constructor (private dialog : MatDialog ,
+              private service : UtilisateurService,
+              private snackBar : MatSnackBar
 
 ){}
 
@@ -46,36 +41,53 @@ applyFilter (event: Event) {
  }
 }
 
+ngOnInit() {
+  this.getUtilisateur()
+ }
+getUtilisateur () {
+   this.service.getall('utilisateur', 'readAll.php').subscribe({
+     next: (reponse: any) => {
+        console.log('REPONSE SUCCESS : ', reponse)
+       this.dataSource.data = reponse
+       console.log('Liste Utilisateur',this.dataSource.data);
+
+     },
+     error: (err: any) => {
+       console.log('REPONSE ERROR : ', err)
+     }
+   })
+ }
+
   openDialog() {
     this.dialog.open(AddUserComponent, {
-     }) //.afterClosed()
-      // .subscribe((result) => {
-      //   if (result?.event && result.event === "insert") {
-      //     // console.log(result.data);
-      //      const formData = convertObjectInFormData(result.data);
-      //     this.dataSource.data.splice(0, this.dataSource.data.length);
-      //     //Envoyer dans la Base
-      //     this.service.create('engins','create.php', formData).subscribe({
-      //       next: (response) => {
-      //         this.snackBar.open("Engins enregistré avec succès !", "Okay", {
-      //           duration: 3000,
-      //           horizontalPosition: "right",
-      //           verticalPosition: "top",
-      //           panelClass: ['bg-success', 'text-white']
+     }).afterClosed()
+      .subscribe((result) => {
+        if (result?.event && result.event === "insert") {
+          // console.log(result.data);
+           const formData = convertObjectInFormData(result.data);
+          this.dataSource.data.splice(0, this.dataSource.data.length);
+          //Envoyer dans la Base
+          this.service.create('utilisateur','create.php', formData).subscribe({
+            next: (response) => {
+              this.snackBar.open("Utilisateur enregistré avec succès !", "Okay", {
+                duration: 3000,
+                horizontalPosition: "right",
+                verticalPosition: "top",
+                panelClass: ['bg-success', 'text-white']
 
-      //         })
-      //         this.getEngins()
-      //       },
-      //       error: (err: any) => {
-      //         this.snackBar.open("Echec de l'ajout !", "Okay", {
-      //           duration: 3000,
-      //           horizontalPosition: "right",
-      //           verticalPosition: "top",
-      //           panelClass: ['bg-danger', 'text-white']
-      //         })
-      //       }
-      //     })
-      //   }
-     // })
+              })
+              this.getUtilisateur()
+            },
+            error: (err: any) => {
+              this.snackBar.open("Echec de l'ajout !", "Okay", {
+                duration: 3000,
+                horizontalPosition: "right",
+                verticalPosition: "top",
+                panelClass: ['bg-danger', 'text-white']
+              })
+            }
+          })
+        }
+     })
   }
 }
