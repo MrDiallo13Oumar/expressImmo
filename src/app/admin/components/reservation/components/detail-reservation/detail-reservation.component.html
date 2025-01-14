@@ -17,7 +17,9 @@
               alt="Avatar"
             />
             <h3 class="mb-1">
-              {{ infoReservation?.nom }} {{ infoReservation?.prenom }}
+              <span>
+                {{ infoReservation.nom }} {{ infoReservation.prenom }}</span
+              >
             </h3>
             <p class="text-muted">{{ infoReservation.propriete?.adresse }}</p>
 
@@ -42,44 +44,46 @@
               </div>
             </div>
           </div>
-          <ul class="list-unstyled mt-2 custom-list mb-2">
+          <ul class="list-unstyled mt-1 custom-list mb-2">
             <li>
-              <strong>Nom : <span>{{ infoReservation?.nom }}</span></strong>
+              <strong
+                >Nom : <span>{{ infoReservation.nom }}</span></strong
+              >
             </li>
             <li>
-              <strong>Prénom : <span>{{ infoReservation?.prenom }}</span></strong>
+              <strong
+                >Prénom : <span>{{ infoReservation.prenom }}</span></strong
+              >
             </li>
             <li>
-              <strong>Email : <span>{{ infoReservation?.email }}</span></strong>
+              <strong
+                >Prix Journalier :
+                <span>{{ infoReservation.propriete?.prix_journalier }}</span></strong
+              >
             </li>
             <li>
-              <strong>Téléphone : <span>{{ infoReservation?.telephone }}</span></strong>
+              <strong
+                >Propriete Reserver :
+                <span>{{ infoReservation.propriete?.libelle }}</span></strong
+              >
             </li>
-
-
+            
           </ul>
-
-
         </div>
+      
+      
       </div>
       <div class="col-lg-6 col-xl-8">
         <div class="card shadow-sm border-0">
           <div class="card-body">
             <!-- Ajouter des contenus si nécessaire -->
-
           </div>
           <div class="card-footer bg-light text-center">
-            <button
-              type="submit"
-              class="btn btn-primary btn-lg btn-rounded"
-
-            >
+            <button type="submit" class="btn btn-primary btn-lg btn-rounded">
               Modifier
             </button>
           </div>
         </div>
-
-
       </div>
     </div>
   </div>

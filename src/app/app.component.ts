@@ -10,7 +10,11 @@ import { filter } from 'rxjs';
 })
 export class AppComponent {
   title = 'expressimmo';
+  isSidebarOpen = true; // L'état de la barre latérale (ouverte par défaut)
 
+  toggleSidebar() {
+    this.isSidebarOpen = !this.isSidebarOpen;
+  }
 
 
     canShowMenu = true;

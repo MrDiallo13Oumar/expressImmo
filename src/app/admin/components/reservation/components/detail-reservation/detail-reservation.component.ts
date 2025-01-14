@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ReservationService } from '../../services/reservation.service';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-detail-reservation',
@@ -8,7 +9,14 @@ import { ReservationService } from '../../services/reservation.service';
   styleUrls: ['./detail-reservation.component.scss']
 })
 export class DetailReservationComponent {
-
+ Reservation = new FormGroup({
+    nom: new FormControl(''),
+    prenom: new FormControl(''),
+    telephone: new FormControl(''),
+    adresse: new FormControl(''),
+    statut: new FormControl(''),
+    propriete_id: new FormControl(''),
+  })
   constructor(
         private service: ReservationService,
         private activeroute: ActivatedRoute,
@@ -27,8 +35,8 @@ export class DetailReservationComponent {
         this.service.getOne('reservation', 'getOne.php', this.idReservation).subscribe({
           next: (response: any) => {
             console.log('Info : ', response);
-            this.infoReservation = response;
-            console.log('Oumar', this.infoReservation)
+            this.infoReservation = response[0] ;
+           // this.Reservation.patchValue(this.infoReservation);
 
           },
           error: (error: any) => {

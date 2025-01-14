@@ -27,33 +27,25 @@
               <div class="col">
                 <div class="card card-profile text-center">
                   <span class="mb-1 text-primary"
-                    ><i class="icon-people"></i
+                    ><i class="icon-menu"></i
                   ></span>
-                  <h3 class="mb-0">263</h3>
-                  <p class="text-muted px-4">Following</p>
+                  <h3 class="mb-0">Description</h3>
+                  <p class="text-muted px-4">{{infoPropriete.description}}</p>
                 </div>
               </div>
-              <div class="col">
-                <div class="card card-profile text-center">
-                  <span class="mb-1 text-warning"
-                    ><i class="icon-user-follow"></i
-                  ></span>
-                  <h3 class="mb-0">263</h3>
-                  <p class="text-muted">Followers</p>
-                </div>
-              </div>
-              <div class="col-12 text-center">
-                <button class="btn btn-danger px-5">Follow Now</button>
-              </div>
+
+              <!-- <div class="col-12 text-center">
+                <button class="btn btn-danger px-5"> Reserver</button>
+              </div> -->
             </div>
-            
+
             <ul class="list-unstyled mt-2 custom-list">
 
-              <li><strong><h4>Proprietaire :</h4> <span>{{infoPropriete.partenaire.libelle}}</span></strong></li>
+              <li><strong><i class="icon-menu"></i> <span>{{infoPropriete.partenaire.libelle}}</span></strong></li>
 
-              <li><strong>Etat  : <span>{{infoPropriete.etat}}</span></strong></li>
-              <li><strong>Prix Journalier : <span>{{infoPropriete.prix_journalier}}</span></strong></li>
-              <li><strong>prix Mensuel : <span>{{infoPropriete.prix_mensuel  }}</span></strong></li>
+              <li><strong><i class="fa fa-status"></i> <span>{{infoPropriete.etat}}</span></strong></li>
+              <li><strong><i class="fa fa-dollar-sign"></i><span>{{infoPropriete.prix_journalier}}</span></strong></li>
+              <li><strong><i class="fa fa-dollar-sign"></i> <span>{{infoPropriete.prix_mensuel  }}</span></strong></li>
             </ul>
           </div>
         </div>
