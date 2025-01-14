@@ -44,30 +44,29 @@
           </div>
           <ul class="list-unstyled mt-2 custom-list">
             <li>
-              <strong>Nom :</strong> <span>{{ infoLocataire.nom }}</span>
+             <strong> <i class="fa fa-user"></i> <span>{{ infoLocataire.nom }}  {{ infoLocataire.prenom }}</span></strong>
+            </li>
+
+            <li>
+              <strong><i class="fa fa-envelope"></i> <span>{{ infoLocataire.email }}</span></strong>
             </li>
             <li>
-              <strong>Prénom :</strong> <span>{{ infoLocataire.prenom }}</span>
+            <strong>  <i class="fa fa-phone"></i> <span>{{ infoLocataire.telephone }}</span></strong>
             </li>
             <li>
-              <strong>Email :</strong> <span>{{ infoLocataire.email }}</span>
+             <strong> <i class="fa fa-calendar"></i> <span>{{ infoLocataire.date_naissance }}</span></strong>
             </li>
             <li>
-              <strong>Téléphone :</strong> <span>{{ infoLocataire.telephone }}</span>
+            <strong>  <i class="fa fa-map-marker"></i> <span>{{ infoLocataire.lieu_naissance }}</span></strong>
             </li>
             <li>
-              <strong>Date de naissance :</strong> <span>{{ infoLocataire.date_naissance }}</span>
+             <strong> <i class="fa fa-dollar-sign"></i>  <span>{{ infoLocataire.propriete.prix_journalier }}</span></strong>
             </li>
             <li>
-              <strong>Lieu de naissance :</strong> <span>{{ infoLocataire.lieu_naissance }}</span>
-            </li>
-            <li>
-              <strong>Prix journalier :</strong> <span>{{ infoLocataire.propriete.prix_journalier }}</span>
-            </li>
-            <li>
-              <strong>Prix mensuel :</strong> <span>{{ infoLocataire.propriete.prix_mensuel }}</span>
+              <strong><i class="fa fa-dollar-sign"></i> <span>{{ infoLocataire.propriete.prix_mensuel }}</span></strong>
             </li>
           </ul>
+
 
 
         </div>

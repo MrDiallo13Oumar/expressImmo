@@ -41,7 +41,7 @@ ngOnInit() {
   this.getContrat()
  }
 getContrat () {
-   this.service.getall('contrats', 'readAll.php').subscribe({
+   this.service.getall('contrat', 'readAll.php').subscribe({
      next: (reponse: any) => {
         console.log('REPONSE SUCCESS : ', reponse)
        this.dataSource = reponse
