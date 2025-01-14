@@ -1,0 +1,242 @@
+<div class="content-body">
+  <div class="container-fluid">
+    <div class="card col rounded p-3 mt-3">
+      <div class="card-body d-flex align-items-center justify-content-between">
+        <h4 class="card-title mb-0">Details Propriétés</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 col-xl-3">
+        <div class="card">
+          <div class="card-body">
+            <div class="media align-items-center mb-4">
+              <img
+                class="mr-3"
+                src="assets/admin/images/avatar/11.png"
+                width="80"
+                height="80"
+                alt=""
+              />
+              <div class="media-body">
+                <h3 class="mb-0"><strong><span>{{infoPropriete.libelle}}</span></strong></h3>
+                <p class="text-muted mb-0"><strong>Adresse : <span>{{infoPropriete.adresse}}</span></strong></p>
+              </div>
+            </div>
+
+            <div class="row mb-5">
+              <div class="col">
+                <div class="card card-profile text-center">
+                  <span class="mb-1 text-primary"
+                    ><i class="icon-people"></i
+                  ></span>
+                  <h3 class="mb-0">263</h3>
+                  <p class="text-muted px-4">Following</p>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card card-profile text-center">
+                  <span class="mb-1 text-warning"
+                    ><i class="icon-user-follow"></i
+                  ></span>
+                  <h3 class="mb-0">263</h3>
+                  <p class="text-muted">Followers</p>
+                </div>
+              </div>
+              <div class="col-12 text-center">
+                <button class="btn btn-danger px-5">Follow Now</button>
+              </div>
+            </div>
+            
+            <ul class="list-unstyled mt-2 custom-list">
+
+              <li><strong><h4>Proprietaire :</h4> <span>{{infoPropriete.partenaire.libelle}}</span></strong></li>
+
+              <li><strong>Etat  : <span>{{infoPropriete.etat}}</span></strong></li>
+              <li><strong>Prix Journalier : <span>{{infoPropriete.prix_journalier}}</span></strong></li>
+              <li><strong>prix Mensuel : <span>{{infoPropriete.prix_mensuel  }}</span></strong></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8 col-xl-9">
+        <div class="card">
+          <div class="card-body " >
+            <form [formGroup]="Propriete">
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="libelle">Libelle</label>
+                  <input
+                    type="text"
+                    class="form-control form-control-lg"
+                    formControlName="libelle"
+                    [value]="infoPropriete.libelle"
+
+                  />
+                </div>
+
+                <div class="col-md-6 mb-3">
+                  <label for="type">Choisir Le partenaire</label>
+                  <select
+                    class="form-select"
+                    id="partenaire_id"
+                    required
+                    formControlName="partenaire_id"
+                    placeholder="partenaire"
+                    [value]="infoPropriete.partenaire_id"
+                  >
+                    <option selected disabled>-- Liste G&#233;n&#233;rale --</option>
+                    <option
+                      *ngFor="let partenaire of Partenaire"
+                      [value]="partenaire.id"
+                    >
+                      {{ partenaire.libelle }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="adresse">Adresse</label>
+                  <input
+                    type="text"
+                    class="form-control form-control-lg"
+                    formControlName="adresse"
+                  [value]="infoPropriete.adresse"
+
+                  />
+                </div>
+                <div class=" col-md-6 mb-3">
+                  <label for="etat">Etat</label>
+                  <input
+                    type="text"
+                    class="form-control form-control-lg"
+                    formControlName="etat"
+                    [value]="infoPropriete.etat"
+
+                  />
+                </div>
+
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="prix_journalier">Prix Journalier</label>
+                  <input
+                    type="text"
+                    class="form-control form-control-lg"
+                    id="prix_journalier"
+                    [value]="infoPropriete.prix_journalier"
+                    formControlName="prix_journalier"
+
+                  />
+                </div>
+
+                <div class="col-md-6 mb-3">
+                  <label for="prix_mensuel">Prix mensuel</label>
+                  <input
+                    type="text"
+                    class="form-control form-control-lg"
+                    id="prix_mensuel"
+                    [value]="infoPropriete.prix_mensuel"
+                    formControlName="prix_mensuel"
+
+                  />
+                </div>
+              </div>
+              <div class=" mb-3">
+                <label for="description">Description</label>
+                <textarea
+
+                  class="form-control form-control-lg"
+                  formControlName="description"
+                  [value]="infoPropriete.description"
+
+                > </textarea>
+              </div>
+
+            </form>
+          </div>
+          <div class="card-footer">
+            <div class="d-flex justify-content-center">
+              <button
+                type="submit"
+                class="btn btn-rounded btn-primary btn-lg mt-3"
+                (click)="confirmEditing(Propriete)"
+              >
+                Modifier
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-body">
+            <h4>Détails Complémentaires</h4>
+            <div class="row mt-3">
+              <div class="col-md-3">
+                <img
+                  src="assets/sites/img/room-1.jpg"
+                  class="img-fluid rounded"
+                  alt="Photo 1"
+                />
+              </div>
+              <div class="col-md-3">
+                <img
+                  src="assets/sites/img/room-2.jpg"
+                  class="img-fluid rounded"
+                  alt="Photo 2"
+                />
+              </div>
+              <div class="col-md-3">
+                <img
+                  src="assets/sites/img/room-3.jpg"
+                  class="img-fluid rounded"
+                  alt="Photo 3"
+                />
+              </div>
+              <div class="col-md-3">
+                <img
+                  src="assets/sites/img/room-1.jpg"
+                  class="img-fluid rounded"
+                  alt="Photo 4"
+                />
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-md-3">
+                <img
+                  src="assets/sites/img/room-1.jpg"
+                  class="img-fluid rounded"
+                  alt="Photo 1"
+                />
+              </div>
+              <div class="col-md-3">
+                <img
+                  src="assets/sites/img/room-2.jpg"
+                  class="img-fluid rounded"
+                  alt="Photo 2"
+                />
+              </div>
+              <div class="col-md-3">
+                <img
+                  src="assets/sites/img/room-3.jpg"
+                  class="img-fluid rounded"
+                  alt="Photo 3"
+                />
+              </div>
+              <div class="col-md-3">
+                <img
+                  src="assets/sites/img/room-1.jpg"
+                  class="img-fluid rounded"
+                  alt="Photo 4"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- #/ container -->
+</div>

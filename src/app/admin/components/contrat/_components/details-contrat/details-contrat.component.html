@@ -1,0 +1,175 @@
+<div class="content-body">
+  <div class="container-fluid">
+    <div class="card col rounded p-3 mt-3">
+      <div class="card-body d-flex align-items-center justify-content-between">
+        <h4 class="card-title mb-0">Details Propriétés</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-5 col-xl-4">
+
+      <!-- LOCATAIRE -->
+        <div class="card">
+          <div class="card-body">
+            <div class="card-title">
+              <h4>LOCATAIRE</h4>
+            </div>
+            <form >
+              <div class="row">
+                <!-- <div class="col-md-6 mb-3">
+
+                  <label for="type">Locataire</label>
+                  <select class="form-select" id="locataire_id" required formControlName="locataire_id"
+                    placeholder="Choisir le locataire">
+                    <option selected disabled>-- Liste G&#233;n&#233;rale --</option>
+                  </select>
+
+                </div> -->
+                
+              </div>
+              <div class="row">
+                <div class="col-md-6 mb-3">
+
+                  <label for="type">Choisir La propriété</label>
+                  <select class="form-select" id="propriete_id" required formControlName="propriete_id"
+                    placeholder="Propriete">
+                    <option selected disabled>-- Liste G&#233;n&#233;rale --</option>    
+                  </select>
+                </div>
+                <div class=" form-group mb-3">
+                  <label for="nom">Nom</label>
+                  <input type="text" class="form-control form-control-lg" id="nom"
+                    formControlName="nom" placeholder="Enter le nom" step="0.01" />
+                </div>
+                <div class=" form-group mb-3">
+                  <label for="prenom">Prenom</label>
+                  <input type="text" class="form-control form-control-lg" id="prenom"
+                    formControlName="prenom" placeholder="Enter le prenom" step="0.01" />
+                </div>
+                <div class=" form-group mb-3">
+                  <label for="telephone">Telephone</label>
+                  <input type="text" class="form-control form-control-lg" id="telephone"
+                    formControlName="telephone" placeholder="Entrer le numero telephone" step="0.01" />
+                </div>
+                <div class=" form-group mb-3">
+                  <label for="adresse">adresse</label>
+                  <input type="text" class="form-control form-control-lg" id="adresse"
+                    formControlName="adresse" placeholder="Entrer le numero adresse" step="0.01" />
+                </div>
+                <div class="col-md-6 form-group mb-3">
+                  <label for="statut">Statut</label>
+                  <select class="form-control form-control-lg" id="statut" formControlName="statut">
+                    <option value="actif">Actif</option>
+                    <option value="terminer">Terminer</option>
+                    <option value="annulé"> Annuler </option>
+                  </select>
+                </div>
+              </div>
+              <div class=" form-group mb-3">
+                <label for="montant_total">Montant</label>
+                <input type="number" class="form-control form-control-lg" id="montant_total"
+                  formControlName="montant_total" placeholder="Enter le montant" step="0.01" />
+              </div>
+              <div class="row">
+                <div class=" col-md-6form-group mb-3">
+                  <label for="date_debut ">Date Debut</label>
+                  <input type="date" class="form-control form-control-lg" id="date_debut"
+                    formControlName="date_debut" placeholder="Enter la date de debut" />
+                </div>
+
+                <div class="form-group mb-3">
+                  <label for="date_fin ">Date Fin</label>
+                  <input type="date" class="form-control form-control-lg" id="date_fin" formControlName="date_fin"
+                    placeholder="Enter la date de Fin" />
+                </div>
+              </div>
+
+              <div class="d-flex justify-content-between">
+                <button type="submit" class="btn btn-rounded btn-primary btn-lg mt-3">Add </button>
+                <button type="reset" class="btn btn-rounded btn-outline-secondary btn-lg mt-3">Reset</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-7 col-xl-8">
+        
+        <!-- CONTRAT -->
+        <div class="card">
+          <div class="card-body">
+            <div class="card-title">
+              <h4>CONTRAT</h4>
+            </div>
+            <form  ><!--[formGroup]="Contrat" -->
+              <div class="row">
+                <div class="col-md-6 mb-3">
+
+                  <label for="type">Choisir La reservation</label>
+                  <select class="form-select" id="reservation_id" required formControlName="reservation_id"
+                    placeholder="reservation">
+                    <option selected disabled>-- Liste G&#233;n&#233;rale --</option>
+                  </select>
+
+                </div>
+                <div class="col-md-6 mb-3">
+
+                  <label for="type">Choisir Le partenaire</label>
+                  <select class="form-select" id="partenaire_id" required formControlName="partenaire_id"
+                    placeholder="reservation">
+                    <option selected disabled>-- Liste G&#233;n&#233;rale --</option>
+
+                  </select>
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 mb-3">
+
+                  <label for="type">Choisir La propriété</label>
+                  <select class="form-select" id="propriete_id" required formControlName="propriete_id"
+                    placeholder="reservation">
+                    <option selected disabled>-- Liste G&#233;n&#233;rale --</option>
+                      
+                  </select>
+
+                </div>
+                <div class="col-md-6 form-group mb-3">
+                  <label for="statut">Statut</label>
+                  <select class="form-control form-control-lg" id="statut" formControlName="statut">
+                    <option value="actif">Actif</option>
+                    <option value="terminer">Terminer</option>
+                    <option value="annulé"> Annuler </option>
+                  </select>
+                </div>
+              </div>
+              <div class=" form-group mb-3">
+                <label for="montant_total">Montant</label>
+                <input type="number" class="form-control form-control-lg" id="montant_total"
+                  formControlName="montant_total" placeholder="Enter le montant" step="0.01" />
+              </div>
+              <div class="row">
+                <div class=" col-md-6form-group mb-3">
+                  <label for="date_debut ">Date Debut</label>
+                  <input type="date" class="form-control form-control-lg" id="date_debut"
+                    formControlName="date_debut" placeholder="Enter la date de debut" />
+                </div>
+
+                <div class="form-group mb-3">
+                  <label for="date_fin ">Date Fin</label>
+                  <input type="date" class="form-control form-control-lg" id="date_fin" formControlName="date_fin"
+                    placeholder="Enter la date de Fin" />
+                </div>
+              </div>
+
+              <div class="d-flex justify-content-between">
+                <button type="submit" class="btn btn-rounded btn-primary btn-lg mt-3">Add </button>
+                <button type="reset" class="btn btn-rounded btn-outline-secondary btn-lg mt-3">Reset</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- #/ container -->
+</div>
