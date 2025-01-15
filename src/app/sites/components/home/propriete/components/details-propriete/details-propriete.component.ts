@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-details-propriete',
@@ -7,6 +9,8 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./details-propriete.component.scss']
 })
 export class DetailsProprieteComponent {
+constructor(private router : Router){}
+
   email = "expressimmo224@gmail.com";
 Propriete = new FormGroup({
     id :new FormControl(''),
@@ -19,4 +23,11 @@ Propriete = new FormGroup({
     prix_mensuel :new FormControl(''),
     description: new FormControl(''),
   })
+
+
+  alertWithSuccess(){
+  
+      Swal.fire('Bravo ...', 'Vous aviez reserver avec succes!', 'success')
+      this.router.navigateByUrl("/home/propriete")
+    }
 }

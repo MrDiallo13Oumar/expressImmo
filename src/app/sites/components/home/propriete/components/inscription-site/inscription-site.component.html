@@ -1,49 +1,45 @@
-
 <div class="container-xxl bg-white p-0">
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3 p-lg-0">
-        <a routerLink="/home/accueil" class="navbar-brand d-block d-lg-none">
+        <a routerLink="/home/accueil" class="navbar-brand d-block d-lg-none" aria-label="Page d'accueil">
             <h1 class="m-0 text-primary text-uppercase">EXPRESS IMMO</h1>
         </a>
-        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-label="Menu">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
             <div class="navbar-nav mr-auto py-0">
-                <a routerLink="/home/accueil" class="nav-item nav-link">Home</a>
-
-                <a routerLink="/home/service" class="nav-item nav-link">Services</a>
-                <a routerLink="/home/propriete" class="nav-item nav-link active">Propriétés</a>
-                <a routerLink="/home/contact" class="nav-item nav-link">Contact</a>
-
+                <a routerLink="/home/accueil" class="nav-item nav-link" aria-label="Accueillir les utilisateurs">Home</a>
+                <a routerLink="/home/service" class="nav-item nav-link" aria-label="Nos services">Services</a>
+                <a routerLink="/home/propriete" class="nav-item nav-link active" aria-label="Propriétés">Propriétés</a>
+                <a routerLink="/home/contact" class="nav-item nav-link" aria-label="Nous contacter">Contact</a>
             </div>
-            <a  class="btn btn-primary rounded-0 py-4 px-md-5 d-none d-lg-block" routerLink="/hoomeAdmin/login">Se Connecter<i class="fa fa-arrow-right ms-3"></i></a>
+            <a class="btn btn-primary rounded-0 py-4 px-md-5 d-none d-lg-block" routerLink="/homeAdmin/login" aria-label="Se connecter">
+                Se Connecter<i class="fa fa-arrow-right ms-3"></i>
+            </a>
         </div>
     </nav>
+    
     <!-- Booking Start -->
     <div class="container-xxl py-5">
         <div class="container">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
                 <h6 class="section-title text-center text-primary text-uppercase">Express Immo</h6>
-                <h1 class="mb-5">Inscrivez vous pour <span class="text-primary text-uppercase">Reserver</span></h1>
+                <h1 class="mb-5">Inscrivez-vous pour <span class="text-primary text-uppercase">Réserver</span></h1>
             </div>
             <div class="row g-5">
                 <div class="col-lg-6">
                     <div class="row g-3">
                         <div class="col-6 text-end">
-                            <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.1s"
-                                src="assets/sites/img/about-1.jpg" style="margin-top: 25%;">
+                            <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.1s" src="assets/sites/img/about-1.jpg" alt="Propriétés et aménagements" style="margin-top: 25%;">
                         </div>
                         <div class="col-6 text-start">
-                            <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.3s"
-                                src="assets/sites/img/about-2.jpg">
+                            <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.3s" src="assets/sites/img/about-2.jpg" alt="Espaces modernes et élégants">
                         </div>
                         <div class="col-6 text-end">
-                            <img class="img-fluid rounded w-50 wow zoomIn" data-wow-delay="0.5s"
-                                src="assets/sites/img/about-3.jpg">
+                            <img class="img-fluid rounded w-50 wow zoomIn" data-wow-delay="0.5s" src="assets/sites/img/about-3.jpg" alt="Chambres spacieuses">
                         </div>
                         <div class="col-6 text-start">
-                            <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.7s"
-                                src="assets/sites/img/about-4.jpg">
+                            <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.7s" src="assets/sites/img/about-4.jpg" alt="Détails architecturaux raffinés">
                         </div>
                     </div>
                 </div>
@@ -53,70 +49,62 @@
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <div class="form-floating">
-
-                                        <input type="text" class="form-control" id="name" placeholder="Your Name">
-
+                                        <input type="text" class="form-control" id="name" placeholder="Votre Nom" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="email" class="form-control" id="email" placeholder="Your Email">
-
+                                        <input type="email" class="form-control" id="email" placeholder="Votre Email" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating date" id="date3" data-target-input="nearest">
-                                        <input type="text" class="form-control datetimepicker-input" id="checkin"
-                                            placeholder="Check In" data-target="#date3" data-toggle="datetimepicker" />
-
+                                        <input type="text" class="form-control datetimepicker-input" id="checkin" placeholder="Check In" data-target="#date3" data-toggle="datetimepicker" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating date" id="date4" data-target-input="nearest">
-                                        <input type="text" class="form-control datetimepicker-input" id="checkout"
-                                            placeholder="Check Out" data-target="#date4" data-toggle="datetimepicker" />
-
+                                        <input type="text" class="form-control datetimepicker-input" id="checkout" placeholder="Check Out" data-target="#date4" data-toggle="datetimepicker" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <select class="form-select" id="select1">
-                                            <option value="1">Adult 1</option>
-                                            <option value="2">Adult 2</option>
-                                            <option value="3">Adult 3</option>
+                                        <select class="form-select" id="select1" required>
+                                            <option value="1">Adultes 1</option>
+                                            <option value="2">Adultes 2</option>
+                                            <option value="3">Adultes 3</option>
                                         </select>
-                                        <label for="select1">Select Adult</label>
+                                        <label for="select1">Sélectionner Adultes</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <select class="form-select" id="select2">
-                                            <option value="1">Child 1</option>
-                                            <option value="2">Child 2</option>
-                                            <option value="3">Child 3</option>
+                                        <select class="form-select" id="select2" required>
+                                            <option value="1">Enfant 1</option>
+                                            <option value="2">Enfant 2</option>
+                                            <option value="3">Enfant 3</option>
                                         </select>
-                                        <label for="select2">Select Child</label>
+                                        <label for="select2">Sélectionner Enfants</label>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-floating">
-                                        <select class="form-select" id="select3">
-                                            <option value="1">Room 1</option>
-                                            <option value="2">Room 2</option>
-                                            <option value="3">Room 3</option>
+                                        <select class="form-select" id="select3" required>
+                                            <option value="1">Chambre 1</option>
+                                            <option value="2">Chambre 2</option>
+                                            <option value="3">Chambre 3</option>
                                         </select>
-                                        <label for="select3">Select A Room</label>
+                                        <label for="select3">Sélectionner Chambre</label>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-floating">
-                                        <textarea class="form-control" placeholder="Special Request" id="message"
-                                            style="height: 100px"></textarea>
-                                        <label for="message">Special Request</label>
+                                        <textarea class="form-control" placeholder="Demande spéciale" id="message" style="height: 100px"></textarea>
+                                        <label for="message">Demande spéciale</label>
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <button class="btn btn-primary w-100 py-3" type="submit" routerLink="/home/detailProprieteSite">s'inscrire</button>
+                                    <button class="btn btn-primary w-100 py-3" type="submit">S'inscrire</button>
                                 </div>
                             </div>
                         </form>
@@ -133,20 +121,17 @@
             <div class="col-lg-10 border rounded p-1">
                 <div class="border rounded text-center p-1">
                     <div class="bg-white rounded text-center p-5">
-                        <h4 class="mb-4">Subscribe Our <span class="text-primary text-uppercase">Newsletter</span>
-                        </h4>
+                        <h4 class="mb-4">Abonnez-vous à notre <span class="text-primary text-uppercase">Newsletter</span></h4>
                         <div class="position-relative mx-auto" style="max-width: 400px;">
-                            <input class="form-control w-100 py-3 ps-4 pe-5" type="text" placeholder="Enter your email">
-                            <button type="button"
-                                class="btn btn-primary py-2 px-3 position-absolute top-0 end-0 mt-2 me-2">Submit</button>
+                            <input class="form-control w-100 py-3 ps-4 pe-5" type="email" placeholder="Entrez votre email" required>
+                            <button type="button" class="btn btn-primary py-2 px-3 position-absolute top-0 end-0 mt-2 me-2" aria-label="Envoyer l'email">Envoyer</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Newsletter Start -->
-
+    <!-- Newsletter End -->
 
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-light footer wow fadeIn" data-wow-delay="0.1s">
@@ -154,51 +139,43 @@
             <div class="row g-5">
                 <div class="col-md-6 col-lg-4">
                     <div class="bg-primary rounded p-4">
-
                         <a>
                             <h1 class="text-white text-uppercase mb-3">Express Immo</h1>
                         </a>
                         <p class="text-white mb-0">
-                            Download <a class="text-dark fw-medium">Hotelier – Premium Version</a>, build a
-                            professional website for your hotel business and grab the attention of new visitors upon
-                            your site’s launch.
-
+                            Téléchargez <a class="text-dark fw-medium">Hotelier – Version Premium</a>, créez un site professionnel pour votre entreprise hôtelière.
                         </p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
                     <h6 class="section-title text-start text-primary text-uppercase mb-4">Contact</h6>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Rue, New York, USA</p>
                     <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
                     <p class="mb-2"><i class="fa fa-envelope me-3"></i>infoexample.com</p>
                     <div class="d-flex pt-2">
-
                         <a class="btn btn-outline-light btn-social"><i class="fab fa-twitter"></i></a>
                         <a class="btn btn-outline-light btn-social"><i class="fab fa-facebook-f"></i></a>
                         <a class="btn btn-outline-light btn-social"><i class="fab fa-youtube"></i></a>
                         <a class="btn btn-outline-light btn-social"><i class="fab fa-linkedin-in"></i></a>
-
                     </div>
                 </div>
                 <div class="col-lg-5 col-md-12">
                     <div class="row gy-5 g-4">
                         <div class="col-md-6">
-                            <h6 class="section-title text-start text-primary text-uppercase mb-4">Company</h6>
-
-                            <a class="btn btn-link">About Us</a>
-                            <a class="btn btn-link">Contact Us</a>
-                            <a class="btn btn-link">Privacy Policy</a>
-                            <a class="btn btn-link">Terms & Condition</a>
+                            <h6 class="section-title text-start text-primary text-uppercase mb-4">Entreprise</h6>
+                            <a class="btn btn-link">À propos de nous</a>
+                            <a class="btn btn-link">Contactez-nous</a>
+                            <a class="btn btn-link">Politique de confidentialité</a>
+                            <a class="btn btn-link">Conditions d'utilisation</a>
                             <a class="btn btn-link">Support</a>
                         </div>
                         <div class="col-md-6">
                             <h6 class="section-title text-start text-primary text-uppercase mb-4">Services</h6>
-                            <a class="btn btn-link">Food & Restaurant</a>
+                            <a class="btn btn-link">Restauration</a>
                             <a class="btn btn-link">Spa & Fitness</a>
-                            <a class="btn btn-link">Sports & Gaming</a>
-                            <a class="btn btn-link">Event & Party</a>
+                            <a class="btn btn-link">Sports & Jeux</a>
+                            <a class="btn btn-link">Événements & Fêtes</a>
                             <a class="btn btn-link">GYM & Yoga</a>
-
                         </div>
                     </div>
                 </div>
@@ -208,19 +185,15 @@
             <div class="copyright">
                 <div class="row">
                     <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-
-                        &copy; <a class="border-bottom">Your Site Name</a>, All Right Reserved.
-
-                        <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                        Designed By <a class="border-bottom">HTML Codex</a>
+                        &copy; <a class="border-bottom">Votre Nom de Site</a>, Tous droits réservés.
+                        Designed by <a class="border-bottom">HTML Codex</a>
                     </div>
                     <div class="col-md-6 text-center text-md-end">
                         <div class="footer-menu">
-                            <a>Home</a>
+                            <a>Accueil</a>
                             <a>Cookies</a>
-                            <a>Help</a>
-                            <a>FQAs</a>
-
+                            <a>Aide</a>
+                            <a>FAQ</a>
                         </div>
                     </div>
                 </div>
@@ -229,8 +202,4 @@
     </div>
     <!-- Footer End -->
 
-
-
-    <!-- Back to Top -->
-    <!-- <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a> -->
 </div>

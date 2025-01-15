@@ -1,182 +1,123 @@
 <div class="container-xxl p-0">
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3 p-lg-0">
+        <a routerLink="/home/accueil" class="navbar-brand d-block d-lg-none">
+            <h1 class="m-0 text-primary text-uppercase">EXPRESS IMMO</h1>
+        </a>
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+            <div class="navbar-nav ms-auto">
+                <a routerLink="/home/accueil" class="nav-item nav-link">Home</a>
+                <a routerLink="/home/service" class="nav-item nav-link">Services</a>
+                <a routerLink="/home/propriete" class="nav-item nav-link active">Propriétés</a>
+                <a routerLink="/home/contact" class="nav-item nav-link">Contact</a>
+            </div>
+            <a class="btn btn-primary rounded-0 py-4 px-md-5 d-none d-lg-block" routerLink="/homeAdmin/login">
+                Se Connecter <i class="fa fa-arrow-right ms-3"></i>
+            </a>
+        </div>
+    </nav>
 
-    <div class="row">
-
-        <!-- INFORMATION  EXPRESS IMMO -->
-        <div class="col-6">
-
+    <div class="row g-4">
+        <!-- INFORMATION EXPRESS IMMO -->
+        <div class="col-12 col-md-4">
             <div class="card">
-                <div class="card-body">
-                    <div class="media text-center mb-4 mr-6">
-                        <!-- <img class="mr-6 " src="assets/admin/images/avatar/11.png" width="80" height="80" alt="" /> -->
-                        <div class="media-body">
-                            <!-- <h3 class="mb-0"><strong><span></span></strong></h3> -->
-                            <h1 class=" mb-0 text-primary"><strong>ExpressImmo <span></span></strong></h1>
-                        </div>
-
-                    </div>
-
-                    <div>
-                        <p style="font-size: larger;">
-                            ExpressImmo est votre allié dans la réalisation de vos projets immobiliers. Explorez nos
-                            maisons en location et bénéficiez de notre savoir-faire pour un achat en toute sérénité. De
-                            la construction à la gestion, en incluant la vente de matériaux de construction. ExpressImmo
-                            est le partenaire immobilier sur lequel vous pouvez compter.
-                        </p>
-                    </div>
-
-                    <!-- <div class="row mb-5">
-                        <div class="col">
-                            <div class="card card-profile text-center">
-                                <span class="mb-1 text-primary"><i class="icon-people"></i></span>
-                                <h3 class="mb-0">263</h3>
-                                <p class="text-muted px-4">Following</p>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card card-profile text-center">
-                                <span class="mb-1 text-warning"><i class="icon-user-follow"></i></span>
-                                <h3 class="mb-0">263</h3>
-                                <p class="text-muted">Followers</p>
-                            </div>
-                        </div>
-                        
-                    </div> -->
+                <div class="card-body text-center">
+                    <h1 class="text-primary">ExpressImmo</h1>
+                    <p style="font-size: larger;">
+                        ExpressImmo est votre allié dans la réalisation de vos projets immobiliers. Explorez nos
+                        maisons en location et bénéficiez de notre savoir-faire pour un achat en toute sérénité. De
+                        la construction à la gestion, en incluant la vente de matériaux de construction. ExpressImmo
+                        est le partenaire immobilier sur lequel vous pouvez compter.
+                    </p>
                     <div>
                         <span class="mb-1 text-primary fs-5"><i class="bi bi-house"></i> : </span><span class="fs-6">
                             Conakry, Gbessia, Behanzin</span>
-                    </div><br>
+                    </div>
+                    <br>
                     <div>
                         <span class="mb-1 text-primary fs-5"><i class="bi bi-envelope"></i> : </span><span class="fs-6">
                             {{email}}</span>
-                    </div><br>
+                    </div>
+                    <br>
                     <div>
                         <span class="mb-1 text-primary fs-5"><i class="bi bi-telephone"></i> : </span><span
                             class="fs-6"> +224 626 37 01 38</span>
                     </div>
                     <hr>
                     <div class="fs-4">
-                        <span>
-                            <i class="bi bi-facebook"></i>
-                        </span>
-                        <span>
-                            <i class="bi bi-twitter"></i>
-                        </span>
-                        <span>
-                            <i class="bi bi-linkedin"></i>
-                        </span>
-                        <span>
-                            <i class="bi bi-instagram"></i>
-                        </span>
+                        <ul class="d-flex justify-content-center">
+                            <li class="mx-2"><i class="bi bi-facebook"></i></li>
+                            <li class="mx-2"><i class="bi bi-twitter"></i></li>
+                            <li class="mx-2"><i class="bi bi-linkedin"></i></li>
+                            <li class="mx-2"><i class="bi bi-instagram"></i></li>
+                            <li class="mx-2"><i class="bi bi-youtube"></i></li>
+                        </ul>
                     </div>
-                    <!-- <ul class="list-unstyled mt-2 custom-list">
-
-                        <li><strong>
-                                <h4>Complement :</h4> <span></span>
-                            </strong></li>
-
-                        <li><strong>Etat : <span>Ahmed</span></strong></li>
-                        <li><strong>Prix Journalier : <span>CONDE</span></strong></li>
-                        <li><strong>prix Mensuel : <span>612524468</span></strong></li>
-                    </ul>
-                    <div class="text-center"> 
-                        <button class="btn btn-danger">Reserver</button>
-                    </div> -->
                 </div>
             </div>
 
             <!-- RESERVATION EXPRESS IMMO -->
-
             <div class="card">
                 <div class="card-header bg-primary text-center">
-                    <h3 class="text-white">Reserver Maintenant</h3>
+                    <h3 class="text-white">Réserver Maintenant</h3>
                 </div>
                 <div class="card-body">
-
-
-                    <!-- <div class="row mb-5">
-                        <div class="col">
-                            <div class="card card-profile text-center">
-                                <span class="mb-1 text-primary"><i class="icon-people"></i></span>
-                                <h3 class="mb-0">263</h3>
-                                <p class="text-muted px-4">Following</p>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card card-profile text-center">
-                                <span class="mb-1 text-warning"><i class="icon-user-follow"></i></span>
-                                <h3 class="mb-0">263</h3>
-                                <p class="text-muted">Followers</p>
-                            </div>
-                        </div>
-                        
-                    </div> -->
                     <div>
-                        <label for="">Date Reservation</label>
+                        <label for="date_reservation">Date Reservation</label>
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1"><i class="bi bi-calendar-check"></i></span>
-                            <input type="date" class="form-control" aria-label="date_reservation"
-                                aria-describedby="basic-addon1">
+                            <input type="date" class="form-control" aria-label="date_reservation" id="date_reservation">
                         </div>
                     </div>
                     <div>
-                        <span class="mb-1 fs-5">Prix/Jour : </span><span class="fs-5 text-green">100 $</span>
+                        <span class="mb-1 fs-5">Prix/Jour : </span><span class="fs-5 text-success">100 $</span>
                     </div>
                     <hr>
 
-                    <div class="justify-content-between d-flex">
+                    <div class="d-flex justify-content-between">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
+                            <input class="form-check-input" type="checkbox" id="flexCheckDefault" checked>
                             <label class="form-check-label" for="flexCheckDefault">
                                 WIFI
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" >
+                            <input class="form-check-input" type="checkbox" id="flexCheckChecked">
                             <label class="form-check-label" for="flexCheckChecked">
                                 Conciergerie
                             </label>
                         </div>
                     </div>
-                    <div class="justify-content-between d-flex">
+
+                    <div class="d-flex justify-content-between">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                            <label class="form-check-label" for="flexCheckDefault">
+                            <input class="form-check-input" type="checkbox" id="flexCheckDefault2">
+                            <label class="form-check-label" for="flexCheckDefault2">
                                 Blanchisserie
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" >
-                            <label class="form-check-label" for="flexCheckChecked">
+                            <input class="form-check-input" type="checkbox" id="flexCheckChecked2">
+                            <label class="form-check-label" for="flexCheckChecked2">
                                 Restauration
                             </label>
                         </div>
                     </div>
-                    <!-- <ul class="list-unstyled mt-2 custom-list">
 
-                        <li><strong>
-                                <h4>Complement :</h4> <span></span>
-                            </strong></li>
-
-                        <li><strong>Etat : <span>Ahmed</span></strong></li>
-                        <li><strong>Prix Journalier : <span>CONDE</span></strong></li>
-                        <li><strong>prix Mensuel : <span>612524468</span></strong></li>
-                    </ul>
-                    <div class="text-center"> 
-                        <button class="btn btn-danger">Reserver</button>
-                    </div> -->
-                    <div class="text-center">
-                        <button class="btn btn-danger">Reserver</button>
+                    <div class="text-center mt-3">
+                        <button class="btn btn-danger" (click)="alertWithSuccess()">Réserver</button>
                     </div>
                 </div>
             </div>
-
         </div>
 
-        <div class="col-6">
+        <!-- IMAGE CAROUSEL -->
+        <div class="col-12 col-md-8">
             <div class="card">
                 <div class="card-body">
-                    <div id="carouselExampleFade" class="carousel slide carousel-fade">
+                    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
                                 <img src="assets/sites/img/room-1.jpg" class="d-block w-100" alt="...">
@@ -199,38 +140,26 @@
                             <span class="visually-hidden">Next</span>
                         </button>
                     </div>
-
                 </div>
-
             </div>
 
-            <!-- Description -->
-
-            <div class="card">
+            <!-- DESCRIPTION -->
+            <div class="card mt-4">
                 <div class="card-header fs-3 text-center">Description</div>
                 <div class="card-body fs-6">
-                               
-                Salon de 32,01 m² - Chambre de 14,8 m² + bain de 6,80 m² Cuisine 7,35 m² 
-
-                Nom de la propriete : 67,65 m² <br><br>
-
-                Prix Journalier : $ 54 120,00 USD <br><br>
-
-                Frais Dossier : $ 1 000,00 USD <br><br>
-
-                Acompte : $ 37.884,00 USD ,  payé de façon échelonnée, sans date limite <br><br>
-
-                Montant mensuel : $  16.236,00 USD  , représentant le  prix total. <br>
-
+                    Salon de 32,01 m² - Chambre de 14,8 m² + bain de 6,80 m² Cuisine 7,35 m²
+                    <br><br>
+                    Nom de la propriété : 67,65 m²
+                    <br><br>
+                    Prix Journalier : $ 54 120,00 USD
+                    <br><br>
+                    Frais Dossier : $ 1 000,00 USD
+                    <br><br>
+                    Acompte : $ 37.884,00 USD , payé de façon échelonnée, sans date limite
+                    <br><br>
+                    Montant mensuel : $ 16.236,00 USD , représentant le prix total.
                 </div>
-
             </div>
-
         </div>
-
-        
-            
-
-        
     </div>
 </div>
