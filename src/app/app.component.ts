@@ -10,11 +10,6 @@ import { filter } from 'rxjs';
 })
 export class AppComponent {
   title = 'expressimmo';
-  isSidebarOpen = true; // L'état de la barre latérale (ouverte par défaut)
-
-  toggleSidebar() {
-    this.isSidebarOpen = !this.isSidebarOpen;
-  }
 
 
     canShowMenu = true;
@@ -24,6 +19,10 @@ export class AppComponent {
       this.router.events
         .pipe(filter((event: any) => event instanceof NavigationEnd))
         .subscribe((event: NavigationEnd) => {
+          if (event.url === '/') {
+            this.router.navigate(['/home/accueil']);
+            return;
+          }
           const hiddenExactUrls = ['/hoomeAdmin/login'];
           const hiddenModuleUrls = ['/home'];
 
