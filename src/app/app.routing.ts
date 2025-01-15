@@ -1,15 +1,15 @@
 import { Routes } from '@angular/router';
 
 export const AppRouting: Routes = [
- 
- {path: '',
-  redirectTo:'/home/accueil',
-  pathMatch :'full'
- },
+
+//  {path: '',
+//   redirectTo:'/home/accueil',
+//   pathMatch :'full'
+//  },
 
   {
-    
-    
+
+
     path: '',
     children: [
 
