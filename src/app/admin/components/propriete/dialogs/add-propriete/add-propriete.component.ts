@@ -11,14 +11,15 @@ import { ProprieteService } from '../../_services/propriete.service';
 export class AddProprieteComponent {
  Propriete = new FormGroup({
     partenaire_id :new FormControl(''),
-    libelle: new FormControl(''),
+    quartier_id :new FormControl(''),
+    reference: new FormControl(''),
     adresse: new FormControl(''),
-    description: new FormControl(''),
+    descriptions: new FormControl(''),
     etat :new FormControl(''),
     disponible :new FormControl(''),
     prix_journalier :new FormControl(''),
     prix_mensuel :new FormControl(''),
-    typeProprietes_id :new FormControl(''),
+    typepropriete_id :new FormControl(''),
 
   })
 
@@ -31,6 +32,8 @@ export class AddProprieteComponent {
   ngOnInit(){
     this.getPartenaire();
     this.getTypePropriete();
+    this.getQuartier();
+
   }
   typePropriete :any =[]
   getTypePropriete () {
@@ -50,6 +53,20 @@ export class AddProprieteComponent {
        next: (reponse: any) => {
           console.log('REPONSE SUCCESS : ', reponse)
          this.Partenaire = reponse
+
+       },
+       error: (err: any) => {
+         console.log('REPONSE ERROR : ', err)
+       }
+     })
+   }
+  
+   Quartier : any =[]
+   getQuartier () {
+     this.service.getall('quartier', 'readAll.php').subscribe({
+       next: (reponse: any) => {
+          console.log('REPONSE SUCCESS : ', reponse)
+         this.Quartier = reponse
 
        },
        error: (err: any) => {

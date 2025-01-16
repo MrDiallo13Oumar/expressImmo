@@ -5,34 +5,53 @@
     </div>
     <form [formGroup]="Propriete">
       <div class="row">
-        <div class="col mb-3">
-          <label for="type">Choisir Le Type de propriete</label>
+        <div class="col-md-6 mb-3">
+          <label for="type">Choisir Le Quartier</label>
           <select
             class="form-select"
-            id="typeProprietes_id"
+            id="quartier_id"
             required
-            formControlName="typeProprietes_id"
-            placeholder="type de Propriete"
+            formControlName="quartier_id"
+            placeholder="quartier"
           >
             <option selected disabled>-- Liste G&#233;n&#233;rale --</option>
             <option
-              *ngFor="let typePropriete of typePropriete"
-              [value]="typePropriete.id"
+              *ngFor="let quartier of Quartier"
+              [value]="quartier.id"
             >
-              {{ typePropriete.libelle }}
+              {{ quartier.libelle }}
             </option>
           </select>
         </div>
+        <div class="col-md-6 mb-3">
+          <label for="type">Choisir Le Type de Propriete </label>
+          <select
+          class="form-select"
+          id="typepropriete_id"
+          required
+          formControlName="typepropriete_id"
+          placeholder="type de Propriete"
+        >
+          <option selected disabled>-- Liste G&#233;n&#233;rale --</option>
+          <option
+            *ngFor="let typePropriete of typePropriete"
+            [value]="typePropriete.id"
+          >
+            {{ typePropriete.libelle }}
+          </option>
+        </select>
+        </div>
       </div>
+
       <div class="row">
         <div class="col-md-6 mb-3">
-          <label for="libelle">Libelle</label>
+          <label for="reference">Reference</label>
           <input
             type="text"
             class="form-control form-control-lg"
-            formControlName="libelle"
-            id="libelle"
-            placeholder="Enter le libelle"
+            formControlName="reference"
+            id="reference"
+            placeholder="Enter la reference"
           />
         </div>
 
@@ -104,12 +123,12 @@
         </div>
       </div>
       <div class=" mb-3">
-        <label for="description">Description</label>
+        <label for="descriptions">Description</label>
         <textarea
 
           class="form-control form-control-lg"
-          formControlName="description"
-          id="description"
+          formControlName="descriptions"
+          id="descriptions"
           placeholder="Enter la description"
         > </textarea>
       </div>

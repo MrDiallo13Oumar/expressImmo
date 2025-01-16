@@ -23,11 +23,19 @@
         <label for="itemPrice">Adresse</label>
         <input type="text" class="form-control form-control-lg" id="adresse" placeholder="Entrer l'adresse'" formControlName="adresse" />
       </div>
+      <div class="form-group mb-3">
+        <label for="statut">Status</label>
+        <select class="form-control form-control-lg" id="statut" formControlName="statut">
+          <option value="en attente">En attente</option>
+          <option value="annulée">Annuler</option>
+          <option value="confirmée">Confirmer</option>
+        </select>
+      </div>
 
       <label for="type" >Propriete</label>
               <select class="form-select" id="propriete_id"  required formControlName="propriete_id">
                 <option selected disabled>-- Liste G&#233;n&#233;rale --</option>
-                <option *ngFor="let propriete of Propriete " [value]="propriete.id"> {{propriete.libelle }} </option>
+                <option *ngFor="let propriete of Propriete " [value]="propriete.id"> {{propriete.reference }} </option>
               </select>
 
       <div class="text-center">

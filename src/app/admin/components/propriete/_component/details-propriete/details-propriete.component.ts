@@ -11,17 +11,20 @@ import { convertObjectInFormData } from 'src/app/app.component';
   styleUrls: ['./details-propriete.component.scss']
 })
 export class DetailsProprieteComponent {
- Propriete = new FormGroup({
-    id :new FormControl(''),
-    partenaire_id :new FormControl(''),
-    libelle: new FormControl(''),
-    adresse: new FormControl(''),
-    etat :new FormControl(''),
-    disponible :new FormControl(''),
-    prix_journalier :new FormControl(''),
-    prix_mensuel :new FormControl(''),
-    description: new FormControl(''),
-  })
+
+    Propriete = new FormGroup({
+       id :new FormControl(''),
+       partenaire_id :new FormControl(''),
+       quartier_id :new FormControl(''),
+       reference: new FormControl(''),
+       adresse: new FormControl(''),
+       descriptions: new FormControl(''),
+       etat :new FormControl(''),
+       disponible :new FormControl(''),
+       prix_journalier :new FormControl(''),
+       prix_mensuel :new FormControl(''),
+
+     })
  constructor(
        private service :PartenaireService,
         private snackBar: MatSnackBar,
@@ -35,7 +38,9 @@ export class DetailsProprieteComponent {
 
     (this.idPropriete = this.activeroute.snapshot.params['id']),
    this.getOnePropriete(),
-   this.getPartenaire()
+   this.getPartenaire();
+
+   this.getQuartier();
   }
   infoPropriete: any = {};
   getOnePropriete() {
@@ -45,8 +50,8 @@ export class DetailsProprieteComponent {
         console.log('Info : ', response);
         this.infoPropriete = response;
         this.Propriete.patchValue(this.infoPropriete);
-      
-        
+
+
       },
       error: (error: any) => {
         console.log('Error : ', error);
@@ -60,6 +65,20 @@ export class DetailsProprieteComponent {
       next: (reponse: any) => {
          console.log('REPONSE SUCCESS : ', reponse)
         this.Partenaire = reponse
+
+      },
+      error: (err: any) => {
+        console.log('REPONSE ERROR : ', err)
+      }
+    })
+  }
+
+  Quartier : any =[]
+  getQuartier () {
+    this.service.getall('quartier', 'readAll.php').subscribe({
+      next: (reponse: any) => {
+         console.log('REPONSE SUCCESS : ', reponse)
+        this.Quartier = reponse
 
       },
       error: (err: any) => {
@@ -101,5 +120,5 @@ export class DetailsProprieteComponent {
            });
 
        }
-       
+
 }

@@ -18,8 +18,16 @@
                 alt=""
               />
               <div class="media-body">
-                <h3 class="mb-0"><strong><span>{{infoPropriete.libelle}}</span></strong></h3>
-                <p class="text-muted mb-0"><strong>Adresse : <span>{{infoPropriete.adresse}}</span></strong></p>
+                <h5 class="mb-0">
+                  <strong
+                    ><span>{{ infoPropriete.reference }}</span></strong
+                  >
+                </h5>
+                <p class="text-muted mb-0">
+                  <strong
+                    >Adresse : <span>{{ infoPropriete.adresse }}</span></strong
+                  >
+                </p>
               </div>
             </div>
 
@@ -29,8 +37,8 @@
                   <span class="mb-1 text-primary"
                     ><i class="icon-menu"></i
                   ></span>
-                  <h3 class="mb-0">Description</h3>
-                  <p class="text-muted px-4">{{infoPropriete.description}}</p>
+                  <h5 class="mb-0">Description</h5>
+                  <p class="text-muted px-4">{{ infoPropriete.descriptions }}</p>
                 </div>
               </div>
 
@@ -40,30 +48,71 @@
             </div>
 
             <ul class="list-unstyled mt-2 custom-list">
+              <li>
+                <strong
+                  ><i class="icon-menu"></i>
+                  <span>{{ infoPropriete.partenaire?.libelle }}</span></strong
+                >
+              </li>
 
-              <li><strong><i class="icon-menu"></i> <span>{{infoPropriete.partenaire.libelle}}</span></strong></li>
+              <li>
+                <strong
+                  ><i class="fas fa-check-circle" style="color: green;"></i>
 
-              <li><strong><i class="fa fa-status"></i> <span>{{infoPropriete.etat}}</span></strong></li>
-              <li><strong><i class="fa fa-dollar-sign"></i><span>{{infoPropriete.prix_journalier}}</span></strong></li>
-              <li><strong><i class="fa fa-dollar-sign"></i> <span>{{infoPropriete.prix_mensuel  }}</span></strong></li>
+                  <span>{{ infoPropriete.etat }}</span></strong
+                >
+              </li>
+              <li>
+                <strong
+                  ><i class="fas fa-credit-card"></i>
+
+                  <span>{{ infoPropriete.prix_journalier }}</span></strong
+                >
+              </li>
+              <li>
+                <strong
+                  ><i class="fas fa-hand-holding-usd"></i>
+
+                  <span>{{ infoPropriete.prix_mensuel }}</span></strong
+                >
+              </li>
             </ul>
           </div>
         </div>
       </div>
       <div class="col-lg-8 col-xl-9">
         <div class="card">
-          <div class="card-body " >
+          <div class="card-body">
             <form [formGroup]="Propriete">
+              <div class="col mb-3">
+                <label for="reference">reference</label>
+                <input
+                  type="text"
+                  class="form-control form-control-lg"
+                  formControlName="reference"
+                  [value]="infoPropriete.reference"
+                />
+              </div>
               <div class="row">
                 <div class="col-md-6 mb-3">
-                  <label for="libelle">Libelle</label>
-                  <input
-                    type="text"
-                    class="form-control form-control-lg"
-                    formControlName="libelle"
-                    [value]="infoPropriete.libelle"
-
-                  />
+                  <label for="type">Choisir Le Quartier</label>
+                  <select
+                    class="form-select"
+                    id="quartier_id"
+                    required
+                    formControlName="quartier_id"
+                    placeholder="quartier"
+                  >
+                    <option selected disabled>
+                      -- Liste G&#233;n&#233;rale --
+                    </option>
+                    <option
+                      *ngFor="let quartier of Quartier"
+                      [value]="quartier.id"
+                    >
+                      {{ quartier.libelle }}
+                    </option>
+                  </select>
                 </div>
 
                 <div class="col-md-6 mb-3">
@@ -76,7 +125,9 @@
                     placeholder="partenaire"
                     [value]="infoPropriete.partenaire_id"
                   >
-                    <option selected disabled>-- Liste G&#233;n&#233;rale --</option>
+                    <option selected disabled>
+                      -- Liste G&#233;n&#233;rale --
+                    </option>
                     <option
                       *ngFor="let partenaire of Partenaire"
                       [value]="partenaire.id"
@@ -94,21 +145,18 @@
                     type="text"
                     class="form-control form-control-lg"
                     formControlName="adresse"
-                  [value]="infoPropriete.adresse"
-
+                    [value]="infoPropriete.adresse"
                   />
                 </div>
-                <div class=" col-md-6 mb-3">
+                <div class="col-md-6 mb-3">
                   <label for="etat">Etat</label>
                   <input
                     type="text"
                     class="form-control form-control-lg"
                     formControlName="etat"
                     [value]="infoPropriete.etat"
-
                   />
                 </div>
-
               </div>
 
               <div class="row">
@@ -120,7 +168,6 @@
                     id="prix_journalier"
                     [value]="infoPropriete.prix_journalier"
                     formControlName="prix_journalier"
-
                   />
                 </div>
 
@@ -132,21 +179,18 @@
                     id="prix_mensuel"
                     [value]="infoPropriete.prix_mensuel"
                     formControlName="prix_mensuel"
-
                   />
                 </div>
               </div>
-              <div class=" mb-3">
-                <label for="description">Description</label>
+              <div class="mb-3">
+                <label for="descriptions">Description</label>
                 <textarea
-
                   class="form-control form-control-lg"
-                  formControlName="description"
+                  formControlName="descriptions"
                   [value]="infoPropriete.description"
-
-                > </textarea>
+                >
+                </textarea>
               </div>
-
             </form>
           </div>
           <div class="card-footer">

@@ -64,23 +64,26 @@
             <li>
               <strong
                 >Propriete Reserver :
-                <span>{{ infoReservation.propriete?.libelle }}</span></strong
+                <span>{{ infoReservation.propriete?.reference }}</span></strong
               >
             </li>
-            
+
           </ul>
         </div>
-      
-      
+
+
       </div>
       <div class="col-lg-6 col-xl-8">
         <div class="card shadow-sm border-0">
           <div class="card-body">
             <!-- Ajouter des contenus si nécessaire -->
           </div>
-          <div class="card-footer bg-light text-center">
+          <div class="card-footer bg-light d-flex justify-content-between">
+            <button type="submit" class="btn btn-danger btn-lg btn-rounded">
+              annuler
+            </button>
             <button type="submit" class="btn btn-primary btn-lg btn-rounded">
-              Modifier
+              Confirmer
             </button>
           </div>
         </div>

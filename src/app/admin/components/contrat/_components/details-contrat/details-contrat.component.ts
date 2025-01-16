@@ -12,80 +12,32 @@ import { AddContratComponent } from '../../dialogs/add-contrat/add-contrat.compo
   styleUrls: ['./details-contrat.component.scss']
 })
 export class DetailsContratComponent{
+constructor(
+  private service :ContratService,
+  private snackBar: MatSnackBar,
+  private activeroute: ActivatedRoute,
+  private router :Router
 
+){}
+idContrat :any
+  ngOnInit(): void {
+    (this.idContrat = this.activeroute.snapshot.params['id']),
+      this.getOneContrat();
 
-  //   Locataire = new FormGroup({
-  //   propriete_id: new FormControl(''),
-  //   nom: new FormControl(''),
-  //   prenom: new FormControl(''),
-  //   telephone: new FormControl(''),
-  //   email: new FormControl(''),
-  //   nationalite :new FormControl(''),
-  //   date_naissance: new FormControl(''),
-  //   lieu_naissance: new FormControl(''),
-  //   typePiece :new FormControl(''),
-  //   numeroPiece :new FormControl(''),
-  //   adresse :new FormControl(''),
-  //   contrat_id : new FormControl('')
-  // })
+  }
+  infoContrat: any = {};
+  getOneContrat() {
+    console.log('ID en GET : ', this.idContrat);
+    this.service.getOne('contrat', 'getOne.php', this.idContrat).subscribe({
+      next: (response: any) => {
+        console.log('Info : ', response);
+        this.infoContrat = response;
 
-  // Contrat = new FormGroup({
-      
-  //     locataire_id: new FormControl(''),
-  //     propriete_id: new FormControl(''),
-  //     caution: new FormControl(''),
-  //     prix_journalier: new FormControl(''),
-  //     date_debut: new FormControl(''),
-  //     date_fin: new FormControl(''),
-  //     montant_total: new FormControl(''),
-  //     statut :new FormControl(''),
-  
-  //   })
+      },
+      error: (error: any) => {
+        console.log('Error : ', error);
+      },
+    });
+  }
 
-  // constructor(
-  //       public dialogRef: MatDialogRef<AddContratComponent>,
-  //       private service: ContratService,
-  //       private snackBar: MatSnackBar,
-  //       private activeroute: ActivatedRoute,
-  //       private router :Router
-  //  ){}
-  // idContrat:any
-  // ngOnInit(){
-    
-  // }
-  // infoContrat: any = {};
-  // getOneContrat() {
-  //   console.log('ID en GET : ', this.idContrat);
-  //   this.service.getOne('contrats', 'getOne.php', this.idContrat).subscribe({
-  //     next: (response: any) => {
-  //       console.log('Info : ', response);
-  //       this.infoContrat = response;
-  //       this.Contrat.patchValue(this.infoContrat);
-        
-  //     },
-  //     error: (error: any) => {
-  //       console.log('Error : ', error);
-  //     },
-  //   });
-  // }
-
-  // // ENREGISTRER LE CONTRAT
-  // saveDataContrat() {
-  //   if (this.Contrat.valid) {
-  //     this.dialogRef.close({
-  //       event: "insert",
-  //       data: this.Contrat.value
-  //     })
-  //   }
-  // }
-
-  // // ENREGISTRER LE LOCATAIRE
-  // saveDataLocataire() {
-  //   if (this.Locataire.valid) {
-  //     this.dialogRef.close({
-  //       event: "insert",
-  //       data: this.Locataire.value
-  //     })
-  //   }
-  // }
 }

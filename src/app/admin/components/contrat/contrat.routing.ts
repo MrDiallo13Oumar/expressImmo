@@ -7,11 +7,11 @@ export const contratRouting: Routes = [
 
  {
     path: 'list-contrat',
-    component:ListContratComponent ,    
+    component:ListContratComponent ,
   },
-  
+
   {
-    path: 'detail-contrat',
+    path: 'detail-contrat/:id',
     component : DetailsContratComponent ,
   }
 ]
