@@ -88,6 +88,7 @@ displayedColumns: string[] = ['id', 'nom','prenom','adresse', 'telephone', 'emai
     }
 
       // DELETE
+      
       deleteFunction(id: any, table: string) {
         this.dialog
           .open(DeletePopupComponent, {

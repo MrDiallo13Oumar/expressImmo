@@ -37,10 +37,10 @@ export const homeRouting: Routes = [
     component: DetailsProprieteComponent,
   },
   {
-    path: 'inscriptionSite',
+    path: 'inscriptionSite/:id',
     component: InscriptionSiteComponent,
   },
-
+  
 
   
   // {
