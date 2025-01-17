@@ -1,0 +1,115 @@
+<div class="card">
+  <div class="card-body">
+    <div class="card-title text-center">
+      <h4>Ajouter une Propriete</h4>
+    </div>
+    <form [formGroup]="Propriete">
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="libelle">Libelle</label>
+          <input
+            type="text"
+            class="form-control form-control-lg"
+            formControlName="libelle"
+            id="libelle"
+            placeholder="Enter le libelle"
+          />
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label for="type">Choisir Le partenaire</label>
+          <select
+            class="form-select"
+            id="partenaire_id"
+            required
+            formControlName="partenaire_id"
+            placeholder="partenaire"
+          >
+            <option selected disabled>-- Liste G&#233;n&#233;rale --</option>
+            <option
+              *ngFor="let partenaire of Partenaire"
+              [value]="partenaire.id"
+            >
+              {{ partenaire.nom }} - {{ partenaire.prenom }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="adresse">Adresse</label>
+          <input
+            type="text"
+            class="form-control form-control-lg"
+            formControlName="adresse"
+            id="adresse"
+            placeholder="Enter le libelle"
+          />
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label for="description">Description</label>
+          <input
+            type="text"
+            class="form-control form-control-lg"
+            formControlName="description"
+            id="description"
+            placeholder="Enter le libelle"
+          />
+        </div>
+      </div>
+      <div class=" mb-3">
+        <label for="etat">Etat</label>
+        <input
+          type="text"
+          class="form-control form-control-lg"
+          formControlName="etat"
+          id="etat"
+          placeholder="Enter le libelle"
+        />
+      </div>
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="prix_journalier">Price</label>
+          <input
+            type="number"
+            class="form-control form-control-lg"
+            id="prix_journalier"
+            formControlName="prix_journalier"
+            placeholder="Enter price"
+          />
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label for="prix_mensuel">Price</label>
+          <input
+            type="number"
+            class="form-control form-control-lg"
+            id="prix_mensuel"
+            formControlName="prix_mensuel"
+            placeholder="Enter price"
+          />
+        </div>
+      </div>
+
+    </form>
+  </div>
+  <div class="card-footer">
+    <div class="d-flex justify-content-between">
+      <button
+        type="submit"
+        class="btn btn-rounded btn-primary btn-lg mt-3"
+        (click)="saveDataPropriete()"
+      >
+        Ajouter
+      </button>
+      <button
+        type="reset"
+        class="btn btn-rounded btn-outline-secondary btn-lg mt-3"
+      >
+        Annuler
+      </button>
+    </div>
+  </div>
+</div>
