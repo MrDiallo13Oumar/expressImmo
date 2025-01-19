@@ -1,0 +1,155 @@
+<div class="card">
+  <div class="card-body">
+    <div class="card-title text-center">
+      <h4>Ajouter une Propriete</h4>
+    </div>
+    <form [formGroup]="Propriete">
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="type">Choisir Le Quartier</label>
+          <select
+            class="form-select"
+            id="quartier_id"
+            required
+            formControlName="quartier_id"
+            placeholder="quartier"
+          >
+            <option selected disabled>-- Liste G&#233;n&#233;rale --</option>
+            <option
+              *ngFor="let quartier of Quartier"
+              [value]="quartier.id"
+            >
+              {{ quartier.libelle }}
+            </option>
+          </select>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="type">Choisir Le Type de Propriete </label>
+          <select
+          class="form-select"
+          id="typepropriete_id"
+          required
+          formControlName="typepropriete_id"
+          placeholder="type de Propriete"
+        >
+          <option selected disabled>-- Liste G&#233;n&#233;rale --</option>
+          <option
+            *ngFor="let typePropriete of typePropriete"
+            [value]="typePropriete.id"
+          >
+            {{ typePropriete.libelle }}
+          </option>
+        </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="reference">Reference</label>
+          <input
+            type="text"
+            class="form-control form-control-lg"
+            formControlName="reference"
+            id="reference"
+            placeholder="Enter la reference"
+          />
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label for="type">Choisir Le partenaire</label>
+          <select
+            class="form-select"
+            id="partenaire_id"
+            required
+            formControlName="partenaire_id"
+            placeholder="partenaire"
+          >
+            <option selected disabled>-- Liste G&#233;n&#233;rale --</option>
+            <option
+              *ngFor="let partenaire of Partenaire"
+              [value]="partenaire.id"
+            >
+              {{ partenaire.libelle }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="adresse">Adresse</label>
+          <input
+            type="text"
+            class="form-control form-control-lg"
+            formControlName="adresse"
+            id="adresse"
+            placeholder="Enter l' adresse"
+          />
+        </div>
+        <div class=" col-md-6 mb-3">
+          <label for="etat">Etat</label>
+          <input
+            type="text"
+            class="form-control form-control-lg"
+            formControlName="etat"
+            id="etat"
+            placeholder="Enter l'etat"
+          />
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="prix_journalier">Prix Journalier</label>
+          <input
+            type="number"
+            class="form-control form-control-lg"
+            id="prix_journalier"
+            formControlName="prix_journalier"
+            placeholder="Enter le Prix Journalier"
+          />
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label for="prix_mensuel">Prix mensuek</label>
+          <input
+            type="number"
+            class="form-control form-control-lg"
+            id="prix_mensuel"
+            formControlName="prix_mensuel"
+            placeholder="Enter prix mensuel"
+          />
+        </div>
+      </div>
+      <div class=" mb-3">
+        <label for="descriptions">Description</label>
+        <textarea
+
+          class="form-control form-control-lg"
+          formControlName="descriptions"
+          id="descriptions"
+          placeholder="Enter la description"
+        > </textarea>
+      </div>
+
+    </form>
+  </div>
+  <div class="card-footer">
+    <div class="d-flex justify-content-between">
+      <button
+        type="submit"
+        class="btn btn-rounded btn-primary btn-lg mt-3"
+        (click)="saveDataPropriete()"
+      >
+        Ajouter
+      </button>
+      <button
+        type="reset"
+        class="btn btn-rounded btn-outline-secondary btn-lg mt-3"
+      >
+        Annuler
+      </button>
+    </div>
+  </div>
+</div>

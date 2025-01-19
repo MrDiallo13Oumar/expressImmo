@@ -1,0 +1,63 @@
+<div class="content-body">
+  <div class="container-fluid">
+    <div class="container mt-5">
+      <div class="card shadow-lg">
+        <!-- En-tête -->
+        <div class="card-header text-white bg-primary text-center py-4">
+          <h2 class="mb-0" style="font-size: 2rem;">Contrat de Location</h2>
+
+        </div>
+
+        <!-- Corps du contrat -->
+        <div class="card-body text-center" style="font-size: 1.1rem;">
+          <!-- Locataire -->
+          <div class="mb-4">
+            <h5 class="text-secondary mb-3"><i class="fas fa-user"></i> Locataire</h5>
+            <p><strong>Nom :</strong> {{infoContrat.reservation.nom}} {{infoContrat.reservation.prenom}}</p>
+          </div>
+
+          <!-- Propriété -->
+          <div class="mb-4">
+            <h5 class="text-secondary mb-3"><i class="fas fa-home"></i> Propriété</h5>
+            <p><strong>Référence :</strong> {{infoContrat.reservation.propriete?.reference}}</p>
+            <p><strong>Adresse :</strong> {{infoContrat.reservation.propriete?.adresse}}</p>
+            <p><strong>Description :</strong> {{infoContrat.reservation.propriete?.description}}</p>
+            <p><strong>État :</strong> {{infoContrat.reservation.propriete?.etat}}</p>
+            <p><strong>Prix journalier :</strong> <span class="text-success">{{infoContrat.reservation.propriete?.prix_journalier}} €</span></p>
+            <p><strong>Prix mensuel :</strong> <span class="text-success">{{infoContrat.reservation.propriete?.prix_mensuel}} €</span></p>
+            <p><strong>Disponibilité :</strong> <span class="badge bg-info text-white">{{infoContrat.reservation.propriete?.disponibilite}}</span></p>
+             -->
+          </div>
+
+          <!-- Clauses et Conditions -->
+          <div class="mb-4">
+            <h5 class="text-secondary mb-3"><i class="fas fa-file-contract"></i> Clauses et Conditions</h5>
+            <ul class="list-group list-group-flush" style="display: inline-block; text-align: left;">
+              <li class="list-group-item"><strong>Durée :</strong> Ce contrat est valable pour {{infoContrat.duree}} mois.</li>
+              <li class="list-group-item"><strong>Paiement :</strong> Le loyer de {{infoContrat.reservation.propriete?.prix_mensuel}} € est dû avant le 5 du mois.</li>
+              <li class="list-group-item"><strong>Responsabilité :</strong> Le locataire est responsable des dommages.</li>
+              <li class="list-group-item"><strong>Usage :</strong> Usage strictement résidentiel.</li>
+              <li class="list-group-item"><strong>Résiliation :</strong> Préavis de 30 jours requis pour résiliation.</li>
+              <li class="list-group-item"><strong>Entretien :</strong> Propriété à maintenir propre et habitable.</li>
+            </ul>
+          </div>
+
+          <!-- Partenaire -->
+          <div class="mb-4">
+            <h5 class="text-secondary mb-3"><i class="fas fa-handshake"></i> Informations sur le Partenaire</h5>
+            <p><strong>Nom :</strong> {{infoContrat.reservation.propriete.partenaire?.libelle}}</p>
+            <p><strong>Téléphone :</strong> {{infoContrat.reservation.propriete.partenaire?.telephone}}</p>
+            <p><strong>Email :</strong> {{infoContrat.reservation.propriete.partenaire?.email}}</p>
+            <p><strong>Adresse :</strong> {{infoContrat.reservation.propriete.partenaire?.adresse}}</p>
+          </div>
+
+          <!-- Signature -->
+          <div class="mt-4">
+            <p class="text-muted"><strong>Date :</strong> {{infoContrat.date}}</p>
+            <p><strong>Signature :</strong> ______________________</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

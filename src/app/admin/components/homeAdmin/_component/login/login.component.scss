@@ -1,0 +1,48 @@
+.login-form-bg {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: url('https://static.vecteezy.com/ti/vecteur-libre/p1/2789298-immobilier-entreprise-illustration-concept-gratuit-vectoriel.jpg') no-repeat center center/cover;
+  background-color: aliceblue;
+  display: flex;
+  align-items: center;
+}
+.container {
+  width: 100%;
+}
+.row {
+  justify-content: flex-end;
+}
+.card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.card-body {
+  padding: 30px;
+}
+.form-control {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+}
+.btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.btn:hover {
+  background-color: #0056b3;
+}
+.text-primary {
+  color: #007bff;
+  text-decoration: none;
+}
+.text-primary:hover {
+  text-decoration: underline;
+}

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ExpressImmo": {
+    "expressimmo": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/express-immo",
+            "outputPath": "dist/expressimmo",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -65,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "ExpressImmo:build:production"
+              "browserTarget": "expressimmo:build:production"
             },
             "development": {
-              "browserTarget": "ExpressImmo:build:development"
+              "browserTarget": "expressimmo:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ExpressImmo:build"
+            "browserTarget": "expressimmo:build"
           }
         },
         "test": {
@@ -98,10 +98,12 @@
             "scripts": []
           }
         }
+        
+
       }
     }
   },
   "cli": {
-    "analytics": "85986bea-04f5-443e-bcd1-0a222d5312a4"
+    "analytics": false
   }
 }
