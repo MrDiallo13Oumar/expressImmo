@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AccueilComponent {
 
+  scrollToTop(): void {
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // Le 'smooth' permet un défilement fluide
+  }
 }
