@@ -8,6 +8,9 @@ import { DemoMaterialModule } from 'src/app/demo-material-module';
 import { ServiceComponent } from './service/service.component';
 import { ContactComponent } from './contact/contact.component';
 import { InscriptionSiteComponent } from './propriete/components/inscription-site/inscription-site.component';
+import { TruncatePipe } from 'src/assets/Pipes/truncateText.pipe';
+import { TruncateCardPipe } from 'src/assets/Pipes/truncateCard.pipe';
+import { AllProprietesComponent } from './propriete/components/all-proprietes/all-proprietes.component';
 
 
 
@@ -15,9 +18,12 @@ import { InscriptionSiteComponent } from './propriete/components/inscription-sit
   declarations: [
     AccueilComponent,
     ProprieteComponent,
+    TruncatePipe,
+    TruncateCardPipe,
     ServiceComponent,
     ContactComponent,
     InscriptionSiteComponent,
+    AllProprietesComponent,
   ],
   imports: [
     CommonModule,

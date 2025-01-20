@@ -5,6 +5,7 @@ import { ServiceComponent } from "./service/service.component";
 import { ContactComponent } from "./contact/contact.component";
 import { InscriptionSiteComponent } from "./propriete/components/inscription-site/inscription-site.component";
 import { DetailsProprieteComponent } from "./propriete/components/details-propriete/details-propriete.component";
+import { AllProprietesComponent } from "./propriete/components/all-proprietes/all-proprietes.component";
 
 
 export const homeRouting: Routes = [
@@ -33,14 +34,18 @@ export const homeRouting: Routes = [
 
   },
   {
-    path: 'detailProprieteSite',
+    path: 'detailProprieteSite/:id',
     component: DetailsProprieteComponent,
   },
   {
-    path: 'inscriptionSite',
+    path: 'inscriptionSite/:id',
     component: InscriptionSiteComponent,
   },
-
+  {
+    path: 'all-propriete',
+    component: AllProprietesComponent,
+  },
+  
 
   
   // {
