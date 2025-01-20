@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { contratRouting } from './contrat.routing';
 import { AddContratComponent } from './dialogs/add-contrat/add-contrat.component';
 import { DetailsContratComponent } from './_components/details-contrat/details-contrat.component';
+import { AddPaiementComponent } from './dialogs/add-paiement/add-paiement.component';
 
 
 
@@ -13,7 +14,8 @@ import { DetailsContratComponent } from './_components/details-contrat/details-c
   declarations: [
     ListContratComponent,
     AddContratComponent,
-    DetailsContratComponent
+    DetailsContratComponent,
+    AddPaiementComponent
   ],
   imports: [
     CommonModule,

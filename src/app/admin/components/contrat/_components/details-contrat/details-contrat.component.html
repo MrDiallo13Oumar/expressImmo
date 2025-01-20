@@ -1,63 +1,243 @@
 <div class="content-body">
   <div class="container-fluid">
-    <div class="container mt-5">
-      <div class="card shadow-lg">
-        <!-- En-tête -->
-        <div class="card-header text-white bg-primary text-center py-4">
-          <h2 class="mb-0" style="font-size: 2rem;">Contrat de Location</h2>
+    <div class="card col rounded p-3 mt-3 shadow-sm border-0">
+      <div class="card-body d-flex align-items-center justify-content-between">
+        <h4 class="card-title mb-0 text-primary">Détails Contrats</h4>
+        <div class="text-end mr-2">
+          <button
+            type="button"
+            class="btn btn-danger btn-sm btn-rounded text-white px-3"
+          >
+            <mat-icon class="mat-18">print</mat-icon>Imprimer
+          </button>
 
-        </div>
-
-        <!-- Corps du contrat -->
-        <div class="card-body text-center" style="font-size: 1.1rem;">
-          <!-- Locataire -->
-          <div class="mb-4">
-            <h5 class="text-secondary mb-3"><i class="fas fa-user"></i> Locataire</h5>
-            <p><strong>Nom :</strong> {{infoContrat.reservation.nom}} {{infoContrat.reservation.prenom}}</p>
-          </div>
-
-          <!-- Propriété -->
-          <div class="mb-4">
-            <h5 class="text-secondary mb-3"><i class="fas fa-home"></i> Propriété</h5>
-            <p><strong>Référence :</strong> {{infoContrat.reservation.propriete?.reference}}</p>
-            <p><strong>Adresse :</strong> {{infoContrat.reservation.propriete?.adresse}}</p>
-            <p><strong>Description :</strong> {{infoContrat.reservation.propriete?.description}}</p>
-            <p><strong>État :</strong> {{infoContrat.reservation.propriete?.etat}}</p>
-            <p><strong>Prix journalier :</strong> <span class="text-success">{{infoContrat.reservation.propriete?.prix_journalier}} €</span></p>
-            <p><strong>Prix mensuel :</strong> <span class="text-success">{{infoContrat.reservation.propriete?.prix_mensuel}} €</span></p>
-            <p><strong>Disponibilité :</strong> <span class="badge bg-info text-white">{{infoContrat.reservation.propriete?.disponibilite}}</span></p>
-             -->
-          </div>
-
-          <!-- Clauses et Conditions -->
-          <div class="mb-4">
-            <h5 class="text-secondary mb-3"><i class="fas fa-file-contract"></i> Clauses et Conditions</h5>
-            <ul class="list-group list-group-flush" style="display: inline-block; text-align: left;">
-              <li class="list-group-item"><strong>Durée :</strong> Ce contrat est valable pour {{infoContrat.duree}} mois.</li>
-              <li class="list-group-item"><strong>Paiement :</strong> Le loyer de {{infoContrat.reservation.propriete?.prix_mensuel}} € est dû avant le 5 du mois.</li>
-              <li class="list-group-item"><strong>Responsabilité :</strong> Le locataire est responsable des dommages.</li>
-              <li class="list-group-item"><strong>Usage :</strong> Usage strictement résidentiel.</li>
-              <li class="list-group-item"><strong>Résiliation :</strong> Préavis de 30 jours requis pour résiliation.</li>
-              <li class="list-group-item"><strong>Entretien :</strong> Propriété à maintenir propre et habitable.</li>
-            </ul>
-          </div>
-
-          <!-- Partenaire -->
-          <div class="mb-4">
-            <h5 class="text-secondary mb-3"><i class="fas fa-handshake"></i> Informations sur le Partenaire</h5>
-            <p><strong>Nom :</strong> {{infoContrat.reservation.propriete.partenaire?.libelle}}</p>
-            <p><strong>Téléphone :</strong> {{infoContrat.reservation.propriete.partenaire?.telephone}}</p>
-            <p><strong>Email :</strong> {{infoContrat.reservation.propriete.partenaire?.email}}</p>
-            <p><strong>Adresse :</strong> {{infoContrat.reservation.propriete.partenaire?.adresse}}</p>
-          </div>
-
-          <!-- Signature -->
-          <div class="mt-4">
-            <p class="text-muted"><strong>Date :</strong> {{infoContrat.date}}</p>
-            <p><strong>Signature :</strong> ______________________</p>
-          </div>
+          <button
+            type="button"
+            class="btn btn-dark btn-sm btn-rounded text-white px-3"
+            (click)="openDialog()"
+          >
+            <mat-icon class="mat-18">add</mat-icon>Effectuer un paiement
+          </button>
         </div>
       </div>
+    </div>
+    <div class="container mt-5">
+      <mat-tab-group>
+        <mat-tab>
+          <ng-template mat-tab-label>Contrat</ng-template>
+          <div class="card shadow-lg">
+            <!-- En-tête -->
+            <div class="card-header text-white bg-primary text-center py-4">
+              <h2 class="mb-0" style="font-size: 2rem">Contrat de Location</h2>
+            </div>
+
+            <!-- Corps du contrat -->
+            <div class="card-body text-center" style="font-size: 1.1rem">
+              <!-- Locataire -->
+              <div class="mb-4">
+                <h5 class="text-secondary mb-3">
+                  <i class="fas fa-user"></i> Locataire
+                </h5>
+                <p>
+                  <strong>Nom :</strong> {{ infoContrat.reservation?.nom }}
+                  {{ infoContrat.reservation?.prenom }}
+                </p>
+              </div>
+
+              <!-- Propriété -->
+              <div class="mb-4">
+                <h5 class="text-secondary mb-3">
+                  <i class="fas fa-home"></i> Propriété
+                </h5>
+                <p>
+                  <strong>Référence :</strong>
+                  {{ infoContrat.reservation?.propriete?.reference }}
+                </p>
+                <p>
+                  <strong>Adresse :</strong>
+                  {{ infoContrat.reservation?.propriete?.adresse }}
+                </p>
+                <p>
+                  <strong>Description :</strong>
+                  {{ infoContrat.reservation?.propriete?.description }}
+                </p>
+                <p>
+                  <strong>État :</strong>
+                  {{ infoContrat.reservation?.propriete?.etat }}
+                </p>
+                <p>
+                  <strong>Prix journalier :</strong>
+                  <span class="text-success"
+                    >{{
+                      infoContrat.reservation?.propriete?.prix_journalier
+                    }}
+                    €</span
+                  >
+                </p>
+                <p>
+                  <strong>Prix mensuel :</strong>
+                  <span class="text-success"
+                    >{{
+                      infoContrat.reservation?.propriete?.prix_mensuel
+                    }}
+                    €</span
+                  >
+                </p>
+                <p>
+                  <strong>Disponibilité :</strong>
+                  <span class="badge bg-info text-white">{{
+                    infoContrat.reservation?.propriete?.disponibilite
+                  }}</span>
+                </p>
+              </div>
+
+              <!-- Clauses et Conditions -->
+              <div class="mb-4">
+                <h5 class="text-secondary mb-3">
+                  <i class="fas fa-file-contract"></i> Clauses et Conditions
+                </h5>
+                <ul
+                  class="list-group list-group-flush"
+                  style="display: inline-block; text-align: left"
+                >
+                  <li class="list-group-item">
+                    <strong>Durée :</strong> Ce contrat est valable pour
+                    {{ infoContrat.duree }} mois.
+                  </li>
+                  <li class="list-group-item">
+                    <strong>Paiement :</strong> Le loyer de
+                    {{ infoContrat.reservation?.propriete?.prix_mensuel }} € est
+                    dû avant le 5 du mois.
+                  </li>
+                  <li class="list-group-item">
+                    <strong>Responsabilité :</strong> Le locataire est
+                    responsable des dommages.
+                  </li>
+                  <li class="list-group-item">
+                    <strong>Usage :</strong> Usage strictement résidentiel.
+                  </li>
+                  <li class="list-group-item">
+                    <strong>Résiliation :</strong> Préavis de 30 jours requis
+                    pour résiliation.
+                  </li>
+                  <li class="list-group-item">
+                    <strong>Entretien :</strong> Propriété à maintenir propre et
+                    habitable.
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Partenaire -->
+              <div class="mb-4">
+                <h5 class="text-secondary mb-3">
+                  <i class="fas fa-handshake"></i> Informations sur le
+                  Partenaire
+                </h5>
+                <p>
+                  <strong>Nom :</strong>
+                  {{ infoContrat.reservation?.partenaire?.libelle }}
+                </p>
+                <p>
+                  <strong>Téléphone :</strong>
+                  {{ infoContrat.reservation?.propriete?.partenaire?.telephone }}
+                </p>
+                <p>
+                  <strong>Email :</strong>
+                  {{ infoContrat.reservation?.propriete?.partenaire?.email }}
+                </p>
+                <p>
+                  <strong>Adresse :</strong>
+                  {{ infoContrat.reservation?.propriete?.partenaire?.adresse }}
+                </p>
+              </div>
+
+              <!-- Signature -->
+              <div class="mt-4">
+                <p class="text-muted">
+                  <strong>Date :</strong> {{ infoContrat.date }}
+                </p>
+                <p><strong>Signature :</strong> ______________________</p>
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+        <mat-tab>
+          <ng-template mat-tab-label>Paiement</ng-template>
+          <!-- Formulaire de paiement -->
+          <div class="row">
+            <div class="col">
+              <mat-card>
+                <mat-card-header>
+                  <mat-card-title>Rechercher </mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                  <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Rechercher...</mat-label>
+                    <input matInput (keyup)="applyFilter($event)"
+                      placeholder="Rechercher" #input>
+                  </mat-form-field>
+                  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="width: 100%;"id="maTable">
+                    <!-- ID Column -->
+                    <ng-container matColumnDef="id">
+                      <th mat-header-cell *matHeaderCellDef>#</th>
+                      <td mat-cell *matCellDef="let i=index">{{ i+1 }}</td>
+                    </ng-container>
+
+
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="montant">
+                      <th mat-header-cell *matHeaderCellDef>Montant</th>
+                      <td mat-cell *matCellDef="let element">{{ element.montant }} GNF</td>
+                    </ng-container>
+
+                    <!-- Status Column -->
+                    <ng-container matColumnDef="mode_paiement">
+                      <th mat-header-cell *matHeaderCellDef>Mode Paiement</th>
+                      <td mat-cell *matCellDef="let element">
+                        <span >{{ element.mode_paiement }}</span>
+                      </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="date_debut">
+                      <th mat-header-cell *matHeaderCellDef>Date Debut</th>
+                      <td mat-cell *matCellDef="let element">
+                        <span >{{ element.date_debut }}</span>
+                      </td>
+                    </ng-container>
+
+                    <!-- Date Column -->
+                    <ng-container matColumnDef="date_fin">
+                      <th mat-header-cell *matHeaderCellDef>Date Fin</th>
+                      <td mat-cell *matCellDef="let element">{{ element.date_fin }}</td>
+                    </ng-container>
+
+
+
+                    <!-- Action Column -->
+                    <ng-container matColumnDef="action">
+                      <th mat-header-cell *matHeaderCellDef class="text-center">Action</th>
+                      <td mat-cell *matCellDef="let element" class="text-center">
+                        <button mat-icon-button color="primary" routerLink="">
+                          <mat-icon >edit</mat-icon>
+                        </button>
+                        <button mat-icon-button color="warn" (click)="deleteFunction(element.id ,'paiements')">
+                          <mat-icon>delete</mat-icon>
+                        </button>
+                      </td>
+                    </ng-container>
+
+                    <!-- Header and Row Declarations -->
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                  </table>
+                    <!-- Paginator -->
+                    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+                </mat-card-content>
+              </mat-card>
+            </div>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
     </div>
   </div>
 </div>

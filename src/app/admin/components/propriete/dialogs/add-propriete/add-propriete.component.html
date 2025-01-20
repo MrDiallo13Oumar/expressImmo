@@ -1,104 +1,97 @@
 <div class="card">
   <div class="card-body">
     <div class="card-title text-center">
-      <h4>Ajouter une Propriete</h4>
+      <h4>Ajouter une Propriété</h4>
     </div>
     <form [formGroup]="Propriete">
+      <!-- Section: Sélection du quartier et type de propriété -->
       <div class="row">
         <div class="col-md-6 mb-3">
-          <label for="type">Choisir Le Quartier</label>
+          <label for="quartier_id">Choisir Le Quartier</label>
           <select
-            class="form-select"
+            class="form-select form-select-lg"
             id="quartier_id"
-            required
             formControlName="quartier_id"
-            placeholder="quartier"
+            aria-label="Sélectionnez un quartier"
+            aria-required="true"
           >
-            <option selected disabled>-- Liste G&#233;n&#233;rale --</option>
-            <option
-              *ngFor="let quartier of Quartier"
-              [value]="quartier.id"
-            >
+            <option value="" disabled selected>-- Liste Générale --</option>
+            <option *ngFor="let quartier of Quartier" [value]="quartier.id">
               {{ quartier.libelle }}
             </option>
           </select>
         </div>
         <div class="col-md-6 mb-3">
-          <label for="type">Choisir Le Type de Propriete </label>
+          <label for="typepropriete_id">Choisir Le Type de Propriété</label>
           <select
-          class="form-select"
-          id="typepropriete_id"
-          required
-          formControlName="typepropriete_id"
-          placeholder="type de Propriete"
-        >
-          <option selected disabled>-- Liste G&#233;n&#233;rale --</option>
-          <option
-            *ngFor="let typePropriete of typePropriete"
-            [value]="typePropriete.id"
+            class="form-select form-select-lg"
+            id="typepropriete_id"
+            formControlName="typepropriete_id"
+            aria-label="Sélectionnez un type de propriété"
+            aria-required="true"
           >
-            {{ typePropriete.libelle }}
-          </option>
-        </select>
+            <option value="" disabled selected>-- Liste Générale --</option>
+            <option *ngFor="let typePropriete of typePropriete" [value]="typePropriete.id">
+              {{ typePropriete.libelle }}
+            </option>
+          </select>
         </div>
       </div>
 
+      <!-- Section: Référence et Partenaire -->
       <div class="row">
         <div class="col-md-6 mb-3">
-          <label for="reference">Reference</label>
+          <label for="reference">Référence</label>
           <input
             type="text"
             class="form-control form-control-lg"
-            formControlName="reference"
             id="reference"
-            placeholder="Enter la reference"
+            formControlName="reference"
+            placeholder="Entrez la référence"
           />
         </div>
-
         <div class="col-md-6 mb-3">
-          <label for="type">Choisir Le partenaire</label>
+          <label for="partenaire_id">Choisir Le Partenaire</label>
           <select
-            class="form-select"
+            class="form-select form-select-lg"
             id="partenaire_id"
-            required
             formControlName="partenaire_id"
-            placeholder="partenaire"
+            aria-label="Sélectionnez un partenaire"
+            aria-required="true"
           >
-            <option selected disabled>-- Liste G&#233;n&#233;rale --</option>
-            <option
-              *ngFor="let partenaire of Partenaire"
-              [value]="partenaire.id"
-            >
+            <option value="" disabled selected>-- Liste Générale --</option>
+            <option *ngFor="let partenaire of Partenaire" [value]="partenaire.id">
               {{ partenaire.libelle }}
             </option>
           </select>
         </div>
       </div>
 
+      <!-- Section: Adresse et État -->
       <div class="row">
         <div class="col-md-6 mb-3">
           <label for="adresse">Adresse</label>
           <input
             type="text"
             class="form-control form-control-lg"
-            formControlName="adresse"
             id="adresse"
-            placeholder="Enter l' adresse"
+            formControlName="adresse"
+            placeholder="Entrez l'adresse"
           />
         </div>
-        <div class=" col-md-6 mb-3">
-          <label for="etat">Etat</label>
+        <div class="col-md-6 mb-3">
+          <label for="etat">État</label>
           <input
             type="text"
             class="form-control form-control-lg"
-            formControlName="etat"
             id="etat"
-            placeholder="Enter l'etat"
+            formControlName="etat"
+            placeholder="Entrez l'état"
           />
         </div>
-
       </div>
 
+      <!-- Section: Prix -->
       <div class="row">
         <div class="col-md-6 mb-3">
           <label for="prix_journalier">Prix Journalier</label>
@@ -107,34 +100,35 @@
             class="form-control form-control-lg"
             id="prix_journalier"
             formControlName="prix_journalier"
-            placeholder="Enter le Prix Journalier"
+            placeholder="Entrez le prix journalier"
           />
         </div>
-
         <div class="col-md-6 mb-3">
-          <label for="prix_mensuel">Prix mensuek</label>
+          <label for="prix_mensuel">Prix Mensuel</label>
           <input
             type="number"
             class="form-control form-control-lg"
             id="prix_mensuel"
             formControlName="prix_mensuel"
-            placeholder="Enter prix mensuel"
+            placeholder="Entrez le prix mensuel"
           />
         </div>
       </div>
-      <div class=" mb-3">
+
+      <!-- Section: Description -->
+      <div class="mb-3">
         <label for="descriptions">Description</label>
         <textarea
-
           class="form-control form-control-lg"
-          formControlName="descriptions"
           id="descriptions"
-          placeholder="Enter la description"
-        > </textarea>
+          formControlName="descriptions"
+          placeholder="Entrez une description"
+        ></textarea>
       </div>
-
     </form>
   </div>
+
+  <!-- Section: Boutons d'action -->
   <div class="card-footer">
     <div class="d-flex justify-content-between">
       <button

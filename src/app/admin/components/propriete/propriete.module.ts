@@ -7,6 +7,7 @@ import { AddProprieteComponent } from './dialogs/add-propriete/add-propriete.com
 import { DemoMaterialModule } from 'src/app/demo-material-module';
 import { DetailsProprieteComponent } from './_component/details-propriete/details-propriete.component';
 import { AddTypeProprieteComponent } from './dialogs/add-type-propriete/add-type-propriete.component';
+import { TruncatePipe } from '../../../truncate.pipe';
 
 
 
@@ -15,7 +16,8 @@ import { AddTypeProprieteComponent } from './dialogs/add-type-propriete/add-type
     ListProprieteComponent,
     AddProprieteComponent,
     DetailsProprieteComponent,
-    AddTypeProprieteComponent
+    AddTypeProprieteComponent,
+    TruncatePipe
   ],
   imports: [
     CommonModule,
