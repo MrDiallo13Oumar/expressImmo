@@ -29,17 +29,28 @@ displayedColumns: string[] = ['id', 'montant', 'type_transaction', 'created_at',
 ngAfterViewInit () {
   this.dataSource.paginator = this.paginator
   this.dataSource.sort = this.sort
+  this.dataSource2.paginator = this.paginator
+  this.dataSource2.sort = this.sort
 }
 applyFilter (event: Event) {
  const filterValue = (event.target as HTMLInputElement).value
  this.dataSource.filter = filterValue.trim().toLowerCase()
+ this.dataSource2.filter = filterValue.trim().toLowerCase()
 
  if (this.dataSource.paginator) {
    this.dataSource.paginator.firstPage()
  }
+ if (this.dataSource2.paginator) {
+   this.dataSource2.paginator.firstPage()
+ }
 }
+displayedColumns2 : string[] = ['id', 'montant','mode_paiement','date_debut', 'date_fin',  'action'];
+  dataSource2 = new MatTableDataSource([]);
+
+
 ngOnInit() {
-  this.getOperation()
+  this.getOperation(),
+  this.getPaiement()
  }
  infoCaisse: any;
 
@@ -57,6 +68,17 @@ getOperation () {
      }
    })
  }
+   getPaiement () {
+     this.service.getall('paiement', 'readAll.php').subscribe({
+       next: (reponse: any) => {
+          console.log('REPONSE SUCCESS : ', reponse)
+         this.dataSource2.data = reponse
+       },
+       error: (err: any) => {
+         console.log('REPONSE ERROR : ', err)
+       }
+     })
+   }
 
   openDialog() {
     this.dialog.open(AddOperationComponent, {

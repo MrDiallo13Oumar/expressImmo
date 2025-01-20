@@ -60,82 +60,162 @@
     </div>
     <div class="row">
       <div class="col">
-        <mat-card>
-          <mat-card-header>
-            <mat-card-title>Listes Des Operations</mat-card-title>
-          </mat-card-header>
-          <mat-card-content>
-            <mat-form-field class="w-100" appearance="outline">
-              <mat-label>Rechercher...</mat-label>
-              <input matInput (keyup)="applyFilter($event)"
-                placeholder="Rechercher" #input>
-            </mat-form-field>
-            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="width: 100%;"id="maTable">
-              <!-- ID Column -->
-              <ng-container matColumnDef="id">
-                <th mat-header-cell *matHeaderCellDef>#</th>
-                <td mat-cell *matCellDef="let i=index">{{i+1 }}</td>
-              </ng-container>
-                <!-- montant Column -->
-                <ng-container matColumnDef="montant">
-                  <th mat-header-cell *matHeaderCellDef>montant</th>
-                  <td mat-cell *matCellDef="let element" >
-                    {{ element.montant }} GNF
-                  </td>
-                </ng-container>
-              <!-- type_transaction Column -->
-              <ng-container matColumnDef="type_transaction">
-                <th mat-header-cell *matHeaderCellDef>Type De Transaction</th>
-                <td
-                  mat-cell
-                  *matCellDef="let element"
-                  [ngClass]="{
-                    'text-success': element.type_transaction === 'encaissement',
-                    'text-danger': element.type_transaction === 'decaissement'
-                  }"
-                >
-                 <strong> {{ element.type_transaction }}</strong>
-                </td>
-              </ng-container>
+        <mat-tab-group>
+          <mat-tab>
+            <ng-template mat-tab-label > Liste Des Operatios </ng-template>
+            <mat-card>
+              <mat-card-header>
+              </mat-card-header>
+              <mat-card-content>
+                <mat-form-field class="w-100" appearance="outline">
+                  <mat-label>Rechercher...</mat-label>
+                  <input matInput (keyup)="applyFilter($event)"
+                    placeholder="Rechercher" #input>
+                </mat-form-field>
+                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="width: 100%;"id="maTable">
+                  <!-- ID Column -->
+                  <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef>#</th>
+                    <td mat-cell *matCellDef="let i=index">{{i+1 }}</td>
+                  </ng-container>
+                    <!-- montant Column -->
+                    <ng-container matColumnDef="montant">
+                      <th mat-header-cell *matHeaderCellDef>montant</th>
+                      <td mat-cell *matCellDef="let element" >
+                        {{ element.montant }} GNF
+                      </td>
+                    </ng-container>
+                  <!-- type_transaction Column -->
+                  <ng-container matColumnDef="type_transaction">
+                    <th mat-header-cell *matHeaderCellDef>Type De Transaction</th>
+                    <td
+                      mat-cell
+                      *matCellDef="let element"
+                      [ngClass]="{
+                        'text-success': element.type_transaction === 'encaissement',
+                        'text-danger': element.type_transaction === 'decaissement'
+                      }"
+                    >
+                     <strong> {{ element.type_transaction }}</strong>
+                    </td>
+                  </ng-container>
 
 
-              <!-- descriptions Column -->
-              <ng-container matColumnDef="descriptions">
-                <th mat-header-cell *matHeaderCellDef>Motif</th>
-                <td mat-cell *matCellDef="let element">
-                  <span >{{ element.descriptions }}</span>
-                </td>
-              </ng-container>
+                  <!-- descriptions Column -->
+                  <ng-container matColumnDef="descriptions">
+                    <th mat-header-cell *matHeaderCellDef>Motif</th>
+                    <td mat-cell *matCellDef="let element">
+                      <span >{{ element.descriptions }}</span>
+                    </td>
+                  </ng-container>
 
-              <!-- created_at Column -->
-              <ng-container matColumnDef="created_at">
-                <th mat-header-cell *matHeaderCellDef>Date De Transaction</th>
-                <td mat-cell *matCellDef="let element">{{ element.created_at }}</td>
-              </ng-container>
+                  <!-- created_at Column -->
+                  <ng-container matColumnDef="created_at">
+                    <th mat-header-cell *matHeaderCellDef>Date De Transaction</th>
+                    <td mat-cell *matCellDef="let element">{{ element.created_at }}</td>
+                  </ng-container>
 
 
 
-              <!-- Action Column -->
-              <ng-container matColumnDef="action">
-                <th mat-header-cell *matHeaderCellDef class="text-center">Action</th>
-                <td mat-cell *matCellDef="let element" class="text-center">
-                  <a mat-icon-button color="primary" >
-                    <mat-icon>edit</mat-icon>
-                  </a>
-                  <button mat-icon-button color="warn"  (click)="deleteFunction(element.id ,'caisse')">
-                    <mat-icon>delete</mat-icon>
-                  </button>
-                </td>
-              </ng-container>
+                  <!-- Action Column -->
+                  <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef class="text-center">Action</th>
+                    <td mat-cell *matCellDef="let element" class="text-center">
+                      <a mat-icon-button color="primary" >
+                        <mat-icon>edit</mat-icon>
+                      </a>
+                      <button mat-icon-button color="warn"  (click)="deleteFunction(element.id ,'caisse')">
+                        <mat-icon>delete</mat-icon>
+                      </button>
+                    </td>
+                  </ng-container>
 
-              <!-- Header and Row Declarations -->
-              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-            </table>
-              <!-- Paginator -->
-              <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
-          </mat-card-content>
-        </mat-card>
+                  <!-- Header and Row Declarations -->
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+                  <!-- Paginator -->
+                  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+              </mat-card-content>
+            </mat-card>
+
+          </mat-tab>
+          <mat-tab>
+            <ng-template mat-tab-label > Liste Des Paiments </ng-template>
+            <div class="row">
+              <div class="col">
+                <mat-card>
+                  <mat-card-header>
+
+                  </mat-card-header>
+                  <mat-card-content>
+                    <mat-form-field class="w-100" appearance="outline">
+                      <mat-label>Rechercher...</mat-label>
+                      <input matInput (keyup)="applyFilter($event)"
+                        placeholder="Rechercher" #input>
+                    </mat-form-field>
+                    <table mat-table [dataSource]="dataSource2" class="mat-elevation-z8" style="width: 100%;"id="maTable">
+                      <!-- ID Column -->
+                      <ng-container matColumnDef="id">
+                        <th mat-header-cell *matHeaderCellDef>#</th>
+                        <td mat-cell *matCellDef="let i=index">{{ i+1 }}</td>
+                      </ng-container>
+
+
+                      <!-- Name Column -->
+                      <ng-container matColumnDef="montant">
+                        <th mat-header-cell *matHeaderCellDef>Montant</th>
+                        <td mat-cell *matCellDef="let element">{{ element.montant }} GNF</td>
+                      </ng-container>
+
+                      <!-- Status Column -->
+                      <ng-container matColumnDef="mode_paiement">
+                        <th mat-header-cell *matHeaderCellDef>Mode Paiement</th>
+                        <td mat-cell *matCellDef="let element">
+                          <span >{{ element.mode_paiement }}</span>
+                        </td>
+                      </ng-container>
+
+                      <ng-container matColumnDef="date_debut">
+                        <th mat-header-cell *matHeaderCellDef>Date Debut</th>
+                        <td mat-cell *matCellDef="let element">
+                          <span >{{ element.date_debut }}</span>
+                        </td>
+                      </ng-container>
+
+                      <!-- Date Column -->
+                      <ng-container matColumnDef="date_fin">
+                        <th mat-header-cell *matHeaderCellDef>Date Fin</th>
+                        <td mat-cell *matCellDef="let element">{{ element.date_fin }}</td>
+                      </ng-container>
+
+
+
+                      <!-- Action Column -->
+                      <ng-container matColumnDef="action">
+                        <th mat-header-cell *matHeaderCellDef class="text-center">Action</th>
+                        <td mat-cell *matCellDef="let element" class="text-center">
+                          <button mat-icon-button color="primary" routerLink="/operation/detail-paiement/{{element.id}}">
+                            <mat-icon >edit</mat-icon>
+                          </button>
+                          <button mat-icon-button color="warn" (click)="deleteFunction(element.id ,'paiements')">
+                            <mat-icon>delete</mat-icon>
+                          </button>
+                        </td>
+                      </ng-container>
+
+                      <!-- Header and Row Declarations -->
+                      <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+                      <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+                    </table>
+                      <!-- Paginator -->
+                      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+                  </mat-card-content>
+                </mat-card>
+              </div>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
       </div>
     </div>
   </div>
