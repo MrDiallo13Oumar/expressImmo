@@ -28,3 +28,43 @@
     text-transform: uppercase; /* Texte en majuscules */
     margin-top: 20px; /* Ajoutez de l'espace avant cette section */
 }
+.nk-sidebar {
+  width: 250px;
+  transition: width 0.3s ease;
+  color: #fff;
+  position: fixed;
+  height: 100vh;
+
+}
+
+// .nk-sidebar.collapsed {
+//   width: 60px;
+// }
+
+
+// .nk-nav-scroll ul {
+//   padding: 0;
+//   list-style: none;
+// }
+
+// .nk-sidebar .toggle-button {
+//   display: none;
+//   position: absolute;
+//   top: 10px;
+//   left: 10px;
+//   background: #333;
+//   color: #fff;
+//   border: none;
+//   padding: 5px 10px;
+//   cursor: pointer;
+// }
+
+@media screen and (max-width: 768px) {
+  .nk-sidebar {
+    width: 60px;
+  }
+
+  .nk-sidebar .toggle-button {
+    display: block;
+  }
+}

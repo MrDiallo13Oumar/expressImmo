@@ -1,0 +1,68 @@
+<div class="card-footer py-4 px-5">
+  <div>
+    <h5 class="text-primary mb-4 text-center">
+      <i class="fas fa-credit-card me-2"></i>Paiement
+    </h5>
+    <form [formGroup]="Paiement" class="text-center">
+      <!-- Montant -->
+      <div class="mb-4">
+        <label for="montant" class="form-label fw-bold">Montant (GNF)</label>
+        <input
+          type="number"
+          id="montant"
+          class="form-control form-control-lg text-center"
+          formControlName="montant"
+          placeholder="Saisissez le montant"
+          required
+        />
+      </div>
+
+      <!-- Mode de Paiement -->
+      <div class="mb-4">
+        <label for="mode_paiement" class="form-label fw-bold">Mode de Paiement</label>
+        <select
+          class="form-select form-select-lg text-center"
+          id="mode_paiement"
+          formControlName="mode_paiement"
+        >
+          <option value="" disabled selected>Sélectionnez un mode</option>
+          <option value="carte bancaire">Carte Bancaire</option>
+          <option value="virement">Virement</option>
+          <option value="espèces">Espèces</option>
+        </select>
+      </div>
+
+      <!-- Date de début -->
+      <div class="mb-4">
+        <label for="date_debut" class="form-label fw-bold">Date de début</label>
+        <input
+          type="date"
+          id="date_debut"
+          class="form-control form-control-lg text-center"
+          formControlName="date_debut"
+          required
+        />
+      </div>
+
+      <!-- Date de fin -->
+      <div class="mb-4">
+        <label for="date_fin" class="form-label fw-bold">Date de fin</label>
+        <input
+          type="date"
+          id="date_fin"
+          class="form-control form-control-lg text-center"
+          formControlName="date_fin"
+          required
+        />
+      </div>
+
+      <!-- Bouton de soumission -->
+      <button
+        class="btn btn-success btn-lg w-100 fw-bold"
+        (click)="saveDataPaiement()"
+      >
+        Valider
+      </button>
+    </form>
+  </div>
+</div>

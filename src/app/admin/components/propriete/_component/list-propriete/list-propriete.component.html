@@ -56,7 +56,7 @@
                <ng-container matColumnDef="descriptions">
                 <th mat-header-cell *matHeaderCellDef>Description</th>
                 <td mat-cell *matCellDef="let element">
-                  <span >{{ element.descriptions }}</span>
+                  <span >{{ element.descriptions | truncate:20 }}</span>
                 </td>
               </ng-container>
               <!-- Date Column -->

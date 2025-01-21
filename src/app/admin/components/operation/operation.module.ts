@@ -5,13 +5,15 @@ import { ListOperationComponent } from './components/list-operation/list-operati
 import { DemoMaterialModule } from 'src/app/demo-material-module';
 import { RouterModule } from '@angular/router';
 import { operationRouting } from './operation.routing';
+import { DetailPaiementComponent } from './detail-paiement/detail-paiement.component';
 
 
 
 @NgModule({
   declarations: [
     AddOperationComponent,
-    ListOperationComponent
+    ListOperationComponent,
+    DetailPaiementComponent
   ],
   imports: [
     CommonModule,

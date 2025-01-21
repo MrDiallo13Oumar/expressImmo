@@ -1,0 +1,30 @@
+.nav-header {
+  position: fixed;
+  // top: 0;
+  // width: 100%;
+  // z-index: 1020;
+  // color: #fff;
+  // padding: 10px 20px;
+
+}
+
+// .header {
+//   position: fixed;
+//   top: 50px;
+//   width: 100%;
+//   z-index: 1010;
+//   background-color: #f8f9fa;
+//   color: #333;
+//   padding: 10px 20px;
+
+// }
+
+body {
+  padding-top: 110px;
+}
+
+.nav-header .brand-logo h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+}

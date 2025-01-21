@@ -1,89 +1,76 @@
 <div class="content-body">
   <div class="container-fluid">
+    <!-- Header Card -->
     <div class="card col rounded p-3 mt-3 shadow-sm border-0">
       <div class="card-body d-flex align-items-center justify-content-between">
-        <h4 class="card-title mb-0 text-primary">Détails Reservation</h4>
+        <h4 class="card-title mb-0 text-primary">Détails de la Réservation</h4>
       </div>
     </div>
+
     <div class="row">
+      <!-- Left Column -->
       <div class="col-lg-6 col-xl-4">
         <div class="card shadow-sm border-0">
           <div class="card-body text-center">
             <img
               class="rounded-circle mb-3"
               src="assets/admin/images/avatar/11.png"
-              width="80"
-              height="80"
+              width="100"
+              height="100"
               alt="Avatar"
             />
             <h3 class="mb-1">
-              <span>
-                {{ infoReservation.nom }} {{ infoReservation.prenom }}</span
-              >
+              <span>{{ infoReservation.nom }} {{ infoReservation.prenom }}</span>
             </h3>
             <p class="text-muted">{{ infoReservation.propriete?.adresse }}</p>
 
-            <div class="d-flex justify-content-between my-4">
-              <div class="text-center">
-                <a
-                  href="tel:{{ infoReservation.telephone }}"
-                  data-mdb-button-init
-                  data-mdb-ripple-init
-                  class="btn btn-success"
-                  >Appelez</a
-                >
-              </div>
-              <div class="text-center">
-                <a
-                  href="mailto:{{ infoReservation.email }}"
-                  data-mdb-button-init
-                  data-mdb-ripple-init
-                  class="btn btn-outline-primary ms-1"
-                  >Message</a
-                >
-              </div>
+            <div class="d-flex justify-content-center gap-3 my-4">
+              <a href="tel:{{ infoReservation.telephone }}" class="btn btn-success btn-rounded">
+                <i class="fas fa-phone-alt"></i> Appelez
+              </a>
+              <a href="mailto:{{ infoReservation.email }}" class="btn btn-outline-primary btn-rounded">
+                <i class="fas fa-envelope"></i> Message
+              </a>
             </div>
           </div>
-          <ul class="list-unstyled mt-1 custom-list mb-2">
-            <li>
-              <strong
-                >Nom : <span>{{ infoReservation.nom }}</span></strong
-              >
-            </li>
-            <li>
-              <strong
-                >Prénom : <span>{{ infoReservation.prenom }}</span></strong
-              >
-            </li>
-            <li>
-              <strong
-                >Prix Journalier :
-                <span>{{ infoReservation.propriete?.prix_journalier }}</span></strong
-              >
-            </li>
-            <li>
-              <strong
-                >Propriete Reserver :
-                <span>{{ infoReservation.propriete?.reference }}</span></strong
-              >
-            </li>
 
-          </ul>
+          <div class="p-3 bg-light">
+            <h5 class="text-secondary mb-3"><i class="fas fa-user"></i> Informations Personnelles</h5>
+            <ul class="list-unstyled">
+              <li class="mb-2">
+                <i class="fas fa-id-card text-primary me-2"></i>
+                <strong>Nom :</strong> {{ infoReservation.nom }}  {{ infoReservation.prenom }}
+              </li>
+              <li class="mb-2">
+                <i class="fas fa-id-card-alt text-primary me-2"></i>
+                <strong>Propriete Reserver :</strong> {{ infoReservation.propriete?.reference }}
+              </li>
+              <li class="mb-2">
+                <i class="fas fa-money-bill-wave text-success me-2"></i>
+                <strong>Prix Journalier :</strong> {{ infoReservation.propriete?.prix_journalier }} GNF
+              </li>
+              <li class="mb-2">
+                <i class="fas fa-home text-info me-2"></i>
+                <strong>Propriété Réservée :</strong> {{ infoReservation.propriete?.reference }}
+              </li>
+            </ul>
+          </div>
         </div>
-
-
       </div>
+
+      <!-- Right Column -->
       <div class="col-lg-6 col-xl-8">
         <div class="card shadow-sm border-0">
           <div class="card-body">
-            <!-- Ajouter des contenus si nécessaire -->
+            <!-- Ajouter des contenus supplémentaires ici si nécessaire -->
+            <p class="text-center text-muted">Détails supplémentaires ou espace pour des informations additionnelles.</p>
           </div>
           <div class="card-footer bg-light d-flex justify-content-between">
-            <button type="submit" class="btn btn-danger btn-lg btn-rounded">
-              annuler
+            <button type="button" class="btn btn-danger btn-lg btn-rounded">
+              <i class="fas fa-times-circle"></i> Annuler
             </button>
-            <button type="submit" class="btn btn-primary btn-lg btn-rounded">
-              Confirmer
+            <button type="button" class="btn btn-primary btn-lg btn-rounded" (click)="creerContrat()">
+              <i class="fas fa-check-circle"></i> Confirmer
             </button>
           </div>
         </div>

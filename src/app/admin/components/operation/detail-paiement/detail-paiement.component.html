@@ -1,0 +1,100 @@
+<div class="content-body">
+  <div class="container-fluid">
+    <div class="card shadow-lg">
+      <!-- En-tête -->
+      <div class="card-header text-white bg-primary text-center py-4">
+        <h2 class="mb-0" style="font-size: 2rem">Facture de Paiement</h2>
+      </div>
+
+      <!-- Corps de la facture -->
+      <div class="card-body" style="font-size: 1.1rem;text-align: center;">
+        <!-- Informations locataire -->
+        <div class="mb-4">
+          <h5 class="text-secondary mb-3">
+            <i class="fas fa-user"></i> Locataire
+          </h5>
+          <p>
+            <strong>Nom :</strong> {{ infoPaiement.reservations?.nom }}
+            {{ infoPaiement.reservations?.prenom }}
+          </p>
+          <p>
+            <strong>Téléphone :</strong>
+            {{ infoPaiement.reservations?.telephone }}
+          </p>
+        </div>
+
+        <!-- Informations propriété -->
+        <div class="mb-4">
+          <h5 class="text-secondary mb-3">
+            <i class="fas fa-home"></i> Propriété
+          </h5>
+          <p>
+            <strong>Adresse :</strong>
+            {{ infoPaiement.proprietes?.adresse }}
+          </p>
+          <p>
+            <strong>Description :</strong>
+            {{ infoPaiement.proprietes?.descriptions }}
+          </p>
+          <p>
+            <strong>État :</strong>
+            {{ infoPaiement.proprietes?.etat }}
+          </p>
+        </div>
+
+        <!-- Détails du paiement -->
+        <div class="mb-4">
+          <h5 class="text-secondary mb-3">
+            <i class="fas fa-money-bill"></i> Détails du Paiement
+          </h5>
+          <p>
+            <strong>Montant :</strong>
+            <span class="text-success">{{ infoPaiement.montant }} GNF</span>
+          </p>
+          <p>
+            <strong>Mode de Paiement :</strong>
+            {{ infoPaiement.mode_paiement }}
+          </p>
+          <p>
+            <strong>Statut :</strong>
+            <span class="badge bg-warning text-dark">{{
+              infoPaiement.statut
+            }}</span>
+          </p>
+        </div>
+
+        <!-- Informations du partenaire -->
+        <div class="mb-4">
+          <h5 class="text-secondary mb-3">
+            <i class="fas fa-handshake"></i> Partenaire
+          </h5>
+          <p>
+            <strong>Nom :</strong>
+            {{ infoPaiement.partenaires?.libelle }}
+          </p>
+          <p>
+            <strong>Téléphone :</strong>
+            {{ infoPaiement.partenaires?.telephone }}
+          </p>
+          <p>
+            <strong>Email :</strong>
+            {{ infoPaiement.partenaires?.email }}
+          </p>
+          <p>
+            <strong>Adresse :</strong>
+            {{ infoPaiement.partenaires?.adresse }}
+          </p>
+        </div>
+
+        <!-- Signature et Date -->
+        <div class="mt-4">
+          <p class="text-muted">
+            <strong>Date :</strong>
+            {{ infoPaiement.date_debut | date : "dd/MM/yyyy" }}
+          </p>
+          <p><strong>Signature :</strong> ______________________</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

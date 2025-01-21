@@ -5,99 +5,107 @@
         <h4 class="card-title mb-0">Détails D'un Partenaire</h4>
       </div>
     </div>
-    <div class="row">
-      <div class="col-lg-4 col-xl-3">
-        <div class="card">
-          <div class="card-body">
-            <div class="media align-items-center mb-4">
-              <img class="mr-3" src="assets/admin/images/avatar/11.png" width="80" height="80" alt="Propriétaire">
-              <div class="media-body">
-                <h4 class="mb-0"> {{infoPartenaire.libelle}} <br>
-                  </h4>
+   <mat-tab-group>
+    <mat-tab>
+      <ng-template mat-tab-label> Details Partenaire</ng-template>
+      <div class="row">
+        <div class="col-lg-4 col-xl-3">
+          <div class="card">
+            <div class="card-body">
+              <div class="media align-items-center mb-4">
+                <img class="mr-3" src="assets/admin/images/avatar/11.png" width="80" height="80" alt="Propriétaire">
+                <div class="media-body">
+                  <h4 class="mb-0"> {{infoPartenaire.libelle}} <br>
+                    </h4>
 
-              </div>
-            </div>
-            <ul class=" list-unstyled custom-list">
-              <li ><strong > <i class="fa fa-phone"></i> <span>{{infoPartenaire.telephone}}</span></strong></li>
-              <li><strong ><i class="fa fa-envelope"> </i> <span>{{infoPartenaire.email}}</span> </strong> </li>
-              <li ><strong > <i class="fa fa-map-marker"></i>  <span>{{infoPartenaire.adresse}}</span></strong></li>
-
-
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-8 col-xl-9">
-        <div class="card">
-          <div class="card-body">
-            <form [formGroup]="Partenaire">
-             <div class="row">
-              <div class=" mb-3">
-                <label for="libelle">Libelle</label>
-                <input type="text" class="form-control form-control-lg" [value]="infoPartenaire.libelle" formControlName="libelle"  />
-              </div>
-
-             </div>
-
-            <div class="row">
-              <div class="col-md-6 mb-3">
-                <label for="adresse">Adresse</label>
-                <input type="text" class="form-control form-control-lg" [value]="infoPartenaire.adresse" formControlName="adresse" />
-              </div>
-                <div class="col-md-6 mb-3">
-                  <label for="email">email</label>
-                  <input type="email" class="form-control form-control-lg" [value]="infoPartenaire.email" formControlName="email"  />
                 </div>
+              </div>
+              <ul class=" list-unstyled custom-list">
+                <li ><strong > <i class="fa fa-phone"></i> <span>{{infoPartenaire.telephone}}</span></strong></li>
+                <li><strong ><i class="fa fa-envelope"> </i> <span>{{infoPartenaire.email}}</span> </strong> </li>
+                <li ><strong > <i class="fa fa-map-marker"></i>  <span>{{infoPartenaire.adresse}}</span></strong></li>
+
+
+              </ul>
             </div>
-              <div class=" mb-3">
-                <label for="adresse">telephone</label>
-                <input type="text" class="form-control form-control-lg" [value]="infoPartenaire.telephone" formControlName="telephone"   />
-              </div>
-
-              <div class="text-center">
-                <button type="submit" class="btn btn-rounded btn-primary btn-lg mt-3"(click)="confirmEditing(Partenaire)" >Modifier</button>
-
-              </div>
-            </form>
           </div>
         </div>
 
-        <div class="card">
-          <div class="card-body">
-            <h4>Détails Complémentaires</h4>
-            <div class="row mt-3">
-              <div class="col-md-3">
-                <img src="assets/sites/img/room-1.jpg" class="img-fluid rounded" alt="Photo 1">
+        <div class="col-lg-8 col-xl-9">
+          <div class="card">
+            <div class="card-body">
+              <form [formGroup]="Partenaire">
+               <div class="row">
+                <div class=" mb-3">
+                  <label for="libelle">Libelle</label>
+                  <input type="text" class="form-control form-control-lg" [value]="infoPartenaire.libelle" formControlName="libelle"  />
+                </div>
+
+               </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="adresse">Adresse</label>
+                  <input type="text" class="form-control form-control-lg" [value]="infoPartenaire.adresse" formControlName="adresse" />
+                </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="email">email</label>
+                    <input type="email" class="form-control form-control-lg" [value]="infoPartenaire.email" formControlName="email"  />
+                  </div>
               </div>
-              <div class="col-md-3">
-                <img src="assets/sites/img/room-2.jpg" class="img-fluid rounded" alt="Photo 2">
-              </div>
-              <div class="col-md-3">
-                <img src="assets/sites/img/room-3.jpg" class="img-fluid rounded" alt="Photo 3">
-              </div>
-              <div class="col-md-3">
-                <img src="assets/sites/img/room-1.jpg" class="img-fluid rounded" alt="Photo 4">
-              </div>
+                <div class=" mb-3">
+                  <label for="adresse">telephone</label>
+                  <input type="text" class="form-control form-control-lg" [value]="infoPartenaire.telephone" formControlName="telephone"   />
+                </div>
+
+                <div class="text-center">
+                  <button type="submit" class="btn btn-rounded btn-primary btn-lg mt-3"(click)="confirmEditing(Partenaire)" >Modifier</button>
+
+                </div>
+              </form>
             </div>
-            <div class="row mt-3">
-              <div class="col-md-3">
-                <img src="assets/sites/img/room-1.jpg" class="img-fluid rounded" alt="Photo 1">
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <h4>Détails Complémentaires</h4>
+              <div class="row mt-3">
+                <div class="col-md-3">
+                  <img src="assets/sites/img/room-1.jpg" class="img-fluid rounded" alt="Photo 1">
+                </div>
+                <div class="col-md-3">
+                  <img src="assets/sites/img/room-2.jpg" class="img-fluid rounded" alt="Photo 2">
+                </div>
+                <div class="col-md-3">
+                  <img src="assets/sites/img/room-3.jpg" class="img-fluid rounded" alt="Photo 3">
+                </div>
+                <div class="col-md-3">
+                  <img src="assets/sites/img/room-1.jpg" class="img-fluid rounded" alt="Photo 4">
+                </div>
               </div>
-              <div class="col-md-3">
-                <img src="assets/sites/img/room-2.jpg" class="img-fluid rounded" alt="Photo 2">
-              </div>
-              <div class="col-md-3">
-                <img src="assets/sites/img/room-3.jpg" class="img-fluid rounded" alt="Photo 3">
-              </div>
-              <div class="col-md-3">
-                <img src="assets/sites/img/room-1.jpg" class="img-fluid rounded" alt="Photo 4">
+              <div class="row mt-3">
+                <div class="col-md-3">
+                  <img src="assets/sites/img/room-1.jpg" class="img-fluid rounded" alt="Photo 1">
+                </div>
+                <div class="col-md-3">
+                  <img src="assets/sites/img/room-2.jpg" class="img-fluid rounded" alt="Photo 2">
+                </div>
+                <div class="col-md-3">
+                  <img src="assets/sites/img/room-3.jpg" class="img-fluid rounded" alt="Photo 3">
+                </div>
+                <div class="col-md-3">
+                  <img src="assets/sites/img/room-1.jpg" class="img-fluid rounded" alt="Photo 4">
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label>Stats Partenaire</ng-template>
+    </mat-tab>
+   </mat-tab-group>
   </div>
   <!-- #/ container -->
 </div>

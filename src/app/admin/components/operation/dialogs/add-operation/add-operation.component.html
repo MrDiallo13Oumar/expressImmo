@@ -4,33 +4,36 @@
     <div class="card-title">
       <h4>Add New Item</h4>
     </div>
-    <form>
-      <div class="form-group mb-3">
-        <label for="itemName">Name</label>
-        <input type="text" class="form-control form-control-lg" id="itemName" placeholder="Enter item name" />
-      </div>
+    <form [formGroup]="Operation"  >
+
 
       <div class="form-group mb-3">
-        <label for="itemStatus">Status</label>
-        <select class="form-control form-control-lg" id="itemStatus">
-          <option value="sale">Sale</option>
-          <option value="tax">Tax</option>
-          <option value="extended">Extended</option>
+        <label for="type_transaction">Type Transaction</label>
+        <select class="form-control form-control-lg" id="type_transaction" formControlName="type_transaction">
+          <option value="encaissement">Encaissement</option>
+          <option value="decaissement">Decaissement</option>
         </select>
       </div>
 
-      <div class="form-group mb-3">
-        <label for="itemDate">Date</label>
-        <input type="date" class="form-control form-control-lg" id="itemDate" />
-      </div>
+
 
       <div class="form-group mb-3">
-        <label for="itemPrice">Price</label>
-        <input type="number" class="form-control form-control-lg" id="itemPrice" placeholder="Enter price" step="0.01" />
+        <label for="montant">Montant</label>
+        <input type="number" class="form-control form-control-lg" id="montant" placeholder="Enter  le montant" formControlName="montant" step="0.01" />
+      </div>
+      <div class="form-group mb-3">
+        <label for="descriptions">Motif</label>
+        <textarea
+
+          class="form-control form-control-lg"
+          formControlName="descriptions"
+          id="descriptions"
+          placeholder="Enter la description"
+        > </textarea>
       </div>
 
       <div class="text-center">
-        <button type="submit" class="btn btn-rounded btn-primary btn-lg mt-3">Ajouter</button>
+        <button type="submit" class="btn btn-rounded btn-primary btn-lg mt-3" (click)="saveDataOperation()">Ajouter</button>
         <button type="reset" class="btn btn-rounded btn-outline-secondary btn-lg mt-3">Annuler</button>
       </div>
     </form>

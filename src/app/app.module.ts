@@ -11,6 +11,7 @@ import { TopBarComponent } from './shared/components/top-bar/top-bar.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { DemoMaterialModule } from './demo-material-module';
 import { DeletePopupComponent } from './shared/dialogs/delete-popup/delete-popup.component';
+import { TruncatePipe } from './truncate.pipe';
 
 
 
@@ -20,7 +21,8 @@ import { DeletePopupComponent } from './shared/dialogs/delete-popup/delete-popup
     SideBarComponent,
     TopBarComponent,
     FooterComponent,
-    DeletePopupComponent
+    DeletePopupComponent,
+
 
   ],
   imports: [
