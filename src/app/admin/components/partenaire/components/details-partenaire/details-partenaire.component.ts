@@ -1,9 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { convertObjectInFormData } from 'src/app/app.component';
 import { PartenaireService } from '../../services/partenaire.service';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-details-partenaire',
@@ -19,6 +22,23 @@ export class DetailsPartenaireComponent {
       adresse :new FormControl(''),
 
     })
+      displayedColumns: string[] = ['id','reference', 'prix_journalier', 'prix_mensuel',];
+      dataSource = new MatTableDataSource([]);
+
+    @ViewChild(MatPaginator) paginator!: MatPaginator;
+    @ViewChild(MatSort) sort!: MatSort;
+    ngAfterViewInit () {
+      this.dataSource.paginator = this.paginator
+      this.dataSource.sort = this.sort
+    }
+    applyFilter (event: Event) {
+     const filterValue = (event.target as HTMLInputElement).value
+     this.dataSource.filter = filterValue.trim().toLowerCase()
+
+     if (this.dataSource.paginator) {
+       this.dataSource.paginator.firstPage()
+     }
+    }
 
     constructor(
       private service: PartenaireService,
@@ -41,6 +61,7 @@ export class DetailsPartenaireComponent {
           console.log('Info : ', response);
           this.infoPartenaire = response;
           this.Partenaire.patchValue(this.infoPartenaire);
+          this.dataSource.data = this.infoPartenaire.proprietes || [] ;
         },
         error: (error: any) => {
           console.log('Error : ', error);

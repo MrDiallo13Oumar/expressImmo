@@ -14,7 +14,7 @@ import { convertObjectInFormData } from 'src/app/app.component';
   styleUrls: ['./list-user.component.scss']
 })
 export class ListUserComponent {
-displayedColumns: string[] = ['id', 'name', 'status', 'date', 'price', 'action'];
+displayedColumns: string[] = ['id', 'nom', 'prenom', 'role', 'action'];
   dataSource = new MatTableDataSource([]);
 
 

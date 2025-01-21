@@ -5,6 +5,7 @@ import { ReservationService } from '../../services/reservation.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { convertObjectInFormData } from 'src/app/app.component';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-detail-reservation',
   templateUrl: './detail-reservation.component.html',
@@ -48,6 +49,11 @@ export class DetailReservationComponent {
           },
         });
       }
+      alertWithSuccess() {
+
+        Swal.fire('Felicitation ...', 'Contrat creer avec succes!', 'success')
+        this.router.navigateByUrl("/contrat/list-contrat")
+      }
       creerContrat() {
         // Données pour le contrat
         const contratData = {
@@ -69,8 +75,8 @@ export class DetailReservationComponent {
               panelClass: ['bg-success', 'text-white'],
             });
 
-
-           this.router.navigate(['/contrat/list-contrat']);
+            this.alertWithSuccess()
+          //  this.router.navigate(['/contrat/list-contrat']);
           },
           error: (err: any) => {
             this.snackBar.open('Échec de la création du contrat !', 'Okay', {
@@ -82,7 +88,9 @@ export class DetailReservationComponent {
           },
         });
       }
-
+cancel (){
+  this.router.navigate(['/reservation/list-reservation']);
+}
 
 
 }

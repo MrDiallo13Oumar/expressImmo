@@ -1,39 +1,77 @@
-
 <div class="card">
   <div class="card-body">
     <div class="card-title">
       <h4>Ajouter Un Utilisateur</h4>
     </div>
-    <form>
+    <form [formGroup]="Utilisateur">
       <div class="form-group mb-3">
-        <label for="itemName">Name</label>
-        <input type="text" class="form-control form-control-lg" id="itemName" placeholder="Enter item name" />
+        <label for="nom">Nom</label>
+        <input
+          type="text"
+          class="form-control form-control-lg"
+          id="nom"
+          formControlName="nom"
+          placeholder="Entrez le nom"
+        />
       </div>
 
       <div class="form-group mb-3">
-        <label for="itemStatus">Status</label>
-        <select class="form-control form-control-lg" id="itemStatus">
-          <option value="sale">Sale</option>
-          <option value="tax">Tax</option>
-          <option value="extended">Extended</option>
+        <label for="prenom">Prénom</label>
+        <input
+          type="text"
+          class="form-control form-control-lg"
+          id="prenom"
+          formControlName="prenom"
+          placeholder="Entrez le prénom"
+        />
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="role">Rôle</label>
+        <select
+          class="form-control form-control-lg"
+          id="role"
+          formControlName="role"
+        >
+          <option value="admin">Admin</option>
+          <option value="employer">Employer</option>
+          <option value="partenaire">Partenaire</option>
         </select>
       </div>
 
       <div class="form-group mb-3">
-        <label for="itemDate">Date</label>
-        <input type="date" class="form-control form-control-lg" id="itemDate" />
+        <label for="email">Email</label>
+        <input
+          type="email"
+          class="form-control form-control-lg"
+          id="email"
+          formControlName="email"
+          placeholder="Entrez l'email"
+        />
       </div>
 
       <div class="form-group mb-3">
-        <label for="itemPrice">Price</label>
-        <input type="number" class="form-control form-control-lg" id="itemPrice" placeholder="Enter price" step="0.01" />
+        <label for="mot_de_passe">Mot de Passe</label>
+        <input
+          type="password"
+          class="form-control form-control-lg"
+          id="mot_de_passe"
+          formControlName="mot_de_passe"
+          placeholder="Entrez le mot de passe"
+        />
       </div>
 
       <div class="text-center">
-        <button type="submit" class="btn btn-rounded btn-primary btn-lg mt-3">Ajouter</button>
-        <button type="reset" class="btn btn-rounded btn-outline-secondary btn-lg mt-3">Annuler</button>
+        <button type="submit" class="btn btn-rounded btn-primary btn-lg mt-3" (click)="saveDataUtilisateur()">
+          Ajouter
+        </button>
+        <button
+          type="reset"
+          class="btn btn-rounded btn-outline-secondary btn-lg mt-3"
+        >
+          Annuler
+        </button>
       </div>
     </form>
   </div>
 </div>
-
