@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProprieteService } from 'src/app/admin/components/propriete/_services/propriete.service';
 import { Propriete } from 'src/assets/Models/propriete';
@@ -8,9 +8,12 @@ import { Propriete } from 'src/assets/Models/propriete';
   templateUrl: './accueil.component.html',
   styleUrls: ['./accueil.component.scss']
 })
-export class AccueilComponent {
+export class AccueilComponent implements OnInit {
 constructor(private router : Router, private activeroute : ActivatedRoute,private propriete : ProprieteService
 ){}
+  ngOnInit(): void {
+    this.getPropriete()
+  }
 
   data !: Propriete[]
   infoPropriete: any = {};
@@ -19,7 +22,7 @@ constructor(private router : Router, private activeroute : ActivatedRoute,privat
       next: (reponse: any) => {
         console.log('REPONSE SUCCESS : ', reponse)
         this.data = reponse
-        // console.log("Data de cheick", this.data);
+         console.log("Data de cheick", this.data);
         
       },
       error: (err: any) => {
