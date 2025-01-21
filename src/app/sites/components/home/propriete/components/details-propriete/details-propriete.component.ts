@@ -34,7 +34,9 @@ ngOnInit(){
     description: new FormControl(''),
   })
 
-
+navigate(){
+  this.router.navigateByUrl("/hoomeAdmin/login")
+}
   alertWithSuccess(){
   
       Swal.fire('Bravo ...', 'Vous aviez reserver avec succes!', 'success')

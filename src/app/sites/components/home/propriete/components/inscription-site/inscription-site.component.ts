@@ -113,6 +113,7 @@ export class InscriptionSiteComponent {
   //   }
   // }
 
+  data : any
   saveDataReservations() {
     const formData = convertObjectInFormData(this.Reservation.value);
     if (this.Reservation.valid) {
@@ -120,7 +121,9 @@ export class InscriptionSiteComponent {
       
       this.reservationService.create('reservation','create.php',formData).subscribe((data)=>{
         console.log(data);
-        
+        this.data = data
+        Swal.fire('Felicitation ...', 'Vous aviez reserver avec succes!', 'success')
+        this.route.navigateByUrl("/home/propriete") 
       }
     )
 
@@ -129,5 +132,8 @@ export class InscriptionSiteComponent {
 
   scrollToTop(): void {
     window.scrollTo({ top: 0, behavior: 'smooth' }); // Le 'smooth' permet un défilement fluide
+  }
+  navigate(){
+    this.route.navigateByUrl("/hoomeAdmin/login")
   }
 }
