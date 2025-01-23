@@ -1,5 +1,5 @@
 <!-- <div class="search-container">
-    
+
     <mat-form-field>
         <mat-label>Ville</mat-label>
         <mat-select [(ngModel)]="selectedVille" (selectionChange)="onVilleChange($event)">
@@ -7,7 +7,7 @@
         </mat-select>
     </mat-form-field>
 
-    
+
     <mat-form-field>
         <mat-label>Commune</mat-label>
         <mat-select [(ngModel)]="selectedCommune" (selectionChange)="onCommuneChange($event)">
@@ -15,7 +15,7 @@
         </mat-select>
     </mat-form-field>
 
-    
+
     <mat-form-field>
         <mat-label>Quartier</mat-label>
         <mat-select [(ngModel)]="selectedQuartier" (selectionChange)="onQuartierChange($event)">
@@ -23,7 +23,7 @@
         </mat-select>
     </mat-form-field>
 
-   
+
     <mat-table [dataSource]="dataSource">
         <ng-container matColumnDef="id">
             <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
@@ -149,7 +149,7 @@
 
     <div class="row g-4" >
         <div class="col-12 col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s"
-            *ngFor="let item of dataSource.data | truncateCard : 6">
+            *ngFor="let item of dataSource.data | truncateCard : 10000">
             <div class="room-item shadow rounded overflow-hidden">
                 <div class="position-relative">
                     <img class="img-fluid" src="assets/sites/img/room-1.jpg" alt="">
