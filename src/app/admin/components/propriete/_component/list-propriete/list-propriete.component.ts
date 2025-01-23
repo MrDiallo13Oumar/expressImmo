@@ -16,7 +16,7 @@ import { AddTypeProprieteComponent } from '../../dialogs/add-type-propriete/add-
   styleUrls: ['./list-propriete.component.scss']
 })
 export class ListProprieteComponent {
-  displayedColumns: string[] = ['id','reference', 'adresse', 'descriptions', 'etat', 'partenaire', 'action'];
+  displayedColumns: string[] = ['id','reference', 'adresse', 'descriptions', 'statut', 'partenaire', 'action'];
   dataSource = new MatTableDataSource([]);
 
 

@@ -91,9 +91,10 @@ export class DetailsContratComponent {
           const formData = convertObjectInFormData(PaiementData);
           this.dataSource.data.splice(0, this.dataSource.data.length);
           //Envoyer dans la Base
-          this.service.create('Paiement', 'create.php', formData).subscribe({
+          this.service.create('paiement', 'create.php', formData).subscribe({
             next: (response) => {
-              this.snackBar.open('Paiement Effectué avec succès !', 'Okay', {
+              const message = response?.message || "Contrat enregistré avec succès !";
+              this.snackBar.open(message, 'Okay', {
                 duration: 3000,
                 horizontalPosition: 'right',
                 verticalPosition: 'top',

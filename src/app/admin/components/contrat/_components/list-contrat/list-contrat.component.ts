@@ -53,38 +53,39 @@ getContrat () {
    })
  }
 
-  openDialog() {
-    this.dialog.open(AddContratComponent, {
-     }) .afterClosed()
-      .subscribe((result) => {
-        if (result?.event && result.event === "insert") {
-          // console.log(result.data);
-           const formData = convertObjectInFormData(result.data);
-          this.dataSource.data.splice(0, this.dataSource.data.length);
-          //Envoyer dans la Base
-          this.service.create('contrat','create.php', formData).subscribe({
-            next: (response) => {
-              this.snackBar.open("Contrat enregistré avec succès !", "Okay", {
-                duration: 3000,
-                horizontalPosition: "right",
-                verticalPosition: "top",
-                panelClass: ['bg-success', 'text-white']
+ openDialog() {
+  this.dialog.open(AddContratComponent, {}).afterClosed()
+    .subscribe((result) => {
+      if (result?.event && result.event === "insert") {
+        const formData = convertObjectInFormData(result.data);
 
-              })
-              this.getContrat()
-            },
-            error: (err: any) => {
-              this.snackBar.open("Echec de l'ajout !", "Okay", {
-                duration: 3000,
-                horizontalPosition: "right",
-                verticalPosition: "top",
-                panelClass: ['bg-danger', 'text-white']
-              })
-            }
-          })
-        }
-     })
-  }
+        this.service.create('contrat', 'create.php', formData).subscribe({
+          next: (response) => {
+            // Affichez le message du backend si disponible, sinon un message par défaut
+            const message = response?.message || "Contrat enregistré avec succès !";
+            this.snackBar.open(message, "Okay", {
+              duration: 3000,
+              horizontalPosition: "right",
+              verticalPosition: "top",
+              panelClass: ['bg-success', 'text-white']
+            });
+            this.getContrat();
+          },
+          error: (err: any) => {
+            // Affichez le message d'erreur du backend si disponible, sinon un message par défaut
+            const errorMessage = err?.error?.message || "Échec de l'ajout !";
+            this.snackBar.open(errorMessage, "Okay", {
+              duration: 3000,
+              horizontalPosition: "right",
+              verticalPosition: "top",
+              panelClass: ['bg-danger', 'text-white']
+            });
+          }
+        });
+      }
+    });
+}
+
 
     // DELETE
     deleteFunction(id: any, table: string) {

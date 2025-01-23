@@ -81,37 +81,37 @@ getOperation () {
    }
 
   openDialog() {
-    this.dialog.open(AddOperationComponent, {
-     }) .afterClosed()
-      .subscribe((result) => {
-        if (result?.event && result.event === "insert") {
-          // console.log(result.data);
-           const formData = convertObjectInFormData(result.data);
-          this.dataSource.data.splice(0, this.dataSource.data.length);
-          //Envoyer dans la Base
-          this.service.create('caisse','create.php', formData).subscribe({
-            next: (response) => {
-              this.snackBar.open("Operation Effectuée avec succès !", "Okay", {
-                duration: 3000,
-                horizontalPosition: "right",
-                verticalPosition: "top",
-                panelClass: ['bg-success', 'text-white']
+   this.dialog.open(AddOperationComponent, {}).afterClosed()
+     .subscribe((result) => {
+       if (result?.event && result.event === "insert") {
+         const formData = convertObjectInFormData(result.data);
 
-              })
-              this.getOperation()
-            },
-            error: (err: any) => {
-              this.snackBar.open("Echec de l'ajout !", "Okay", {
-                duration: 3000,
-                horizontalPosition: "right",
-                verticalPosition: "top",
-                panelClass: ['bg-danger', 'text-white']
-              })
-            }
-          })
-        }
-     })
-  }
+         this.service.create('caisse', 'create.php', formData).subscribe({
+           next: (response) => {
+             // Affichez le message du backend si disponible, sinon un message par défaut
+             const message = response?.message || "Operation enregistré avec succès !";
+             this.snackBar.open(message, "Okay", {
+               duration: 3000,
+               horizontalPosition: "right",
+               verticalPosition: "top",
+               panelClass: ['bg-success', 'text-white']
+             });
+             this.getOperation();
+           },
+           error: (err: any) => {
+             // Affichez le message d'erreur du backend si disponible, sinon un message par défaut
+             const errorMessage = err?.error?.message || "Échec de l'ajout !";
+             this.snackBar.open(errorMessage, "Okay", {
+               duration: 3000,
+               horizontalPosition: "right",
+               verticalPosition: "top",
+               panelClass: ['bg-danger', 'text-white']
+             });
+           }
+         });
+       }
+     });
+ }
 
        // DELETE
        deleteFunction(id: any, table: string) {

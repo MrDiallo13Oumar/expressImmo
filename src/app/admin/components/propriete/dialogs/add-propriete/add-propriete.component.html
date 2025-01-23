@@ -81,13 +81,10 @@
         </div>
         <div class="col-md-6 mb-3">
           <label for="etat">État</label>
-          <input
-            type="text"
-            class="form-control form-control-lg"
-            id="etat"
-            formControlName="etat"
-            placeholder="Entrez l'état"
-          />
+          <select class="form-control form-control-lg" id="etat" formControlName="etat">
+            <option value="location">En Location</option>
+            <option value="vente">En Vente</option>
+          </select>
         </div>
       </div>
 

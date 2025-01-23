@@ -14,6 +14,9 @@ import { environment } from 'src/environments/environment'
 
 
 
+// const LINK_PROD: string = 'http://192.168.1.180/expressImmoB/api/'
+// const LINK_DEVS: string = 'http://192.168.1.180/expressImmoB/api/'
+
 
 // url de base
 

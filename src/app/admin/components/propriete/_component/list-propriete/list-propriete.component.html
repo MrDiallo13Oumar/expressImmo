@@ -42,7 +42,9 @@
               <!-- Name Column -->
               <ng-container matColumnDef="reference">
                 <th mat-header-cell *matHeaderCellDef>Reference</th>
-                <td mat-cell *matCellDef="let element">{{ element.reference }}</td>
+                <td mat-cell *matCellDef="let element">{{ element.reference }}  <br>
+                  <span style="color: blue;"> {{element.etat}} </span>
+                </td>
               </ng-container>
 
               <!-- adresse Column -->
@@ -56,13 +58,13 @@
                <ng-container matColumnDef="descriptions">
                 <th mat-header-cell *matHeaderCellDef>Description</th>
                 <td mat-cell *matCellDef="let element">
-                  <span >{{ element.descriptions | truncate:20 }}</span>
+                  <span >{{ element.descriptions | truncate :20 }}</span>
                 </td>
               </ng-container>
               <!-- Date Column -->
-              <ng-container matColumnDef="etat">
-                <th mat-header-cell *matHeaderCellDef>Etat</th>
-                <td mat-cell *matCellDef="let element">{{ element.etat }}</td>
+              <ng-container matColumnDef="statut">
+                <th mat-header-cell *matHeaderCellDef>Statut</th>
+                <td mat-cell *matCellDef="let element"><span style="color: red;">{{ element.statut }}</span></td>
               </ng-container>
 
                <!-- partenaire Column -->

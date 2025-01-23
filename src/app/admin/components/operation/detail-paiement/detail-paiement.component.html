@@ -1,99 +1,118 @@
 <div class="content-body">
   <div class="container-fluid">
-    <div class="card shadow-lg">
+    <div class="container border rounded p-5 bg-white shadow-lg">
       <!-- En-tête -->
-      <div class="card-header text-white bg-primary text-center py-4">
-        <h2 class="mb-0" style="font-size: 2rem">Facture de Paiement</h2>
+      <div class="header text-center mb-5">
+        <h1 class="text-primary fw-bold">Reçu de Paiement</h1>
+        <p class="text-muted mb-2">Référence : <strong>Facture 1234</strong></p>
+        <p class="text-muted">Date : {{ infoPaiement.created_at | date: 'dd/MM/yyyy' }}</p>
       </div>
 
-      <!-- Corps de la facture -->
-      <div class="card-body" style="font-size: 1.1rem;text-align: center;">
-        <!-- Informations locataire -->
-        <div class="mb-4">
-          <h5 class="text-secondary mb-3">
-            <i class="fas fa-user"></i> Locataire
-          </h5>
-          <p>
-            <strong>Nom :</strong> {{ infoPaiement.reservations?.nom }}
-            {{ infoPaiement.reservations?.prenom }}
-          </p>
-          <p>
-            <strong>Téléphone :</strong>
-            {{ infoPaiement.reservations?.telephone }}
-          </p>
-        </div>
+      <!-- Informations Client -->
+      <div class="section mb-5">
+        <h2 class="h5 text-secondary border-bottom pb-2 mb-3">Client</h2>
+        <p><strong class="text-dark">Nom :</strong> {{ infoPaiement.reservations?.nom }} {{ infoPaiement.reservations?.prenom }}</p>
+        <p><strong class="text-dark">Téléphone :</strong> {{ infoPaiement.reservations?.telephone }}</p>
+        <p> <strong class="text-dark">Adresse :</strong> {{ infoPaiement.proprietes?.adresse }}</p>
+      </div>
 
-        <!-- Informations propriété -->
-        <div class="mb-4">
-          <h5 class="text-secondary mb-3">
-            <i class="fas fa-home"></i> Propriété
-          </h5>
-          <p>
-            <strong>Adresse :</strong>
-            {{ infoPaiement.proprietes?.adresse }}
-          </p>
-          <p>
-            <strong>Description :</strong>
-            {{ infoPaiement.proprietes?.descriptions }}
-          </p>
-          <p>
-            <strong>État :</strong>
-            {{ infoPaiement.proprietes?.etat }}
-          </p>
-        </div>
+      <!-- Tableau récapitulatif -->
+      <div class="table-responsive mb-5">
+        <table class="table table-bordered table-hover align-middle">
+          <thead class="table-success text-center">
+            <tr>
+              <th class="fw-bold">Infomation Du Proprietaire</th>
+              <th class="fw-bold">Détail</th>
+            </tr>
+          </thead>
+          <tbody>
 
-        <!-- Détails du paiement -->
-        <div class="mb-4">
-          <h5 class="text-secondary mb-3">
-            <i class="fas fa-money-bill"></i> Détails du Paiement
-          </h5>
-          <p>
-            <strong>Montant :</strong>
-            <span class="text-success">{{ infoPaiement.montant }} GNF</span>
-          </p>
-          <p>
-            <strong>Mode de Paiement :</strong>
-            {{ infoPaiement.mode_paiement }}
-          </p>
-          <p>
-            <strong>Statut :</strong>
-            <span class="badge bg-warning text-dark">{{
-              infoPaiement.statut
-            }}</span>
-          </p>
-        </div>
+            <tr>
+              <td><strong>État</strong></td>
+              <td>{{ infoPaiement.proprietes?.etat }}</td>
+            </tr>
+            <tr>
+              <td><strong>Nom</strong></td>
+              <td>{{ infoPaiement.partenaires?.libelle }}</td>
+            </tr>
+            <tr>
+              <td><strong>Téléphone</strong></td>
+              <td>{{ infoPaiement.partenaires?.telephone }}</td>
+            </tr>
+            <tr>
+              <td><strong>Email</strong></td>
+              <td>{{ infoPaiement.partenaires?.email }}</td>
+            </tr>
+            <tr>
+              <td><strong>Adresse</strong></td>
+              <td>{{ infoPaiement.partenaires?.adresse }}</td>
+            </tr>
+            <tr>
+              <td><strong>Mode de paiement</strong></td>
+              <td>{{ infoPaiement.mode_paiement }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
-        <!-- Informations du partenaire -->
-        <div class="mb-4">
-          <h5 class="text-secondary mb-3">
-            <i class="fas fa-handshake"></i> Partenaire
-          </h5>
-          <p>
-            <strong>Nom :</strong>
-            {{ infoPaiement.partenaires?.libelle }}
-          </p>
-          <p>
-            <strong>Téléphone :</strong>
-            {{ infoPaiement.partenaires?.telephone }}
-          </p>
-          <p>
-            <strong>Email :</strong>
-            {{ infoPaiement.partenaires?.email }}
-          </p>
-          <p>
-            <strong>Adresse :</strong>
-            {{ infoPaiement.partenaires?.adresse }}
-          </p>
-        </div>
+      <!-- Details Supplementaire -->
+      <div class="table-responsive mb-5">
+        <table class="table table-bordered table-hover align-middle">
+          <thead class="table-success text-center">
+            <tr>
+              <th class="fw-bold">Infomation Supplementaire</th>
+              <th class="fw-bold">Détail</th>
+            </tr>
+          </thead>
+          <tbody>
 
-        <!-- Signature et Date -->
-        <div class="mt-4">
-          <p class="text-muted">
-            <strong>Date :</strong>
-            {{ infoPaiement.date_debut | date : "dd/MM/yyyy" }}
-          </p>
-          <p><strong>Signature :</strong> ______________________</p>
-        </div>
+            <tr>
+              <td><strong>État</strong></td>
+              <td>{{ infoPaiement.proprietes?.etat }}</td>
+            </tr>
+            <tr>
+              <td><strong>Adresse Propriete</strong></td>
+              <td>{{ infoPaiement.proprietes?.adresse }}</td>
+            </tr>
+            <tr>
+              <td><strong>Mode de paiement</strong></td>
+              <td>{{ infoPaiement.mode_paiement }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Détails du paiement -->
+      <div class="table-responsive mb-5">
+        <table class="table table-bordered table-hover align-middle">
+          <thead class="table-success text-center">
+            <tr>
+              <th class="fw-bold">Désignation</th>
+              <th class="fw-bold">Quantité</th>
+              <th class="fw-bold">Prix Unitaire (GNF)</th>
+              <th class="fw-bold">Total (GNF)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="text-center">
+              <td>Loyer</td>
+              <td>1</td>
+              <td>{{ infoPaiement.montant }}</td>
+              <td>{{ infoPaiement.montant }}</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr class="table-light text-center">
+              <td colspan="3" class="fw-bold text-dark">Total TTC</td>
+              <td class="fw-bold text-dark">{{ infoPaiement.montant }} GNF</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <!-- Pied de page -->
+      <div class="footer text-center text-muted mt-5">
+        <p class="fw-light">Merci pour votre confiance.</p>
       </div>
     </div>
   </div>
