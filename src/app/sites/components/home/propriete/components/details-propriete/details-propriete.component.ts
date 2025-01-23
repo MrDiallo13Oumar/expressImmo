@@ -17,6 +17,7 @@ constructor(private router : Router, private activeroute : ActivatedRoute,privat
 
 ngOnInit(){
     (this.idPropriete = this.activeroute.snapshot.params['id'])
+    this.getOnePropriete()
   }
 
 

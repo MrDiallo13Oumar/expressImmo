@@ -12,8 +12,8 @@ import Swal from 'sweetalert2'
 })
 export class ProprieteComponent {
 
-displayedColumns: string[] = ['id','libelle', 'adresse', 'description', 'etat', 'partenaire', 'action'];
-dataSource = new MatTableDataSource([]);
+// displayedColumns: string[] = ['id','libelle', 'adresse', 'description', 'etat', 'partenaire', 'action'];
+// dataSource = new MatTableDataSource([]);
 data !: Propriete[]
 
 constructor(private router : Router, private propriete : ProprieteService){}
@@ -25,7 +25,7 @@ getPropriete () {
    this.propriete.getall('propriete', 'readAll.php').subscribe({
      next: (reponse: any) => {
         console.log('REPONSE SUCCESS : ', reponse)
-       this.dataSource.data = reponse,
+      //  this.dataSource.data = reponse,
        this.data = reponse
        console.log("Data de cheick", this.data);
        
