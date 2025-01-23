@@ -11,3 +11,35 @@
 .card-body {
   padding: 20px; /* Ajoute un espace intérieur */
 }
+::ng-deep ng-select .ng-dropdown-panel {
+  background-color: white !important;  /* Assurez-vous que le fond du panneau est solide */
+}
+
+::ng-deep ng-select .ng-option {
+  background-color: white !important;  /* Assurez-vous que chaque option dans la liste a un fond solide */
+}
+
+::ng-deep ng-select .ng-select-container {
+  background-color: white !important;  /* Changez la couleur du fond du conteneur */
+}
+
+::ng-deep ng-select .ng-select-search input {
+  background-color: white !important;  /* Fond solide pour la barre de recherche */
+}
+// ::ng-deep ng-select {
+//   font-size: 1rem;
+//   border-radius: 8px;
+//   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+// }
+
+// ::ng-deep ng-select .ng-select-container {
+//   border: 1px solid #ccc;
+// }
+
+// ::ng-deep ng-select .ng-dropdown-panel {
+//   max-height: 300px;
+//   overflow-y: auto;
+// }
+
+
+

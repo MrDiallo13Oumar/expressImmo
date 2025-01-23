@@ -10,8 +10,22 @@
               <div class="card-body">
                 <h3 class="card-title text-white">Maisons Disponibles</h3>
                 <div class="d-inline-block">
-                  <h2 class="text-white">150</h2>
+                  <h2 class="text-white">{{infoDashBoard.nombreProprieteDisponible}}</h2>
                   <p class="text-white mb-0">Mise à jour aujourd'hui</p>
+                </div>
+                <span class="float-right display-5 opacity-5">
+                  <i class="fa fa-home"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6">
+            <div class="card gradient-3">
+              <div class="card-body">
+                <h3 class="card-title text-white">Total De Propriétés</h3>
+                <div class="d-inline-block">
+                  <h2 class="text-white">{{infoDashBoard.nombreTotalProprietes}}</h2>
+                  <p class="text-white mb-0">Total</p>
                 </div>
                 <span class="float-right display-5 opacity-5">
                   <i class="fa fa-home"></i>
@@ -22,10 +36,10 @@
           <div class="col-lg-3 col-sm-6">
             <div class="card gradient-2">
               <div class="card-body">
-                <h3 class="card-title text-white">Réservations en Cours</h3>
+                <h3 class="card-title text-white">Réservations Total</h3>
                 <div class="d-inline-block">
-                  <h2 class="text-white">75</h2>
-                  <p class="text-white mb-0">Mois en cours</p>
+                  <h2 class="text-white">{{infoDashBoard.nombreTotalReservations}}</h2>
+                  <p class="text-white mb-0">Total</p>
                 </div>
                 <span class="float-right display-5 opacity-5">
                   <i class="fa fa-calendar-check-o"></i>
@@ -33,20 +47,7 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-3 col-sm-6">
-            <div class="card gradient-3">
-              <div class="card-body">
-                <h3 class="card-title text-white">Revenus Locatifs</h3>
-                <div class="d-inline-block">
-                  <h2 class="text-white">$20,000</h2>
-                  <p class="text-white mb-0">Ce mois</p>
-                </div>
-                <span class="float-right display-5 opacity-5">
-                  <i class="fa fa-money"></i>
-                </span>
-              </div>
-            </div>
-          </div>
+
           <div class="col-lg-3 col-sm-6">
             <div class="card gradient-4">
               <div class="card-body">
@@ -69,7 +70,7 @@
       <div class="card-body">
         <h3 class="card-title ">Encaissement</h3>
         <div class="d-inline-block">
-          <h2 class="">150</h2>
+          <h2 class="">GNF {{infoDashBoard.total_encaissement}}</h2>
           <p class=" mb-0">Mise à jour aujourd'hui</p>
         </div>
         <span class="float-right display-5 opacity-5">
@@ -83,8 +84,8 @@
       <div class="card-body">
         <h3 class="card-title ">Décaissement</h3>
         <div class="d-inline-block">
-          <h2 class="">75</h2>
-          <p class=" mb-0">Mois en cours</p>
+          <h2 class="">GNF {{infoDashBoard.total_decaissement}}</h2>
+          <p class=" mb-0">Aujourd'hui</p>
         </div>
         <span class="float-right display-5 opacity-5">
           <i class="fa fa-calendar-check-o"></i>
@@ -95,24 +96,25 @@
   <div class="col-lg-3 col-sm-6">
     <div class="card ">
       <div class="card-body">
-        <h3 class="card-title ">Charges</h3>
+        <h3 class="card-title ">Paiement</h3>
         <div class="d-inline-block">
-          <h2 class="">$20,000</h2>
-          <p class=" mb-0">Ce mois</p>
+          <h2 class="">GNF {{infoDashBoard.totalpaiement}}</h2>
+          <p class=" mb-0">Aujourd'hui</p>
         </div>
         <span class="float-right display-5 opacity-5">
-          <i class="fa fa-money"></i>
+          <i class="fa fa-calendar-check-o"></i>
         </span>
       </div>
     </div>
   </div>
+
   <div class="col-lg-3 col-sm-6">
     <div class="card gradient-9">
       <div class="card-body">
         <h3 class="card-title text-white">Solde</h3>
         <div class="d-inline-block">
-          <h2 class="text-white">95%</h2>
-          <p class="text-white mb-0">Basé sur les retours récents</p>
+          <h2 class="text-white">GNF {{infoDashBoard.soldeTotalJournalier}}</h2>
+          <p class="text-white mb-0">Basé sur les operations du jour</p>
         </div>
         <span class="float-right display-5 opacity-5">
           <i class="fa fa-heart"></i>

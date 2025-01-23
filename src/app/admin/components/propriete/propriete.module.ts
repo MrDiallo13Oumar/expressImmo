@@ -8,6 +8,7 @@ import { DemoMaterialModule } from 'src/app/demo-material-module';
 import { DetailsProprieteComponent } from './_component/details-propriete/details-propriete.component';
 import { AddTypeProprieteComponent } from './dialogs/add-type-propriete/add-type-propriete.component';
 import { TruncatePipe } from '../../../truncate.pipe';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 
 
@@ -22,7 +23,8 @@ import { TruncatePipe } from '../../../truncate.pipe';
   imports: [
     CommonModule,
     DemoMaterialModule,
-     RouterModule.forChild(proprieteRouting)
+     RouterModule.forChild(proprieteRouting),
+     NgSelectModule,
   ]
 })
 export class ProprieteModule { }
