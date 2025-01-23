@@ -1,47 +1,46 @@
-<div class="card">
+<div class="card shadow-sm rounded">
   <div class="card-body">
-    <div class="card-title text-center">
-      <h4>Ajouter une Propriété</h4>
+    <div class="card-title text-center mb-4">
+      <h4 class="fw-bold text-dark">Ajouter une Propriété</h4>
     </div>
     <form [formGroup]="Propriete">
       <!-- Section: Sélection du quartier et type de propriété -->
-      <div class="row">
+      <div class="row mb-4">
         <div class="col-md-6 mb-3">
-          <label for="quartier_id">Choisir Le Quartier</label>
-          <select
-            class="form-select form-select-lg"
+          <label for="quartier_id" class="form-label">Choisir Le Quartier</label>
+          <ng-select
             id="quartier_id"
             formControlName="quartier_id"
-            aria-label="Sélectionnez un quartier"
+            [items]="Quartier"
+            bindLabel="libelle"
+            bindValue="id"
             aria-required="true"
+            class="form-control"
+            placeholder="Sélectionnez un quartier"
           >
-            <option value="" disabled selected>-- Liste Générale --</option>
-            <option *ngFor="let quartier of Quartier" [value]="quartier.id">
-              {{ quartier.libelle }}
-            </option>
-          </select>
+          </ng-select>
         </div>
+
         <div class="col-md-6 mb-3">
-          <label for="typepropriete_id">Choisir Le Type de Propriété</label>
-          <select
-            class="form-select form-select-lg"
+          <label for="typepropriete_id" class="form-label">Choisir Le Type de Propriété</label>
+          <ng-select
             id="typepropriete_id"
             formControlName="typepropriete_id"
-            aria-label="Sélectionnez un type de propriété"
+            [items]="typePropriete"
+            bindLabel="libelle"
+            bindValue="id"
             aria-required="true"
+            class="form-control"
+            placeholder="Sélectionnez un type de propriété"
           >
-            <option value="" disabled selected>-- Liste Générale --</option>
-            <option *ngFor="let typePropriete of typePropriete" [value]="typePropriete.id">
-              {{ typePropriete.libelle }}
-            </option>
-          </select>
+          </ng-select>
         </div>
       </div>
 
       <!-- Section: Référence et Partenaire -->
-      <div class="row">
+      <div class="row mb-4">
         <div class="col-md-6 mb-3">
-          <label for="reference">Référence</label>
+          <label for="reference" class="form-label">Référence</label>
           <input
             type="text"
             class="form-control form-control-lg"
@@ -51,26 +50,25 @@
           />
         </div>
         <div class="col-md-6 mb-3">
-          <label for="partenaire_id">Choisir Le Partenaire</label>
-          <select
-            class="form-select form-select-lg"
+          <label for="partenaire_id" class="form-label">Choisir Le Partenaire</label>
+          <ng-select
             id="partenaire_id"
             formControlName="partenaire_id"
-            aria-label="Sélectionnez un partenaire"
+            [items]="Partenaire"
+            bindLabel="libelle"
+            bindValue="id"
             aria-required="true"
+            class="form-control"
+            placeholder="Sélectionnez un partenaire"
           >
-            <option value="" disabled selected>-- Liste Générale --</option>
-            <option *ngFor="let partenaire of Partenaire" [value]="partenaire.id">
-              {{ partenaire.libelle }}
-            </option>
-          </select>
+          </ng-select>
         </div>
       </div>
 
       <!-- Section: Adresse et État -->
-      <div class="row">
+      <div class="row mb-4">
         <div class="col-md-6 mb-3">
-          <label for="adresse">Adresse</label>
+          <label for="adresse" class="form-label">Adresse</label>
           <input
             type="text"
             class="form-control form-control-lg"
@@ -80,18 +78,27 @@
           />
         </div>
         <div class="col-md-6 mb-3">
-          <label for="etat">État</label>
-          <select class="form-control form-control-lg" id="etat" formControlName="etat">
-            <option value="location">En Location</option>
-            <option value="vente">En Vente</option>
-          </select>
+          <label for="etat" class="form-label">État</label>
+          <ng-select
+            id="etat"
+            formControlName="etat"
+            [items]="['location', 'vente']"
+            bindLabel="libelle"
+            bindValue="value"
+            class="form-control"
+            placeholder="Sélectionnez l'état"
+          >
+            <ng-option *ngFor="let etat of ['location', 'vente']" [value]="etat">
+              {{ etat }}
+            </ng-option>
+          </ng-select>
         </div>
       </div>
 
       <!-- Section: Prix -->
-      <div class="row">
+      <div class="row mb-4">
         <div class="col-md-6 mb-3">
-          <label for="prix_journalier">Prix Journalier</label>
+          <label for="prix_journalier" class="form-label">Prix Journalier</label>
           <input
             type="number"
             class="form-control form-control-lg"
@@ -101,7 +108,7 @@
           />
         </div>
         <div class="col-md-6 mb-3">
-          <label for="prix_mensuel">Prix Mensuel</label>
+          <label for="prix_mensuel" class="form-label">Prix Mensuel</label>
           <input
             type="number"
             class="form-control form-control-lg"
@@ -112,9 +119,18 @@
         </div>
       </div>
 
+      <!-- Section: Image -->
+      <div class="mb-4">
+        <label for="" class="form-label">Image</label>
+        <input type="file" (change)="onFileChange($event)" formControlName="poster" class="form-control" />
+        <div class="image-preview-container text-end mt-3" *ngIf="imagePreview">
+          <img [src]="imagePreview" class="image-preview img-fluid" />
+        </div>
+      </div>
+
       <!-- Section: Description -->
-      <div class="mb-3">
-        <label for="descriptions">Description</label>
+      <div class="mb-4">
+        <label for="descriptions" class="form-label">Description</label>
         <textarea
           class="form-control form-control-lg"
           id="descriptions"

@@ -9,8 +9,8 @@ export const LINK_STATIC_FILES: string = 'http://localhost/expressimmo/api/propr
 //  const LINK_PROD: string = 'http://localhost/expressimmo/api/'
 //  const LINK_DEVS: string = 'http://localhost/expressimmo/api/'
 
-// const LINK_PROD: string = 'http://192.168.1.131/expressImmo-backend/api/'
-// const LINK_DEVS: string = 'http://192.168.1.131/expressImmo-backend/api/'
+const LINK_PROD: string = 'http://192.168.1.131/expressImmo-backend/api/'
+const LINK_DEVS: string = 'http://192.168.1.131/expressImmo-backend/api/'
 
 
 

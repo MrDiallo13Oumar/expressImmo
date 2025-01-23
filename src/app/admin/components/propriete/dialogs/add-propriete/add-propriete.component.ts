@@ -20,6 +20,7 @@ export class AddProprieteComponent {
     prix_journalier :new FormControl(''),
     prix_mensuel :new FormControl(''),
     typepropriete_id :new FormControl(''),
+    poster :new FormControl(''),
 
   })
 
@@ -29,6 +30,7 @@ export class AddProprieteComponent {
     private service :ProprieteService
 
   ) { }
+  imagePreview: string | ArrayBuffer | null = null
   ngOnInit(){
     this.getPartenaire();
     this.getTypePropriete();
@@ -60,7 +62,7 @@ export class AddProprieteComponent {
        }
      })
    }
-  
+
    Quartier : any =[]
    getQuartier () {
      this.service.getall('quartier', 'readAll.php').subscribe({
@@ -73,6 +75,20 @@ export class AddProprieteComponent {
          console.log('REPONSE ERROR : ', err)
        }
      })
+   }
+
+   selectedFile: any
+   uploadResponse: string | null = null
+   onFileChange (event: any) {
+     const file: File = event.target.files[0]
+     if (file) {
+       const reader = new FileReader()
+       reader.onload = (e: any) => {
+         this.imagePreview = e.target.result
+       }
+       reader.readAsDataURL(file)
+       this.selectedFile = file
+     }
    }
   saveDataPropriete() {
     if (this.Propriete.valid) {
