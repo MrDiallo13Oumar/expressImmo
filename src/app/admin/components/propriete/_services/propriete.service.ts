@@ -29,6 +29,8 @@ export class ProprieteService {
       return this.http.get<any[]>(`${BASE_URL}${api}/${suffixUrl}`)
     }
   
+    
+    
     // GET
   
     // getallParams(api: string, suffixUrl: string, id_: any,idFacture :any) {
@@ -71,4 +73,40 @@ export class ProprieteService {
       };
       return this.http.delete<boolean>(url, params);
     }
+
+// FONCTION RECHERCHE
+
+// Récupère les communes d'une ville
+getallParams(api: string, suffixUrl: string, id_: any, idFacture: any) {
+  const url = `${BASE_URL}${api}/${suffixUrl}/${id_}/`;
+  let params = {
+    params: {
+      id: id_,
+      idFacture: idFacture
+    },
+  };
+  return this.http.get<any[]>(url, params);
+}
+getallCommune(api: string, suffixUrl: string, id_: any, ) {
+  const url = `${BASE_URL}${api}/${suffixUrl}/${id_}`;
+  let params = {
+    params: {
+      id: id_,
+    },
+  };
+  return this.http.get<any[]>(url, params);
+}
+
+
+// Récupère les quartiers d'une commune
+getQuartiersByCommune(communeId: number) {
+  return this.getallParams('quartier', 'readByCommune.php', communeId, 0);
+}
+
+// Récupère les propriétés d'un quartier
+getProprietesByQuartier(quartierId: number) {
+  return this.getallParams('propriete', 'readByQuartier.php', quartierId, 0);
+}
+
+
 }
