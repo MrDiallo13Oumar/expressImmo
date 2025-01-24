@@ -45,7 +45,7 @@ ngOnInit() {
   this.getUtilisateur()
  }
 getUtilisateur () {
-   this.service.getall('utilisateur', 'readAll.php').subscribe({
+   this.service.getall('authentification', 'readAll.php').subscribe({
      next: (reponse: any) => {
         console.log('REPONSE SUCCESS : ', reponse)
        this.dataSource.data = reponse
@@ -67,7 +67,7 @@ getUtilisateur () {
            const formData = convertObjectInFormData(result.data);
           this.dataSource.data.splice(0, this.dataSource.data.length);
           //Envoyer dans la Base
-          this.service.create('utilisateur','create.php', formData).subscribe({
+          this.service.create('authentification','create.php', formData).subscribe({
             next: (response) => {
               this.snackBar.open("Utilisateur enregistré avec succès !", "Okay", {
                 duration: 3000,

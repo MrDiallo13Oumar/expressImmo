@@ -144,7 +144,7 @@ export class ListContratComponent {
       .afterClosed()
       .subscribe((data: any) => {
         if (data) {
-          this.service.delete('public', 'delete.php', table, id).subscribe({
+          this.service.delete('contrat', 'delete.php', table, id).subscribe({
             next: (response: any) => {
               const messageClass =
                 response.status == 1

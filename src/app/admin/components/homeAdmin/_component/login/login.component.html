@@ -8,19 +8,16 @@
               <a class="text-center">
                 <h2>Connectez Vous</h2>
               </a>
-              <form class="mt-5 mb-5 login-input">
+              <form [formGroup]="FormLogin" class="mt-5 mb-5 login-input" >
                 <div class="form-group">
-                  <input type="type" class="form-control" placeholder="Email">
+                  <input type="email" class="form-control" placeholder="Email" formControlName="email">
                 </div>
                 <div class="form-group">
-                  <input type="password" class="form-control" placeholder="Password">
+                  <input type="password" class="form-control" placeholder="Password" formControlName="mot_de_passe">
                 </div>
-                <a class="btn login-form__btn submit w-100" routerLink="/hoomeAdmin/dashboard">Se Connecter</a>
+                <button class="btn login-form__btn submit w-100" [disabled]="FormLogin.invalid" (click)="login(FormLogin)">Se Connecter</button>
               </form>
-              <p class="mt-5 login-form__footer">
-               Vous n'avez pas de compte
-                <a class="text-primary">Sign Up</a> now
-              </p>
+             
             </div>
           </div>
         </div>

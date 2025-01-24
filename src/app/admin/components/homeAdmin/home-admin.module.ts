@@ -4,6 +4,7 @@ import { LoginComponent } from './_component/login/login.component';
 import { RouterModule } from '@angular/router';
 import { homeAdminRouting } from './home-admin.routing';
 import { DashboardComponent } from './_component/dashboard/dashboard.component';
+import { DemoMaterialModule } from 'src/app/demo-material-module';
 
 
 
@@ -14,6 +15,7 @@ import { DashboardComponent } from './_component/dashboard/dashboard.component';
   ],
   imports: [
     CommonModule,
+    DemoMaterialModule,
     RouterModule.forChild(homeAdminRouting)
   ]
 })

@@ -19,7 +19,7 @@ export class ListProprieteComponent {
   displayedColumns: string[] = ['id','reference', 'adresse', 'descriptions', 'statut', 'partenaire', 'action'];
   dataSource = new MatTableDataSource([]);
 
-
+  imagePreview: string | ArrayBuffer | null = null
 
 
   constructor (private dialog : MatDialog ,
@@ -57,39 +57,57 @@ getPropriete () {
  }
 
 
+ selectedFile: any
+ uploadResponse: string | null = null
+ onFileChange (event: any) {
+   const file: File = event.target.files[0]
+   if (file) {
+     const reader = new FileReader()
+     reader.onload = (e: any) => {
+       this.imagePreview = e.target.result
+     }
+     reader.readAsDataURL(file)
+     this.selectedFile = file
+   }
+ }
 
-  openDialog() {
-    this.dialog.open(AddProprieteComponent, {
-     }) .afterClosed()
-      .subscribe((result) => {
-        if (result?.event && result.event === "insert") {
-          // console.log(result.data);
-           const formData = convertObjectInFormData(result.data);
-          this.dataSource.data.splice(0, this.dataSource.data.length);
-          //Envoyer dans la Base
-          this.service.create('propriete','create.php', formData).subscribe({
-            next: (response) => {
-              this.snackBar.open("Propriété enregistré avec succès !", "Okay", {
-                duration: 3000,
-                horizontalPosition: "right",
-                verticalPosition: "top",
-                panelClass: ['bg-success', 'text-white']
 
-              })
-              this.getPropriete()
-            },
-            error: (err: any) => {
-              this.snackBar.open("Echec de l'ajout !", "Okay", {
-                duration: 3000,
-                horizontalPosition: "right",
-                verticalPosition: "top",
-                panelClass: ['bg-danger', 'text-white']
-              })
-            }
-          })
+ openDialog() {
+  this.dialog.open(AddProprieteComponent, {}).afterClosed().subscribe((result) => {
+    if (result?.event && result.event === "insert") {
+      const formData = convertObjectInFormData(result.data);
+      this.dataSource.data.splice(0, this.dataSource.data.length);
+
+      // Si un fichier a été sélectionné, on l'ajoute à formData
+      if (this.selectedFile) {
+        formData.append('file', this.selectedFile);
+      }
+
+      // Envoyer les données dans la base de données
+      this.service.create('propriete', 'create.php', formData).subscribe({
+        next: (response) => {
+        
+          this.snackBar.open("Propriété enregistrée avec succès !", "Okay", {
+            duration: 3000,
+            horizontalPosition: "right",
+            verticalPosition: "top",
+            panelClass: ['bg-success', 'text-white']
+          });
+          this.getPropriete();
+        },
+        error: (err: any) => {
+          this.snackBar.open("Échec de l'ajout !", "Okay", {
+            duration: 3000,
+            horizontalPosition: "right",
+            verticalPosition: "top",
+            panelClass: ['bg-danger', 'text-white']
+          });
         }
-     })
-  }
+      });
+    }
+  });
+}
+
   openDialog2() {
     this.dialog.open(AddTypeProprieteComponent, {
      }) .afterClosed()

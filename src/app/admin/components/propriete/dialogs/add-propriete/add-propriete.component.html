@@ -16,7 +16,6 @@
             bindValue="id"
             aria-required="true"
             class="form-control"
-            placeholder="Sélectionnez un quartier"
           >
           </ng-select>
         </div>
@@ -31,7 +30,6 @@
             bindValue="id"
             aria-required="true"
             class="form-control"
-            placeholder="Sélectionnez un type de propriété"
           >
           </ng-select>
         </div>
@@ -59,7 +57,7 @@
             bindValue="id"
             aria-required="true"
             class="form-control"
-            placeholder="Sélectionnez un partenaire"
+
           >
           </ng-select>
         </div>
@@ -75,25 +73,20 @@
             id="adresse"
             formControlName="adresse"
             placeholder="Entrez l'adresse"
+
           />
         </div>
-        <div class="col-md-6 mb-3">
-          <label for="etat" class="form-label">État</label>
-          <ng-select
-            id="etat"
-            formControlName="etat"
-            [items]="['location', 'vente']"
-            bindLabel="libelle"
-            bindValue="value"
-            class="form-control"
-            placeholder="Sélectionnez l'état"
-          >
-            <ng-option *ngFor="let etat of ['location', 'vente']" [value]="etat">
-              {{ etat }}
-            </ng-option>
-          </ng-select>
+
+          <div class="col-md-6 mb-3">
+            <label for="etat" class="form-label">État</label>
+            <select class="form-select form-control-lg" id="etat" formControlName="etat">
+              <option value="location">En Location</option>
+              <option value="vente">En Vente</option>
+            </select>
+          </div>
+
         </div>
-      </div>
+
 
       <!-- Section: Prix -->
       <div class="row mb-4">
