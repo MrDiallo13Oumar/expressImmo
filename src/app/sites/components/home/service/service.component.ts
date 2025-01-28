@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./service.component.scss']
 })
 export class ServiceComponent {
-
+email = "expressimmo@gmail.com"
   scrollToTop(): void {
     window.scrollTo({ top: 0, behavior: 'smooth' }); // Le 'smooth' permet un défilement fluide
   }

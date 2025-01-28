@@ -11,6 +11,8 @@ import { InscriptionSiteComponent } from './propriete/components/inscription-sit
 import { TruncatePipe } from 'src/assets/Pipes/truncateText.pipe';
 import { TruncateCardPipe } from 'src/assets/Pipes/truncateCard.pipe';
 import { AllProprietesComponent } from './propriete/components/all-proprietes/all-proprietes.component';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { DetailsProprieteComponent } from './propriete/components/details-propriete-site/details-propriete.component';
 
 
 
@@ -22,11 +24,13 @@ import { AllProprietesComponent } from './propriete/components/all-proprietes/al
     TruncateCardPipe,
     ServiceComponent,
     ContactComponent,
+    DetailsProprieteComponent,
     InscriptionSiteComponent,
     AllProprietesComponent,
   ],
   imports: [
     CommonModule,
+    NgSelectModule,
     DemoMaterialModule,
 
     RouterModule.forChild(homeRouting)

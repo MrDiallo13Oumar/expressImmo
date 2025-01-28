@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { ProprieteService } from 'src/app/admin/components/propriete/_services/propriete.service';
+// import { LINK_STATIC_FILES } from 'src/app/config';
 import { Propriete } from 'src/assets/Models/propriete';
 
 @Component({
@@ -22,7 +23,7 @@ export class AllProprietesComponent implements OnInit {
   displayedColumns: string[] = ['id', 'reference'];
   dataSource = new MatTableDataSource([]);
 
-  
+  // linkImg: string = LINK_STATIC_FILES
 
   constructor(private router: Router, private proprieteService: ProprieteService) {}
 
@@ -36,9 +37,7 @@ export class AllProprietesComponent implements OnInit {
       next: (response: any) => {
         // this.proprietes = response;
         this.dataSource.data = response // Mettre à jour les données du tableau
-        console.log("DataSource", this.dataSource.data);
-        
-        
+        console.log("DataSource", this.dataSource.data); 
       },
       error: (err: any) => {
         console.error('Erreur lors du chargement des propriétés : ', err);
@@ -148,6 +147,10 @@ export class AllProprietesComponent implements OnInit {
   // Lorsque la sélection de quartier change
   onQuartierChange(event: any) {
     this.getProprietes(event.value);
+  }
+
+  scrollToTop(): void {
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // Le 'smooth' permet un défilement fluide
   }
 }
 

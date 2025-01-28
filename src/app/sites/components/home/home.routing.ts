@@ -4,7 +4,7 @@ import { ProprieteComponent } from "./propriete/propriete.component";
 import { ServiceComponent } from "./service/service.component";
 import { ContactComponent } from "./contact/contact.component";
 import { InscriptionSiteComponent } from "./propriete/components/inscription-site/inscription-site.component";
-import { DetailsProprieteComponent } from "./propriete/components/details-propriete/details-propriete.component";
+import { DetailsProprieteComponent } from "./propriete/components/details-propriete-site/details-propriete.component";
 import { AllProprietesComponent } from "./propriete/components/all-proprietes/all-proprietes.component";
 
 

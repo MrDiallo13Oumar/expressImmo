@@ -1,46 +1,4 @@
-<!-- <div class="search-container">
-
-    <mat-form-field>
-        <mat-label>Ville</mat-label>
-        <mat-select [(ngModel)]="selectedVille" (selectionChange)="onVilleChange($event)">
-            <mat-option *ngFor="let ville of villes" [value]="ville.id">{{ ville.libelle }}</mat-option>
-        </mat-select>
-    </mat-form-field>
-
-
-    <mat-form-field>
-        <mat-label>Commune</mat-label>
-        <mat-select [(ngModel)]="selectedCommune" (selectionChange)="onCommuneChange($event)">
-            <mat-option *ngFor="let commune of communes" [value]="commune.id">{{ commune.libelle }}</mat-option>
-        </mat-select>
-    </mat-form-field>
-
-
-    <mat-form-field>
-        <mat-label>Quartier</mat-label>
-        <mat-select [(ngModel)]="selectedQuartier" (selectionChange)="onQuartierChange($event)">
-            <mat-option *ngFor="let quartier of quartiers" [value]="quartier.id">{{ quartier.libelle }}</mat-option>
-        </mat-select>
-    </mat-form-field>
-
-
-    <mat-table [dataSource]="dataSource">
-        <ng-container matColumnDef="id">
-            <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
-            <mat-cell *matCellDef="let row">{{ row.id }}</mat-cell>
-        </ng-container>
-
-        <ng-container matColumnDef="reference">
-            <mat-header-cell *matHeaderCellDef>Libellé</mat-header-cell>
-            <mat-cell *matCellDef="let row">{{ row.reference }}</mat-cell>
-        </ng-container>
-
-        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-    </mat-table>
-</div> -->
-
-<div class="main bg-white p-0">
+<div  class="main bg-white p-0">
     <!-- Header Start -->
     <div class="container-fluid bg-dark px-0">
         <div class="row gx-0">
@@ -65,7 +23,7 @@
                     </div>
                     <div class="col-lg-5 px-5 text-end">
                         <div class="d-inline-flex align-items-center py-2">
-                            <a class="me-3"><i class="fab fa-facebook-f"></i></a>
+                            <a class="me-3"><i class="fab fa-facebook-f text-primary"></i></a>
                             <a class="me-3"><i class="fab fa-twitter"></i></a>
                             <a class="me-3"><i class="fab fa-linkedin-in"></i></a>
                             <a class="me-3"><i class="fab fa-instagram"></i></a>
@@ -105,40 +63,87 @@
             </div>
         </div>
     </div>
+    <!-- Page Header End -->
+    <!-- Booking Start -->
+    
     <div class="container-fluid booking pb-5 wow fadeIn" data-wow-delay="0.1s">
         <div class="container">
             <div class="bg-white shadow" style="padding: 35px;">
                 <div class="row g-2">
-                    <div class="col-12 col-md-10">
-                        <div class="row g-2">
-                            <div class="col-12 col-md-4">
-                                <mat-form-field class="w-100">
-                                    <mat-label>Ville</mat-label>
-                                    <mat-select [(ngModel)]="selectedVille" (selectionChange)="onVilleChange($event)">
-                                        <mat-option *ngFor="let ville of villes" [value]="ville.id">{{ ville.libelle
-                                            }}</mat-option>
-                                    </mat-select>
-                                </mat-form-field>
+                    <div class="col-12 col-md-4">
+                        <mat-form-field class="w-100">
+                            <mat-label>Ville</mat-label>
+                            <mat-select [(ngModel)]="selectedVille" (selectionChange)="onVilleChange($event)">
+                                <mat-option *ngFor="let ville of villes" [value]="ville.id">{{ ville.libelle
+                                    }}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <mat-form-field class="w-100">
+                            <mat-label>Commune</mat-label>
+                            <mat-select [(ngModel)]="selectedCommune"
+                                (selectionChange)="onCommuneChange($event)">
+                                <mat-option *ngFor="let commune of communes" [value]="commune.id">{{
+                                    commune.libelle }}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <mat-form-field class="w-100">
+                            <mat-label>Quartier</mat-label>
+                            <mat-select [(ngModel)]="selectedQuartier"
+                                (selectionChange)="onQuartierChange($event)">
+                                <mat-option *ngFor="let quartier of quartiers" [value]="quartier.id">{{
+                                    quartier.libelle }}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Booking End -->
+    <!-- Room Start -->
+    <div class="container-xxl ">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title text-center text-primary text-uppercase">Nos Proprietés</h6>
+                <h1 class="mb-5">Explorez toutes nos <span class="text-primary text-uppercase">Proprietés </span></h1>
+            </div>
+            <div class="row g-4" >
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s" *ngFor="let item of dataSource.data | truncateCard : 1000">
+                    <div class="room-item shadow rounded overflow-hidden">
+                        <div class="position-relative">
+                            <img [src]="item.poster"
+                          style="height: 200px; width: 350px;"
+                          alt>
+                            <small
+                                class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4">{{ item.prix_journalier}} fg/jour</small>
+                        </div>
+                        <div class="p-4 mt-2">
+                            <div class="d-flex justify-content-between mb-3">
+                                <h5 class="mb-0"> {{item.reference}} </h5>
+                                <div class="ps-2">
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                    <small class="fa fa-star text-primary"></small>
+                                </div>
                             </div>
-                            <div class="col-12 col-md-4">
-                                <mat-form-field class="w-100">
-                                    <mat-label>Commune</mat-label>
-                                    <mat-select [(ngModel)]="selectedCommune"
-                                        (selectionChange)="onCommuneChange($event)">
-                                        <mat-option *ngFor="let commune of communes" [value]="commune.id">{{
-                                            commune.libelle }}</mat-option>
-                                    </mat-select>
-                                </mat-form-field>
+                            <div class="d-flex mb-3">
+                                <small class="border-end me-3 pe-3"><i class="fa fa-bed text-primary me-2"></i>3
+                                    Bed</small>
+                                <small class="border-end me-3 pe-3"><i class="fa fa-bath text-primary me-2"></i>2
+                                    Bath</small>
+                                <small><i class="fa fa-wifi text-primary me-2"></i>Wifi</small>
                             </div>
-                            <div class="col-12 col-md-4">
-                                <mat-form-field class="w-100">
-                                    <mat-label>Quartier</mat-label>
-                                    <mat-select [(ngModel)]="selectedQuartier"
-                                        (selectionChange)="onQuartierChange($event)">
-                                        <mat-option *ngFor="let quartier of quartiers" [value]="quartier.id">{{
-                                            quartier.libelle }}</mat-option>
-                                    </mat-select>
-                                </mat-form-field>
+                            <p class="text-body mb-3"> {{item.descriptions | truncateText }} </p>
+                            <div class="d-flex justify-content-between">
+                                <a class="btn btn-sm btn-primary rounded py-2 px-4" routerLink="/home/detailProprieteSite/{{ item.id }}">Detail</a>
+                                <a class="btn btn-sm btn-dark rounded py-2 px-4" routerLink="/home/inscriptionSite/{{ item.id }}">                                  
+                                    Reserver</a>
                             </div>
                         </div>
                     </div>
@@ -146,42 +151,153 @@
             </div>
         </div>
     </div>
+    <!-- Room End -->
 
-    <div class="row g-4" >
-        <div class="col-12 col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s"
-            *ngFor="let item of dataSource.data | truncateCard : 10000">
-            <div class="room-item shadow rounded overflow-hidden">
-                <div class="position-relative">
-                    <img class="img-fluid" src="assets/sites/img/room-1.jpg" alt="">
-                    <small
-                        class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4">{{
-                        item.prix_journalier }} fg/jour</small>
-                </div>
-                <div class="p-4 mt-2">
-                    <div class="d-flex justify-content-between mb-3">
-                        <h5 class="mb-0">{{ item.reference }}</h5>
-                        <div class="ps-2">
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
-                            <small class="fa fa-star text-primary"></small>
+
+    <!-- Testimonial Start -->
+    <div class="container-xxl testimonial mt-5 py-5 bg-dark wow zoomIn" data-wow-delay="0.1s"
+        style="margin-bottom: 90px;">
+        <div class="container">
+            <div class="owl-carousel testimonial-carousel py-5">
+                <div class="testimonial-item position-relative bg-white rounded overflow-hidden">
+                    <p>Tempor stet labore dolor clita stet diam amet ipsum dolor duo ipsum rebum stet dolor amet diam
+                        stet. Est stet ea lorem amet est kasd kasd et erat magna eos</p>
+                    <div class="d-flex align-items-center">
+                        <img class="img-fluid flex-shrink-0 rounded" src="assets/sites/img/testimonial-1.jpg"
+                            style="width: 45px; height: 45px;">
+                        <div class="ps-3">
+                            <h6 class="fw-bold mb-1">Client Name</h6>
+                            <small>Profession</small>
                         </div>
                     </div>
-                    <div class="d-flex mb-3">
-                        <small class="border-end me-3 pe-3"><i class="fa fa-bed text-primary me-2"></i>3 Bed</small>
-                        <small class="border-end me-3 pe-3"><i class="fa fa-bath text-primary me-2"></i>2 Bath</small>
-                        <small><i class="fa fa-wifi text-primary me-2"></i>Wifi</small>
+                    <i class="fa fa-quote-right fa-3x text-primary position-absolute end-0 bottom-0 me-4 mb-n1"></i>
+                </div>
+                <div class="testimonial-item position-relative bg-white rounded overflow-hidden">
+                    <p>Tempor stet labore dolor clita stet diam amet ipsum dolor duo ipsum rebum stet dolor amet diam
+                        stet. Est stet ea lorem amet est kasd kasd et erat magna eos</p>
+                    <div class="d-flex align-items-center">
+                        <img class="img-fluid flex-shrink-0 rounded" src="assets/sites/img/testimonial-2.jpg"
+                            style="width: 45px; height: 45px;">
+                        <div class="ps-3">
+                            <h6 class="fw-bold mb-1">Client Name</h6>
+                            <small>Profession</small>
+                        </div>
                     </div>
-                    <p class="text-body mb-3">{{ item.descriptions | truncateText }}</p>
-                    <div class="d-flex justify-content-between">
-                        <a class="btn btn-sm btn-primary rounded py-2 px-4"
-                            routerLink="/home/detailProprieteSite/{{ item.id }}">Detail</a>
-                        <a class="btn btn-sm btn-dark rounded py-2 px-4"
-                            routerLink="/home/inscriptionSite/{{ item.id }}">Reserver</a>
+                    <i class="fa fa-quote-right fa-3x text-primary position-absolute end-0 bottom-0 me-4 mb-n1"></i>
+                </div>
+                <div class="testimonial-item position-relative bg-white rounded overflow-hidden">
+                    <p>Tempor stet labore dolor clita stet diam amet ipsum dolor duo ipsum rebum stet dolor amet diam
+                        stet. Est stet ea lorem amet est kasd kasd et erat magna eos</p>
+                    <div class="d-flex align-items-center">
+                        <img class="img-fluid flex-shrink-0 rounded" src="assets/sites/img/testimonial-3.jpg"
+                            style="width: 45px; height: 45px;">
+                        <div class="ps-3">
+                            <h6 class="fw-bold mb-1">Client Name</h6>
+                            <small>Profession</small>
+                        </div>
+                    </div>
+                    <i class="fa fa-quote-right fa-3x text-primary position-absolute end-0 bottom-0 me-4 mb-n1"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Testimonial End -->
+    <!-- Newsletter Start -->
+    <div class="container newsletter mt-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="row justify-content-center">
+            <div class="col-lg-10 border rounded p-1">
+                <div class="border rounded text-center p-1">
+                    <div class="bg-white rounded text-center p-5">
+                        <h4 class="mb-4">Subscribe Our <span class="text-primary text-uppercase">Newsletter</span></h4>
+                        <div class="position-relative mx-auto" style="max-width: 400px;">
+                            <input class="form-control w-100 py-3 ps-4 pe-5" type="text" placeholder="Enter your email">
+                            <button type="button"
+                                class="btn btn-primary py-2 px-3 position-absolute top-0 end-0 mt-2 me-2">Submit</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <!-- Newsletter Start -->
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-light footer wow fadeIn" data-wow-delay="0.1s">
+        <div class="container pb-5">
+            <div class="row g-5">
+                <div class="col-md-6 col-lg-4">
+                    <div class="bg-primary rounded p-4">
+
+                        <a href="index.html">
+                            <h1 class="text-white text-uppercase mb-3">Express Immo </h1>
+                        </a>
+
+                        <p class="text-white mb-0">
+                            Download <a class="text-dark fw-medium">Express Immo – Premium Version</a>, build a
+                            professional website for yNos hotel business and grab the attention of new visitors upon
+                            yNos site’s launch.
+
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <h6 class="section-title text-start text-primary text-uppercase mb-4">Contact</h6>
+                    <p class="mb-2"><i class="bi bi-shop-window me-3"></i>Conakry, Gbessia, Behanzin</p>
+                    <p class="mb-2"><i class="bi bi-telephone-fill me-3"></i>+224 624-22-67-78</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>expressimmo.com</p>
+                    <div class="d-flex pt-2">
+                        <a class="btn btn-outline-light btn-social"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-outline-light btn-social"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light btn-social"><i class="fab fa-youtube"></i></a>
+                        <a class="btn btn-outline-light btn-social"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-5 col-md-12">
+                    <div class="row gy-5 g-4">
+                        <div class="col-md-6">
+                            <h6 class="section-title text-start text-primary text-uppercase mb-4">Company</h6>
+                            <a class="btn btn-link">About Us</a>
+                            <a class="btn btn-link">Contact Us</a>
+                            <a class="btn btn-link">Privacy Policy</a>
+                            <a class="btn btn-link">Terms & Condition</a>
+                            <a class="btn btn-link">Support</a>
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="section-title text-start text-primary text-uppercase mb-4">Services</h6>
+                            <a class="btn btn-link">Food & Restaurant</a>
+                            <a class="btn btn-link">Spa & Fitness</a>
+                            <a class="btn btn-link">Sports & Gaming</a>
+                            <a class="btn btn-link">Event & Party</a>
+                            <a class="btn btn-link">GYM & Yoga</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="copyright">
+                <div class="row text-dark">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+
+                        &copy; <a class="border-bottom text-dark" href="#">ExpressImmo</a>, All Right Reserved.
+
+                        <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for yNos support. ***/-->
+                        Designed By <a class="border-bottom text-primary" href="https://spa-dev.com/">SPA TECHNOLOGY</a>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+    <a class="btn btn-lg btn-primary btn-lg-square back-to-top" (click)="scrollToTop()"><i class="bi bi-arrow-up text-white"></i></a>
 </div>
+
+

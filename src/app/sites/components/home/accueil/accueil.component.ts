@@ -9,6 +9,7 @@ import { Propriete } from 'src/assets/Models/propriete';
   styleUrls: ['./accueil.component.scss']
 })
 export class AccueilComponent implements OnInit {
+  email = "expressimmo@gmail.com"
 constructor(private router : Router, private activeroute : ActivatedRoute,private propriete : ProprieteService
 ){}
   ngOnInit(): void {
