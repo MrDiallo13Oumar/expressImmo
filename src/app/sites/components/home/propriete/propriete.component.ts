@@ -25,11 +25,12 @@ export class ProprieteComponent {
   // displayedColumns: string[] = ['id','libelle', 'adresse', 'description', 'etat', 'partenaire', 'action'];
   // dataSource = new MatTableDataSource([]);
   data !: Propriete[]
-
+  email = "expressimmo@gmail.com"
   constructor(private router: Router, private proprieteService: ProprieteService) { }
 
   ngOnInit() {
     this.getPropriete()
+    this.getVilles();
   }
   getPropriete() {
     this.proprieteService.getall('propriete', 'readAll.php').subscribe({

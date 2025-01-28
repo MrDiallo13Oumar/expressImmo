@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { ProprieteService } from 'src/app/admin/components/propriete/_services/propriete.service';
-import { LINK_STATIC_FILES } from 'src/app/config';
+// import { LINK_STATIC_FILES } from 'src/app/config';
 import { Propriete } from 'src/assets/Models/propriete';
 
 @Component({
@@ -23,7 +23,7 @@ export class AllProprietesComponent implements OnInit {
   displayedColumns: string[] = ['id', 'reference'];
   dataSource = new MatTableDataSource([]);
 
-  linkImg: string = LINK_STATIC_FILES
+  // linkImg: string = LINK_STATIC_FILES
 
   constructor(private router: Router, private proprieteService: ProprieteService) {}
 

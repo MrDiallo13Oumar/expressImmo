@@ -17,7 +17,7 @@
                         <div class="h-100 d-inline-flex align-items-center py-2 me-4">
                             <i class="fa fa-envelope text-primary me-2"></i>
 
-                            <p class="mb-0 text-primary">expressimmo.com</p>
+                            <p class="mb-0 text-primary">{{email}}</p>
                         </div>
                         <div class="h-100 d-inline-flex align-items-center py-2">
                             <p class="mb-0 text-primary"><i class="bi bi-telephone-fill"></i> +224 624-22-67-78</p>
@@ -74,7 +74,7 @@
                             <a routerLink="/home/propriete"
                                 class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Nos Propriétés</a>
                             <a routerLink="/home/propriete"
-                                class="btn btn-light py-md-3 px-md-5 animated slideInRight">Reserver Maintenant</a>
+                                class="btn btn-light py-md-3 px-md-5 animated slideInRight">Reservations</a>
                         </div>
                     </div>
                 </div>
@@ -89,7 +89,7 @@
                                 <a routerLink="/home/propriete"
                                 class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Nos Propriétés</a>
                             <a routerLink="/home/propriete"
-                                class="btn btn-light py-md-3 px-md-5 animated slideInRight">Book A Room</a>
+                                class="btn btn-light py-md-3 px-md-5 animated slideInRight">Reservations</a>
                         </div>
                     </div>
                 </div>
@@ -190,7 +190,9 @@
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s" *ngFor="let item of data | truncateCard : 3">
                     <div class="room-item shadow rounded overflow-hidden">
                         <div class="position-relative">
-                            <img class="img-fluid" src="assets/sites/img/room-1.jpg" alt="">
+                            <img [src]="item.poster"
+                          style="height: 200px; width: 350px;"
+                          alt>
                             <small
                                 class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4">{{ item.prix_journalier}} fg/jour</small>
                         </div>
@@ -239,7 +241,7 @@
                     <h1 class="text-white mb-4">Découvrez des appartements de luxe de marque</h1>
                     <p class="text-white mb-4">Notre entreprise immobilière offre des services professionnels et personnalisés, avec une expertise approfondie et une approche innovante, pour répondre rapidement et efficacement aux besoins de nos clients.</p>
                     <a class="btn btn-primary py-md-3 px-md-5 me-3">Nos Propriétés</a>
-                    <a class="btn btn-light py-md-3 px-md-5 text-primary">Reserver Maintenant</a>
+                    <a class="btn btn-light py-md-3 px-md-5 text-primary">Reservations</a>
                 </div>
             </div>
             <div class="col-md-6">
@@ -288,19 +290,19 @@
                                 <i class="fa fa-hotel fa-2x text-primary"></i>
                             </div>
                         </div>
-                        <h5 class="mb-3">Rooms & Appartment</h5>
-                        <p class="text-body mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</p>
+                        <h5 class="mb-3">Chambres & Appartements</h5>
+                        <p class="text-body mb-0">Des chambres et appartements confortables pour tous vos séjours, à prix compétitifs.</p>
                     </a>
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
                     <a class="service-item rounded">
                         <div class="service-icon bg-transparent border rounded p-1">
                             <div class="w-100 h-100 border rounded d-flex align-items-center justify-content-center">
-                               <p><i class="fa fa-cutlery fa-2x text-primary"></i></p> 
+                                <p><i class="fa fa-cutlery fa-2x text-primary"></i></p> 
                             </div>
                         </div>
-                        <h5 class="mb-3">Food & Restaurant</h5>
-                        <p class="text-body mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</p>
+                        <h5 class="mb-3">Alimentation & Restauration</h5>
+                        <p class="text-body mb-0">Repas variés pour tous les goûts, allant des plats rapides aux repas raffinés.</p>
                     </a>
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
@@ -311,7 +313,7 @@
                             </div>
                         </div>
                         <h5 class="mb-3">Location de voiture</h5>
-                        <p class="text-body mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</p>
+                        <p class="text-body mb-0">Louez une voiture récente à des prix abordables pour vos déplacements.</p>
                     </a>
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
@@ -321,20 +323,19 @@
                                 <i class="fa fa-futbol fa-2x text-primary"></i>
                             </div>
                         </div>
-                        <h5 class="mb-3">Sports & Gaming</h5>
-                        <p class="text-body mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</p>
+                        <h5 class="mb-3">Sports & Jeux</h5>
+                        <p class="text-body mb-0">Activités sportives et jeux pour toute la famille et tous les âges.</p>
                     </a>
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                     <a class="service-item rounded">
                         <div class="service-icon bg-transparent border rounded p-1">
                             <div class="w-100 h-100 border rounded d-flex align-items-center justify-content-center">
-                                <!-- <i class="fa fa-glass-cheers fa-2x text-primary"></i> -->
                                 <i class="fas fa-cocktail fa-2x text-primary"></i>
                             </div>
                         </div>
-                        <h5 class="mb-3">Event & Party</h5>
-                        <p class="text-body mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</p>
+                        <h5 class="mb-3">Événements & Fêtes</h5>
+                        <p class="text-body mb-0">Organisez vos événements et fêtes dans un cadre unique et mémorable.</p>
                     </a>
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
@@ -344,64 +345,16 @@
                                 <i class="fa fa-building fa-2x text-primary"></i>
                             </div>
                         </div>
-                        <h5 class="mb-3">Vente bien immobilier</h5>
-                        <p class="text-body mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</p>
+                        <h5 class="mb-3">Vente de bien immobilier</h5>
+                        <p class="text-body mb-0">Des biens immobiliers variés à vendre, avec un accompagnement personnalisé.</p>
                     </a>
                 </div>
             </div>
+            
+            
         </div>
     </div>
     <!-- Service End -->
-
-
-    <!-- Testimonial Start -->
-    <div class="container-xxl testimonial my-5 py-5 bg-dark wow zoomIn" data-wow-delay="0.1s">
-        <div class="container">
-            <div class="owl-carousel testimonial-carousel py-5">
-                <div class="testimonial-item position-relative bg-white rounded overflow-hidden">
-                    <p>Tempor stet labore dolor clita stet diam amet ipsum dolor duo ipsum rebum stet dolor amet diam
-                        stet. Est stet ea lorem amet est kasd kasd et erat magna eos</p>
-                    <div class="d-flex align-items-center">
-                        <img class="img-fluid flex-shrink-0 rounded" src="assets/sites/img/testimonial-1.jpg"
-                            style="width: 45px; height: 45px;">
-                        <div class="ps-3">
-                            <h6 class="fw-bold mb-1">Client Name</h6>
-                            <small>Profession</small>
-                        </div>
-                    </div>
-                    <i class="fa fa-quote-right fa-3x text-primary position-absolute end-0 bottom-0 me-4 mb-n1"></i>
-                </div>
-                <div class="testimonial-item position-relative bg-white rounded overflow-hidden">
-                    <p>Tempor stet labore dolor clita stet diam amet ipsum dolor duo ipsum rebum stet dolor amet diam
-                        stet. Est stet ea lorem amet est kasd kasd et erat magna eos</p>
-                    <div class="d-flex align-items-center">
-                        <img class="img-fluid flex-shrink-0 rounded" src="assets/sites/img/testimonial-2.jpg"
-                            style="width: 45px; height: 45px;">
-                        <div class="ps-3">
-                            <h6 class="fw-bold mb-1">Client Name</h6>
-                            <small>Profession</small>
-                        </div>
-                    </div>
-                    <i class="fa fa-quote-right fa-3x text-primary position-absolute end-0 bottom-0 me-4 mb-n1"></i>
-                </div>
-                <div class="testimonial-item position-relative bg-white rounded overflow-hidden">
-                    <p>Tempor stet labore dolor clita stet diam amet ipsum dolor duo ipsum rebum stet dolor amet diam
-                        stet. Est stet ea lorem amet est kasd kasd et erat magna eos</p>
-                    <div class="d-flex align-items-center">
-                        <img class="img-fluid flex-shrink-0 rounded" src="assets/sites/img/testimonial-3.jpg"
-                            style="width: 45px; height: 45px;">
-                        <div class="ps-3">
-                            <h6 class="fw-bold mb-1">Client Name</h6>
-                            <small>Profession</small>
-                        </div>
-                    </div>
-                    <i class="fa fa-quote-right fa-3x text-primary position-absolute end-0 bottom-0 me-4 mb-n1"></i>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Testimonial End -->
-
 
     <!-- Team Start -->
     <div class="container-xxl py-5">
@@ -439,7 +392,7 @@
                         </div>
                         <div class="text-center p-4 mt-3">
                             <h5 class="fw-bold mb-0">Oumar DIALLO</h5>
-                            <small>Front-End</small>
+                            <small>Full-Stack</small>
                         </div>
                     </div>
                 </div>

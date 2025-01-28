@@ -23,7 +23,7 @@
                     </div>
                     <div class="col-lg-5 px-5 text-end">
                         <div class="d-inline-flex align-items-center py-2">
-                            <a class="me-3"><i class="fab fa-facebook-f"></i></a>
+                            <a class="me-3"><i class="fab fa-facebook-f text-primary"></i></a>
                             <a class="me-3"><i class="fab fa-twitter"></i></a>
                             <a class="me-3"><i class="fab fa-linkedin-in"></i></a>
                             <a class="me-3"><i class="fab fa-instagram"></i></a>
@@ -108,15 +108,15 @@
     <div class="container-xxl ">
         <div class="container">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h6 class="section-title text-center text-primary text-uppercase">Our Rooms</h6>
-                <h1 class="mb-5">Explore Our <span class="text-primary text-uppercase">Rooms</span></h1>
+                <h6 class="section-title text-center text-primary text-uppercase">Nos Proprietés</h6>
+                <h1 class="mb-5">Explorez toutes nos <span class="text-primary text-uppercase">Proprietés </span></h1>
             </div>
             <div class="row g-4" >
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s" *ngFor="let item of dataSource.data | truncateCard : 1000">
                     <div class="room-item shadow rounded overflow-hidden">
                         <div class="position-relative">
-                            <img [src]="linkImg+item.image"
-                          style="height: 70px;width: 70px;border-radius: 50%;"
+                            <img [src]="item.poster"
+                          style="height: 200px; width: 350px;"
                           alt>
                             <small
                                 class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4">{{ item.prix_journalier}} fg/jour</small>
