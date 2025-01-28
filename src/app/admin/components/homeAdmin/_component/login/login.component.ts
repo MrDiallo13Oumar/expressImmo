@@ -93,7 +93,7 @@ export class LoginComponent {
         // Vérifier si le token est bien présent dans la réponse
         if (response && response.token) {
           // Stocker le token dans le localStorage
-          localStorage.setItem('authToken', response.token);
+          localStorage.setItem('access_token', response.token);
 
           // Rediriger vers le dashboard
           this.router.navigate(['/hoomeAdmin/dashboard']);
