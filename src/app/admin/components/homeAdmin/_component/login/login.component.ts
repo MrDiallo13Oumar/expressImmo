@@ -104,7 +104,7 @@ export class LoginComponent {
       error: (err) => {
         console.error('Error : ', err);
         this.snackBar.open(
-          err.error.detail || 'Identifiant Incorrect!',
+          err || 'Identifiant Incorrect!',
           'Error',
           {
             duration: 4000,
