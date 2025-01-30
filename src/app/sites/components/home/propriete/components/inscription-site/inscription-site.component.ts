@@ -129,7 +129,7 @@ export class InscriptionSiteComponent {
     if (this.Reservation.valid) {
       console.log("formData", formData);
 
-      this.reservationService.create('reservations', 'create.php', formData).subscribe((data) => {
+      this.reservationService.create('reservation', 'create.php', formData).subscribe((data) => {
         console.log(data);
         this.data = data
         Swal.fire('Felicitation ...', 'Vous aviez reserver avec succes!', 'success')

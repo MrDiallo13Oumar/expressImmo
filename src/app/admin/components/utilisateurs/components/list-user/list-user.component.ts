@@ -42,7 +42,7 @@ applyFilter (event: Event) {
 }
 
 ngOnInit() {
-  this.getUtilisateur()
+  // this.getUtilisateur()
  }
 getUtilisateur () {
    this.service.getall('authentification', 'readAll.php').subscribe({
@@ -67,7 +67,7 @@ getUtilisateur () {
            const formData = convertObjectInFormData(result.data);
           this.dataSource.data.splice(0, this.dataSource.data.length);
           //Envoyer dans la Base
-          this.service.create('authentification','create.php', formData).subscribe({
+          this.service.create('authentification','register.php', formData).subscribe({
             next: (response) => {
               this.snackBar.open("Utilisateur enregistré avec succès !", "Okay", {
                 duration: 3000,

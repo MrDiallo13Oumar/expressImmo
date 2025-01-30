@@ -1,7 +1,7 @@
 import { HttpHeaders, HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { BehaviorSubject, map, Observable, tap } from 'rxjs';
 import { BASE_URL } from 'src/app/config';
 
 @Injectable({
@@ -9,57 +9,62 @@ import { BASE_URL } from 'src/app/config';
 })
 export class AuthService {
 
-  token: any = localStorage.getItem('access_token') || undefined
-  httpOptions = {
-    headers: new HttpHeaders({
-      Authorization: `Bearer ${this.token}`,
-      'Content-Type': 'application/json'
-    })
+  private apiUrlRegister = `${BASE_URL}/authentification/register.php`;
+  private apiUrlLogin = `${BASE_URL}authentification/login.php`;
+  // private apiUrlLogout = `${BASE_URL}/logout.php`;
+  
+
+  constructor(private http: HttpClient) {}
+
+  // Inscription
+  register(nom: string, prenom: string, email: string, mot_de_passe: string, role: string): Observable<any> {
+    return this.http.post<any>(this.apiUrlRegister, { nom, prenom, email, mot_de_passe, role });
   }
 
-  private isAuthenticatedSubject = new BehaviorSubject<boolean>(false)
-
-  constructor (private http: HttpClient, private router: Router) {}
-
-  login (api: string, suffixURL: string, data: any): Observable<any> {
-    return this.http.post<any>(`${BASE_URL}${api}/${suffixURL}`, data).pipe(
-      tap(response => {
-        localStorage.setItem('access_token', response.token)
-        this.isAuthenticatedSubject.next(true)
-      })
-    )
+  // Connexion
+  login(email: string, mot_de_passe: string): Observable<any> {
+    return this.http.post<any>(this.apiUrlLogin, { email, mot_de_passe });
   }
-  //  login(api: string, suffixURL: string, data: any): Observable<any> {
-  //   return this.http.post<any>(`${BASE_URL}${api}/${suffixURL}`, data, {
-  //     headers: new HttpHeaders({
-  //       'Content-Type': 'application/json'  // Spécifier que les données sont en JSON
-  //     })
-  //   }).pipe(
-  //     tap(response => {
-  //       if (response.token) {
-  //         // Sauvegarder le token dans localStorage
-  //         localStorage.setItem('access_token', response.token);
-  //         this.isAuthenticatedSubject.next(true);  // Met à jour l'état de l'authentification
-  //       } else {
-  //         console.error('Token non trouvé');
-  //       }
-  //     })
-  //   );
+redirectUrl !: string;
+  @Output() getLoggedInName: EventEmitter<any> = new EventEmitter();
+
+  public userlogin(username: any, password: any) {
+    alert(username)
+    return this.http.post<any>(this.apiUrlLogin + '/login.php', { username, password })
+      .pipe(map(Users => {
+        this.setToken(Users[0].name);
+        this.getLoggedInName.emit(true);
+        return Users;
+      }));
+  }
+  setToken(token: string) {
+    localStorage.setItem('token', token);
+  }
+  getToken() {
+    return localStorage.getItem('token');
+  }
+  deleteToken() {
+    localStorage.removeItem('token');
+  }
+  isLoggedIn() {
+    const usertoken = this.getToken();
+    if (usertoken != null) {
+      return true
+    }
+    return false;
+  }
+  // Déconnexion
+  // logout(): Observable<any> {
+  //   return this.http.get<any>(this.apiUrlLogout);
   // }
 
-
-
-  logout (): void {
-    localStorage.removeItem('access_token')
-    this.isAuthenticatedSubject.next(false)
-    this.router.navigate(['/home/login'])
+  // Vérifier si l'utilisateur est authentifié
+  isAuthenticated(): boolean {
+    return !!sessionStorage.getItem('user_id');
   }
 
-  isLoggedIn (): boolean {
-    return !!localStorage.getItem('access_token')
-  }
-
-  getToken (): string | null {
-    return localStorage.getItem('access_token')
+  // Récupérer les informations de l'utilisateur
+  getUser(): any {
+    return JSON.parse(sessionStorage.getItem('user') || '{}');
   }
 }

@@ -1,27 +1,24 @@
-<div class="login-form-bg">
-  <div class="container">
-    <div class="row">
-      <div class="col-xl-6">
-        <div class="form-input-content">
-          <div class="card login-form mb-0">
-            <div class="card-body pt-5">
-              <a class="text-center">
-                <h2>Connectez Vous</h2>
-              </a>
-              <form [formGroup]="FormLogin" class="mt-5 mb-5 login-input" >
-                <div class="form-group">
-                  <input type="email" class="form-control" placeholder="Email" formControlName="email">
-                </div>
-                <div class="form-group">
-                  <input type="password" class="form-control" placeholder="Password" formControlName="mot_de_passe">
-                </div>
-                <button class="btn login-form__btn submit w-100" [disabled]="FormLogin.invalid" (click)="login(FormLogin)">Se Connecter</button>
-              </form>
-             
-            </div>
-          </div>
-        </div>
-      </div>
+<h2 class="text-center">Login</h2>
+<div class="row">
+    <div class="col-md-4">
     </div>
-  </div>
+    <div class="col-md-4 col-md-offset-5">
+        <div class="jumbotron">
+            <form [formGroup]="angForm" (ngSubmit)="postdata(angForm)" >
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" formControlName="email" 
+                        class="form-control input-sm" placeholder="Email">
+                </div>
+                <div class="form-group">
+                    <label for="Password">Password</label>
+                    <input type="password" name="Password" formControlName="password" autocomplete="off"
+                        class="form-control input-sm" placeholder="Password">
+                </div>
+                <button type="submit" class="btn btn-success">Login</button>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-5">
+    </div>
 </div>
