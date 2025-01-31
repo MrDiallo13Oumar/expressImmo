@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -11,8 +10,6 @@ import { TopBarComponent } from './shared/components/top-bar/top-bar.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { DemoMaterialModule } from './demo-material-module';
 import { DeletePopupComponent } from './shared/dialogs/delete-popup/delete-popup.component';
-import { TruncatePipe } from './truncate.pipe';
-
 
 
 @NgModule({
@@ -22,13 +19,11 @@ import { TruncatePipe } from './truncate.pipe';
     TopBarComponent,
     FooterComponent,
     DeletePopupComponent,
-
-
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    // AppRoutingModule,
+    //AppRoutingModule,
     BrowserAnimationsModule,
     DemoMaterialModule,
     RouterModule.forRoot(AppRouting),

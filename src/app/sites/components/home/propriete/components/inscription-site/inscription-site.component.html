@@ -395,7 +395,7 @@
           <label for="" class="form-label">Image</label>
           <input type="file" (change)="onFileChange($event)" formControlName="poster" class="form-control" />
           <div class="image-preview-container text-end mt-3" *ngIf="imagePreview">
-            <img [src]="imagePreview" class="image-preview img-fluid" />
+            <img [src]="imagePreview" class="image-preview img-fluid" alt/>
           </div>
         </div>
   

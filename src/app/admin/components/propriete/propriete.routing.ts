@@ -4,7 +4,7 @@ import { DetailsProprieteComponent } from "./_component/details-propriete/detail
 
 export const proprieteRouting: Routes = [
 
- {
+  {
     path: 'list-propriete',
     component:ListProprieteComponent ,
 
@@ -13,8 +13,5 @@ export const proprieteRouting: Routes = [
     path :'detail-propriete/:id',
     component: DetailsProprieteComponent,
 
-}
-
-
-
+  }
 ]

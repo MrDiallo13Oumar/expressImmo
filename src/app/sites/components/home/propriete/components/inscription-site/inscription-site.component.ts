@@ -125,14 +125,15 @@ export class InscriptionSiteComponent {
 
   data: any
   saveDataReservations() {
-    const formData = convertObjectInFormData(this.Reservation.value);
+    const 
+    formData = convertObjectInFormData(this.Reservation.value);
     if (this.Reservation.valid) {
       console.log("formData", formData);
 
       this.reservationService.create('reservation', 'create.php', formData).subscribe((data) => {
         console.log(data);
         this.data = data
-        Swal.fire('Felicitation ...', 'Vous aviez reserver avec succes!', 'success')
+        Swal.fire('Merci ...', 'De reserver notre propriete!', 'success')
         this.route.navigateByUrl("/home/propriete")
       }
       )
