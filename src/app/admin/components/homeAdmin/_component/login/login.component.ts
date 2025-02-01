@@ -1,9 +1,8 @@
-import { NavigationEnd, Router } from '@angular/router';
+
 import { Component } from '@angular/core';
-import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { AuthService } from '../../services/authServices/auth.service';
-import { first } from 'rxjs';
+import { Validators, FormBuilder } from '@angular/forms';
+import { AuthService } from 'src/app/admin/guards/service/auth.service';
+import { convertObjectInFormData } from 'src/app/app.component';
 
 @Component({
   selector: 'app-login',
@@ -12,46 +11,41 @@ import { first } from 'rxjs';
 })
 export class LoginComponent {
 
-  angForm = new FormGroup({
-    email: new FormControl(''),
-    password: new FormControl('')
-  })
 
-  constructor(private fb: FormBuilder, private dataService: AuthService, private router: Router) {
+  loginForm = this.fb.group({
+    email: ['', Validators.required],
+    mot_de_passe: ['', Validators.required],
+  });
 
-  }
+  constructor(
+    private loginService: AuthService,
+    private fb: FormBuilder,
+  ) {}
 
-  ngOnInit() {
-  }
-  postdata(angForm1: any) {
-    this.dataService.userlogin(angForm1.value.email, angForm1.value.password)
-      .pipe(first())
-      .subscribe(
-        data => {
-          const redirect = this.dataService.redirectUrl ? this.dataService.redirectUrl : '/hoomeAdmin/dashboard';
-          this.router.navigate([redirect]);
+  onSubmit(): void {
+    // console.log(this.loginForm.value);
+    const formData =this.loginForm.value;
+    console.log('formData', formData);
+
+    this.loginService
+      .login(
+        'authentification',
+        'login.php', convertObjectInFormData
+       ( this.loginForm.value)
+      )
+      .subscribe({
+        next: (response: any) => {
+          this.loginService.saveToken(
+            response.access_token,
+            response.idUser
+          );
+          console.log('login success',response);
+
         },
-        error => {
-          alert("User name or password is incorrect")
-        });
+        error: (error: any) => {
+          console.log('ERROR : ', error);
+        },
+      });
   }
-  // postdata(angForm1: any) {
-  //   this.dataService.userlogin(angForm1.value.email, angForm1.value.password)
-  //     .pipe(first())
-  //     .subscribe(
-  //       data => {
-  //         if (data.session_active) {
-  //           const redirect = this.dataService.redirectUrl ? this.dataService.redirectUrl : '/homeAdmin/dashboard';
-  //           this.router.navigate([redirect]);
-  //         }
-  //       },
-  //       error => {
-  //         alert("User name or password is incorrect")
-  //       }
-  //     );
-  // }
-  
-  get email() { return this.angForm.get('email'); }
-  get password() { return this.angForm.get('password'); }
 
 }

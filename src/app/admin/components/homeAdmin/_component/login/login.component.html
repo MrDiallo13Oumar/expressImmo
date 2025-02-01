@@ -1,24 +1,30 @@
-<h2 class="text-center">Login</h2>
-<div class="row">
-    <div class="col-md-4">
-    </div>
-    <div class="col-md-4 col-md-offset-5">
-        <div class="jumbotron">
-            <form [formGroup]="angForm" (ngSubmit)="postdata(angForm)" >
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" name="email" formControlName="email" 
-                        class="form-control input-sm" placeholder="Email">
-                </div>
-                <div class="form-group">
-                    <label for="Password">Password</label>
-                    <input type="password" name="Password" formControlName="password" autocomplete="off"
-                        class="form-control input-sm" placeholder="Password">
-                </div>
-                <button type="submit" class="btn btn-success">Login</button>
-            </form>
-        </div>
-    </div>
-    <div class="col-md-5">
-    </div>
-</div>
+<div class="login-container">
+  <div class="col-left">
+      <div class="overlay">
+          <h2>Bienvenue Chez Expresse IMMO</h2>
+          <p>Connectez-vous pour commencer.</p>
+      </div>
+  </div>
+  <div class="col-right">
+      <div class="form-container">
+          <h2>Connexion</h2>
+          <img src="https://static.vecteezy.com/ti/vecteur-libre/p1/2789298-immobilier-entreprise-illustration-concept-gratuit-vectoriel.jpg" class="img-responsive w-100" alt="">
+          <div class="form">
+              <form [formGroup]="loginForm">
+                <div class="col-form mb-3">
+                  <mat-form-field class="w-100" appearance="outline">
+                      <mat-label>Nom d'utilisateur</mat-label>
+                      <input matInput type="email" placeholder="email..." formControlName="email" />
+                  </mat-form-field>
+                  <div class="col-form mb-2">
+                      <mat-form-field class="w-100" appearance="outline">
+                          <mat-label>Mot de passe</mat-label>
+                          <input matInput type="password" placeholder="Mot de passe..." formControlName="mot_de_passe"  />
+                      </mat-form-field>
+                  </div>
+              </div>
+              </form>
+              <button mat-flat-button color="primary" (click)="onSubmit()">Je me connecte</button>
+          </div>
+      </div>
+  </div>

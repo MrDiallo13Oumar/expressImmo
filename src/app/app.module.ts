@@ -10,6 +10,9 @@ import { TopBarComponent } from './shared/components/top-bar/top-bar.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { DemoMaterialModule } from './demo-material-module';
 import { DeletePopupComponent } from './shared/dialogs/delete-popup/delete-popup.component';
+import { TruncatePipe } from './truncate.pipe';
+import { ToastrModule } from 'ngx-toastr';
+
 
 
 @NgModule({
@@ -27,8 +30,15 @@ import { DeletePopupComponent } from './shared/dialogs/delete-popup/delete-popup
     BrowserAnimationsModule,
     DemoMaterialModule,
     RouterModule.forRoot(AppRouting),
+    ToastrModule.forRoot({
+      // Configuration de base de ngx-toastr
+      timeOut: 3000, // Durée d'affichage (en ms)
+      positionClass: 'toast-top-right', // Position par défaut des toasts
+      preventDuplicates: true, // Évite les toasts en double
+    }),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [ToastrModule],
 })
 export class AppModule { }

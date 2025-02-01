@@ -8,12 +8,12 @@ import { BASE_URL } from 'src/app/config';
 })
 export class UtilisateurService {
 
-  // constructor (private http: HttpClient) {}
+  constructor (private http: HttpClient) {}
 
      // CREATE
      create (api: string, suffixURL: string, data: any): Observable<any> {
        // console.log(data);
-       return this.httpClient.post(`${BASE_URL}${api}/${suffixURL}`, data)
+       return this.http.post(`${BASE_URL}${api}/${suffixURL}`, data)
      }
 
 
@@ -26,7 +26,7 @@ export class UtilisateurService {
 
   //    // READ GLOBAL
       getall (api: string, suffixUrl: string) {
-       return this.httpClient.get<any[]>(`${BASE_URL}${api}/${suffixUrl}`)
+       return this.http.get<any[]>(`${BASE_URL}${api}/${suffixUrl}`)
      }
 
   //    // GET
@@ -56,59 +56,22 @@ export class UtilisateurService {
   //    // GET Unique
 
 
-  //    delete(
-  //      api: string,
-  //      suffixUrl: any,
-  //      table: string,
-  //      id: any
-  //    ): Observable<boolean> {
-  //      const url = `${BASE_URL}${api}/${suffixUrl}/${id}/`;
-  //      let params = {
-  //        params: {
-  //          table: table,
-  //          id: id,
-  //        },
-  //      };
-  //      return this.http.delete<boolean>(url, params);
-  //    }
+     delete(
+       api: string,
+       suffixUrl: any,
+       table: string,
+       id: any
+     ): Observable<boolean> {
+       const url = `${BASE_URL}${api}/${suffixUrl}/${id}/`;
+       let params = {
+         params: {
+           table: table,
+           id: id,
+         },
+       };
+       return this.http.delete<boolean>(url, params);
+     }
 
-     redirectUrl !: string;
-     baseUrl: string = "http://localhost/expressimmo/api/authentification";
-     @Output() getLoggedInName: EventEmitter<any> = new EventEmitter();
-     constructor(private httpClient: HttpClient) { }
-     public userlogin(username: any, password: any) {
-       alert(username)
-       return this.httpClient.post<any>(this.baseUrl + '/login.php', { username, password })
-         .pipe(map(Users => {
-           this.setToken(Users[0].name);
-           this.getLoggedInName.emit(true);
-           return Users;
-         }));
-     }
-   
-     public userregistration(name: any, email: any, pwd: any, prenom: any) {
-       return this.httpClient.post<any>(this.baseUrl + '/register.php', { name, email, pwd })
-         .pipe(map(Users => {
-           return Users;
-         }));
-     }
-   
-     //token
-     setToken(token: string) {
-       localStorage.setItem('token', token);
-     }
-     getToken() {
-       return localStorage.getItem('token');
-     }
-     deleteToken() {
-       localStorage.removeItem('token');
-     }
-     isLoggedIn() {
-       const usertoken = this.getToken();
-       if (usertoken != null) {
-         return true
-       }
-       return false;
-     }
+
 
 }

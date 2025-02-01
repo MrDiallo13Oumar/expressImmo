@@ -7,6 +7,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { UtilisateurService } from '../../services/utilisateur.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { convertObjectInFormData } from 'src/app/app.component';
+import { DeletePopupComponent } from 'src/app/shared/dialogs/delete-popup/delete-popup.component';
 
 @Component({
   selector: 'app-list-user',
@@ -42,7 +43,7 @@ applyFilter (event: Event) {
 }
 
 ngOnInit() {
-  // this.getUtilisateur()
+   this.getUtilisateur()
  }
 getUtilisateur () {
    this.service.getall('authentification', 'readAll.php').subscribe({
@@ -90,4 +91,38 @@ getUtilisateur () {
         }
      })
   }
+    // DELETE
+          deleteFunction(id: any, table: string) {
+            this.dialog
+              .open(DeletePopupComponent, {
+                disableClose: true,
+                data: {
+                  title: 'Suppression demandée!',
+                  message: 'Voulez-vous vraiment supprimer cet élément ?',
+                  messageNo: 'Non ?',
+                  messageYes: 'Oui, Confirmer !',
+                },
+              })
+              .afterClosed()
+              .subscribe((data: any) => {
+                if (data) {
+                  this.service.delete('public', 'delete.php', table, id).subscribe({
+                    next: (response: any) => {
+                      const messageClass =
+                        response.status == 1 ? ['bg-success', 'text-white'] : ['bg-danger', 'text-white'];
+                      this.snackBar.open(response.message, 'Okay', {
+                        duration: 3000,
+                        horizontalPosition: 'right',
+                        verticalPosition: 'top',
+                        panelClass: messageClass,
+                      });
+                    },
+                    error: (err: any) => {
+                      console.error('Error : ', err);
+                    },
+                  });
+                  this.getUtilisateur()
+                }
+              });
+          }
 }
