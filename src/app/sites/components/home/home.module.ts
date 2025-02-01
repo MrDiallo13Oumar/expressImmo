@@ -13,6 +13,7 @@ import { TruncateCardPipe } from 'src/assets/Pipes/truncateCard.pipe';
 import { AllProprietesComponent } from './propriete/components/all-proprietes/all-proprietes.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { DetailsProprieteComponent } from './propriete/components/details-propriete-site/details-propriete.component';
+import { NotFoundComponent } from 'src/app/shared/components/not-found/not-found.component';
 
 
 
@@ -27,6 +28,7 @@ import { DetailsProprieteComponent } from './propriete/components/details-propri
     DetailsProprieteComponent,
     InscriptionSiteComponent,
     AllProprietesComponent,
+    NotFoundComponent,
   ],
   imports: [
     CommonModule,

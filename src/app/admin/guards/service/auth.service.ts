@@ -72,7 +72,7 @@ export class AuthService {
       this.toastr.success('Vous êtes bien authentifier', 'Success!', {
         progressBar: true,
       });
-      this.router.navigate(['/hoomeAdmin/dashboard']);
+      this.router.navigate(['/utilisateur/dashboard']);
     } else {
       this.toastr.error('Informations incorrect !', 'Incorrect!', {
         progressBar: true,

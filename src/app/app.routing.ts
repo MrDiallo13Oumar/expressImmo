@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { AuthGuard } from './admin/guards/auth.guard';
+import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 
 export const AppRouting: Routes = [
 
@@ -23,7 +24,7 @@ export const AppRouting: Routes = [
         path: 'hoomeAdmin',
         loadChildren: () =>
           import('../app/admin/components/homeAdmin/home-admin.module').then(m => m.HomeAdminModule),
-       
+
       },
       {
         path: 'propriete',
@@ -74,6 +75,13 @@ export const AppRouting: Routes = [
           import('../app/admin/components/rapport/rapport.module').then(m => m.RapportModule),
         canActivate: [AuthGuard],
       },
+       // Gestion des routes non trouvées
+       {
+        path: '**',
+        redirectTo: '/home/not-found',
+       pathMatch: 'full',
+
+      }
 
     ]
   }

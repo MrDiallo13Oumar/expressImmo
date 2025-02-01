@@ -13,7 +13,7 @@ import { DetailUtilisateurComponent } from './components/detail-utilisateur/deta
   declarations: [
     ListUserComponent,
     AddUserComponent,
-    DetailUtilisateurComponent
+    DetailUtilisateurComponent,
   ],
   imports: [
     CommonModule,

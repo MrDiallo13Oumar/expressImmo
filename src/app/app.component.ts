@@ -23,6 +23,10 @@ export class AppComponent {
             this.router.navigate(['/home/accueil']);
             return;
           }
+          if (event.url === '/home/not-found') {
+           this.canShowMenu=false
+            return;
+          }
           const hiddenExactUrls = ['/hoomeAdmin/login'];
           const hiddenModuleUrls = ['/home'];
 
