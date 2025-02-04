@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
@@ -18,11 +18,15 @@ export class InscriptionSiteComponent {
   email = "expressimmo@gmail.com"
   constructor(private snackBar: MatSnackBar, private route: Router, private reservationService: ReservationService, private activeroute: ActivatedRoute) { }
 
+  get telephoneControl() {
+    return this.Reservation.get('telephone')!;
+  }
+
 
   Reservation = new FormGroup({
     nom: new FormControl(''),
     prenom: new FormControl(''),
-    telephone: new FormControl(''),
+    telephone: new FormControl('', Validators.required),
     adresse: new FormControl(''),
     statut: new FormControl(''),
     wifi: new FormControl(''),
@@ -125,8 +129,7 @@ export class InscriptionSiteComponent {
 
   data: any
   saveDataReservations() {
-    const 
-    formData = convertObjectInFormData(this.Reservation.value);
+    const formData = convertObjectInFormData(this.Reservation.value);
     if (this.Reservation.valid) {
       console.log("formData", formData);
 

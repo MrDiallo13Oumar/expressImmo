@@ -40,9 +40,9 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
-                            <a routerLink="/home/accueil" class="nav-item nav-link">Home</a>
+                            <a routerLink="/home/accueil" class="nav-item nav-link">Acceuil</a>
 
-                            <a routerLink="/home/service" class="nav-item nav-link">Services</a>
+                            <a routerLink="/home/service" class="nav-item nav-link">Nos Services</a>
                             <a routerLink="/home/propriete" class="nav-item nav-link active">Propriétés</a>
                             <a routerLink="/home/contact" class="nav-item nav-link">Contact</a>
                         </div>
@@ -106,15 +106,18 @@
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <input type="text" class="form-control" id="telephone" formControlName="telephone" required>
-                                        <label for="name">Votre numero de telephone</label>
+                                        <label for="telephone">Votre numéro de téléphone WhatsApp</label>
+                                        <div *ngIf="telephoneControl?.invalid && (telephoneControl?.dirty || telephoneControl?.touched)" class="text-danger">
+                                            Le numéro de téléphone whatsaap est requis.
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <!-- <div class="col-md-12">
                                     <div class="form-floating">
                                         <input type="email" class="form-control" id="email" formControlName="email" required>
                                         <label for="name">Votre adresse mail</label>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="col-md-12">
                                     <div class="form-floating">
                                         <input type="date" class="form-control" id="date_reservation" formControlName="date_reservation" required>
@@ -128,11 +131,11 @@
                                     </div>
                                 </div> -->
                                 
-                                
+                                <p class="text-center"> -- Service on inclus dans le tarifs de reservation --</p>
                                 
                                 <div class="d-flex justify-content-between">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="wifi"formControlName="wifi" checked>
+                                        <input class="form-check-input" type="checkbox" id="wifi"formControlName="wifi" >
                                         <label class="form-check-label" for="flexCheckDefault">
                                             WIFI
                                         </label>

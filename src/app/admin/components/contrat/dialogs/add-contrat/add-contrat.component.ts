@@ -33,9 +33,6 @@ export class AddContratComponent implements OnInit{
 
 
 
-
-
-
   Reservation : any =[]
   getReservation () {
     this.service.getall('reservation', 'readAll.php').subscribe({

@@ -20,18 +20,18 @@ export class LoginComponent {
   constructor(
     private loginService: AuthService,
     private fb: FormBuilder,
-  ) {}
+  ) { }
 
   onSubmit(): void {
     // console.log(this.loginForm.value);
-    const formData =this.loginForm.value;
+    const formData = this.loginForm.value;
     console.log('formData', formData);
 
     this.loginService
       .login(
         'authentification',
         'login.php', convertObjectInFormData
-       ( this.loginForm.value)
+        (this.loginForm.value)
       )
       .subscribe({
         next: (response: any) => {
@@ -39,7 +39,7 @@ export class LoginComponent {
             response.access_token,
             response.idUser
           );
-          console.log('login success',response);
+          console.log('login success', response);
 
         },
         error: (error: any) => {

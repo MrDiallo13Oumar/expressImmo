@@ -1,78 +1,22 @@
-.card {
-  max-width: 600px; /* Définit une largeur maximale pour la carte */
-  height: 600px; /* Définit une hauteur fixe pour la carte */
-  overflow-y: auto; /* Ajoute un défilement vertical */
-  overflow-x: hidden; /* Cache le défilement horizontal, si nécessaire */
-  margin: 0 auto; /* Centre la carte horizontalement */
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Ajoute une ombre pour un effet visuel */
-  border-radius: 8px; /* Arrondit légèrement les coins */
-}
 
+
+@media (max-width: 768px) {
+  .table-responsive {
+    overflow-x: auto;
+  }
+}
 .card-body {
-  padding: 20px; /* Ajoute un espace intérieur */
-}
-::ng-deep ng-select .ng-dropdown-panel {
-  background-color: white !important;  /* Assurez-vous que le fond du panneau est solide */
+  padding: 1rem; /* Réduit l'espace interne */
 }
 
-::ng-deep ng-select .ng-option {
-  background-color: white !important;  /* Assurez-vous que chaque option dans la liste a un fond solide */
+.row {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
 }
 
-::ng-deep ng-select .ng-select-container {
-  background-color: white !important;  /* Changez la couleur du fond du conteneur */
+@media (max-width: 768px) {
+  .col-md-4, .col-md-8 {
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+  }
 }
-
-::ng-deep ng-select .ng-select-search input {
-  background-color: white !important;  /* Fond solide pour la barre de recherche */
-}
-
-
-
-::ng-deep ng-select {
-  font-size: 1rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(232, 221, 221, 0.1);
-}
-
-::ng-deep ng-select .ng-select-container {
-  border: 1px solid #ccc;
-}
-
-::ng-deep ng-select .ng-dropdown-panel {
-  max-height: 300px;
-  overflow-y: auto;
-}
-
-/* Styles supplémentaires pour améliorer l'apparence */
-.card {
-  background-color: #f9f9f9;
-}
-
-.card-footer {
-  background-color: #fff;
-  border-top: 1px solid #ddd;
-}
-
-input[type="file"] {
-  padding: 10px;
-  background-color: #f8f9fa;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-}
-
-input[type="file"]:hover {
-  background-color: #e9ecef;
-}
-
-.image-preview {
-  max-width: 100%;
-  border-radius: 5px;
-  margin-top: 10px;
-}
-
-textarea.form-control {
-  height: 150px; /* Ajustez la hauteur de la zone de texte si nécessaire */
-}
-
-
