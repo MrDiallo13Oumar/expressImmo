@@ -1,16 +1,22 @@
 <div class="content-body">
   <div class="container-fluid">
-    <div class="card col  rounded p-3 mt-4 " >
+    <div class="card col rounded p-3 mt-4 shadow-lg">
       <div class="card-body d-flex align-items-center justify-content-between">
-        <h4 class="card-title mb-0">Locataire</h4>
+        <h4 class="card-title mb-0 fw-bold text-primary">
+          <mat-icon [ngClass]="'icon-md'">person</mat-icon> Locataire
+        </h4>
         <button
-          type="button"
-          class="btn btn-info btn-sm btn-rounded text-white px-3"
-          (click)="openDialog()">
-          Nouveau Locataire
-        </button>
+        mat-raised-button
+        color="accent"
+        class="btn-custom d-flex align-items-center"
+        (click)="openDialog()"
+      >
+        <mat-icon class="me-2 text-white">note_add</mat-icon>
+        Nouveau Locataire
+      </button>
       </div>
     </div>
+
     <div class="row">
       <div class="col">
         <mat-card>

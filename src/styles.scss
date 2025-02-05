@@ -42,54 +42,57 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   border-collapse: collapse;
   width: 100%;
   margin-bottom: 1rem;
-  font-size: 0.875rem;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: 1rem; /* Taille de police légèrement augmentée pour plus de lisibilité */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Ombre douce et subtile */
 
-  // Table header styles
+  /* Header de la table */
   th {
-    background-color:  rgb(32, 159, 195);
-    color: rgb(7, 0, 0);
+    background-color: rgb(32, 159, 195);
+    color: #fff;
     text-align: left;
-    padding: 12px 16px;
+    padding: 14px 18px;
     font-weight: 600;
     text-transform: uppercase;
+    letter-spacing: 1px; /* Espacement des lettres pour plus de lisibilité */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px; /* Bords arrondis pour un effet moderne */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Ombre subtile pour un effet de profondeur */
   }
 
-  // Table row styles
+  /* Lignes de la table */ 
   tr {
     &:nth-child(even) {
-      background-color: #f9f9f9; // Couleur de fond pour les lignes paires
+      background-color: #f9f9f9; /* Couleur de fond plus douce pour les lignes paires */
     }
     &:nth-child(odd) {
-      background-color: #ffffff; // Couleur de fond pour les lignes impaires
+      background-color: #ffffff;
     }
+    transition: background-color 0.3s ease-in-out; /* Transition plus fluide pour l'effet de survol */
   }
 
-  // Table cell styles
+  /* Cellules de la table */
   td {
-    padding: 12px 16px;
+    padding: 14px 18px;
     border-bottom: 1px solid #dee2e6;
     vertical-align: middle;
+    font-family: 'Roboto', sans-serif; /* Police moderne et élégante */
+    font-size: 1rem;
+    color: #333; /* Texte légèrement plus foncé pour un meilleur contraste */
   }
 
-  // Action column styles
-  td.text-center {
-    text-align: center;
-    button {
-      margin: 0 4px;
-      &:hover {
-        transform: scale(1.1);
-        transition: transform 0.2s ease-in-out;
-      }
-    }
-  }
-
-  // Highlight selected row
+  /* Mise en surbrillance de la ligne sélectionnée */
   tr:hover {
-    background-color: rgba(0, 123, 255, 0.1); // Bleu clair pour le survol
-    transition: background-color 0.2s ease-in-out;
+    background-color: rgba(0, 123, 255, 0.1); /* Bleu clair pour le survol */
+    transition: background-color 0.3s ease-in-out;
+  }
+
+  /* Lignes bordées et arrondies aux angles */
+  tr:first-child th {
+    border-top: 2px solid rgb(32, 159, 195);
   }
 }
+
+
 
 // Paginator styles
 mat-paginator {

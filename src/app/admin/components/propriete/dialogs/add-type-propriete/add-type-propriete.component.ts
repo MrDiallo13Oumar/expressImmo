@@ -1,5 +1,5 @@
 import { Component, Inject, Optional } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ProprieteService } from '../../_services/propriete.service';
 
@@ -9,10 +9,12 @@ import { ProprieteService } from '../../_services/propriete.service';
   styleUrls: ['./add-type-propriete.component.scss']
 })
 export class AddTypeProprieteComponent {
+  created_by = localStorage.getItem('id_user');
+  
  typePropriete = new FormGroup({
 
     libelle: new FormControl(''),
-
+    created_by: new FormControl(this.created_by, Validators.required),
 
   })
    constructor(
@@ -22,7 +24,7 @@ export class AddTypeProprieteComponent {
 
     ) { }
 
-   
+
 
   saveDatatypePropriete() {
     if (this.typePropriete.valid) {

@@ -2,7 +2,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ReservationService } from '../../services/reservation.service';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { convertObjectInFormData } from 'src/app/app.component';
 import Swal from 'sweetalert2';
@@ -19,6 +19,12 @@ export class DetailReservationComponent {
     adresse: new FormControl(''),
     statut: new FormControl(''),
     propriete_id: new FormControl(''),
+  })
+ Contrat = new FormGroup({
+  caution: new FormControl(0, [
+    Validators.required,
+    Validators.min(0),
+  ]),
   })
   constructor(
         private service: ReservationService,
@@ -54,11 +60,14 @@ export class DetailReservationComponent {
         Swal.fire('Felicitation ...', 'Contrat creer avec succes!', 'success')
         this.router.navigateByUrl("/contrat/list-contrat")
       }
+      created_by =localStorage.getItem('id_user')
       creerContrat() {
         // Données pour le contrat
         const contratData = {
           reservation_id: this.infoReservation.id,
           statut: 'actif',
+         caution : this.Contrat.value.caution
+
         };
 
         // Convertir les données en FormData

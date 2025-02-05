@@ -49,12 +49,12 @@
           </div>
 
           <div class="col-lg-3 col-sm-6">
-            <div class="card gradient-4">
+            <div class="card gradient-9">
               <div class="card-body">
-                <h3 class="card-title text-white">Satisfaction des Locataires</h3>
+                <h3 class="card-title text-white">Solde</h3>
                 <div class="d-inline-block">
-                  <h2 class="text-white">95%</h2>
-                  <p class="text-white mb-0">Basé sur les retours récents</p>
+                  <h2 class="text-white">GNF {{infoDashBoard.soldeTotalJournalier}}</h2>
+                  <p class="text-white mb-0">Basé sur les operations du jour</p>
                 </div>
                 <span class="float-right display-5 opacity-5">
                   <i class="fa fa-heart"></i>
@@ -63,69 +63,132 @@
             </div>
           </div>
         </div>
-       <!-- Deuxième Row -->
-<div class="row">
-  <div class="col-lg-3 col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h3 class="card-title ">Encaissement</h3>
-        <div class="d-inline-block">
-          <h2 class="">GNF {{infoDashBoard.total_encaissement}}</h2>
-          <p class=" mb-0">Mise à jour aujourd'hui</p>
-        </div>
-        <span class="float-right display-5 opacity-5">
-          <i class="fa fa-home"></i>
-        </span>
-      </div>
-    </div>
-  </div>
-  <div class="col-lg-3 col-sm-6">
-    <div class="card ">
-      <div class="card-body">
-        <h3 class="card-title ">Décaissement</h3>
-        <div class="d-inline-block">
-          <h2 class="">GNF {{infoDashBoard.total_decaissement}}</h2>
-          <p class=" mb-0">Aujourd'hui</p>
-        </div>
-        <span class="float-right display-5 opacity-5">
-          <i class="fa fa-calendar-check-o"></i>
-        </span>
-      </div>
-    </div>
-  </div>
-  <div class="col-lg-3 col-sm-6">
-    <div class="card ">
-      <div class="card-body">
-        <h3 class="card-title ">Paiement</h3>
-        <div class="d-inline-block">
-          <h2 class="">GNF {{infoDashBoard.totalpaiement}}</h2>
-          <p class=" mb-0">Aujourd'hui</p>
-        </div>
-        <span class="float-right display-5 opacity-5">
-          <i class="fa fa-calendar-check-o"></i>
-        </span>
-      </div>
-    </div>
-  </div>
+        <div class="row">
+          <div class="col-lg-3 col-sm-6">
+            <div class="card">
+              <div class="card-body">
+                <h3 class="card-title ">Encaissement</h3>
+                <div class="d-inline-block">
+                  <h2 class="">GNF {{infoDashBoard.total_encaissement}}</h2>
+                  <p class=" mb-0">Mise à jour aujourd'hui</p>
+                </div>
+                <span class="float-right display-5 opacity-5">
+                  <i class="fa fa-home"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6">
+            <div class="card ">
+              <div class="card-body">
+                <h3 class="card-title ">Décaissement</h3>
+                <div class="d-inline-block">
+                  <h2 class="">GNF {{infoDashBoard.total_decaissement}}</h2>
+                  <p class=" mb-0">Aujourd'hui</p>
+                </div>
+                <span class="float-right display-5 opacity-5">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6">
+            <div class="card ">
+              <div class="card-body">
+                <h3 class="card-title ">Paiement</h3>
+                <div class="d-inline-block">
+                  <h2 class="">GNF {{infoDashBoard.totalpaiement}}</h2>
+                  <p class=" mb-0">Aujourd'hui</p>
+                </div>
+                <span class="float-right display-5 opacity-5">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+              </div>
+            </div>
+          </div>
 
-  <div class="col-lg-3 col-sm-6">
-    <div class="card gradient-9">
-      <div class="card-body">
-        <h3 class="card-title text-white">Solde</h3>
-        <div class="d-inline-block">
-          <h2 class="text-white">GNF {{infoDashBoard.soldeTotalJournalier}}</h2>
-          <p class="text-white mb-0">Basé sur les operations du jour</p>
+          <div class="col-lg-3 col-sm-6">
+            <div class="card gradient-9">
+              <div class="card-body">
+                <h3 class="card-title text-white">Solde</h3>
+                <div class="d-inline-block">
+                  <h2 class="text-white">GNF {{infoDashBoard.soldeTotalJournalier}}</h2>
+                  <p class="text-white mb-0">Basé sur les operations du jour</p>
+                </div>
+                <span class="float-right display-5 opacity-5">
+                  <i class="fa fa-heart"></i>
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
-        <span class="float-right display-5 opacity-5">
-          <i class="fa fa-heart"></i>
-        </span>
-      </div>
-    </div>
-  </div>
-</div>
+        <!-- Nouvelle carte pour Total de Partenaires -->
+        <div class="row">
+          <div class="col-lg-3 col-sm-6">
+            <div class="card gradient-5">
+              <div class="card-body">
+                <h3 class="card-title text-white">Total de Partenaires</h3>
+                <div class="d-inline-block">
+                  <h2 class="text-white">{{infoDashBoard.totalPartenaires}}</h2>
+                  <p class="text-white mb-0">Mise à jour aujourd'hui</p>
+                </div>
+                <span class="float-right display-5 opacity-5">
+                  <i class="fa fa-users"></i>
+                </span>
+              </div>
+            </div>
+          </div>
 
+          <!-- Carte des demandes en cours -->
+          <div class="col-lg-3 col-sm-6">
+            <div class="card gradient-6">
+              <div class="card-body">
+                <h3 class="card-title text-white">Demandes en Cours</h3>
+                <div class="d-inline-block">
+                  <h2 class="text-white">{{infoDashBoard.demandesEnCours}}</h2>
+                  <p class="text-white mb-0">Actuellement en traitement</p>
+                </div>
+                <span class="float-right display-5 opacity-5">
+                  <i class="fa fa-comment-dots"></i>
+                </span>
+              </div>
+            </div>
+          </div>
 
-        <!-- Graph Section -->
+          <!-- Carte des propriétés sous gestion -->
+          <div class="col-lg-3 col-sm-6">
+            <div class="card gradient-7">
+              <div class="card-body">
+                <h3 class="card-title text-white">Propriétés sous Gestion</h3>
+                <div class="d-inline-block">
+                  <h2 class="text-white">{{infoDashBoard.proprietesSousGestion}}</h2>
+                  <p class="text-white mb-0">Actuellement sous gestion</p>
+                </div>
+                <span class="float-right display-5 opacity-5">
+                  <i class="fa fa-building"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Carte des locations à venir -->
+          <div class="col-lg-3 col-sm-6">
+            <div class="card gradient-8">
+              <div class="card-body">
+                <h3 class="card-title text-white">Locations à Venir</h3>
+                <div class="d-inline-block">
+                  <h2 class="text-white">{{infoDashBoard.locationsAVenir}}</h2>
+                  <p class="text-white mb-0">Prochaines réservations</p>
+                </div>
+                <span class="float-right display-5 opacity-5">
+                  <i class="fa fa-calendar"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Graphique pour les revenus -->
         <div class="row">
           <div class="col-lg-12">
             <div class="card">
@@ -133,7 +196,6 @@
                 <div>
                   <h4 class="mb-1">Revenus Mensuels</h4>
                   <p>Analyse des revenus locatifs</p>
-                  <h3 class="m-0">$50,000</h3>
                 </div>
                 <div>
                   <ul>
@@ -180,8 +242,8 @@
                             <img
                               src="assets/admin/images/avatar/1.jpg"
                               class="rounded-circle mr-3"
-                              alt=""
-                            />John Doe
+                              alt=""/>
+                            John Doe
                           </td>
                           <td>Villa Sunrise</td>
                           <td>New York, USA</td>
@@ -194,8 +256,8 @@
                             <img
                               src="assets/admin/images/avatar/2.jpg"
                               class="rounded-circle mr-3"
-                              alt=""
-                            />Jane Smith
+                              alt=""/>
+                            Jane Smith
                           </td>
                           <td>Appartement City View</td>
                           <td>Toronto, Canada</td>

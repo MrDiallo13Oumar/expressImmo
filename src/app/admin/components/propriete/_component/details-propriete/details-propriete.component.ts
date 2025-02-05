@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { PartenaireService } from '../../../partenaire/services/partenaire.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -11,7 +11,7 @@ import { convertObjectInFormData } from 'src/app/app.component';
   styleUrls: ['./details-propriete.component.scss']
 })
 export class DetailsProprieteComponent {
-
+  modify_by= localStorage.getItem('id_user')
     Propriete = new FormGroup({
        id :new FormControl(''),
        partenaire_id :new FormControl(''),
@@ -23,6 +23,7 @@ export class DetailsProprieteComponent {
        disponible :new FormControl(''),
        prix_journalier :new FormControl(''),
        prix_mensuel :new FormControl(''),
+       modify_by :new FormControl(this.modify_by,Validators.required),
 
      })
  constructor(

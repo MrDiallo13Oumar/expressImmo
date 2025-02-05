@@ -63,7 +63,16 @@
         <div class="card shadow-sm border-0">
           <div class="card-body">
             <!-- Ajouter des contenus supplémentaires ici si nécessaire -->
-            <p class="text-center text-muted">Détails supplémentaires ou espace pour des informations additionnelles.</p>
+            <!-- <p class="text-center text-muted">Détails supplémentaires ou espace pour des informations additionnelles.</p> -->
+             <form [formGroup]="Contrat">
+              <div class="col-md-12 d-flex justify-content-center">
+                <mat-form-field appearance="outline">
+                  <mat-label>Caution</mat-label>
+                  <input matInput type="number" formControlName="caution"
+                    required />
+                </mat-form-field>
+              </div>
+             </form>
           </div>
           <div class="card-footer bg-light d-flex justify-content-center ">
             <button type="button" class="btn btn-danger btn-lg btn-rounded" (click)="cancel()">

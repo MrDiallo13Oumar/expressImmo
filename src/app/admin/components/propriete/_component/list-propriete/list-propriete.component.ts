@@ -9,6 +9,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { convertObjectInFormData } from 'src/app/app.component';
 import { DeletePopupComponent } from 'src/app/shared/dialogs/delete-popup/delete-popup.component';
 import { AddTypeProprieteComponent } from '../../dialogs/add-type-propriete/add-type-propriete.component';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-list-propriete',
@@ -16,6 +17,23 @@ import { AddTypeProprieteComponent } from '../../dialogs/add-type-propriete/add-
   styleUrls: ['./list-propriete.component.scss']
 })
 export class ListProprieteComponent {
+   created_by = localStorage.getItem('id_user');
+
+    Propriete = new FormGroup({
+      partenaire_id: new FormControl(''),
+      quartier_id: new FormControl(''),
+      reference: new FormControl(''),
+      adresse: new FormControl(''),
+      descriptions: new FormControl(''),
+      etat: new FormControl(''),
+      disponible: new FormControl(''),
+      prix_journalier: new FormControl(''),
+      prix_mensuel: new FormControl(''),
+      typepropriete_id: new FormControl(''),
+      poster: new FormControl(''),
+      created_by: new FormControl(this.created_by, Validators.required),
+
+    })
   displayedColumns: string[] = ['id','reference', 'adresse', 'descriptions', 'statut', 'partenaire', 'action'];
   dataSource = new MatTableDataSource([]);
 
@@ -42,7 +60,10 @@ applyFilter (event: Event) {
  }
 }
 ngOnInit() {
-  this.getPropriete()
+  this.getPropriete(),
+  this.getPartenaire();
+  this.getTypePropriete();
+  this.getQuartier();
  }
 getPropriete () {
    this.service.getall('propriete', 'readAll.php').subscribe({
@@ -59,17 +80,21 @@ getPropriete () {
 
  selectedFile: any
  uploadResponse: string | null = null
- onFileChange (event: any) {
-   const file: File = event.target.files[0]
-   if (file) {
-     const reader = new FileReader()
-     reader.onload = (e: any) => {
-       this.imagePreview = e.target.result
-     }
-     reader.readAsDataURL(file)
-     this.selectedFile = file
-   }
- }
+ onFileChange(event: any) {
+  const file: File = event.target.files[0]
+  if (file) {
+    const reader = new FileReader()
+    reader.onload = (e: any) => {
+      this.imagePreview = e.target.result
+    }
+    reader.readAsDataURL(file)
+    console.log("file", file);
+
+    this.selectedFile = file
+    console.log("SelectedFile", file);
+
+  }
+}
 
 
  openDialog() {
@@ -86,7 +111,7 @@ getPropriete () {
       // Envoyer les données dans la base de données
       this.service.create('propriete', 'create.php', formData).subscribe({
         next: (response) => {
-        
+
           this.snackBar.open("Propriété enregistrée avec succès !", "Okay", {
             duration: 3000,
             horizontalPosition: "right",
@@ -174,4 +199,88 @@ getPropriete () {
             }
           });
       }
+      typePropriete: any = []
+      getTypePropriete() {
+        this.service.getall('typePropriete', 'readAll.php').subscribe({
+          next: (reponse: any) => {
+            console.log('REPONSE SUCCESS : ', reponse)
+            this.typePropriete = reponse
+          },
+          error: (err: any) => {
+            console.log('REPONSE ERROR : ', err)
+          }
+        })
+      }
+      Partenaire: any = []
+      getPartenaire() {
+        this.service.getall('partenaire', 'readAll.php').subscribe({
+          next: (reponse: any) => {
+            console.log('REPONSE SUCCESS : ', reponse)
+            this.Partenaire = reponse
+
+          },
+          error: (err: any) => {
+            console.log('REPONSE ERROR : ', err)
+          }
+        })
+      }
+
+      Quartier: any = []
+      getQuartier() {
+        this.service.getall('quartier', 'readAll.php').subscribe({
+          next: (reponse: any) => {
+            console.log('REPONSE SUCCESS : ', reponse)
+            this.Quartier = reponse
+
+          },
+          error: (err: any) => {
+            console.log('REPONSE ERROR : ', err)
+          }
+        })
+      }
+
+      saveDataPropriete() {
+        if (this.Propriete.valid) {
+               const formData = convertObjectInFormData(this.Propriete.value);
+          // Si un fichier a été sélectionné, ajoute-le à FormData
+
+          console.log("propriete", this.Propriete.value.poster);
+
+          if (this.selectedFile) {
+            formData.append('file', this.selectedFile, this.selectedFile.name);
+            console.log("this.selectedFile", this.selectedFile.name);
+            // this.Propriete.value.poster = this.selectedFile.name
+
+          }
+          // Envoie les données au serveur
+          this.service.create('propriete', 'create.php', formData).subscribe({
+
+            next: (response) => {
+
+              this.snackBar.open(response, "Okay", {
+                duration: 3000,
+                horizontalPosition: "right",
+                verticalPosition: "top",
+                panelClass: ['bg-success', 'text-white']
+              });
+              console.log("response", response);
+              this.getPropriete();
+            },
+            error: (err: any) => {
+
+              this.snackBar.open(err, "Okay", {
+                duration: 3000,
+                horizontalPosition: "right",
+                verticalPosition: "top",
+                panelClass: ['bg-danger', 'text-white']
+              });
+
+            }
+          });
+
+        }
+      }
+
+
+
 }

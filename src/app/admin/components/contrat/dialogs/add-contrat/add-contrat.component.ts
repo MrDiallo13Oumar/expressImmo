@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit, Optional } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ContratService } from '../../_services/contrat.service';
 import { ActivatedRoute } from '@angular/router';
@@ -10,10 +10,13 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./add-contrat.component.scss']
 })
 export class AddContratComponent implements OnInit{
+  created_by = localStorage.getItem('id_user');
 
   Contrat = new FormGroup({
     reservation_id: new FormControl(''),
     statut :new FormControl(''),
+    caution :new FormControl(''),
+    created_by: new FormControl(this.created_by, Validators.required),
 
   })
 
@@ -30,9 +33,6 @@ export class AddContratComponent implements OnInit{
     this.getReservation()
 
   }
-
-
-
 
 
 

@@ -109,7 +109,11 @@ import { HttpClientModule } from '@angular/common/http';
         PortalModule,
         FormsModule,
         ReactiveFormsModule,
-        HttpClientModule
+        HttpClientModule,
+        MatInputModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        MatButtonModule
     ]
 })
 export class DemoMaterialModule { }

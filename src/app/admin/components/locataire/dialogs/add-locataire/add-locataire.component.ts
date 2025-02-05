@@ -1,5 +1,5 @@
 import { Component, Inject, Optional } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ProprieteService } from '../../../propriete/_services/propriete.service';
 
@@ -9,6 +9,8 @@ import { ProprieteService } from '../../../propriete/_services/propriete.service
   styleUrls: ['./add-locataire.component.scss']
 })
 export class AddLocataireComponent {
+  created_by = localStorage.getItem('id_user');
+
 
     Locataire = new FormGroup({
       propriete_id: new FormControl(''),
@@ -22,7 +24,7 @@ export class AddLocataireComponent {
       typePiece :new FormControl(''),
       numeroPiece :new FormControl(''),
       adresse :new FormControl(''),
-
+      created_by: new FormControl(this.created_by, Validators.required),
     })
 
     constructor(
@@ -33,7 +35,7 @@ export class AddLocataireComponent {
 
     ngOnInit(){
       this.getPropriete()
-     
+
     }
 
     Propriete : any =[]

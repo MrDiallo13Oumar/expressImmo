@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { convertObjectInFormData } from 'src/app/app.component';
@@ -14,13 +14,14 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./details-partenaire.component.scss']
 })
 export class DetailsPartenaireComponent {
+  modify_by= localStorage.getItem('id_user')
   Partenaire = new FormGroup({
       id :new FormControl(''),
       libelle :new FormControl(''),
       email: new FormControl(''),
       telephone: new FormControl(''),
       adresse :new FormControl(''),
-
+ modify_by :new FormControl(this.modify_by,Validators.required),
     })
       displayedColumns: string[] = ['id','reference', 'prix_journalier', 'prix_mensuel',];
       dataSource = new MatTableDataSource([]);

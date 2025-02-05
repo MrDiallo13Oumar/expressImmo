@@ -1,5 +1,5 @@
 import { Component, Inject, Optional } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
@@ -8,10 +8,13 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./add-operation.component.scss']
 })
 export class AddOperationComponent {
+  created_by = localStorage.getItem('id_user');
+
   Operation = new FormGroup({
     type_transaction: new FormControl(''),
       montant: new FormControl(''),
       descriptions: new FormControl(''),
+      created_by: new FormControl(this.created_by, Validators.required),
     })
 
     constructor(
