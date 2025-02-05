@@ -5,7 +5,6 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ReservationService } from 'src/app/admin/components/reservation/services/reservation.service';
 import { convertObjectInFormData } from 'src/app/app.component';
-import { Reservation } from 'src/assets/Models/reservation';
 import Swal from 'sweetalert2'
 
 @Component({
@@ -28,13 +27,14 @@ export class InscriptionSiteComponent {
     prenom: new FormControl(''),
     telephone: new FormControl('', Validators.required),
     adresse: new FormControl(''),
-    statut: new FormControl(''),
+    statut: new FormControl('en attente'),
+    source: new FormControl('en ligne'),
     wifi: new FormControl(''),
     restauration: new FormControl(''),
     conciergerie: new FormControl(''),
     blanchisserie: new FormControl(''),
     propriete_id: new FormControl(''),
-    date_reservation: new FormControl(''),
+    date_souhaite: new FormControl(''),
   })
   ngOnInit() {
     this.getPartenaire(),
@@ -114,19 +114,7 @@ export class InscriptionSiteComponent {
 
   }
 
-  // reservation = Reservation
-  // saveDataReservation() {
-  //   if (this.Reservation.valid) {
-  //     this.reservationService.create('reservation', 'create.php', this.reservation).subscribe(data => {
-  //       console.log("Reservation", this.reservation);
-  //       console.log("Data", data);
-
-
-  //     })
-
-  //   }
-  // }
-
+  
   data: any
   saveDataReservations() {
     const formData = convertObjectInFormData(this.Reservation.value);

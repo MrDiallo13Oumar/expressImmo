@@ -9,6 +9,8 @@ import { environment } from 'src/environments/environment'
 // LIEN POUR LES APIs
 //  const LINK_PROD: string = 'http://localhost/expressimmo/api/'
 //  const LINK_DEVS: string = 'http://localhost/expressimmo/api/'
+//  const LINK_PROD: string = 'http://localhost/expressimmo/api/'
+//  const LINK_DEVS: string = 'http://localhost/expressimmo/api/'
 
 const LINK_PROD: string = 'http://192.168.1.131/expressImmo-backend/api/'
 const LINK_DEVS: string = 'http://192.168.1.131/expressImmo-backend/api/'
