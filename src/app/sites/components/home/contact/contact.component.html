@@ -101,34 +101,34 @@
                     </div>
                     <div class="col-md-6">
                         <div class="wow fadeInUp" data-wow-delay="0.2s">
-                            <form>
+                            <form [formGroup]="Contact">
                                 <div class="row g-3">
                                     <div class="col-md-6">
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" id="name" >
+                                            <input type="text" class="form-control" id="nom" formControlName="nom">
                                             <label for="name">Votre Nom</label>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-floating">
-                                            <input type="email" class="form-control" id="email" >
+                                            <input type="email" class="form-control" id="email" formControlName="email" >
                                             <label for="email">Votre Email</label>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" id="subject" >
+                                            <input type="text" class="form-control" id="objet" formControlName="objet">
                                             <label for="subject">Objet</label>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-floating">
-                                            <textarea class="form-control" id="message" style="height: 150px"></textarea>
+                                            <textarea class="form-control" id="message" style="height: 150px" formControlName="message"></textarea>
                                             <label for="message">Message</label>
                                         </div>
                                     </div>
                                     <div class="col-12">
-                                        <button class="btn btn-primary w-100 py-3" type="submit">Send Message</button>
+                                        <button class="btn btn-primary w-100 py-3" type="submit" (click)="saveDataContact()">Envoyer</button>
                                     </div>
                                 </div>
                             </form>
