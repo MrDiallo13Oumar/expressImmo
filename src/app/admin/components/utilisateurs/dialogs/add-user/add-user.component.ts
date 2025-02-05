@@ -20,7 +20,6 @@ export class AddUserComponent {
     role: new FormControl(''),
     email: new FormControl(''),
     mot_de_passe: new FormControl(''),
-    created_by: new FormControl(this.created_by, Validators.required),
   })
 
 

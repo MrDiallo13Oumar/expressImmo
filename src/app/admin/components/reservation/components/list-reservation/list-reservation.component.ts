@@ -39,6 +39,7 @@ displayedColumns: string[] = ['id', 'nom', 'source', 'statut', 'created_at', 'pr
     }
     ngOnInit() {
       this.getReservation()
+      this.getNombreReservation()
      }
     getReservation () {
        this.service.getall('reservation', 'readAll.php').subscribe({
@@ -53,6 +54,19 @@ displayedColumns: string[] = ['id', 'nom', 'source', 'statut', 'created_at', 'pr
          }
        })
      }
+     nombreReservation:any
+     getNombreReservation () {
+      this.service.getall('reservation', 'nombreReservation.php').subscribe({
+        next: (reponse: any) => {
+           console.log('REPONSE SUCCESS : ', reponse)
+           this.nombreReservation  = reponse
+
+        },
+        error: (err: any) => {
+          console.log('REPONSE ERROR : ', err)
+        }
+      })
+    }
 
       openDialog() {
         this.dialog.open(AddReservationComponent, {
@@ -73,6 +87,7 @@ displayedColumns: string[] = ['id', 'nom', 'source', 'statut', 'created_at', 'pr
 
                   })
                   this.getReservation()
+                  this.getNombreReservation()
                 },
                 error: (err: any) => {
                   this.snackBar.open("Echec de l'ajout !", "Okay", {

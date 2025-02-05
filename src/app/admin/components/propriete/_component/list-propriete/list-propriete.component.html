@@ -23,77 +23,97 @@
         <div class="card shadow-sm rounded">
           <div class="card-body">
             <h4 class="fw-bold text-dark text-center mb-4">Ajouter une Propriété</h4>
-            <form [formGroup]="Propriete">
+            <form [formGroup]="Propriete" class="w-100">
               <!-- Sélection du quartier et type de propriété -->
               <div class="row mb-4">
                 <div class="col-md-6 mb-3">
-                  <label for="quartier_id" class="form-label">Quartier</label>
-                  <ng-select id="quartier_id" formControlName="quartier_id" [items]="Quartier" bindLabel="libelle"
-                    bindValue="id" class="form-control"></ng-select>
+                  <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Quartier</mat-label>
+                    <mat-select formControlName="quartier_id">
+                      <mat-option *ngFor="let quartier of Quartier" [value]="quartier.id">
+                        {{ quartier.libelle }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
                 </div>
                 <div class="col-md-6 mb-3">
-                  <label for="typepropriete_id" class="form-label">Type de Propriété</label>
-                  <ng-select id="typepropriete_id" formControlName="typepropriete_id" [items]="typePropriete"
-                    bindLabel="libelle" bindValue="id" class="form-control"></ng-select>
+                  <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Type de Propriété</mat-label>
+                    <mat-select formControlName="typepropriete_id">
+                      <mat-option *ngFor="let type of typePropriete" [value]="type.id">
+                        {{ type.libelle }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
                 </div>
               </div>
 
               <!-- Référence et Partenaire -->
               <div class="row mb-4">
                 <div class="col-md-6 mb-3">
-                  <label for="reference" class="form-label">Référence</label>
-                  <input type="text" class="form-control form-control-lg" id="reference" formControlName="reference"
-                    placeholder="Entrez la référence" />
+                  <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Référence</mat-label>
+                    <input matInput type="text" formControlName="reference" placeholder="Entrez la référence" />
+                  </mat-form-field>
                 </div>
                 <div class="col-md-6 mb-3">
-                  <label for="partenaire_id" class="form-label">Partenaire</label>
-                  <ng-select id="partenaire_id" formControlName="partenaire_id" [items]="Partenaire" bindLabel="libelle"
-                    bindValue="id" class="form-control"></ng-select>
+                  <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Partenaire</mat-label>
+                    <mat-select formControlName="partenaire_id">
+                      <mat-option *ngFor="let partenaire of Partenaire" [value]="partenaire.id">
+                        {{ partenaire.libelle }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
                 </div>
               </div>
 
               <!-- Adresse et État -->
               <div class="row mb-4">
                 <div class="col-md-6 mb-3">
-                  <label for="adresse" class="form-label">Adresse</label>
-                  <input type="text" class="form-control form-control-lg" id="adresse" formControlName="adresse"
-                    placeholder="Entrez l'adresse" />
+                  <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Adresse</mat-label>
+                    <input matInput type="text" formControlName="adresse" placeholder="Entrez l'adresse" />
+                  </mat-form-field>
                 </div>
                 <div class="col-md-6 mb-3">
-                  <label for="etat" class="form-label">État</label>
-                  <select class="form-select form-control-lg" id="etat" formControlName="etat">
-                    <option value="location">En Location</option>
-                    <option value="vente">En Vente</option>
-                  </select>
+                  <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>État</mat-label>
+                    <mat-select formControlName="etat">
+                      <mat-option value="location">En Location</mat-option>
+                      <mat-option value="vente">En Vente</mat-option>
+                    </mat-select>
+                  </mat-form-field>
                 </div>
               </div>
 
               <!-- Prix -->
               <div class="row mb-4">
                 <div class="col-md-6 mb-3">
-                  <label for="prix_journalier" class="form-label">Prix Journalier</label>
-                  <input type="number" class="form-control form-control-lg" id="prix_journalier"
-                    formControlName="prix_journalier" placeholder="Entrez le prix journalier" />
+                  <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Prix Journalier</mat-label>
+                    <input matInput type="number" formControlName="prix_journalier" placeholder="Entrez le prix journalier" />
+                  </mat-form-field>
                 </div>
                 <div class="col-md-6 mb-3">
-                  <label for="prix_mensuel" class="form-label">Prix Mensuel</label>
-                  <input type="number" class="form-control form-control-lg" id="prix_mensuel"
-                    formControlName="prix_mensuel" placeholder="Entrez le prix mensuel" />
+                  <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Prix Mensuel</mat-label>
+                    <input matInput type="number" formControlName="prix_mensuel" placeholder="Entrez le prix mensuel" />
+                  </mat-form-field>
                 </div>
               </div>
 
               <!-- Image -->
               <div class="mb-4">
                 <label for="image" class="form-label">Image</label>
-                <input type="file" (change)="onFileChange($event)" formControlName="poster" class="form-control" />
+                <input type="file" id="image" (change)="onFileChange($event)" formControlName="poster" class="form-control" />
                 <div class="image-preview-container text-end mt-3" *ngIf="imagePreview">
                   <img [src]="imagePreview" class="image-preview img-fluid" />
                 </div>
               </div>
-
-              <!-- Description -->
-
             </form>
+
+
           </div>
           <div class="card-footer d-flex justify-content-between">
             <button type="submit" class="btn btn-primary btn-lg" (click)="saveDataPropriete()">Ajouter</button>

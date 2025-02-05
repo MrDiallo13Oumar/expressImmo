@@ -4,16 +4,16 @@
       <!-- En-tête -->
       <div class="header text-center mb-5">
         <h1 class="text-primary fw-bold">Reçu de Paiement</h1>
-        <p class="text-muted mb-2">Référence : <strong>Facture 1234</strong></p>
-        <p class="text-muted">Date : {{ infoPaiement.created_at | date: 'dd/MM/yyyy' }}</p>
+        <p class="text-muted mb-2">Référence : <strong>Facture {{ infoPaiement.contrat?.id }}</strong></p>
+        <p class="text-muted">Date : {{ infoPaiement.reservation?.created_at | date: 'dd/MM/yyyy' }}</p>
       </div>
 
       <!-- Informations Client -->
       <div class="section mb-5">
         <h2 class="h5 text-secondary border-bottom pb-2 mb-3">Client</h2>
-        <p><strong class="text-dark">Nom :</strong> {{ infoPaiement.reservations?.nom }} {{ infoPaiement.reservations?.prenom }}</p>
-        <p><strong class="text-dark">Téléphone :</strong> {{ infoPaiement.reservations?.telephone }}</p>
-        <p> <strong class="text-dark">Adresse :</strong> {{ infoPaiement.proprietes?.adresse }}</p>
+        <p><strong class="text-dark">Nom :</strong> {{ infoPaiement.reservation?.nom }} {{ infoPaiement.reservation?.prenom }}</p>
+        <p><strong class="text-dark">Téléphone :</strong> {{ infoPaiement.reservation?.telephone }}</p>
+        <p><strong class="text-dark">Adresse :</strong> {{ infoPaiement.reservation?.adresse }}</p>
       </div>
 
       <!-- Tableau récapitulatif -->
@@ -21,31 +21,30 @@
         <table class="table table-bordered table-hover align-middle">
           <thead class="table-success text-center">
             <tr>
-              <th class="fw-bold">Infomation Du Proprietaire</th>
+              <th class="fw-bold">Information Du Propriétaire</th>
               <th class="fw-bold">Détail</th>
             </tr>
           </thead>
           <tbody>
-
             <tr>
               <td><strong>État</strong></td>
-              <td>{{ infoPaiement.proprietes?.etat }}</td>
+              <td>{{ infoPaiement.propriete?.etat }}</td>
             </tr>
             <tr>
               <td><strong>Nom</strong></td>
-              <td>{{ infoPaiement.partenaires?.libelle }}</td>
+              <td>{{ infoPaiement.partenaire?.libelle }}</td>
             </tr>
             <tr>
               <td><strong>Téléphone</strong></td>
-              <td>{{ infoPaiement.partenaires?.telephone }}</td>
+              <td>{{ infoPaiement.partenaire?.telephone }}</td>
             </tr>
             <tr>
               <td><strong>Email</strong></td>
-              <td>{{ infoPaiement.partenaires?.email }}</td>
+              <td>{{ infoPaiement.partenaire?.email }}</td>
             </tr>
             <tr>
               <td><strong>Adresse</strong></td>
-              <td>{{ infoPaiement.partenaires?.adresse }}</td>
+              <td>{{ infoPaiement.partenaire?.adresse }}</td>
             </tr>
             <tr>
               <td><strong>Mode de paiement</strong></td>
@@ -55,24 +54,23 @@
         </table>
       </div>
 
-      <!-- Details Supplementaire -->
+      <!-- Détails supplémentaires -->
       <div class="table-responsive mb-5">
         <table class="table table-bordered table-hover align-middle">
           <thead class="table-success text-center">
             <tr>
-              <th class="fw-bold">Infomation Supplementaire</th>
+              <th class="fw-bold">Information Supplémentaire</th>
               <th class="fw-bold">Détail</th>
             </tr>
           </thead>
           <tbody>
-
             <tr>
               <td><strong>État</strong></td>
-              <td>{{ infoPaiement.proprietes?.etat }}</td>
+              <td>{{ infoPaiement.propriete?.etat }}</td>
             </tr>
             <tr>
-              <td><strong>Adresse Propriete</strong></td>
-              <td>{{ infoPaiement.proprietes?.adresse }}</td>
+              <td><strong>Adresse Propriété</strong></td>
+              <td>{{ infoPaiement.propriete?.adresse }}</td>
             </tr>
             <tr>
               <td><strong>Mode de paiement</strong></td>

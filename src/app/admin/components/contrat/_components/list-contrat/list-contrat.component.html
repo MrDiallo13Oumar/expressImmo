@@ -38,13 +38,15 @@
               </ng-container>
 
               <!-- Name Column -->
-              <ng-container matColumnDef="reservation">
+              <ng-container matColumnDef="reservation_nom">
                 <th mat-header-cell *matHeaderCellDef>Locataire</th>
-                <td mat-cell *matCellDef="let element">{{ element.reservation }}</td>
+                <td mat-cell *matCellDef="let element">{{ element.reservation_nom }} {{ element.reservation_prenom }} <br>
+                <span class="text-center text-primary" >{{ element.reservation_telephone}} </span>
+                </td>
               </ng-container>
-              <ng-container matColumnDef="propriete">
+              <ng-container matColumnDef="propriete_reference">
                 <th mat-header-cell *matHeaderCellDef>Propriete</th>
-                <td mat-cell *matCellDef="let element">{{ element.propriete }}</td>
+                <td mat-cell *matCellDef="let element">{{ element.propriete_reference }}</td>
               </ng-container>
 
               <!-- Status Column -->

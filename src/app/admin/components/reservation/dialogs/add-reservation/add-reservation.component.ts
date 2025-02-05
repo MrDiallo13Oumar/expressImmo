@@ -19,9 +19,9 @@ export class AddReservationComponent implements OnInit{
     prenom: new FormControl(''),
     telephone: new FormControl(''),
     adresse: new FormControl(''),
-    statut: new FormControl(''),
+    statut: new FormControl('en attente'),
     propriete_id: new FormControl(''),
-    source: new FormControl('en ligne',Validators.required),
+    source: new FormControl('sur place',Validators.required),
     created_by: new FormControl(this.created_by, Validators.required),
   })
 saveDataPropriete: any;
