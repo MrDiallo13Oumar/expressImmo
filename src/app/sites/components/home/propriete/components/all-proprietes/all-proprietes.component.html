@@ -1,59 +1,6 @@
 <div  class="main bg-white p-0">
     <!-- Header Start -->
-    <div class="container-fluid bg-dark px-0">
-        <div class="row gx-0">
-            <div class="col-lg-3 bg-dark d-none d-lg-block">
-                <a routerLink="/home/accueil"
-                    class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
-                    <h1 class="m-0 text-primary text-uppercase">EXPRESS IMMO</h1>
-                </a>
-            </div>
-            <div class="col-lg-9">
-                <div class="row gx-0 bg-white d-none d-lg-flex">
-                    <div class="col-lg-7 px-5 text-start">
-                        <div class="h-100 d-inline-flex align-items-center py-2 me-4">
-                            <i class="fa fa-envelope text-primary me-2"></i>
-
-                            <p class="mb-0 text-primary">info example.com</p>
-                        </div>
-                        <div class="h-100 d-inline-flex align-items-center py-2">
-                            <i class="fa fa-phone-alt text-primary me-2"></i>
-                            <p class="mb-0 text-primary">+012 345 6789</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-5 px-5 text-end">
-                        <div class="d-inline-flex align-items-center py-2">
-                            <a class="me-3"><i class="fab fa-facebook-f text-primary"></i></a>
-                            <a class="me-3"><i class="fab fa-twitter"></i></a>
-                            <a class="me-3"><i class="fab fa-linkedin-in"></i></a>
-                            <a class="me-3"><i class="fab fa-instagram"></i></a>
-                            <a class=""><i class="fab fa-youtube"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3 p-lg-0">
-                    <a routerLink="/home/accueil" class="navbar-brand d-block d-lg-none">
-                        <h1 class="m-0 text-primary text-uppercase">EXPRESS IMMO</h1>
-                    </a>
-                    <button type="button" class="navbar-toggler" data-bs-toggle="collapse"
-                        data-bs-target="#navbarCollapse">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                        <div class="navbar-nav mr-auto py-0">
-                            <a routerLink="/home/accueil" class="nav-item nav-link">Acceuil</a>
-
-                            <a routerLink="/home/service" class="nav-item nav-link">Nos Services</a>
-                            <a routerLink="/home/propriete" class="nav-item nav-link active">Propriétés</a>
-                            <a routerLink="/home/contact" class="nav-item nav-link">Contact</a>
-                        </div>
-                        <a class="btn btn-primary rounded-0 py-4 px-md-5 d-none d-lg-block"
-                            routerLink="/hoomeAdmin/login">Se Connecter<i class="fa fa-arrow-right ms-3"></i></a>
-                    </div>
-                </nav>
-            </div>
-        </div>
-    </div>
+    <app-navbar></app-navbar>
     <!-- Header End -->
     <!-- Page Header Start -->
     <div class="container-fluid page-header mb-5 p-0" style="background-image: url(assets/sites/img/carousel-1.jpg);">
@@ -221,75 +168,7 @@
     </div>
     <!-- Newsletter Start -->
     <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-light footer wow fadeIn" data-wow-delay="0.1s">
-        <div class="container pb-5">
-            <div class="row g-5">
-                <div class="col-md-6 col-lg-4">
-                    <div class="bg-primary rounded p-4">
-
-                        <a href="index.html">
-                            <h1 class="text-white text-uppercase mb-3">Express Immo </h1>
-                        </a>
-
-                        <p class="text-white mb-0">
-                            Download <a class="text-dark fw-medium">Express Immo – Premium Version</a>, build a
-                            professional website for yNos hotel business and grab the attention of new visitors upon
-                            yNos site’s launch.
-
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <h6 class="section-title text-start text-primary text-uppercase mb-4">Contact</h6>
-                    <p class="mb-2"><i class="bi bi-shop-window me-3"></i>Conakry, Gbessia, Behanzin</p>
-                    <p class="mb-2"><i class="bi bi-telephone-fill me-3"></i>+224 624-22-67-78</p>
-                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>expressimmo.com</p>
-                    <div class="d-flex pt-2">
-                        <a class="btn btn-outline-light btn-social"><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-outline-light btn-social"><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-outline-light btn-social"><i class="fab fa-youtube"></i></a>
-                        <a class="btn btn-outline-light btn-social"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-5 col-md-12">
-                    <div class="row gy-5 g-4">
-                        <div class="col-md-6">
-                            <h6 class="section-title text-start text-primary text-uppercase mb-4">Company</h6>
-                            <a class="btn btn-link">About Us</a>
-                            <a class="btn btn-link">Contact Us</a>
-                            <a class="btn btn-link">Privacy Policy</a>
-                            <a class="btn btn-link">Terms & Condition</a>
-                            <a class="btn btn-link">Support</a>
-                        </div>
-                        <div class="col-md-6">
-                            <h6 class="section-title text-start text-primary text-uppercase mb-4">Services</h6>
-                            <a class="btn btn-link">Food & Restaurant</a>
-                            <a class="btn btn-link">Spa & Fitness</a>
-                            <a class="btn btn-link">Sports & Gaming</a>
-                            <a class="btn btn-link">Event & Party</a>
-                            <a class="btn btn-link">GYM & Yoga</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="copyright">
-                <div class="row text-dark">
-                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-
-                        &copy; <a class="border-bottom text-dark" href="#">ExpressImmo</a>, All Right Reserved.
-
-                        <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for yNos support. ***/-->
-                        Designed By <a class="border-bottom text-primary" href="https://spa-dev.com/">SPA TECHNOLOGY</a>
-
-
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
+    <app-footer></app-footer>
     <!-- Footer End -->
 
 

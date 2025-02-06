@@ -15,7 +15,7 @@ export class ContactComponent {
     nom: new FormControl(''),
     email: new FormControl(''),
     objet: new FormControl(''),
-    message: new FormControl(''),
+    messages: new FormControl(''),
 
   })
 
@@ -35,7 +35,7 @@ export class ContactComponent {
       console.log("Data", this.Contact.value);
       
       // Envoie les données au serveur
-      this.service.create('contacteznous', 'create.php', formData).subscribe({
+      this.service.create('contactez_nous', 'create.php', formData).subscribe({
 
         next: (response) => {
 
