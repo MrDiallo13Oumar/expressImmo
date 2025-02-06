@@ -129,8 +129,8 @@
               <div class="card-body">
                 <h3 class="card-title text-white">Total de Partenaires</h3>
                 <div class="d-inline-block">
-                  <h2 class="text-white">{{infoDashBoard.totalPartenaires}}</h2>
-                  <p class="text-white mb-0">Mise à jour aujourd'hui</p>
+                  <h2 class="text-white">{{infoDashBoard.nombreTotalPartenaires}}</h2>
+                  <p class="text-white mb-0">partenaire</p>
                 </div>
                 <span class="float-right display-5 opacity-5">
                   <i class="fa fa-users"></i>
@@ -143,10 +143,10 @@
           <div class="col-lg-3 col-sm-6">
             <div class="card gradient-6">
               <div class="card-body">
-                <h3 class="card-title text-white">Demandes en Cours</h3>
+                <h3 class="card-title text-white">Contrats en Cours</h3>
                 <div class="d-inline-block">
-                  <h2 class="text-white">{{infoDashBoard.demandesEnCours}}</h2>
-                  <p class="text-white mb-0">Actuellement en traitement</p>
+                  <h2 class="text-white">{{infoDashBoard.nombreContrats_actifs}}</h2>
+                  <p class="text-white mb-0">Actuellement en cours</p>
                 </div>
                 <span class="float-right display-5 opacity-5">
                   <i class="fa fa-comment-dots"></i>
@@ -159,9 +159,9 @@
           <div class="col-lg-3 col-sm-6">
             <div class="card gradient-7">
               <div class="card-body">
-                <h3 class="card-title text-white">Propriétés sous Gestion</h3>
+                <h3 class="card-title text-white">Reservation en Attente</h3>
                 <div class="d-inline-block">
-                  <h2 class="text-white">{{infoDashBoard.proprietesSousGestion}}</h2>
+                  <h2 class="text-white">{{infoDashBoard.nombre_reservation_en_entente}}</h2>
                   <p class="text-white mb-0">Actuellement sous gestion</p>
                 </div>
                 <span class="float-right display-5 opacity-5">
@@ -225,7 +225,7 @@
               <div class="card-body">
                 <div class="active-member">
                   <div class="table-responsive">
-                    <table class="table table-xs mb-0">
+                    <table class="table table-xs mb-0" *ngFor="let item of infoContratDashBoard">
                       <thead>
                         <tr>
                           <th>Locataires</th>
@@ -233,16 +233,16 @@
                           <th>Adresse</th>
                           <th>Statut</th>
                           <th>Durée</th>
-                          <th>Dernière Activité</th>
+
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
                           <td>
-                            <img
+                            <!-- <img
                               src="assets/admin/images/avatar/1.jpg"
                               class="rounded-circle mr-3"
-                              alt=""/>
+                              alt=""/> -->
                             John Doe
                           </td>
                           <td>Villa Sunrise</td>
@@ -250,20 +250,6 @@
                           <td><span class="badge badge-success">Confirmée</span></td>
                           <td>6 Mois</td>
                           <td>Il y a 2 heures</td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <img
-                              src="assets/admin/images/avatar/2.jpg"
-                              class="rounded-circle mr-3"
-                              alt=""/>
-                            Jane Smith
-                          </td>
-                          <td>Appartement City View</td>
-                          <td>Toronto, Canada</td>
-                          <td><span class="badge badge-warning">En attente</span></td>
-                          <td>3 Mois</td>
-                          <td>Il y a 1 heure</td>
                         </tr>
                       </tbody>
                     </table>

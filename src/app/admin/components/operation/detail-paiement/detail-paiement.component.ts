@@ -31,4 +31,16 @@ export class DetailPaiementComponent {
       },
     });
   }
+  imprimerRecu() {
+    const recuContent = document.getElementById('recu')?.innerHTML;
+    const originalContent = document.body.innerHTML;
+
+    // Remplacer le contenu du body par celui du reçu
+    document.body.innerHTML = recuContent || '';
+    window.print();
+
+    // Restaurer le contenu original du body après l'impression
+    document.body.innerHTML = originalContent;
+  }
+
 }

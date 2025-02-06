@@ -10,6 +10,7 @@ import { convertObjectInFormData } from 'src/app/app.component';
 import { DeletePopupComponent } from 'src/app/shared/dialogs/delete-popup/delete-popup.component';
 import { AddTypeProprieteComponent } from '../../dialogs/add-type-propriete/add-type-propriete.component';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-propriete',
@@ -34,7 +35,7 @@ export class ListProprieteComponent {
       created_by: new FormControl(this.created_by, Validators.required),
 
     })
-  displayedColumns: string[] = ['id','reference', 'adresse', 'descriptions', 'statut', 'partenaire', 'action'];
+  displayedColumns: string[] = ['id','reference','statut', 'partenaire', 'action'];
   dataSource = new MatTableDataSource([]);
 
   imagePreview: string | ArrayBuffer | null = null
@@ -43,6 +44,7 @@ export class ListProprieteComponent {
   constructor (private dialog : MatDialog ,
                 private service :ProprieteService,
                 private snackBar :MatSnackBar,
+                private router : Router
 ){}
 
 @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -151,7 +153,7 @@ getPropriete () {
                 panelClass: ['bg-success', 'text-white']
 
               })
-              this.getPropriete()
+             this.router.navigate(['/propriete/list-propriete'])
             },
             error: (err: any) => {
               this.snackBar.open("Echec de l'ajout !", "Okay", {

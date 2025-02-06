@@ -76,9 +76,9 @@
           </div>
           <div class="card-footer bg-light d-flex justify-content-center ">
             <button type="button" class="btn btn-danger btn-lg btn-rounded" (click)="cancel()">
-              <i class="fas fa-times-circle"></i> Annuler
+              <i class="fas fa-times-circle"></i> Retour
             </button>
-            <button type="button" class="btn btn-primary btn-lg btn-rounded ms-3" (click)="creerContrat()">
+            <button type="button" class="btn btn-primary btn-lg btn-rounded ms-3" (click)="creerContrat()" [hidden]="infoReservation.statut == 'confirmée'">
               <i class="fas fa-check-circle"></i> Confirmer
             </button>
           </div>

@@ -50,6 +50,12 @@
               </ng-container>
 
               <!-- Status Column -->
+              <ng-container matColumnDef="caution">
+                <th mat-header-cell *matHeaderCellDef>Caution</th>
+                <td mat-cell *matCellDef="let element">
+                  <span >{{ element.caution }}</span>
+                </td>
+              </ng-container>
               <ng-container matColumnDef="statut">
                 <th mat-header-cell *matHeaderCellDef>Status</th>
                 <td mat-cell *matCellDef="let element">

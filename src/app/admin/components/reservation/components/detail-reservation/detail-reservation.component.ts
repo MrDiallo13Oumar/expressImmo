@@ -17,7 +17,7 @@ export class DetailReservationComponent {
     prenom: new FormControl(''),
     telephone: new FormControl(''),
     adresse: new FormControl(''),
-    statut: new FormControl(''),
+    statut: new FormControl('sur place'),
     propriete_id: new FormControl(''),
   })
  Contrat = new FormGroup({
@@ -61,6 +61,8 @@ export class DetailReservationComponent {
         this.router.navigateByUrl("/contrat/list-contrat")
       }
       created_by =localStorage.getItem('id_user')
+      modify_by =localStorage.getItem('id_user')
+      data:any
       creerContrat() {
         // Données pour le contrat
         const contratData = {
@@ -84,6 +86,7 @@ export class DetailReservationComponent {
               panelClass: ['bg-success', 'text-white'],
             });
 
+
             this.alertWithSuccess()
           //  this.router.navigate(['/contrat/list-contrat']);
           },
@@ -94,6 +97,23 @@ export class DetailReservationComponent {
               verticalPosition: 'top',
               panelClass: ['bg-danger', 'text-white'],
             });
+          },
+        });
+
+      const  constReservationData = {
+          id: this.infoReservation.id,
+          statut: 'confirmée',
+          modify_by:this.modify_by
+        }
+        const formData2 = convertObjectInFormData(constReservationData);
+        this.service.update('reservation', 'update.php', formData2).subscribe({
+          next: (response) => {
+              console.log('message',response)
+            this.data=response
+            console.log('message',this.data)
+          },
+          error: (err: any) => {
+            console.log('message',err)
           },
         });
       }
