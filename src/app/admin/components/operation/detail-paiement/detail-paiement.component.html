@@ -1,119 +1,102 @@
 <div class="content-body">
   <div class="container-fluid">
     <div class="container border rounded p-5 bg-white shadow-lg">
-      <!-- En-tête -->
-      <div class="header text-center mb-5">
-        <h1 class="text-primary fw-bold">Reçu de Paiement</h1>
-        <p class="text-muted mb-2">Référence : <strong>Facture 1234</strong></p>
-        <p class="text-muted">Date : {{ infoPaiement.created_at | date: 'dd/MM/yyyy' }}</p>
+
+      <!-- Card avec le bouton d'impression -->
+      <div class="card mb-4">
+        <div class="card-body text-center">
+          <button class="btn btn-outline-primary" (click)="imprimerRecu()">Imprimer le reçu</button>
+        </div>
       </div>
 
-      <!-- Informations Client -->
-      <div class="section mb-5">
-        <h2 class="h5 text-secondary border-bottom pb-2 mb-3">Client</h2>
-        <p><strong class="text-dark">Nom :</strong> {{ infoPaiement.reservations?.nom }} {{ infoPaiement.reservations?.prenom }}</p>
-        <p><strong class="text-dark">Téléphone :</strong> {{ infoPaiement.reservations?.telephone }}</p>
-        <p> <strong class="text-dark">Adresse :</strong> {{ infoPaiement.proprietes?.adresse }}</p>
+      <!-- Reçu de paiement (Cibler ce bloc pour l'impression) -->
+      <div id="recu" class="reçu-section">
+        <div class="header text-center mb-5">
+          <h1 class="text-primary fw-bold">Reçu de Paiement</h1>
+          <p class="text-muted mb-2">Référence : <strong>Facture {{ infoPaiement.contrat?.id }}</strong></p>
+          <p class="text-muted">Date : {{ infoPaiement.reservation?.created_at | date: 'dd/MM/yyyy' }}</p>
+        </div>
+
+        <!-- Informations Client -->
+        <div class="section mb-5">
+          <h2 class="h5 text-secondary border-bottom pb-2 mb-3">Client</h2>
+          <p><strong class="text-dark">Nom :</strong> {{ infoPaiement.reservation?.nom }} {{ infoPaiement.reservation?.prenom }}</p>
+          <p><strong class="text-dark">Téléphone :</strong> {{ infoPaiement.reservation?.telephone }}</p>
+          <p><strong class="text-dark">Adresse :</strong> {{ infoPaiement.reservation?.adresse }}</p>
+        </div>
+
+        <!-- Tableau récapitulatif -->
+        <div class="table-responsive mb-5">
+          <table class="table table-bordered table-hover align-middle">
+            <thead class="table-success text-center">
+              <tr>
+                <th class="fw-bold">Information Du Propriétaire</th>
+                <th class="fw-bold">Détail</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>État</strong></td>
+                <td>{{ infoPaiement.propriete?.etat }}</td>
+              </tr>
+              <tr>
+                <td><strong>Nom</strong></td>
+                <td>{{ infoPaiement.partenaire?.libelle }}</td>
+              </tr>
+              <tr>
+                <td><strong>Téléphone</strong></td>
+                <td>{{ infoPaiement.partenaire?.telephone }}</td>
+              </tr>
+              <tr>
+                <td><strong>Email</strong></td>
+                <td>{{ infoPaiement.partenaire?.email }}</td>
+              </tr>
+              <tr>
+                <td><strong>Adresse</strong></td>
+                <td>{{ infoPaiement.partenaire?.adresse }}</td>
+              </tr>
+              <tr>
+                <td><strong>Mode de paiement</strong></td>
+                <td>{{ infoPaiement.mode_paiement }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Détails du paiement -->
+        <div class="table-responsive mb-5">
+          <table class="table table-bordered table-hover align-middle">
+            <thead class="table-success text-center">
+              <tr>
+                <th class="fw-bold">Désignation</th>
+                <th class="fw-bold">Quantité</th>
+                <th class="fw-bold">Prix Unitaire (GNF)</th>
+                <th class="fw-bold">Total (GNF)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="text-center">
+                <td>Loyer</td>
+                <td>1</td>
+                <td>{{ infoPaiement.montant }}</td>
+                <td>{{ infoPaiement.montant }}</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr class="table-light text-center">
+                <td colspan="3" class="fw-bold text-dark">Total TTC</td>
+                <td class="fw-bold text-dark">{{ infoPaiement.montant }} GNF</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+
+        <!-- Pied de page -->
+        <div class="footer text-center text-muted mt-5">
+          <p class="fw-light">Merci pour votre confiance.</p>
+        </div>
       </div>
 
-      <!-- Tableau récapitulatif -->
-      <div class="table-responsive mb-5">
-        <table class="table table-bordered table-hover align-middle">
-          <thead class="table-success text-center">
-            <tr>
-              <th class="fw-bold">Infomation Du Proprietaire</th>
-              <th class="fw-bold">Détail</th>
-            </tr>
-          </thead>
-          <tbody>
-
-            <tr>
-              <td><strong>État</strong></td>
-              <td>{{ infoPaiement.proprietes?.etat }}</td>
-            </tr>
-            <tr>
-              <td><strong>Nom</strong></td>
-              <td>{{ infoPaiement.partenaires?.libelle }}</td>
-            </tr>
-            <tr>
-              <td><strong>Téléphone</strong></td>
-              <td>{{ infoPaiement.partenaires?.telephone }}</td>
-            </tr>
-            <tr>
-              <td><strong>Email</strong></td>
-              <td>{{ infoPaiement.partenaires?.email }}</td>
-            </tr>
-            <tr>
-              <td><strong>Adresse</strong></td>
-              <td>{{ infoPaiement.partenaires?.adresse }}</td>
-            </tr>
-            <tr>
-              <td><strong>Mode de paiement</strong></td>
-              <td>{{ infoPaiement.mode_paiement }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <!-- Details Supplementaire -->
-      <div class="table-responsive mb-5">
-        <table class="table table-bordered table-hover align-middle">
-          <thead class="table-success text-center">
-            <tr>
-              <th class="fw-bold">Infomation Supplementaire</th>
-              <th class="fw-bold">Détail</th>
-            </tr>
-          </thead>
-          <tbody>
-
-            <tr>
-              <td><strong>État</strong></td>
-              <td>{{ infoPaiement.proprietes?.etat }}</td>
-            </tr>
-            <tr>
-              <td><strong>Adresse Propriete</strong></td>
-              <td>{{ infoPaiement.proprietes?.adresse }}</td>
-            </tr>
-            <tr>
-              <td><strong>Mode de paiement</strong></td>
-              <td>{{ infoPaiement.mode_paiement }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <!-- Détails du paiement -->
-      <div class="table-responsive mb-5">
-        <table class="table table-bordered table-hover align-middle">
-          <thead class="table-success text-center">
-            <tr>
-              <th class="fw-bold">Désignation</th>
-              <th class="fw-bold">Quantité</th>
-              <th class="fw-bold">Prix Unitaire (GNF)</th>
-              <th class="fw-bold">Total (GNF)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="text-center">
-              <td>Loyer</td>
-              <td>1</td>
-              <td>{{ infoPaiement.montant }}</td>
-              <td>{{ infoPaiement.montant }}</td>
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr class="table-light text-center">
-              <td colspan="3" class="fw-bold text-dark">Total TTC</td>
-              <td class="fw-bold text-dark">{{ infoPaiement.montant }} GNF</td>
-            </tr>
-          </tfoot>
-        </table>
-      </div>
-
-      <!-- Pied de page -->
-      <div class="footer text-center text-muted mt-5">
-        <p class="fw-light">Merci pour votre confiance.</p>
-      </div>
     </div>
   </div>
 </div>

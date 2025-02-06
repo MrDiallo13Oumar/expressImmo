@@ -2,7 +2,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ReservationService } from '../../services/reservation.service';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { convertObjectInFormData } from 'src/app/app.component';
 import Swal from 'sweetalert2';
@@ -17,8 +17,14 @@ export class DetailReservationComponent {
     prenom: new FormControl(''),
     telephone: new FormControl(''),
     adresse: new FormControl(''),
-    statut: new FormControl(''),
+    statut: new FormControl('sur place'),
     propriete_id: new FormControl(''),
+  })
+ Contrat = new FormGroup({
+  caution: new FormControl(0, [
+    Validators.required,
+    Validators.min(0),
+  ]),
   })
   constructor(
         private service: ReservationService,
@@ -54,11 +60,16 @@ export class DetailReservationComponent {
         Swal.fire('Felicitation ...', 'Contrat creer avec succes!', 'success')
         this.router.navigateByUrl("/contrat/list-contrat")
       }
+      created_by =localStorage.getItem('id_user')
+      modify_by =localStorage.getItem('id_user')
+      data:any
       creerContrat() {
         // Données pour le contrat
         const contratData = {
           reservation_id: this.infoReservation.id,
           statut: 'actif',
+         caution : this.Contrat.value.caution
+
         };
 
         // Convertir les données en FormData
@@ -75,6 +86,7 @@ export class DetailReservationComponent {
               panelClass: ['bg-success', 'text-white'],
             });
 
+
             this.alertWithSuccess()
           //  this.router.navigate(['/contrat/list-contrat']);
           },
@@ -85,6 +97,23 @@ export class DetailReservationComponent {
               verticalPosition: 'top',
               panelClass: ['bg-danger', 'text-white'],
             });
+          },
+        });
+
+      const  constReservationData = {
+          id: this.infoReservation.id,
+          statut: 'confirmée',
+          modify_by:this.modify_by
+        }
+        const formData2 = convertObjectInFormData(constReservationData);
+        this.service.update('reservation', 'update.php', formData2).subscribe({
+          next: (response) => {
+              console.log('message',response)
+            this.data=response
+            console.log('message',this.data)
+          },
+          error: (err: any) => {
+            console.log('message',err)
           },
         });
       }

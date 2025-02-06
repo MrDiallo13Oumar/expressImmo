@@ -1,7 +1,7 @@
 // Environnement de developpement
 import { environment } from 'src/environments/environment'
 // BASE_URL FOR IMAGES OR MOVIES...
-// 
+//
 // export const LINK_STATIC_FILES: string = 'http://192.168.0.109:8080/photo/'
 // export const LINK_STATIC_FILES: string = 'http://192.168.1.102/expressimmo/'
 
@@ -12,9 +12,6 @@ import { environment } from 'src/environments/environment'
 
 const LINK_PROD: string = 'http://192.168.1.131/expressImmo-backend/api/'
 const LINK_DEVS: string = 'http://192.168.1.131/expressImmo-backend/api/'
-
-// const LINK_PROD: string = 'http://192.168.1.180/expressimmos/api/'
-// const LINK_DEVS: string = 'http://192.168.1.180/expressimmos/api/'
 
 
 

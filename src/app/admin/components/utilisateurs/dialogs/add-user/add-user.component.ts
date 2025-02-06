@@ -12,13 +12,14 @@ import { first } from 'rxjs';
   styleUrls: ['./add-user.component.scss']
 })
 export class AddUserComponent {
+  created_by = localStorage.getItem('id_user');
+
   Utilisateur = new FormGroup({
     nom: new FormControl(''),
     prenom: new FormControl(''),
     role: new FormControl(''),
     email: new FormControl(''),
     mot_de_passe: new FormControl(''),
-
   })
 
 

@@ -10,6 +10,7 @@ export class DashboardComponent {
   constructor(private service: HomeService) {}
   ngOnInit() {
     this.getDashbord();
+    this.getContratDashbord();
   }
   infoDashBoard: any;
   getDashbord() {
@@ -17,6 +18,18 @@ export class DashboardComponent {
       next: (reponse: any) => {
         console.log('REPONSE SUCCESS : ', reponse);
         this.infoDashBoard = reponse;
+      },
+      error: (err: any) => {
+        console.log('REPONSE ERROR : ', err);
+      },
+    });
+  }
+  infoContratDashBoard :any
+  getContratDashbord() {
+    this.service.getall('dashboard', '').subscribe({
+      next: (reponse: any) => {
+        console.log('REPONSE SUCCESS : ', reponse);
+        this.infoContratDashBoard = reponse;
       },
       error: (err: any) => {
         console.log('REPONSE ERROR : ', err);

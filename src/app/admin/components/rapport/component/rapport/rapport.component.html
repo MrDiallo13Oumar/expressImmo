@@ -6,14 +6,7 @@
         <h4 class="card-title  mb-0">Rapport des Opérations</h4>
         <div class="d-flex justify-content-center ">
 
-          <mat-form-field appearance="outline" class="w-50">
-            <mat-label>Type d'Opération</mat-label>
-            <mat-select [(ngModel)]="operationType">
-              <mat-option *ngFor="let type of operationTypes" [value]="type">
-                {{ type }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
+
         </div>
         <div class="d-flex justify-content-between gap-3">
           <mat-form-field appearance="outline" class="w-25">
@@ -29,8 +22,16 @@
             <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
             <mat-datepicker #endPicker></mat-datepicker>
           </mat-form-field>
+          <mat-form-field appearance="outline" class="w-50">
+            <mat-label>Type d'Opération</mat-label>
+            <mat-select [(ngModel)]="operationType">
+              <mat-option *ngFor="let type of operationTypes" [value]="type">
+                {{ type }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
 
-          <button mat-raised-button color="primary" (click)="generateReport()">Générer le Rapport</button>
+          <button mat-raised-button color="primary" (click)="generateReport()"> Rapport</button>
         </div>
       </div>
     </div>

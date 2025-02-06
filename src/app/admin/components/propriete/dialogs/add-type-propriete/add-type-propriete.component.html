@@ -1,40 +1,23 @@
 <div class="card">
   <div class="card-body">
     <div class="card-title text-center">
-      <h4>Ajouter un Type de Propriete</h4>
+      <h4>Ajouter un Type de Propriété</h4>
     </div>
     <form [formGroup]="typePropriete">
       <div class="row">
-        <div class=" mb-3">
-          <label for="libelle">Libelle</label>
-          <input
-            type="text"
-            class="form-control form-control-lg"
-            formControlName="libelle"
-            id="libelle"
-            placeholder="Enter le libelle"
-          />
+        <div class="mb-3 w-100">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Libellé</mat-label>
+            <input matInput placeholder="Entrer le libellé" formControlName="libelle" />
+          </mat-form-field>
         </div>
-        </div>
-
-
+      </div>
     </form>
   </div>
   <div class="card-footer">
     <div class="d-flex justify-content-between">
-      <button
-        type="submit"
-        class="btn btn-rounded btn-primary btn-lg mt-3"
-        (click)="saveDatatypePropriete()"
-      >
-        Ajouter
-      </button>
-      <button
-        type="reset"
-        class="btn btn-rounded btn-outline-secondary btn-lg mt-3"
-      >
-        Annuler
-      </button>
+      <button mat-raised-button color="primary" class="mt-3" (click)="saveDatatypePropriete()">Ajouter</button>
+      <button mat-stroked-button color="secondary" class="mt-3" type="reset">Annuler</button>
     </div>
   </div>
 </div>

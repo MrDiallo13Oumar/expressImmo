@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { LocataireService } from '../../services/locataire.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -11,7 +11,7 @@ import { convertObjectInFormData } from 'src/app/app.component';
   styleUrls: ['./details-locataire.component.scss']
 })
 export class DetailsLocataireComponent {
-
+  modify_by= localStorage.getItem('id_user')
   Locataire = new FormGroup({
               id: new FormControl(''),
               propriete_id: new FormControl(''),
@@ -25,6 +25,7 @@ export class DetailsLocataireComponent {
               typePiece :new FormControl(''),
               numeroPiece :new FormControl(''),
               adresse :new FormControl(''),
+             modify_by :new FormControl(this.modify_by,Validators.required),
       })
 
       constructor(

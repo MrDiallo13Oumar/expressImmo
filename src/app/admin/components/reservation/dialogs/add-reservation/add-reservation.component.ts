@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit, Optional } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { AddLocataireComponent } from '../../../locataire/dialogs/add-locataire/add-locataire.component';
 import { ProprieteService } from '../../../propriete/_services/propriete.service';
@@ -12,14 +12,17 @@ import { ProprieteService } from '../../../propriete/_services/propriete.service
   styleUrls: ['./add-reservation.component.scss']
 })
 export class AddReservationComponent implements OnInit{
+  created_by = localStorage.getItem('id_user');
 
   Reservation = new FormGroup({
     nom: new FormControl(''),
     prenom: new FormControl(''),
     telephone: new FormControl(''),
     adresse: new FormControl(''),
-    statut: new FormControl(''),
+    statut: new FormControl('en attente'),
     propriete_id: new FormControl(''),
+    source: new FormControl('sur place',Validators.required),
+    created_by: new FormControl(this.created_by, Validators.required),
   })
 saveDataPropriete: any;
 
@@ -35,7 +38,7 @@ saveDataPropriete: any;
 
   Propriete: any = []
   getPropriete() {
-    this.service.getall('propriete', 'readAll2.php').subscribe({
+    this.service.getall('propriete', 'readAll.php').subscribe({
       next: (reponse: any) => {
         console.log('LISTE DES PROPRIETES REPONSE SUCCESS : ', reponse)
         this.Propriete = reponse

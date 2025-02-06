@@ -2,165 +2,84 @@
   <div class="container-fluid">
     <div class="card col rounded p-3 mt-3 shadow-sm border-0">
       <div class="card-body d-flex align-items-center justify-content-between">
-        <h4 class="card-title mb-0 text-primary">Détails Contrats</h4>
-        <div class="text-end mr-2">
+        <h4 class="card-title mb-0 text-primary fw-bold">Détails Contrats</h4>
+        <div class="d-flex gap-3">
           <button
             type="button"
-            class="btn btn-danger btn-sm btn-rounded text-white px-3"
+            class="btn btn-danger btn-sm text-white px-4 d-flex align-items-center"
+            (click)=" printContract()"
           >
-            <mat-icon class="mat-18">print</mat-icon>Imprimer
+            <mat-icon class="me-2">print</mat-icon> Imprimer
           </button>
 
           <button
             type="button"
-            class="btn btn-dark btn-sm btn-rounded text-white px-3"
+            class="btn btn-dark btn-sm text-white px-4 d-flex align-items-center"
             (click)="openDialog()"
           >
-            <mat-icon class="mat-18">add</mat-icon>Effectuer un paiement
+            <mat-icon class="me-2">add</mat-icon> Effectuer un paiement
           </button>
         </div>
       </div>
     </div>
-    <div class="container mt-5">
+
+
       <mat-tab-group>
         <mat-tab>
           <ng-template mat-tab-label>Contrat</ng-template>
-          <div class="card shadow-lg">
-            <!-- En-tête -->
-            <div class="card-header text-white bg-primary text-center py-4">
-              <h2 class="mb-0" style="font-size: 2rem">Contrat de Location</h2>
+          <mat-card class="contract-container">
+            <div class="contract-content">
+              <mat-card-header class="contract-header">
+                <div class="header-content">
+                  <img src="assets/logo.png" alt="Logo" class="contract-logo" />
+                  <div class="d-flex justify-content-center">
+                    <h3>CONTRAT DE LOCATION</h3>
+                    <mat-card-title>N° {{ infoContrat.id }}</mat-card-title>
+                  </div>
+                </div>
+              </mat-card-header>
+
+              <mat-card-content>
+                <p><strong>Date de signature :</strong> {{ infoContrat.created_at | date:'fullDate' }}</p>
+                <p><strong>Locataire :</strong> {{ infoContrat.reservation.nom }} {{ infoContrat.reservation.prenom }}</p>
+                <p><strong>Propriété :</strong> {{ infoContrat.reservation.propriete.nom }}</p>
+                <p><strong>Adresse :</strong> {{ infoContrat.reservation.propriete.adresse }}</p>
+                <p><strong>Durée :</strong> Du {{ infoContrat.paiements[0]?.date_debut | date:'fullDate' }} au {{ infoContrat.paiements[infoContrat.paiements.length-1]?.date_fin | date:'fullDate' }}</p>
+                <p><strong>Loyer total :</strong> {{ infoContrat.total_paiement }} FCFA</p>
+
+                <mat-divider></mat-divider>
+
+                <h3>Clauses du contrat :</h3>
+                <p><strong>Article 1 :</strong> Objet du contrat</p>
+                <p>Le présent contrat a pour objet la location de la propriété située à {{ infoContrat.reservation.propriete.adresse }}.</p>
+
+                <p><strong>Article 2 :</strong> Durée du bail</p>
+                <p>La location est accordée pour une durée déterminée de {{ getDureeContrat() }} jours, débutant le {{ infoContrat.paiements[0]?.date_debut | date:'fullDate' }} et prenant fin le {{ infoContrat.paiements[infoContrat.paiements.length-1]?.date_fin | date:'fullDate' }}.</p>
+
+                <p><strong>Article 3 :</strong> Montant et modalités de paiement</p>
+                <p>Le montant total à payer pour cette période de location est de {{ infoContrat.total_paiement }} FCFA, payable selon les modalités convenues.</p>
+
+                <mat-divider></mat-divider>
+
+                <p><strong>Article 4 :</strong> Obligations du locataire</p>
+                <p>Le locataire s'engage à utiliser les lieux de manière paisible et à respecter toutes les obligations liées au présent contrat.</p>
+
+                <p><strong>Article 5 :</strong> Obligations du bailleur</p>
+                <p>Le bailleur s’engage à fournir un logement en bon état et à réaliser les réparations nécessaires en cas de défaut majeur.</p>
+
+                <mat-divider></mat-divider>
+
+                <p><strong>Fait à :</strong> [Ville], le {{ infoContrat.created_at | date:'fullDate' }}</p>
+                <div class="signature-section">
+                  <p><strong>Signature du bailleur :</strong> ___________________</p>
+                  <p><strong>Signature du locataire :</strong> ___________________</p>
+                </div>
+              </mat-card-content>
             </div>
-
-            <!-- Corps du contrat -->
-            <div class="card-body text-center" style="font-size: 1.1rem">
-              <!-- Locataire -->
-              <div class="mb-4">
-                <h5 class="text-secondary mb-3">
-                  <i class="fas fa-user"></i> Locataire
-                </h5>
-                <p>
-                  <strong>Nom :</strong> {{ infoContrat.reservation?.nom }}
-                  {{ infoContrat.reservation?.prenom }}
-                </p>
-              </div>
-
-              <!-- Propriété -->
-              <div class="mb-4">
-                <h5 class="text-secondary mb-3">
-                  <i class="fas fa-home"></i> Propriété
-                </h5>
-                <p>
-                  <strong>Référence :</strong>
-                  {{ infoContrat.reservation?.propriete?.reference }}
-                </p>
-                <p>
-                  <strong>Adresse :</strong>
-                  {{ infoContrat.reservation?.propriete?.adresse }}
-                </p>
-                <p>
-                  <strong>Description :</strong>
-                  {{ infoContrat.reservation?.propriete?.description }}
-                </p>
-                <p>
-                  <strong>État :</strong>
-                  {{ infoContrat.reservation?.propriete?.etat }}_
-                </p>
-                <p>
-                  <strong>Prix journalier :</strong>
-                  <span class="text-success"
-                    >{{
-                      infoContrat.reservation?.propriete?.prix_journalier
-                    }}
-                    €</span
-                  >
-                </p>
-                <p>
-                  <strong>Prix mensuel :</strong>
-                  <span class="text-success"
-                    >{{
-                      infoContrat.reservation?.propriete?.prix_mensuel
-                    }}
-                    €</span
-                  >
-                </p>
-                <p>
-                  <strong>Disponibilité :</strong>
-                  <span class="badge bg-info text-white">{{
-                    infoContrat.reservation?.propriete?.disponibilite
-                  }}</span>
-                </p>
-              </div>
-
-              <!-- Clauses et Conditions -->
-              <div class="mb-4">
-                <h5 class="text-secondary mb-3">
-                  <i class="fas fa-file-contract"></i> Clauses et Conditions
-                </h5>
-                <ul
-                  class="list-group list-group-flush"
-                  style="display: inline-block; text-align: left"
-                >
-                  <li class="list-group-item">
-                    <strong>Durée :</strong> Ce contrat est valable pour
-                    {{ infoContrat.duree }} mois.
-                  </li>
-                  <li class="list-group-item">
-                    <strong>Paiement :</strong> Le loyer de
-                    {{ infoContrat.reservation?.propriete?.prix_mensuel }} € est
-                    dû avant le 5 du mois.
-                  </li>
-                  <li class="list-group-item">
-                    <strong>Responsabilité :</strong> Le locataire est
-                    responsable des dommages.
-                  </li>
-                  <li class="list-group-item">
-                    <strong>Usage :</strong> Usage strictement résidentiel.
-                  </li>
-                  <li class="list-group-item">
-                    <strong>Résiliation :</strong> Préavis de 30 jours requis
-                    pour résiliation.
-                  </li>
-                  <li class="list-group-item">
-                    <strong>Entretien :</strong> Propriété à maintenir propre et
-                    habitable.
-                  </li>
-                </ul>
-              </div>
-
-              <!-- Partenaire -->
-              <div class="mb-4">
-                <h5 class="text-secondary mb-3">
-                  <i class="fas fa-handshake"></i> Informations sur le
-                  Partenaire
-                </h5>
-                <p>
-                  <strong>Nom :</strong>
-                  {{ infoContrat.reservation?.partenaire?.libelle }}
-                </p>
-                <p>
-                  <strong>Téléphone :</strong>
-                  {{ infoContrat.reservation?.propriete?.partenaire?.telephone }}
-                </p>
-                <p>
-                  <strong>Email :</strong>
-                  {{ infoContrat.reservation?.propriete?.partenaire?.email }}
-                </p>
-                <p>
-                  <strong>Adresse :</strong>
-                  {{ infoContrat.reservation?.propriete?.partenaire?.adresse }}
-                </p>
-              </div>
-
-              <!-- Signature -->
-              <div class="mt-4">
-                <p class="text-muted">
-                  <strong>Date :</strong> {{ infoContrat.date }}
-                </p>
-                <p><strong>Signature :</strong> ______________________</p>
-              </div>
-            </div>
-          </div>
+          </mat-card>
         </mat-tab>
+
+
         <mat-tab>
           <ng-template mat-tab-label>Paiement</ng-template>
           <!-- Liste de paiement -->
@@ -168,7 +87,7 @@
             <div class="col">
               <mat-card>
                 <mat-card-header>
-                  <div class="  " style="color: green;">Solde =  {{infoContrat.reservation?.montant_total}}  </div >
+                  <div class="  " style="color: green;">Solde =  {{infoContrat.total_paiement}}  </div >
                 </mat-card-header>
                 <mat-card-content>
                   <mat-form-field class="w-100" appearance="outline">
@@ -217,7 +136,7 @@
                     <ng-container matColumnDef="action">
                       <th mat-header-cell *matHeaderCellDef class="text-center">Action</th>
                       <td mat-cell *matCellDef="let element" class="text-center">
-                        <button mat-icon-button color="primary" routerLink="">
+                        <button mat-icon-button color="primary" routerLink="/operation/detail-paiement/{{element.id}}">
                           <mat-icon >edit</mat-icon>
                         </button>
                         <button mat-icon-button color="warn" (click)="deleteFunction(element.id ,'paiements')">
@@ -238,6 +157,6 @@
           </div>
         </mat-tab>
       </mat-tab-group>
-    </div>
+
   </div>
 </div>

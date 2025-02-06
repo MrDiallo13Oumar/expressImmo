@@ -15,7 +15,7 @@ import { DeletePopupComponent } from 'src/app/shared/dialogs/delete-popup/delete
   styleUrls: ['./list-contrat.component.scss'],
 })
 export class ListContratComponent {
-  displayedColumns: string[] = ['id', 'reservation', 'statut', 'action'];
+  displayedColumns: string[] = ['id', 'reservation_nom','propriete_reference' ,'caution','statut', 'action'];
   dataSource = new MatTableDataSource([]);
 
   constructor(
@@ -90,12 +90,14 @@ export class ListContratComponent {
         }
       });
   }
+modify_by = localStorage.getItem('id_user');
 
   liberer(_ID: any, statut: string) {
     // Données pour le contrat
     const contratData = {
       id: _ID,
       statut: statut,
+      modify_by:this.modify_by,
       table: 'contrats',
     };
     // Convertir les données en FormData

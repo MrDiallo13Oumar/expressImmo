@@ -1,70 +1,111 @@
-/* Augmenter la taille et rendre les textes en gras */
-.nk-nav-scroll ul.metismenu li a {
-    font-size: 16px;
-   // font-weight: bold;
-    font-family: 'Arial', sans-serif;
-    color: #333; /* Couleur par défaut du texte */
-    text-decoration: none; /* Supprimez les soulignements */
-}
-
-/* Effet de survol (hover) */
-.nk-nav-scroll ul.metismenu li a:hover {
-    color: #ffffff; /* Couleur du texte au survol */
-    background-color: #007bff; /* Couleur de fond au survol */
-    border-radius: 5px; /* Ajoutez un effet arrondi si nécessaire */
-}
-
-/* Icônes et espaces ajustés */
-.nk-nav-scroll ul.metismenu li a i {
-    margin-right: 10px; /* Ajoutez de l'espace entre l'icône et le texte */
-    font-size: 18px; /* Ajustez la taille de l'icône */
-}
-
-/* Style pour la section "Autres" */
-.nk-nav-scroll ul.metismenu li.nav-label {
-    font-size: 14px;
-    font-weight: bold;
-    color: #555; /* Couleur de la catégorie */
-    text-transform: uppercase; /* Texte en majuscules */
-    margin-top: 20px; /* Ajoutez de l'espace avant cette section */
-}
 .nk-sidebar {
-  // width: 250px;
-  // transition: width 0.3s ease;
-  // color: #fff;
+  width: 250px;
+ 
+  color: #333; // Texte en noir pour contraste
   position: fixed;
-  // height: 100vh;
+  height: 100vh;
+  transition: width 0.3s ease-in-out;
+  overflow: hidden;
+  z-index: 1000;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); // Ombre légère
 
+  .toggle-button {
+    display: none;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: transparent;
+    color: #333;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  .nk-nav-scroll {
+    padding-top: 20px;
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        a {
+          display: flex;
+          align-items: center;
+          font-size: 16px;
+          font-weight: bold;
+          font-family: 'Arial', sans-serif;
+          color: #555; // Texte plus doux
+          text-decoration: none;
+          padding: 12px 20px;
+          transition: all 0.3s ease-in-out;
+          border-radius: 5px;
+
+          i {
+            margin-right: 15px;
+            font-size: 18px;
+            transition: transform 0.3s ease-in-out;
+          }
+
+          &:hover {
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+
+            i {
+              transform: rotate(10deg);
+            }
+          }
+        }
+
+        &.active {
+          background-color: #007bff; // Même couleur que le hover
+          color: white;
+          border-left: 4px solid white;
+        }
+      }
+    }
+  }
 }
 
-// .nk-sidebar.collapsed {
-//   width: 60px;
-// }
-
-
-// .nk-nav-scroll ul {
-//   padding: 0;
-//   list-style: none;
-// }
-
-// .nk-sidebar .toggle-button {
-//   display: none;
-//   position: absolute;
-//   top: 10px;
-//   left: 10px;
-//   background: #333;
-//   color: #fff;
-//   border: none;
-//   padding: 5px 10px;
-//   cursor: pointer;
-// }
-
+// Responsive sidebar
 @media screen and (max-width: 768px) {
   .nk-sidebar {
     width: 60px;
-  }
+    transition: width 0.3s ease-in-out;
 
-  .nk-sidebar .toggle-button {
-    display: block;
+    .toggle-button {
+      display: block;
+    }
+
+    .nk-nav-scroll ul li a {
+      justify-content: center;
+      padding: 10px;
+
+      .nav-text {
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.2s ease-in-out;
+      }
+    }
+
+    &.collapsed {
+      width: 250px;
+
+      .nk-nav-scroll ul li a {
+        justify-content: flex-start;
+
+        .nav-text {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+    }
   }
 }

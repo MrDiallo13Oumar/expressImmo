@@ -7,70 +7,69 @@
     </div>
     <div class="row">
       <div class="col-lg-4 col-xl-3">
-        <div class="card shadow-sm border-0">
-          <div class="card-body text-center">
+        <div class="card shadow-lg border-0 rounded-3">
+          <div class="card-body text-center p-4">
             <img
-              class="rounded-circle mb-3"
+              class="rounded-circle mb-3 border border-light shadow-sm"
               src="assets/admin/images/avatar/11.png"
-              width="80"
-              height="80"
+              width="100"
+              height="100"
               alt="Avatar"
             />
-            <h3 class="mb-1">
+            <h3 class="mb-2 text-dark font-weight-bold">
               {{ infoLocataire.nom }} {{ infoLocataire.prenom }}
             </h3>
-            <p class="text-muted">{{ infoLocataire.propriete.reference }}</p>
+            <p class="text-muted mb-4">{{ infoLocataire.propriete.reference }}</p>
 
             <div class="d-flex justify-content-between my-4">
               <div class="text-center">
                 <a
                   href="tel:{{ infoLocataire.telephone }}"
-                  data-mdb-button-init
-                  data-mdb-ripple-init
-                  class="btn btn-success"
-                  >Appelez</a
+                  class="btn btn-success text-white"
+                  style="border-radius: 50px; padding: 10px 20px; transition: all 0.3s ease"
                 >
+                  <i class="fa fa-phone-alt"></i> Appelez
+                </a>
               </div>
               <div class="text-center">
                 <a
                   href="mailto:{{ infoLocataire.email }}"
-                  data-mdb-button-init
-                  data-mdb-ripple-init
-                  class="btn btn-outline-primary ms-1"
-                  >Message</a
+                  class="btn btn-outline-primary text-primary"
+                  style="border-radius: 50px; padding: 10px 20px; transition: all 0.3s ease"
                 >
+                  <i class="fa fa-envelope"></i> Message
+                </a>
               </div>
             </div>
           </div>
-          <ul class="list-unstyled mt-2 custom-list">
-            <li>
-             <strong> <i class="fa fa-user"></i> <span>{{ infoLocataire.nom }}  {{ infoLocataire.prenom }}</span></strong>
-            </li>
 
+          <!-- Détails -->
+          <ul class="list-unstyled mt-3 custom-list text-muted text center">
             <li>
-              <strong><i class="fa fa-envelope"></i> <span>{{ infoLocataire.email }}</span></strong>
+              <strong><i class="fa fa-user"></i> {{ infoLocataire.nom }} {{ infoLocataire.prenom }}</strong>
             </li>
             <li>
-            <strong>  <i class="fa fa-phone"></i> <span>{{ infoLocataire.telephone }}</span></strong>
+              <strong><i class="fa fa-envelope"></i> {{ infoLocataire.email }}</strong>
             </li>
             <li>
-             <strong> <i class="fa fa-calendar"></i> <span>{{ infoLocataire.date_naissance }}</span></strong>
+              <strong><i class="fa fa-phone"></i> {{ infoLocataire.telephone }}</strong>
             </li>
             <li>
-            <strong>  <i class="fa fa-map-marker"></i> <span>{{ infoLocataire.lieu_naissance }}</span></strong>
+              <strong><i class="fa fa-calendar"></i> {{ infoLocataire.date_naissance }}</strong>
             </li>
             <li>
-             <strong> <i class="fa fa-dollar-sign"></i>  <span>{{ infoLocataire.propriete.prix_journalier }}</span></strong>
+              <strong><i class="fa fa-map-marker-alt"></i> {{ infoLocataire.lieu_naissance }}</strong>
             </li>
             <li>
-              <strong><i class="fa fa-dollar-sign"></i> <span>{{ infoLocataire.propriete.prix_mensuel }}</span></strong>
+              <strong><i class="fa fa-dollar-sign"></i> {{ infoLocataire.propriete.prix_journalier }}</strong>
+            </li>
+            <li>
+              <strong><i class="fa fa-dollar-sign"></i> {{ infoLocataire.propriete.prix_mensuel }}</strong>
             </li>
           </ul>
-
-
-
         </div>
       </div>
+
       <div class="col-lg-8 col-xl-9">
         <div class="card shadow-sm border-0">
           <div class="card-body">
@@ -78,132 +77,133 @@
             <form [formGroup]="Locataire">
               <div class="row mb-3">
                 <div class="col-md-6">
-                  <label for="nom">NOM</label>
-                  <input
-                    type="text"
-                    class="form-control form-control-lg"
-                    id="nom"
-                    formControlName="nom"
-                    placeholder="Enter le nom"
-                  />
+                  <mat-form-field appearance="fill" class="w-100">
+                    <mat-label>NOM</mat-label>
+                    <input
+                      matInput
+                      formControlName="nom"
+                      placeholder="Enter le nom"
+                    />
+                  </mat-form-field>
                 </div>
                 <div class="col-md-6">
-                  <label for="prenom">PRENOM</label>
-                  <input
-                    type="text"
-                    class="form-control form-control-lg"
-                    id="prenom"
-                    formControlName="prenom"
-                    placeholder="Enter le prenom"
-                  />
+                  <mat-form-field appearance="fill" class="w-100">
+                    <mat-label>PRENOM</mat-label>
+                    <input
+                      matInput
+                      formControlName="prenom"
+                      placeholder="Enter le prenom"
+                    />
+                  </mat-form-field>
                 </div>
               </div>
+
               <div class="row mb-3">
                 <div class="col-md-6">
-                  <label for="telephone">TELEPHONE</label>
-                  <input
-                    type="text"
-                    class="form-control form-control-lg"
-                    formControlName="telephone"
-                    id="telephone"
-                    placeholder="Enter le numero du telephone"
-                  />
+                  <mat-form-field appearance="fill" class="w-100">
+                    <mat-label>TELEPHONE</mat-label>
+                    <input
+                      matInput
+                      formControlName="telephone"
+                      placeholder="Enter le numero du telephone"
+                    />
+                  </mat-form-field>
                 </div>
                 <div class="col-md-6">
-                  <label for="email">EMAIL</label>
-                  <input
-                    type="email"
-                    class="form-control form-control-lg"
-                    formControlName="email"
-                    id="email"
-                    placeholder="Enter l'email"
-                  />
+                  <mat-form-field appearance="fill" class="w-100">
+                    <mat-label>EMAIL</mat-label>
+                    <input
+                      matInput
+                      formControlName="email"
+                      type="email"
+                      placeholder="Enter l'email"
+                    />
+                  </mat-form-field>
                 </div>
               </div>
+
               <div class="row mb-3">
                 <div class="col-md-6">
-                  <label for="adresse">Adresse</label>
-                  <input
-                    type="text"
-                    class="form-control form-control-lg"
-                    formControlName="adresse"
-                    id="adresse"
-                    placeholder="Enter l'adresse"
-                  />
+                  <mat-form-field appearance="fill" class="w-100">
+                    <mat-label>Adresse</mat-label>
+                    <input
+                      matInput
+                      formControlName="adresse"
+                      placeholder="Enter l'adresse"
+                    />
+                  </mat-form-field>
                 </div>
                 <div class="col-md-6">
-                  <label for="date_naissance">Date de Naissance</label>
-                  <input
-                    type="date"
-                    class="form-control form-control-lg"
-                    formControlName="date_naissance"
-                    id="date_naissance"
-                    placeholder="Enter la date de naissance"
-                  />
+                  <mat-form-field appearance="fill" class="w-100">
+                    <mat-label>Date de Naissance</mat-label>
+                    <input
+                      matInput
+                      formControlName="date_naissance"
+                      type="date"
+                    />
+                  </mat-form-field>
                 </div>
               </div>
+
               <div class="row mb-3">
                 <div class="col-md-6">
-                  <label for="lieu_naissance">Lieu de Naissance</label>
-                  <input
-                    type="text"
-                    class="form-control form-control-lg"
-                    formControlName="lieu_naissance"
-                    id="lieu_naissance"
-                    placeholder="Enter le lieu de naissance"
-                  />
+                  <mat-form-field appearance="fill" class="w-100">
+                    <mat-label>Lieu de Naissance</mat-label>
+                    <input
+                      matInput
+                      formControlName="lieu_naissance"
+                      placeholder="Enter le lieu de naissance"
+                    />
+                  </mat-form-field>
                 </div>
                 <div class="col-md-6">
-                  <label for="nationalite">NATIONALITÉ</label>
-                  <input
-                    type="text"
-                    class="form-control form-control-lg"
-                    formControlName="nationalite"
-                    id="nationalite"
-                    placeholder="Enter la nationalité"
-                  />
+                  <mat-form-field appearance="fill" class="w-100">
+                    <mat-label>NATIONALITÉ</mat-label>
+                    <input
+                      matInput
+                      formControlName="nationalite"
+                      placeholder="Enter la nationalité"
+                    />
+                  </mat-form-field>
                 </div>
               </div>
+
               <div class="row mb-3">
                 <div class="col-md-6">
-                  <label for="typePiece">Type De Pièce</label>
-                  <input
-                    type="text"
-                    class="form-control form-control-lg"
-                    formControlName="typePiece"
-                    id="typePiece"
-                    placeholder="Enter le Type de Pièce"
-                  />
+                  <mat-form-field appearance="fill" class="w-100">
+                    <mat-label>Type De Pièce</mat-label>
+                    <input
+                      matInput
+                      formControlName="typePiece"
+                      placeholder="Enter le Type de Pièce"
+                    />
+                  </mat-form-field>
                 </div>
                 <div class="col-md-6">
-                  <label for="numeroPiece">Numéro De Pièce</label>
-                  <input
-                    type="text"
-                    class="form-control form-control-lg"
-                    formControlName="numeroPiece"
-                    id="numeroPiece"
-                    placeholder="Enter le Numéro de Pièce"
-                  />
+                  <mat-form-field appearance="fill" class="w-100">
+                    <mat-label>Numéro De Pièce</mat-label>
+                    <input
+                      matInput
+                      formControlName="numeroPiece"
+                      placeholder="Enter le Numéro de Pièce"
+                    />
+                  </mat-form-field>
                 </div>
               </div>
+
               <div class="row mb-3">
                 <div class="col">
-                  <label for="propriete_id">Choisir La Propriété</label>
-                  <select
-                    class="form-select"
-                    id="propriete_id"
-                    required
-                    formControlName="propriete_id"
-                    placeholder="propriete"
-                  >
-                    <option selected disabled>-- Liste Générale --</option>
-                    <option
-                      *ngFor="let propriete of Propriete"
-                      [value]="propriete.id"
+                  <mat-form-field appearance="fill" class="w-100">
+                    <mat-label>Choisir La Propriété</mat-label>
+                    <mat-select
+                      formControlName="propriete_id"
+                      placeholder="propriete"
                     >
-                      {{ propriete.reference }} - {{ propriete.adresse }}
-                    </option>
-                  </select>
+                      <mat-option *ngFor="let propriete of Propriete" [value]="propriete.id">
+                        {{ propriete.reference }} - {{ propriete.adresse }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
                 </div>
               </div>
             </form>

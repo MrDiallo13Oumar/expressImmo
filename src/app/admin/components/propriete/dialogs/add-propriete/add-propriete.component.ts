@@ -1,5 +1,5 @@
 import { Component, Inject, Optional } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ProprieteService } from '../../_services/propriete.service';
 import { MatTableDataSource } from '@angular/material/table';
@@ -13,7 +13,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class AddProprieteComponent {
   displayedColumns: string[] = ['id','reference', 'adresse','statut', 'partenaire', 'action'];
-
+  created_by = localStorage.getItem('id_user');
+  
   Propriete = new FormGroup({
     partenaire_id: new FormControl(''),
     quartier_id: new FormControl(''),
@@ -26,16 +27,17 @@ export class AddProprieteComponent {
     prix_mensuel: new FormControl(''),
     typepropriete_id: new FormControl(''),
     poster: new FormControl(''),
+    created_by: new FormControl(this.created_by, Validators.required),
 
   })
 
   constructor(
-    
+
     private service: ProprieteService,
     private snackBar: MatSnackBar
 
   ) { }
-  
+
   ngOnInit() {
     this.getPropriete()
     this.getPartenaire();
@@ -118,12 +120,12 @@ export class AddProprieteComponent {
   applyFilter (event: Event) {
     const filterValue = (event.target as HTMLInputElement).value
     this.dataSource.filter = filterValue.trim().toLowerCase()
-   
+
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage()
     }
    }
-   
+
   saveDataPropriete() {
     if (this.Propriete.valid) {
            const formData = convertObjectInFormData(this.Propriete.value);
@@ -134,7 +136,7 @@ export class AddProprieteComponent {
       if (this.selectedFile) {
         formData.append('file', this.selectedFile, this.selectedFile.name);
         console.log("this.selectedFile", this.selectedFile.name);
-        // this.Propriete.value.poster = this.selectedFile.name 
+        // this.Propriete.value.poster = this.selectedFile.name
 
       }
       // Envoie les données au serveur

@@ -10,191 +10,105 @@
         <div class="card">
           <div class="card-body">
             <div class="media align-items-center mb-4">
-              <img
-                class="mr-3"
-                src="assets/admin/images/avatar/11.png"
-                width="80"
-                height="80"
-                alt=""
-              />
+              <img class="mr-3" src="assets/admin/images/avatar/11.png" width="80" height="80" alt=""/>
               <div class="media-body">
-                <h5 class="mb-0">
-                  <strong
-                    ><span>{{ infoPropriete.reference }}</span></strong
-                  >
-                </h5>
-                <p class="text-muted mb-0">
-                  <strong
-                    >Adresse : <span>{{ infoPropriete.adresse }}</span></strong
-                  >
-                </p>
+                <h5 class="mb-0"><strong><span>{{ infoPropriete.reference }}</span></strong></h5>
+                <p class="text-muted mb-0"><strong>Adresse : <span>{{ infoPropriete.adresse }}</span></strong></p>
               </div>
             </div>
 
             <div class="row mb-5">
               <div class="col">
                 <ul class="list-unstyled mt-2 custom-list">
-                  <li>
-                    <strong
-                      ><i class="icon-menu"></i>
-                      <span>{{ infoPropriete.partenaire?.libelle }}</span></strong
-                    >
-                  </li>
-
-                  <li>
-                    <strong
-                      ><i class="fas fa-check-circle" style="color: green;"></i>
-
-                      <span>{{ infoPropriete.etat }}</span></strong
-                    >
-                  </li>
-                  <li>
-                    <strong
-                      ><i class="fas fa-credit-card"></i>
-
-                      <span>{{ infoPropriete.prix_journalier }}</span></strong
-                    >
-                  </li>
-                  <li>
-                    <strong
-                      ><i class="fas fa-hand-holding-usd"></i>
-
-                      <span>{{ infoPropriete.prix_mensuel }}</span></strong
-                    >
-                  </li>
+                  <li><strong><i class="icon-menu"></i> <span>{{ infoPropriete.partenaire?.libelle }}</span></strong></li>
+                  <li><strong><i class="fas fa-check-circle" style="color: green;"></i> <span>{{ infoPropriete.etat }}</span></strong></li>
+                  <li><strong><i class="fas fa-credit-card"></i> <span>{{ infoPropriete.prix_journalier }}</span></strong></li>
+                  <li><strong><i class="fas fa-hand-holding-usd"></i> <span>{{ infoPropriete.prix_mensuel }}</span></strong></li>
                 </ul>
-
               </div>
-
-              <!-- <div class="col-12 text-center">
-                <button class="btn btn-danger px-5"> Reserver</button>
-              </div> -->
             </div>
-
-
           </div>
         </div>
       </div>
+
       <div class="col-lg-8 col-xl-9">
         <div class="card">
           <div class="card-body">
             <form [formGroup]="Propriete">
               <div class="col mb-3">
-                <label for="reference">reference</label>
-                <input
-                  type="text"
-                  class="form-control form-control-lg"
-                  formControlName="reference"
-                  [value]="infoPropriete.reference"
-                />
+                <mat-form-field appearance="fill" class="w-100">
+                  <mat-label>Reference</mat-label>
+                  <input matInput formControlName="reference" [value]="infoPropriete.reference"/>
+                </mat-form-field>
               </div>
+
               <div class="row">
                 <div class="col-md-6 mb-3">
-                  <label for="type">Choisir Le Quartier</label>
-                  <select
-                    class="form-select"
-                    id="quartier_id"
-                    required
-                    formControlName="quartier_id"
-                    placeholder="quartier"
-                  >
-                    <option selected disabled>
-                      -- Liste G&#233;n&#233;rale --
-                    </option>
-                    <option
-                      *ngFor="let quartier of Quartier"
-                      [value]="quartier.id"
-                    >
-                      {{ quartier.libelle }}
-                    </option>
-                  </select>
+                  <mat-form-field appearance="fill" class="w-100">
+                    <mat-label>Choisir Le Quartier</mat-label>
+                    <mat-select formControlName="quartier_id">
+                      <mat-option *ngFor="let quartier of Quartier" [value]="quartier.id">
+                        {{ quartier.libelle }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
                 </div>
 
                 <div class="col-md-6 mb-3">
-                  <label for="type">Choisir Le partenaire</label>
-                  <select
-                    class="form-select"
-                    id="partenaire_id"
-                    required
-                    formControlName="partenaire_id"
-                    placeholder="partenaire"
-                    [value]="infoPropriete.partenaire_id"
-                  >
-                    <option selected disabled>
-                      -- Liste G&#233;n&#233;rale --
-                    </option>
-                    <option
-                      *ngFor="let partenaire of Partenaire"
-                      [value]="partenaire.id"
-                    >
-                      {{ partenaire.libelle }}
-                    </option>
-                  </select>
+                  <mat-form-field appearance="fill" class="w-100">
+                    <mat-label>Choisir Le Partenaire</mat-label>
+                    <mat-select formControlName="partenaire_id">
+                      <mat-option *ngFor="let partenaire of Partenaire" [value]="partenaire.id">
+                        {{ partenaire.libelle }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
                 </div>
               </div>
 
               <div class="row">
                 <div class="col-md-6 mb-3">
-                  <label for="adresse">Adresse</label>
-                  <input
-                    type="text"
-                    class="form-control form-control-lg"
-                    formControlName="adresse"
-                    [value]="infoPropriete.adresse"
-                  />
+                  <mat-form-field appearance="fill" class="w-100">
+                    <mat-label>Adresse</mat-label>
+                    <input matInput formControlName="adresse" [value]="infoPropriete.adresse"/>
+                  </mat-form-field>
                 </div>
                 <div class="col-md-6 mb-3">
-                  <label for="etat">Etat</label>
-                  <input
-                    type="text"
-                    class="form-control form-control-lg"
-                    formControlName="etat"
-                    [value]="infoPropriete.etat"
-                  />
+                  <mat-form-field appearance="fill" class="w-100">
+                    <mat-label>Etat</mat-label>
+                    <input matInput formControlName="etat" [value]="infoPropriete.etat"/>
+                  </mat-form-field>
                 </div>
               </div>
 
               <div class="row">
                 <div class="col-md-6 mb-3">
-                  <label for="prix_journalier">Prix Journalier</label>
-                  <input
-                    type="text"
-                    class="form-control form-control-lg"
-                    id="prix_journalier"
-                    [value]="infoPropriete.prix_journalier"
-                    formControlName="prix_journalier"
-                  />
+                  <mat-form-field appearance="fill" class="w-100">
+                    <mat-label>Prix Journalier</mat-label>
+                    <input matInput formControlName="prix_journalier" [value]="infoPropriete.prix_journalier"/>
+                  </mat-form-field>
                 </div>
 
                 <div class="col-md-6 mb-3">
-                  <label for="prix_mensuel">Prix mensuel</label>
-                  <input
-                    type="text"
-                    class="form-control form-control-lg"
-                    id="prix_mensuel"
-                    [value]="infoPropriete.prix_mensuel"
-                    formControlName="prix_mensuel"
-                  />
+                  <mat-form-field appearance="fill" class="w-100">
+                    <mat-label>Prix Mensuel</mat-label>
+                    <input matInput formControlName="prix_mensuel" [value]="infoPropriete.prix_mensuel"/>
+                  </mat-form-field>
                 </div>
               </div>
+
               <div class="mb-3">
-                <label for="descriptions">Description</label>
-                <textarea
-                  class="form-control form-control-lg"
-                  formControlName="descriptions"
-                  [value]="infoPropriete.description"
-                >
-                </textarea>
+                <mat-form-field appearance="fill" class="w-100">
+                  <mat-label>Description</mat-label>
+                  <textarea matInput formControlName="descriptions" [value]="infoPropriete.description"></textarea>
+                </mat-form-field>
               </div>
             </form>
           </div>
+
           <div class="card-footer">
             <div class="d-flex justify-content-center">
-              <button
-                type="submit"
-                class="btn btn-rounded btn-primary btn-lg mt-3"
-                (click)="confirmEditing(Propriete)"
-              >
+              <button mat-raised-button color="primary" class="btn btn-rounded btn-lg mt-3" (click)="confirmEditing(Propriete)">
                 Modifier
               </button>
             </div>
@@ -266,23 +180,20 @@
             </div>
           </div>
         </div>
+
         <div class="card">
           <div class="card-body">
             <h4>Description</h4>
             <div class="row mt-3">
               <div class="card card-profile text-center">
-                <span class="mb-1 text-primary"
-                  ><i class="icon-menu"></i
-                ></span>
+                <span class="mb-1 text-primary"><i class="icon-menu"></i></span>
                 <h5 class="mb-0">Description</h5>
                 <p class="text-muted px-4">{{ infoPropriete.descriptions }}</p>
               </div>
             </div>
-
           </div>
         </div>
       </div>
     </div>
   </div>
-  <!-- #/ container -->
 </div>

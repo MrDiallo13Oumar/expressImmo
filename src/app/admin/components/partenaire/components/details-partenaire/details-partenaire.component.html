@@ -15,15 +15,15 @@
               <div class="media align-items-center mb-4">
                 <img class="mr-3" src="assets/admin/images/avatar/11.png" width="80" height="80" alt="Propriétaire">
                 <div class="media-body">
-                  <h4 class="mb-0"> {{infoPartenaire.libelle}} <br>
+                  <h4 class="mb-0"> {{infoPartenaire.partenaire_libelle}} <br>
                     </h4>
 
                 </div>
               </div>
               <ul class=" list-unstyled custom-list">
-                <li ><strong > <i class="fa fa-phone"></i> <span>{{infoPartenaire.telephone}}</span></strong></li>
-                <li><strong ><i class="fa fa-envelope"> </i> <span>{{infoPartenaire.email}}</span> </strong> </li>
-                <li ><strong > <i class="fa fa-map-marker"></i>  <span>{{infoPartenaire.adresse}}</span></strong></li>
+                <li ><strong > <i class="fa fa-phone"></i> <span>{{infoPartenaire.partenaire_telephone}}</span></strong></li>
+                <li><strong ><i class="fa fa-envelope"> </i> <span>{{infoPartenaire.partenaire_email}}</span> </strong> </li>
+                <li ><strong > <i class="fa fa-map-marker"></i>  <span>{{infoPartenaire.partenaire_adresse}}</span></strong></li>
 
 
               </ul>
@@ -35,32 +35,40 @@
           <div class="card">
             <div class="card-body">
               <form [formGroup]="Partenaire">
-               <div class="row">
-                <div class=" mb-3">
-                  <label for="libelle">Libelle</label>
-                  <input type="text" class="form-control form-control-lg" [value]="infoPartenaire.libelle" formControlName="libelle"  />
+                <div class="col mb-3">
+                  <mat-form-field appearance="fill" class="w-100">
+                    <mat-label>Libelle</mat-label>
+                    <input matInput formControlName="libelle" [value]="infoPartenaire.partenaire_libelle"/>
+                  </mat-form-field>
                 </div>
 
-               </div>
-
-              <div class="row">
-                <div class="col-md-6 mb-3">
-                  <label for="adresse">Adresse</label>
-                  <input type="text" class="form-control form-control-lg" [value]="infoPartenaire.adresse" formControlName="adresse" />
-                </div>
+                <div class="row">
                   <div class="col-md-6 mb-3">
-                    <label for="email">email</label>
-                    <input type="email" class="form-control form-control-lg" [value]="infoPartenaire.email" formControlName="email"  />
+                    <mat-form-field appearance="fill" class="w-100">
+                      <mat-label>Adresse</mat-label>
+                      <input matInput formControlName="adresse" [value]="infoPartenaire.partenaire_adresse"/>
+                    </mat-form-field>
                   </div>
-              </div>
-                <div class=" mb-3">
-                  <label for="adresse">telephone</label>
-                  <input type="text" class="form-control form-control-lg" [value]="infoPartenaire.telephone" formControlName="telephone"   />
+
+                  <div class="col-md-6 mb-3">
+                    <mat-form-field appearance="fill" class="w-100">
+                      <mat-label>Email</mat-label>
+                      <input matInput formControlName="email" [value]="infoPartenaire.partenaire_email"/>
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <mat-form-field appearance="fill" class="w-100">
+                    <mat-label>Telephone</mat-label>
+                    <input matInput formControlName="telephone" [value]="infoPartenaire.partenaire_telephone"/>
+                  </mat-form-field>
                 </div>
 
                 <div class="text-center">
-                  <button type="submit" class="btn btn-rounded btn-primary btn-lg mt-3"(click)="confirmEditing(Partenaire)" >Modifier</button>
-
+                  <button type="submit" class="btn btn-rounded btn-primary btn-lg mt-3" (click)="confirmEditing(Partenaire)">
+                    Modifier
+                  </button>
                 </div>
               </form>
             </div>
@@ -146,7 +154,7 @@
                 </ng-container>
 
                  <!-- telephone Column -->
-                
+
 
                 <!-- Action Column -->
                 <!-- <ng-container matColumnDef="action">

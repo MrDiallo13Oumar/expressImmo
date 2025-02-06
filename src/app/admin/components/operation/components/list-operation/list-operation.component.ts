@@ -44,7 +44,7 @@ applyFilter (event: Event) {
    this.dataSource2.paginator.firstPage()
  }
 }
-displayedColumns2 : string[] = ['id', 'montant','mode_paiement','date_debut', 'date_fin',  'action'];
+displayedColumns2 : string[] = ['id', 'reservation', 'montant','mode_paiement','date_debut', 'date_fin',  'action'];
   dataSource2 = new MatTableDataSource([]);
 
 
