@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { ProprieteService } from 'src/app/admin/components/propriete/_services/propriete.service';
 import { Propriete } from 'src/assets/Models/propriete';
 
@@ -10,16 +9,17 @@ import { Propriete } from 'src/assets/Models/propriete';
 })
 export class AccueilComponent implements OnInit {
   email = "expressimmo@gmail.com"
-constructor(private router : Router, private activeroute : ActivatedRoute,private propriete : ProprieteService
+constructor(private service : ProprieteService
 ){}
   ngOnInit(): void {
     this.getPropriete()
+    this.getDashbord()
   }
 
   data !: Propriete[]
   infoPropriete: any = {};
   getPropriete () {
-    this.propriete.getall('propriete', 'readAll.php').subscribe({
+    this.service.getall('propriete', 'readAll.php').subscribe({
       next: (reponse: any) => {
         console.log('REPONSE SUCCESS : ', reponse)
         this.data = reponse
@@ -34,5 +34,19 @@ constructor(private router : Router, private activeroute : ActivatedRoute,privat
 
   scrollToTop(): void {
     window.scrollTo({ top: 0, behavior: 'smooth' }); // Le 'smooth' permet un défilement fluide
+  }
+
+
+  infoDashBoard: any;
+  getDashbord() {
+    this.service.getall('dashboard', 'statistiquesJour.php').subscribe({
+      next: (reponse: any) => {
+        console.log('REPONSE SUCCESS : ', reponse);
+        this.infoDashBoard = reponse;
+      },
+      error: (err: any) => {
+        console.log('REPONSE ERROR : ', err);
+      },
+    });
   }
 }
