@@ -1,114 +1,118 @@
-import { Component, ViewChild } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { MatPaginator } from '@angular/material/paginator';
+import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
 import { RapportService } from '../../services/rapport.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { convertObjectInFormData } from 'src/app/app.component';
-
 
 @Component({
   selector: 'app-rapport',
   templateUrl: './rapport.component.html',
   styleUrls: ['./rapport.component.scss']
 })
-export class RapportComponent {
+export class RapportComponent implements OnInit {
+  
+  // Définition du formulaire
+  reportForm = new FormGroup({
+    date_debut: new FormControl(''),
+    date_fin: new FormControl(''),
+   
+  });
 
-    // Définition du formulaire
- reportForm = new FormGroup({
-  date_debut: new FormControl(''),
-  date_fin: new FormControl(''),
-  type_transaction: new FormControl('')
-});
+  
 
+  // Tableau des données récupérées
+  dataSource: any[] = [];
 
-  operationTypes: string[] = ['encaissement', 'decaissement', 'paiement'];
+  constructor(
+    private service: RapportService,
+    private snackBar: MatSnackBar
+  ) {}
 
+  ngOnInit() {}
 
+  /**
+   * Génère le rapport en envoyant les critères au backend
+   */
+  generateReport() {
+    const formValues: any = this.reportForm.value;
 
-  ngOnInit() {
+    // Formater les données avant envoi
+    const formattedData = {
+      date_debut: formValues.date_debut instanceof Date ? this.formatDate(formValues.date_debut) : formValues.date_debut,
+      date_fin: formValues.date_fin instanceof Date ? this.formatDate(formValues.date_fin) : formValues.date_fin,
+      
+    };
 
-  }
+    const formData = convertObjectInFormData(formattedData);
 
+    console.log('Données envoyées :', formData);
 
-displayedColumns: string[] = ['id', 'montant', 'motif', 'type_transaction','created_by' ];
-  dataSource = new MatTableDataSource([]);
+    this.service.create('caisse', 'getRapportByDate.php', formData).subscribe({
+      next: (reponse: any) => {
+        console.log('Réponse reçue : ', reponse);
+        this.dataSource = reponse; // Mise à jour du tableau avec les données récupérées
 
+        if (reponse && reponse.message) {
+          this.snackBar.open(reponse.message, "Okay", {
+            duration: 3000,
+            horizontalPosition: "right",
+            verticalPosition: "top",
+            panelClass: ['bg-success', 'text-white']
+          });
+        }
+      },
+      error: (err: any) => {
+        console.log('Erreur : ', err);
 
+        const errorMessage = err.error?.message || "Une erreur s'est produite lors de la génération du rapport.";
 
-
-  constructor (private dialog : MatDialog ,
-              private service : RapportService,
-              private snackBar : MatSnackBar
-
-){}
-
-@ViewChild(MatPaginator) paginator!: MatPaginator;
-@ViewChild(MatSort) sort!: MatSort;
-ngAfterViewInit () {
-  this.dataSource.paginator = this.paginator
-  this.dataSource.sort = this.sort
-}
-applyFilter (event: Event) {
- const filterValue = (event.target as HTMLInputElement).value
- this.dataSource.filter = filterValue.trim().toLowerCase()
-
- if (this.dataSource.paginator) {
-   this.dataSource.paginator.firstPage()
- }
-}
-generateReport() {
-  const formValues: any = this.reportForm.value;
-
-
-  const formattedData = {
-    date_debut: formValues.date_debut instanceof Date ? this.formatDate(formValues.date_debut) : '',
-    date_fin: formValues.date_fin instanceof Date ? this.formatDate(formValues.date_fin) : '',
-    type_transaction: formValues.type_transaction || ''
-  };
-
-
-  const formData = convertObjectInFormData(formattedData);
-
-  console.log('Données envoyées :', formData);
-
-  this.service.create('caisse', 'operation.php', formData).subscribe({
-    next: (reponse: any) => {
-      console.log('REPONSE SUCCESS : ', reponse);
-      this.dataSource.data = reponse;
-      console.log('Rapport', this.dataSource.data);
-
-
-      if (reponse && reponse.message) {
-        this.snackBar.open(reponse.message, "Okay", {
+        this.snackBar.open(errorMessage, "Okay", {
           duration: 3000,
           horizontalPosition: "right",
           verticalPosition: "top",
-          panelClass: ['bg-success', 'text-white']
+          panelClass: ['bg-danger', 'text-white']
         });
       }
-    },
-    error: (err: any) => {
-      console.log('REPONSE ERROR : ', err);
+    });
+  }
 
+  /**
+   * Applique un filtre sur les données affichées
+   */
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
+    this.dataSource = this.dataSource.filter((item: any) =>
+      item.montant.toString().toLowerCase().includes(filterValue) ||
+      item.motif.toLowerCase().includes(filterValue) ||
+      item.type_transaction.toLowerCase().includes(filterValue) ||
+      item.created_by.toLowerCase().includes(filterValue)
+    );
+  }
 
-      const errorMessage = err.error?.message || "Une erreur s'est produite lors de la génération du rapport.";
+  /**
+   * Fonction pour imprimer le rapport
+   */
+  printTable() {
+    const printContent = document.getElementById('maTable')?.outerHTML;
+    const originalContent = document.body.innerHTML;
 
+    document.body.innerHTML = `
+      <html>
+        <head><title>Rapport des Opérations</title></head>
+        <body>
+          <h2 style="text-align:center;">Rapport des Opérations</h2>
+          ${printContent}
+        </body>
+      </html>
+    `;
+    window.print();
+    document.body.innerHTML = originalContent;
+  }
 
-      this.snackBar.open(errorMessage, "Okay", {
-        duration: 3000,
-        horizontalPosition: "right",
-        verticalPosition: "top",
-        panelClass: ['bg-danger', 'text-white']
-      });
-    }
-  });
-}
-// Fonction utilitaire pour formater les dates
-private formatDate(date: Date): string {
-  return date.toISOString().split('T')[0]; // Format YYYY-MM-DD
-}
-
+  /**
+   * Formate une date au format YYYY-MM-DD
+   */
+  private formatDate(date: Date): string {
+    return date.toISOString().split('T')[0];
+  }
 }

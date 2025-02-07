@@ -10,49 +10,47 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.contract-content {
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-}
-
 /* Entête du contrat */
 .contract-header {
   text-align: center;
   margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 3px solid #0277bd;
 }
 
-.contract-header h3 {
-  font-size: 24px;
-  color: #0277bd;
-  font-weight: bold;
-  margin-bottom: 5px;
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
-.contract-header .contract-logo {
-  max-width: 150px;
+.contract-logo {
+  max-width: 120px;
   height: auto;
   object-fit: contain;
-  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.contract-title h3 {
+  font-size: 26px;
+  color: #0277bd;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.contract-title mat-card-title {
+  font-size: 18px;
+  color: #0277bd;
+  font-weight: bold;
 }
 
 /* Détails du contrat */
-h3 {
-  font-size: 20px;
-  color: #0277bd;
-  text-transform: uppercase;
-  font-weight: bold;
-  border-bottom: 2px solid #0277bd;
-  padding-bottom: 5px;
-  margin-top: 30px;
-}
-
-p {
+.center-text {
+  text-align: center;
   font-size: 16px;
-  line-height: 1.8;
-  color: #333;
-  text-align: justify;
-  margin-top: 15px;
+  color: #0277bd;
+  font-weight: bold;
 }
 
 /* Signature */
@@ -101,10 +99,6 @@ p {
     line-height: 1.6;
   }
 
-  th, td {
-    padding: 8px 12px;
-  }
-
   .signature-section p {
     width: 45%;
     font-size: 12px;
@@ -114,7 +108,48 @@ p {
     display: none;
   }
 
-  .contract-header .contract-logo {
+  .contract-logo {
+    display: none;
+  }
+}
+/* Augmentation de la taille du texte */
+h3 {
+  font-size: 28px;
+}
+
+p, th, td {
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+/* Permettre l'impression sur plusieurs pages */
+@media print {
+  .contract-content {
+    page-break-before: auto;
+    page-break-after: auto;
+    page-break-inside: avoid;
+  }
+
+  .contract-container {
+    max-width: 100%;
+    padding: 20px;
+    box-shadow: none;
+    border: none;
+  }
+
+  h3, p, th, td {
+    font-size: 16px;
+  }
+
+  .signature-section {
+    page-break-before: always;
+  }
+
+  button {
+    display: none;
+  }
+
+  .contract-logo {
     display: none;
   }
 }

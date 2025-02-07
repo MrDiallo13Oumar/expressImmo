@@ -22,6 +22,8 @@
         </div>
       </div>
     </div>
+  <mat-card>
+   
 
 
       <mat-tab-group>
@@ -32,44 +34,44 @@
               <mat-card-header class="contract-header">
                 <div class="header-content">
                   <img src="assets/admin/images/logo.jpg" alt="Logo" class="contract-logo" />
-                  <div class="d-flex justify-content-center">
+                  <div class="contract-title">
                     <h3>CONTRAT DE LOCATION</h3>
-                    <mat-card-title>N° {{ infoContrat.id }}</mat-card-title>
+                    <mat-card-title>N° {{ infoContrat?.id }}</mat-card-title>
                   </div>
                 </div>
               </mat-card-header>
-
+        
               <mat-card-content>
-                <p><strong>Date de signature :</strong> {{ infoContrat.created_at | date:'fullDate' }}</p>
-                <p><strong>Locataire :</strong> {{ infoContrat.reservation.nom }} {{ infoContrat.reservation.prenom }}</p>
-                <p><strong>Propriété :</strong> {{ infoContrat.reservation.propriete.nom }}</p>
-                <p><strong>Adresse :</strong> {{ infoContrat.reservation.propriete.adresse }}</p>
-                <p><strong>Durée :</strong> Du {{ infoContrat.paiements[0]?.date_debut | date:'fullDate' }} au {{ infoContrat.paiements[infoContrat.paiements.length-1]?.date_fin | date:'fullDate' }}</p>
-                <p><strong>Loyer total :</strong> {{ infoContrat.total_paiement }} FCFA</p>
-
+                <p class="center-text"><strong>Date de signature :</strong> {{ infoContrat?.created_at | date:'fullDate' }}</p>
+                <p class="center-text"><strong>Locataire :</strong> {{ infoContrat?.reservation?.nom }} {{ infoContrat?.reservation?.prenom }}</p>
+                <p class="center-text"><strong>Propriété :</strong> {{ infoContrat?.reservation?.propriete.nom }}</p>
+                <p class="center-text"><strong>Adresse :</strong> {{ infoContrat?.reservation?.propriete.adresse }}</p>
+                <p class="center-text"><strong>Durée :</strong> Du {{ infoContrat?.paiements[0]?.date_debut | date:'fullDate' }} au {{ infoContrat?.paiements[infoContrat.paiements.length-1]?.date_fin | date:'fullDate' }}</p>
+                <p class="center-text"><strong>Loyer total :</strong> {{ infoContrat?.total_paiement }} FCFA</p>
+        
                 <mat-divider></mat-divider>
-
+        
                 <h3>Clauses du contrat :</h3>
                 <p><strong>Article 1 :</strong> Objet du contrat</p>
-                <p>Le présent contrat a pour objet la location de la propriété située à {{ infoContrat.reservation.propriete.adresse }}.</p>
-
+                <p>Le présent contrat a pour objet la location de la propriété située à {{ infoContrat.reservation?.propriete.adresse }}.</p>
+        
                 <p><strong>Article 2 :</strong> Durée du bail</p>
                 <p>La location est accordée pour une durée déterminée de {{ getDureeContrat() }} jours, débutant le {{ infoContrat.paiements[0]?.date_debut | date:'fullDate' }} et prenant fin le {{ infoContrat.paiements[infoContrat.paiements.length-1]?.date_fin | date:'fullDate' }}.</p>
-
+        
                 <p><strong>Article 3 :</strong> Montant et modalités de paiement</p>
-                <p>Le montant total à payer pour cette période de location est de {{ infoContrat.total_paiement }} FCFA, payable selon les modalités convenues.</p>
-
+                <p>Le montant total à payer pour cette période de location est de {{ infoContrat?.total_paiement }} FCFA, payable selon les modalités convenues.</p>
+        
                 <mat-divider></mat-divider>
-
+        
                 <p><strong>Article 4 :</strong> Obligations du locataire</p>
                 <p>Le locataire s'engage à utiliser les lieux de manière paisible et à respecter toutes les obligations liées au présent contrat.</p>
-
+        
                 <p><strong>Article 5 :</strong> Obligations du bailleur</p>
                 <p>Le bailleur s’engage à fournir un logement en bon état et à réaliser les réparations nécessaires en cas de défaut majeur.</p>
-
+        
                 <mat-divider></mat-divider>
-
-                <p><strong>Fait à :</strong> [Ville], le {{ infoContrat.created_at | date:'fullDate' }}</p>
+        
+                <p class="center-text"><strong>Fait à :</strong> [Ville], le {{ infoContrat?.created_at | date:'fullDate' }}</p>
                 <div class="signature-section">
                   <p><strong>Signature du bailleur :</strong> ___________________</p>
                   <p><strong>Signature du locataire :</strong> ___________________</p>
@@ -78,6 +80,7 @@
             </div>
           </mat-card>
         </mat-tab>
+        
 
 
         <mat-tab>
@@ -87,7 +90,7 @@
             <div class="col">
               <mat-card>
                 <mat-card-header>
-                  <div class="  " style="color: green;">Solde =  {{infoContrat.total_paiement}}  </div >
+                  <div class="  " style="color: green;">Solde =  {{infoContrat?.total_paiement}}  </div >
                 </mat-card-header>
                 <mat-card-content>
                   <mat-form-field class="w-100" appearance="outline">
@@ -157,6 +160,7 @@
           </div>
         </mat-tab>
       </mat-tab-group>
+  </mat-card>
 
   </div>
 </div>

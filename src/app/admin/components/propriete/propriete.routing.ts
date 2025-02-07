@@ -16,7 +16,7 @@ export const proprieteRouting: Routes = [
 
   },
   {
-    path :'addPropriete',
+    path :'add-propriete',
     component: AddProprieteComponent,
 
   }

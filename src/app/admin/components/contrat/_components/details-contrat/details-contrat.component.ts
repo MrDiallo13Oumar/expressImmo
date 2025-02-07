@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ContratService } from '../../_services/contrat.service';
@@ -10,6 +10,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { DeletePopupComponent } from 'src/app/shared/dialogs/delete-popup/delete-popup.component';
+import { PublicService } from 'src/app/shared/services/public.service';
 
 @Component({
   selector: 'app-details-contrat',
@@ -29,7 +30,8 @@ export class DetailsContratComponent {
     private service: ContratService,
     private snackBar: MatSnackBar,
     private activeroute: ActivatedRoute,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private printService :PublicService
   ) {}
   displayedColumns: string[] = [
     'id',
@@ -161,26 +163,52 @@ export class DetailsContratComponent {
   }
   printContract() {
     const printContent = document.querySelector('.contract-content');
-
+  
     if (printContent) {
-      const printWindow = window.open('', '', 'height=800,width=800');
-
-      // Vérification si la fenêtre a bien été ouverte
+      const printWindow = window.open('', '', 'height=900,width=800');
+  
       if (printWindow) {
-        printWindow.document.write('<html><head><title>Contrat de location</title>');
-        printWindow.document.write('<style>@page { size: A4; margin: 20mm; }</style>'); // Style de la page d'impression
-        printWindow.document.write('</head><body>');
-        printWindow.document.write(printContent.innerHTML);
-        printWindow.document.write('</body></html>');
+        printWindow.document.write(`
+          <html>
+          <head>
+            <title>Contrat de location</title>
+            <style>
+              @page { size: A4; margin: 20mm; }
+              body { font-family: 'Roboto', sans-serif; color: #333; margin: 0; padding: 0; }
+              .contract-content { max-width: 800px; margin: auto; padding: 20px; }
+              h3, .center-text { text-align: center; color: #0277bd; font-weight: bold; }
+              .signature-section { display: flex; justify-content: space-between; margin-top: 40px; }
+              .signature-section p { width: 48%; text-align: center; font-size: 16px; font-weight: bold; }
+              .contract-logo { display: block; margin: 0 auto 20px; max-width: 120px; }
+            </style>
+          </head>
+          <body onload="window.print(); window.onafterprint = function() { window.close(); }">
+            <div class="contract-content">
+              ${printContent.innerHTML}
+            </div>
+          </body>
+          </html>
+        `);
+  
         printWindow.document.close();
-        printWindow.print();
       } else {
-        alert("Impossible d'ouvrir la fenêtre d'impression. Assurez-vous que les pop-ups sont autorisées.");
+        alert("Impossible d'ouvrir la fenêtre d'impression. Vérifiez que les pop-ups sont autorisées.");
       }
     } else {
-      alert("Le contenu à imprimer est introuvable.");
+      alert("Le contenu du contrat est introuvable.");
     }
   }
+ 
+  // @ViewChild('contratContent') contratContent!: ElementRef;
+
+  // printContract(){
+    
+  //   if (this.contratContent) {
+  //     this.printService.imprimerDiv(this.contratContent.nativeElement.innerHTML);
+  //   } else {
+  //     alert("Le contenu du contrat est introuvable.");
+  //   }
+  // } 
 
 
 }

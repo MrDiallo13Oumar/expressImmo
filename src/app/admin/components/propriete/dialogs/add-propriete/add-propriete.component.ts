@@ -1,10 +1,12 @@
 import { Component, Inject, Optional } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { ProprieteService } from '../../_services/propriete.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { convertObjectInFormData } from 'src/app/app.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+import { AddTypeProprieteComponent } from '../add-type-propriete/add-type-propriete.component';
 
 @Component({
   selector: 'app-add-propriete',
@@ -31,12 +33,11 @@ export class AddProprieteComponent {
 
   })
 
-  constructor(
-
-    private service: ProprieteService,
-    private snackBar: MatSnackBar
-
-  ) { }
+   constructor (private dialog : MatDialog ,
+                  private service :ProprieteService,
+                  private snackBar :MatSnackBar,
+                  private router : Router
+  ){}
 
   ngOnInit() {
     this.getPropriete()
@@ -125,13 +126,45 @@ export class AddProprieteComponent {
       this.dataSource.paginator.firstPage()
     }
    }
+openDialog2() {
+    this.dialog.open(AddTypeProprieteComponent, {
+     }) .afterClosed()
+      .subscribe((result) => {
+        if (result?.event && result.event === "insert") {
+          // console.log(result.data);
+           const formData = convertObjectInFormData(result.data);
+          this.dataSource.data.splice(0, this.dataSource.data.length);
+          //Envoyer dans la Base
+          this.service.create('typePropriete','create.php', formData).subscribe({
+            next: (response) => {
+              this.snackBar.open("Type de Propriété enregistré avec succès !", "Okay", {
+                duration: 3000,
+                horizontalPosition: "right",
+                verticalPosition: "top",
+                panelClass: ['bg-success', 'text-white']
 
+              })
+              this.getTypePropriete()
+             this.router.navigate(['/propriete/list-propriete'])
+            },
+            error: (err: any) => {
+              this.snackBar.open("Echec de l'ajout !", "Okay", {
+                duration: 3000,
+                horizontalPosition: "right",
+                verticalPosition: "top",
+                panelClass: ['bg-danger', 'text-white']
+              })
+            }
+          })
+        }
+     })
+  }
   saveDataPropriete() {
     if (this.Propriete.valid) {
            const formData = convertObjectInFormData(this.Propriete.value);
       // Si un fichier a été sélectionné, ajoute-le à FormData
 
-      console.log("propriete", this.Propriete.value.poster);
+      // console.log("propriete", this.Propriete.value.poster);
 
       if (this.selectedFile) {
         formData.append('file', this.selectedFile, this.selectedFile.name);
@@ -143,15 +176,19 @@ export class AddProprieteComponent {
       this.service.create('propriete', 'create.php', formData).subscribe({
 
         next: (response) => {
-
+        
           this.snackBar.open(response, "Okay", {
             duration: 3000,
             horizontalPosition: "right",
             verticalPosition: "top",
             panelClass: ['bg-success', 'text-white']
-          });
-          console.log("response", response);
+          })
+          this.router.navigate(['/propriete/list-propriete'])
           this.getPropriete();
+          this.Propriete.reset()
+
+        
+
         },
         error: (err: any) => {
 

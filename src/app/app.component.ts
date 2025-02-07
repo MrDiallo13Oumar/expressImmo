@@ -46,6 +46,7 @@ export class AppComponent {
           this.canShowMenu = true;
         });
     }
+    
   }
   export function convertObjectInFormData (tab: any) {
     const formData = new FormData()

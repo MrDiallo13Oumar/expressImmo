@@ -1,15 +1,13 @@
 .nk-sidebar {
-  width: 250px;
  
-  color: #333; // Texte en noir pour contraste
+ 
+  color: #180202; 
   position: fixed;
   height: 100vh;
-  transition: width 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
   overflow: hidden;
   z-index: 1000;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); // Ombre légère
-
- 
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
 
   .nk-nav-scroll {
     padding-top: 20px;
@@ -24,124 +22,40 @@
           display: flex;
           align-items: center;
           font-size: 16px;
-          font-weight: bold;
+          font-weight: 600;
           font-family: 'Arial', sans-serif;
-          color: #555; // Texte plus doux
+          color: #1f0404; 
           text-decoration: none;
           padding: 12px 20px;
           transition: all 0.3s ease-in-out;
-          border-radius: 5px;
+          border-radius: 6px;
 
           i {
             margin-right: 15px;
             font-size: 18px;
-            transition: transform 0.3s ease-in-out;
+            transition: transform 0.3s ease-in-out, color 0.3s;
           }
 
           &:hover {
             background-color: #007bff;
             color: white;
-            border-radius: 5px;
 
             i {
-              transform: rotate(10deg);
+              transform: scale(1.1);
+              color: #fff;
             }
           }
         }
 
         &.active {
-          background-color: #007bff; // Même couleur que le hover
+          background-color: #007bff;
           color: white;
-          border-left: 4px solid white;
+          border-left: 4px solid #fff;
+          font-weight: bold;
         }
       }
     }
   }
 }
 
-// Responsive sidebar
-@media screen and (max-width: 768px) {
-  .nk-sidebar {
-    width: 60px;
-    transition: width 0.3s ease-in-out;
 
-    .toggle-button {
-      display: block;
-    }
-
-    .nk-nav-scroll ul li a {
-      justify-content: center;
-      padding: 10px;
-
-      .nav-text {
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity 0.2s ease-in-out;
-      }
-    }
-
-    &.collapsed {
-      width: 250px;
-
-      .nk-nav-scroll ul li a {
-        justify-content: flex-start;
-
-        .nav-text {
-          opacity: 1;
-          visibility: visible;
-        }
-      }
-    }
-  }
-}
-// .nk-sidebar {
-//   width: 250px;
-//   position: fixed;
-//   height: 100vh;
-//   transition: width 0.3s ease-in-out;
-//   overflow: hidden;
-//   z-index: 1000;
-//   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-//   background: #fff;
-
-//   .nk-nav-scroll {
-//     padding-top: 20px;
-//   }
-
-//   ul {
-//     list-style: none;
-//     padding: 0;
-//     margin: 0;
-
-//     li {
-//       a {
-//         display: flex;
-//         align-items: center;
-//         font-size: 16px;
-//         font-weight: bold;
-//         color: #555;
-//         text-decoration: none;
-//         padding: 12px 20px;
-//         transition: all 0.3s ease-in-out;
-//         border-radius: 5px;
-
-//         i {
-//           margin-right: 15px;
-//           font-size: 18px;
-//           transition: transform 0.3s ease-in-out;
-//         }
-
-//         &:hover {
-//           background-color: #007bff;
-//           color: white;
-//         }
-//       }
-
-//       &.active {
-//         background-color: #007bff;
-//         color: white;
-//         border-left: 4px solid white;
-//       }
-//     }
-//   }
-// }
