@@ -15,7 +15,7 @@ import { DeletePopupComponent } from 'src/app/shared/dialogs/delete-popup/delete
   styleUrls: ['./list-operation.component.scss']
 })
 export class ListOperationComponent {
-displayedColumns: string[] = ['id', 'montant', 'type_transaction', 'created_at', 'descriptions', 'action'];
+displayedColumns: string[] = ['id', 'montant', 'type_transaction', 'created_at', 'descriptions', ];
   dataSource = new MatTableDataSource([]);
 
   constructor (private dialog : MatDialog ,

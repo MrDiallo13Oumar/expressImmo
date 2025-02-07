@@ -8,31 +8,35 @@
 
 
         </div>
-        <div class="d-flex justify-content-between gap-3">
-          <mat-form-field appearance="outline" class="w-25">
-            <mat-label>Date de début</mat-label>
-            <input matInput [matDatepicker]="startPicker" placeholder="Choisir une date" [(ngModel)]="startDate">
-            <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
-            <mat-datepicker #startPicker></mat-datepicker>
-          </mat-form-field>
+        <div class="d-flex justify-content-between align-items-center gap-3">
+          <form [formGroup]="reportForm" class="d-flex w-100">
+            <mat-form-field appearance="outline" class="flex-fill">
+              <mat-label>Date de début</mat-label>
+              <input matInput [matDatepicker]="startPicker" placeholder="Choisir une date" formControlName="date_debut">
+              <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+              <mat-datepicker #startPicker></mat-datepicker>
+            </mat-form-field>
 
-          <mat-form-field appearance="outline" class="w-25">
-            <mat-label>Date de fin</mat-label>
-            <input matInput [matDatepicker]="endPicker" placeholder="Choisir une date" [(ngModel)]="endDate">
-            <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
-            <mat-datepicker #endPicker></mat-datepicker>
-          </mat-form-field>
-          <mat-form-field appearance="outline" class="w-50">
-            <mat-label>Type d'Opération</mat-label>
-            <mat-select [(ngModel)]="operationType">
-              <mat-option *ngFor="let type of operationTypes" [value]="type">
-                {{ type }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
+            <mat-form-field appearance="outline" class="flex-fill">
+              <mat-label>Date de fin</mat-label>
+              <input matInput [matDatepicker]="endPicker" placeholder="Choisir une date" formControlName="date_fin">
+              <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+              <mat-datepicker #endPicker></mat-datepicker>
+            </mat-form-field>
 
-          <button mat-raised-button color="primary" (click)="generateReport()"> Rapport</button>
+            <mat-form-field appearance="outline" class="flex-fill">
+              <mat-label>Type d'Opération</mat-label>
+              <mat-select formControlName="type_transaction">
+                <mat-option *ngFor="let type of operationTypes" [value]="type">
+                  {{ type }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </form>
+
+          <button mat-raised-button color="primary" (click)="generateReport()">Rapport</button>
         </div>
+
       </div>
     </div>
 
@@ -41,50 +45,55 @@
       <div class="col">
         <mat-card>
           <mat-card-header>
-            <mat-card-title>Liste des Opérations</mat-card-title>
+            <mat-card-title>Rapport d'Operation </mat-card-title>
           </mat-card-header>
           <mat-card-content>
-            <table class="table table-striped table-bordered text-center">
-              <thead class="thead " style="background-color:  rgb(32, 159, 195);color: rgb(7, 0, 0);" >
-                <tr>
-                  <th>#</th>
-                  <th>Nom</th>
-                  <th>Status</th>
-                  <th>Date</th>
-                  <th>Prix</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let operation of paginatedData">
-                  <td>{{ operation.id }}</td>
-                  <td>{{ operation.name }}</td>
-                  <td>{{ operation.status }}</td>
-                  <td>{{ operation.date | date }}</td>
-                  <td [ngClass]="{'text-success': operation.price > 0, 'text-danger': operation.price <= 0}">
-                    {{ operation.price | currency }}
-                  </td>
-                  <td>
-                    <button mat-icon-button color="primary" (click)="updateItem(operation.id)">
-                      <mat-icon>edit</mat-icon>
-                    </button>
-                    <button mat-icon-button color="warn" (click)="deleteItem(operation.id)">
-                      <mat-icon>delete</mat-icon>
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
+            <mat-form-field class="w-100" appearance="outline">
+              <input matInput (keyup)="applyFilter($event)"
+                placeholder="Rechercher" #input>
+            </mat-form-field>
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="width: 100%;"id="maTable">
+              <!-- ID Column -->
+              <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef>#</th>
+                <td mat-cell *matCellDef="let i=index">{{ i+1 }}</td>
+              </ng-container>
+
+              <!-- Name Column -->
+
+              <ng-container matColumnDef="montant">
+                <th mat-header-cell *matHeaderCellDef>Montant</th>
+                <td mat-cell *matCellDef="let element">
+                  <span >{{ element.montant }}</span>
+                </td>
+              </ng-container>
+              <ng-container matColumnDef="motif">
+                <th mat-header-cell *matHeaderCellDef>Description</th>
+                <td mat-cell *matCellDef="let element">{{ element.motif }}</td>
+              </ng-container>
+
+
+              <ng-container matColumnDef="type_transaction">
+                <th mat-header-cell *matHeaderCellDef>Type Operation</th>
+                <td mat-cell *matCellDef="let element">{{ element.type_transaction }}</td>
+              </ng-container>
+              <!-- Status Column -->
+
+              <ng-container matColumnDef="created_by">
+                <th mat-header-cell *matHeaderCellDef>Fais Par</th>
+                <td mat-cell *matCellDef="let element">
+                  <span >{{ element.created_by }}</span>
+                </td>
+              </ng-container>
+
+
+
+              <!-- Header and Row Declarations -->
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             </table>
-            <!-- Pagination -->
-            <div class="d-flex justify-content-between align-items-center mt-3">
-              <button mat-stroked-button color="primary" [disabled]="currentPage === 1" (click)="previousPage()">
-                Précédent
-              </button>
-              <span>Page {{ currentPage }} sur {{ totalPages }}</span>
-              <button mat-stroked-button color="primary" [disabled]="currentPage === totalPages" (click)="nextPage()">
-                Suivant
-              </button>
-            </div>
+              <!-- Paginator -->
+              <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
           </mat-card-content>
         </mat-card>
       </div>

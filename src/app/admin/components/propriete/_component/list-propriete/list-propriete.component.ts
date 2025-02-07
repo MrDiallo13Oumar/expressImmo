@@ -153,6 +153,7 @@ getPropriete () {
                 panelClass: ['bg-success', 'text-white']
 
               })
+              this.getTypePropriete()
              this.router.navigate(['/propriete/list-propriete'])
             },
             error: (err: any) => {
@@ -246,7 +247,7 @@ getPropriete () {
                const formData = convertObjectInFormData(this.Propriete.value);
           // Si un fichier a été sélectionné, ajoute-le à FormData
 
-          console.log("propriete", this.Propriete.value.poster);
+          // console.log("propriete", this.Propriete.value.poster);
 
           if (this.selectedFile) {
             formData.append('file', this.selectedFile, this.selectedFile.name);
@@ -258,15 +259,17 @@ getPropriete () {
           this.service.create('propriete', 'create.php', formData).subscribe({
 
             next: (response) => {
-
+            
               this.snackBar.open(response, "Okay", {
                 duration: 3000,
                 horizontalPosition: "right",
                 verticalPosition: "top",
                 panelClass: ['bg-success', 'text-white']
-              });
-              console.log("response", response);
+              })
               this.getPropriete();
+              this.Propriete.reset()
+            
+
             },
             error: (err: any) => {
 

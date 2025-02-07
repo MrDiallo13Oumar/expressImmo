@@ -25,22 +25,15 @@ export class LoginComponent {
   onSubmit(): void {
     // console.log(this.loginForm.value);
     const formData = this.loginForm.value;
-    console.log('formData', formData);
-
     this.loginService
       .login(
         'authentification',
-        'login.php', convertObjectInFormData
-        (this.loginForm.value)
+        'login.php',
+        convertObjectInFormData(this.loginForm.value)
       )
       .subscribe({
         next: (response: any) => {
-          this.loginService.saveToken(
-            response.access_token,
-            response.idUser
-          );
-          console.log('login success', response);
-
+          this.loginService.saveToken(response.access_token, response.idUser);
         },
         error: (error: any) => {
           console.log('ERROR : ', error);

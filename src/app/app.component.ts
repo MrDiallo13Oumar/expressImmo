@@ -23,10 +23,7 @@ export class AppComponent {
             this.router.navigate(['/home/accueil']);
             return;
           }
-          if (event.url === '/home/not-found') {
-           this.canShowMenu=false
-            return;
-          }
+
           const hiddenExactUrls = ['/hoomeAdmin/login'];
           const hiddenModuleUrls = ['/home'];
 
@@ -35,7 +32,10 @@ export class AppComponent {
             this.canShowMenu = false;
             return;
           }
-
+          if (event.url === '/home/not-found') {
+            this.canShowMenu=false
+             return;
+           }
           // Vérification si l'URL commence par un chemin spécifique (module /home)
           if (hiddenModuleUrls.some((path) => event.url.startsWith(path))) {
             this.canShowMenu = false;

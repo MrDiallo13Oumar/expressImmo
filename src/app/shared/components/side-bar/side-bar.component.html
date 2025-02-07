@@ -1,8 +1,10 @@
-<!-- Sidebar start -->
+
+
+        <!--**********************************
+            Sidebar start
+        ***********************************-->
+       <!-- Sidebar Start -->
 <div class="nk-sidebar" [class.collapsed]="isCollapsed">
-  <button class="toggle-button" (click)="toggleSidebar()">
-    <i class="icon-menu"></i>
-  </button>
   <div class="nk-nav-scroll">
     <ul class="metismenu" id="menu">
       <li *ngFor="let item of menuItems" [class.active]="activeRoute === item.link">
@@ -14,4 +16,8 @@
     </ul>
   </div>
 </div>
-<!-- Sidebar end -->
+<!-- Sidebar End -->
+
+        <!--**********************************
+            Sidebar end
+        ***********************************-->

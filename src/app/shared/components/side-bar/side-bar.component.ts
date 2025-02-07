@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-side-bar',
@@ -7,9 +7,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./side-bar.component.scss']
 })
 export class SideBarComponent {
-  isCollapsed = false;
   activeRoute = '';
-
+  isCollapsed = false; // Gère l'affichage rétractable
   menuItems = [
     { label: 'Dashboard', icon: 'icon-speedometer menu-icon', link: '/hoomeAdmin/dashboard' },
     { label: 'Site Web', icon: 'icon-globe-alt menu-icon', link: '/home/accueil' },
@@ -26,6 +25,12 @@ export class SideBarComponent {
 
   constructor(private router: Router) {
     this.activeRoute = this.router.url;
+    
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.activeRoute = event.url;
+      }
+    });
   }
 
   toggleSidebar() {

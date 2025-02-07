@@ -24,12 +24,12 @@ export class DashboardComponent {
       },
     });
   }
-  infoContratDashBoard :any
+  infoContratDashBoard :any =[]
   getContratDashbord() {
-    this.service.getall('dashboard', '').subscribe({
+    this.service.getall('dashboard', 'contrat.php').subscribe({
       next: (reponse: any) => {
         console.log('REPONSE SUCCESS : ', reponse);
-        this.infoContratDashBoard = reponse;
+        this.infoContratDashBoard = reponse.contrats || [];
       },
       error: (err: any) => {
         console.log('REPONSE ERROR : ', err);
