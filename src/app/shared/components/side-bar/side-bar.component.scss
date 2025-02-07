@@ -1,50 +1,59 @@
 .nk-sidebar {
   width: 250px;
+ 
+  color: #333; // Texte en noir pour contraste
   position: fixed;
   height: 100vh;
   transition: width 0.3s ease-in-out;
   overflow: hidden;
   z-index: 1000;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-  background: #fff;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); // Ombre légère
+
+ 
 
   .nk-nav-scroll {
     padding-top: 20px;
-  }
 
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
 
-    li {
-      a {
-        display: flex;
-        align-items: center;
-        font-size: 16px;
-        font-weight: bold;
-        color: #555;
-        text-decoration: none;
-        padding: 12px 20px;
-        transition: all 0.3s ease-in-out;
-        border-radius: 5px;
+      li {
+        a {
+          display: flex;
+          align-items: center;
+          font-size: 16px;
+          font-weight: bold;
+          font-family: 'Arial', sans-serif;
+          color: #555; // Texte plus doux
+          text-decoration: none;
+          padding: 12px 20px;
+          transition: all 0.3s ease-in-out;
+          border-radius: 5px;
 
-        i {
-          margin-right: 15px;
-          font-size: 18px;
-          transition: transform 0.3s ease-in-out;
+          i {
+            margin-right: 15px;
+            font-size: 18px;
+            transition: transform 0.3s ease-in-out;
+          }
+
+          &:hover {
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+
+            i {
+              transform: rotate(10deg);
+            }
+          }
         }
 
-        &:hover {
-          background-color: #007bff;
+        &.active {
+          background-color: #007bff; // Même couleur que le hover
           color: white;
+          border-left: 4px solid white;
         }
-      }
-
-      &.active {
-        background-color: #007bff;
-        color: white;
-        border-left: 4px solid white;
       }
     }
   }
@@ -85,4 +94,54 @@
     }
   }
 }
+// .nk-sidebar {
+//   width: 250px;
+//   position: fixed;
+//   height: 100vh;
+//   transition: width 0.3s ease-in-out;
+//   overflow: hidden;
+//   z-index: 1000;
+//   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+//   background: #fff;
 
+//   .nk-nav-scroll {
+//     padding-top: 20px;
+//   }
+
+//   ul {
+//     list-style: none;
+//     padding: 0;
+//     margin: 0;
+
+//     li {
+//       a {
+//         display: flex;
+//         align-items: center;
+//         font-size: 16px;
+//         font-weight: bold;
+//         color: #555;
+//         text-decoration: none;
+//         padding: 12px 20px;
+//         transition: all 0.3s ease-in-out;
+//         border-radius: 5px;
+
+//         i {
+//           margin-right: 15px;
+//           font-size: 18px;
+//           transition: transform 0.3s ease-in-out;
+//         }
+
+//         &:hover {
+//           background-color: #007bff;
+//           color: white;
+//         }
+//       }
+
+//       &.active {
+//         background-color: #007bff;
+//         color: white;
+//         border-left: 4px solid white;
+//       }
+//     }
+//   }
+// }

@@ -7,13 +7,14 @@ import { ProprieteComponent } from './propriete/propriete.component';
 import { DemoMaterialModule } from 'src/app/demo-material-module';
 import { ServiceComponent } from './service/service.component';
 import { ContactComponent } from './contact/contact.component';
-import { InscriptionSiteComponent } from './propriete/components/inscription-site/inscription-site.component';
 import { TruncatePipe } from 'src/assets/Pipes/truncateText.pipe';
 import { TruncateCardPipe } from 'src/assets/Pipes/truncateCard.pipe';
 import { AllProprietesComponent } from './propriete/components/all-proprietes/all-proprietes.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { DetailsProprieteComponent } from './propriete/components/details-propriete-site/details-propriete.component';
-import { NotFoundComponent } from 'src/app/shared/components/not-found/not-found.component';
+import { NavbarComponent } from './public/navbar/navbar.component';
+import { FooterComponent } from './public/footer/footer.component';
+import { InscriptionSiteComponent } from './propriete/components/inscription-site/inscription-site.component';
 
 
 
@@ -28,7 +29,8 @@ import { NotFoundComponent } from 'src/app/shared/components/not-found/not-found
     DetailsProprieteComponent,
     InscriptionSiteComponent,
     AllProprietesComponent,
-    NotFoundComponent,
+    NavbarComponent,
+    FooterComponent,
   ],
   imports: [
     CommonModule,

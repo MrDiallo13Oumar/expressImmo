@@ -11,7 +11,6 @@ import { convertObjectInFormData } from 'src/app/app.component';
 })
 export class LoginComponent {
 
-
   loginForm = this.fb.group({
     email: ['', Validators.required],
     mot_de_passe: ['', Validators.required],

@@ -22,6 +22,7 @@ import { ToastrModule } from 'ngx-toastr';
     TopBarComponent,
     FooterComponent,
     DeletePopupComponent,
+    
   ],
   imports: [
     BrowserModule,

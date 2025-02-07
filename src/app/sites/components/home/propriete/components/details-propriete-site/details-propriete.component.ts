@@ -20,8 +20,6 @@ ngOnInit(){
     this.getOnePropriete()
   }
 
-
-
   email = "expressimmo224@gmail.com";
   
 navigate(){
