@@ -19,6 +19,13 @@ export class ContactComponent {
 
   })
 
+ 
+  ngOnit(){
+     
+
+
+  }
+
   constructor(
     private service: ReservationService,
     private snackBar: MatSnackBar
@@ -62,6 +69,7 @@ export class ContactComponent {
 
     }
   }
+
 
 
 }

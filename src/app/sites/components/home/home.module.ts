@@ -14,7 +14,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { DetailsProprieteComponent } from './propriete/components/details-propriete-site/details-propriete.component';
 import { NavbarComponent } from './public/navbar/navbar.component';
 import { FooterComponent } from './public/footer/footer.component';
-import { InscriptionSiteComponent } from './propriete/components/inscription-site/inscription-site.component';
+import { InscriptionSiteComponent } from './propriete/components/reservation/inscription-site.component';
 
 
 
@@ -31,6 +31,7 @@ import { InscriptionSiteComponent } from './propriete/components/inscription-sit
     AllProprietesComponent,
     NavbarComponent,
     FooterComponent,
+    
   ],
   imports: [
     CommonModule,

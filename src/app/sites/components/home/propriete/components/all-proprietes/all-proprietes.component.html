@@ -3,7 +3,7 @@
     <app-navbar></app-navbar>
     <!-- Header End -->
     <!-- Page Header Start -->
-    <div class="container-fluid page-header mb-5 p-0" style="background-image: url(assets/sites/img/carousel-1.jpg);">
+    <div class="container-fluid page-header mb-5 p-0" style="background-image: url(assets/sites/img/_DSC7473.JPG);">
         <div class="container-fluid page-header-inner py-5">
             <div class="container text-center pb-5">
                 <h1 class="display-3 text-white mb-3 animated slideInDown">Propriétés</h1>
@@ -80,11 +80,10 @@
                                 </div>
                             </div>
                             <div class="d-flex mb-3">
-                                <small class="border-end me-3 pe-3"><i class="fa fa-bed text-primary me-2"></i>3
-                                    Bed</small>
-                                <small class="border-end me-3 pe-3"><i class="fa fa-bath text-primary me-2"></i>2
-                                    Bath</small>
-                                <small><i class="fa fa-wifi text-primary me-2"></i>Wifi</small>
+                                <small class="border-end me-3 pe-3"><i
+                                    class="bi bi-house-door-fill text-primary me-2"></i>{{item.quartier}}</small>
+                            <small class="border-end me-3 pe-3"><i class="fa fa-briefcase text-primary me-2"></i>En {{item.etat}}
+                                </small>
                             </div>
                             <p class="text-body mb-3"> {{item.descriptions | truncateText }} </p>
                             <div class="d-flex justify-content-between">
