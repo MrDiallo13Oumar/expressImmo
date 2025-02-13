@@ -13,7 +13,7 @@ export class AddOperationComponent {
   Operation = new FormGroup({
     type_transaction: new FormControl(''),
       montant: new FormControl(''),
-      descriptions: new FormControl(''),
+      motif: new FormControl(''),
       created_by: new FormControl(this.created_by, Validators.required),
     })
 
