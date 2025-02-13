@@ -21,6 +21,7 @@ export class AddReservationComponent implements OnInit{
     adresse: new FormControl(''),
     statut: new FormControl('en attente'),
     propriete_id: new FormControl(''),
+    date_souhaite: new FormControl(''),
     source: new FormControl('sur place',Validators.required),
     created_by: new FormControl(this.created_by, Validators.required),
   })
