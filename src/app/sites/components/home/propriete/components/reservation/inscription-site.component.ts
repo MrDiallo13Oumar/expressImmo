@@ -114,14 +114,14 @@ export class InscriptionSiteComponent {
 
   }
 
-  
+
   data: any
   saveDataReservations() {
     const formData = convertObjectInFormData(this.Reservation.value);
     if (this.Reservation.valid) {
       console.log("formData", formData);
 
-      this.reservationService.create('reservation', 'create.php', formData).subscribe((data) => {
+      this.reservationService.create('reservations', 'create.php', formData).subscribe((data) => {
         console.log(data);
         this.data = data
         Swal.fire('Merci ...', 'De reserver notre propriete!', 'success')
@@ -210,32 +210,32 @@ export class InscriptionSiteComponent {
       if (this.selectedFile) {
         formData.append('file', this.selectedFile, this.selectedFile.name);
         console.log("this.selectedFile", this.selectedFile.name);
-        // this.Propriete.value.poster = this.selectedFile.name 
+        // this.Propriete.value.poster = this.selectedFile.name
 
       }
       // Envoie les données au serveur
       this.reservationService.create('propriete', 'create.php', formData).subscribe({
-      
+
         next: (response) => {
-          
+
           this.snackBar.open(response, "Okay", {
             duration: 3000,
             horizontalPosition: "right",
             verticalPosition: "top",
             panelClass: ['bg-success', 'text-white']
           });
-          console.log("response",response); 
+          console.log("response",response);
           this.getPropriete();
         },
         error: (err: any) => {
-          
+
           this.snackBar.open("Erreur lors de l'enregistrement", "Okay", {
             duration: 3000,
             horizontalPosition: "right",
             verticalPosition: "top",
             panelClass: ['bg-danger', 'text-white']
           });
-          
+
         }
       });
 
