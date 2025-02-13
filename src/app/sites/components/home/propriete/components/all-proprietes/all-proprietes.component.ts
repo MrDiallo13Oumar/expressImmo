@@ -28,6 +28,7 @@ export class AllProprietesComponent implements OnInit {
   constructor(private router: Router, private proprieteService: ProprieteService) {}
 
   ngOnInit() {
+    
     this.getAllProprietes()
     this.getVilles(); // Charger les villes au démarrage
   }
@@ -50,6 +51,8 @@ export class AllProprietesComponent implements OnInit {
     this.proprieteService.getall('ville', 'readAll.php').subscribe({
       next: (response: any) => {
         this.villes = response;
+        console.log("Entrer dans Ville : ", response);
+        
         
       },
       error: (err: any) => {
@@ -104,6 +107,7 @@ export class AllProprietesComponent implements OnInit {
     this.proprieteService.getOne('propriete', 'readByQuartier.php', communeId).subscribe({
       next: (response: any) => {
         this.quartiers = response;
+        console.log("Entrer dans Quartier : ", response);
       },
       error: (err: any) => {
         console.error('Erreur lors du chargement des quartiers : ', err);
@@ -136,17 +140,21 @@ export class AllProprietesComponent implements OnInit {
 
   // Lorsque la sélection de ville change
   onVilleChange(event: any) {
+    console.log("Entrer dans onVileChange");
     this.getCommunes(event.value);
+    
   }
 
   // Lorsque la sélection de commune change
   onCommuneChange(event: any) {
     this.getQuartiers(event.value);
+    console.log("Entrer dans onCommuneChange");
   }
 
   // Lorsque la sélection de quartier change
   onQuartierChange(event: any) {
     this.getProprietes(event.value);
+    console.log("Entrer dans onQuartierChange");
   }
 
   scrollToTop(): void {
