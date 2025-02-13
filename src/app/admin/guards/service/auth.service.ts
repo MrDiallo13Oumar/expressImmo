@@ -22,6 +22,34 @@ export class AuthService {
     private http: HttpClient,
     private toastr: ToastrService
   ) {}
+  private STORAGE_KEY = 'storageTimestamp';
+  private CLEAR_TIMEOUT = 3600000; // 1 heure en millisecondes
+
+  
+
+  // Ajouter un timestamp lors de l'écriture dans le localStorage
+  initializeStorageTimestamp(): void {
+    const timestamp = localStorage.getItem(this.STORAGE_KEY);
+
+    if (!timestamp) {
+      const now = new Date().getTime();
+      localStorage.setItem(this.STORAGE_KEY, now.toString());
+    }
+  }
+
+  // Vérifier si une heure est écoulée et vider le localStorage
+  clearLocalStorageIfExpired(): void {
+    const timestamp = localStorage.getItem(this.STORAGE_KEY);
+
+    if (timestamp) {
+      const now = new Date().getTime();
+      const elapsed = now - parseInt(timestamp, 10);
+
+      if (elapsed > this.CLEAR_TIMEOUT) {
+        localStorage.clear();
+      }
+    }
+  }
 
   delete(
     api: string,
