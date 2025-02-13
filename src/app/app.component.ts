@@ -21,7 +21,7 @@ export class AppComponent {
         .pipe(filter((event: any) => event instanceof NavigationEnd))
         .subscribe((event: NavigationEnd) => {
           if (event.url === '/') {
-            this.router.navigate(['/home/accueil']);
+            this.router.navigate(['/home/propriete']);
             return;
           }
 
