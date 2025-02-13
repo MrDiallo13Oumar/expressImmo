@@ -2,6 +2,7 @@ import { Location } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs';
+import { AuthService } from './admin/guards/service/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,7 @@ export class AppComponent {
 
     canShowMenu = true;
 
-    constructor(public location: Location, private router: Router) {
+    constructor(public location: Location, private router: Router,private autoClearStorageService:AuthService) {
 
       this.router.events
         .pipe(filter((event: any) => event instanceof NavigationEnd))
@@ -46,7 +47,18 @@ export class AppComponent {
           this.canShowMenu = true;
         });
     }
-    
+    ngOnInit(): void {
+      // Initialiser le timestamp au premier accès
+      this.autoClearStorageService.initializeStorageTimestamp();
+
+      // Vérifier si le localStorage doit être vidé
+      this.autoClearStorageService.clearLocalStorageIfExpired();
+
+      // Vérifier périodiquement (facultatif)
+      setInterval(() => {
+        this.autoClearStorageService.clearLocalStorageIfExpired();
+      }, 60000); // Vérification toutes les 60 secondes
+    }
   }
   export function convertObjectInFormData (tab: any) {
     const formData = new FormData()

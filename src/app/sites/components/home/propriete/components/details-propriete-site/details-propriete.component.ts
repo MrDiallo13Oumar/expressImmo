@@ -18,8 +18,9 @@ constructor(private router : Router, private activeroute : ActivatedRoute,privat
 ngOnInit(){
     (this.idPropriete = this.activeroute.snapshot.params['id'])
     this.getOnePropriete()
+    this.scrollToTop()
   }
-
+ 
   email = "expressimmo224@gmail.com";
   
 navigate(){
