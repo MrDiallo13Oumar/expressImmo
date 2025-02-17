@@ -10,15 +10,15 @@ import { environment } from 'src/environments/environment'
 //  const LINK_PROD: string = 'http://localhost/expressimmo/api/'
 //  const LINK_DEVS: string = 'http://localhost/expressimmo/api/'
 
-//  const LINK_PROD: string = 'https://expressimmo224.com/backend/expressimmo/api/'
-//  const LINK_DEVS: string = 'https://expressimmo224.com/backend/expressimmo/api/'
+ const LINK_PROD: string = 'https://expressimmo224.com/backend/expressimmo/api/'
+ const LINK_DEVS: string = 'https://expressimmo224.com/backend/expressimmo/api/'
 
 //  const LINK_PROD: string = 'http://localhost/expressImmo-backend-ousmane/api/'
 //  const LINK_DEVS: string = 'http://localhost/expressImmo-backend-ousmane/api/'
 
 
-const LINK_PROD: string = 'http://192.168.1.133/expressImmo-backend-ousmane/api/'
-const LINK_DEVS: string = 'http://192.168.1.133/expressImmo-backend-ousmane/api/'
+// const LINK_PROD: string = 'http://192.168.1.133/expressImmo-backend-ousmane/api/'
+// const LINK_DEVS: string = 'http://192.168.1.133/expressImmo-backend-ousmane/api/'
 
 
 // const LINK_PROD: string = 'http://192.168.1.102/expressImmo/api/'

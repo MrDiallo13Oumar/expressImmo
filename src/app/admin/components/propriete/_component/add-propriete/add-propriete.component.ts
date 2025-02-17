@@ -1,13 +1,12 @@
-import { Component, Inject, Optional } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { ProprieteService } from '../../_services/propriete.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { convertObjectInFormData } from 'src/app/app.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AddTypeProprieteComponent } from '../add-type-propriete/add-type-propriete.component';
-
 
 @Component({
   selector: 'app-add-propriete',
@@ -31,122 +30,132 @@ export class AddProprieteComponent {
     typepropriete_id: new FormControl(''),
     poster: new FormControl(''),
     created_by: new FormControl(this.created_by, Validators.required),
+    // Note : la galerie sera ajoutée via le FormData et non directement par le formControl
+  });
 
-  })
+  imagePreview: string | ArrayBuffer | null = null;
+  selectedFile: File | null = null;
 
-   constructor (private dialog : MatDialog ,
-                  private service :ProprieteService,
-                  private snackBar :MatSnackBar,
-                  private router : Router
+  imagePreviews: string[] = [];
+  selectedFiles: File[] = [];
+
+  constructor (
+    private dialog: MatDialog,
+    private service: ProprieteService,
+    private snackBar: MatSnackBar,
+    private router: Router
   ){}
 
   ngOnInit() {
-    this.getPropriete()
+    this.getPropriete();
     this.getPartenaire();
     this.getTypePropriete();
     this.getQuartier();
-
   }
-  typePropriete: any = []
+
+  typePropriete: any = [];
   getTypePropriete() {
     this.service.getall('typePropriete', 'readAll.php').subscribe({
       next: (reponse: any) => {
-        console.log('REPONSE SUCCESS : ', reponse)
-        this.typePropriete = reponse
+        this.typePropriete = reponse;
       },
       error: (err: any) => {
-        console.log('REPONSE ERROR : ', err)
+        console.log('Erreur lors de la récupération des types de propriété : ', err);
       }
-    })
+    });
   }
-  Partenaire: any = []
+
+  Partenaire: any = [];
   getPartenaire() {
     this.service.getall('partenaire', 'readAll.php').subscribe({
       next: (reponse: any) => {
-        console.log('REPONSE SUCCESS : ', reponse)
-        this.Partenaire = reponse
-
+        this.Partenaire = reponse;
       },
       error: (err: any) => {
-        console.log('REPONSE ERROR : ', err)
+        console.log('Erreur lors de la récupération des partenaires : ', err);
       }
-    })
+    });
   }
 
-  Quartier: any = []
+  Quartier: any = [];
   getQuartier() {
     this.service.getall('quartier', 'readAll.php').subscribe({
       next: (reponse: any) => {
-        console.log('REPONSE SUCCESS : ', reponse)
-        this.Quartier = reponse
-
+        this.Quartier = reponse;
       },
       error: (err: any) => {
-        console.log('REPONSE ERROR : ', err)
+        console.log('Erreur lors de la récupération des quartiers : ', err);
       }
-    })
+    });
   }
 
-
-  imagePreview: string | ArrayBuffer | null = null
-  selectedFile: any
-  uploadResponse: string | null = null
+  // Gestion de l'image principale
   onFileChange(event: any) {
-    const file: File = event.target.files[0]
+    const file: File = event.target.files[0];
     if (file) {
-      const reader = new FileReader()
+      const reader = new FileReader();
       reader.onload = (e: any) => {
-        this.imagePreview = e.target.result
-      }
-      reader.readAsDataURL(file)
-      console.log("file", file);
-
-      this.selectedFile = file
-      console.log("SelectedFile", file);
-
+        this.imagePreview = e.target.result;
+      };
+      reader.readAsDataURL(file);
+      this.selectedFile = file;
     }
   }
+
+  // Gestion de plusieurs images pour la galerie
+  onFilesChange(event: any) {
+    const files: FileList = event.target.files;
+    this.imagePreviews = [];
+    this.selectedFiles = [];
+
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.imagePreviews.push(e.target.result);
+      };
+      reader.readAsDataURL(file);
+      this.selectedFiles.push(file);
+    }
+  }
+
   dataSource = new MatTableDataSource([]);
   getPropriete() {
     this.service.getall('propriete', 'readAll.php').subscribe({
       next: (reponse: any) => {
-        console.log('REPONSE SUCCESS : ', reponse)
-        this.dataSource.data = reponse
+        this.dataSource.data = reponse;
       },
       error: (err: any) => {
-        console.log('REPONSE ERROR : ', err)
+        console.log('Erreur lors de la récupération des propriétés : ', err);
       }
-    })
+    });
   }
 
-  applyFilter (event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value
-    this.dataSource.filter = filterValue.trim().toLowerCase()
-
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
     if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage()
+      this.dataSource.paginator.firstPage();
     }
-   }
-openDialog2() {
-    this.dialog.open(AddTypeProprieteComponent, {
-     }) .afterClosed()
+  }
+
+  openDialog2() {
+    this.dialog.open(AddTypeProprieteComponent)
+      .afterClosed()
       .subscribe((result) => {
         if (result?.event && result.event === "insert") {
-          // console.log(result.data);
-           const formData = convertObjectInFormData(result.data);
+          const formData = convertObjectInFormData(result.data);
           this.dataSource.data.splice(0, this.dataSource.data.length);
-          //Envoyer dans la Base
-          this.service.create('typePropriete','create.php', formData).subscribe({
+          this.service.create('typePropriete', 'create.php', formData).subscribe({
             next: (response) => {
               this.snackBar.open("Type de Propriété enregistré avec succès !", "Okay", {
                 duration: 3000,
                 horizontalPosition: "right",
                 verticalPosition: "top",
                 panelClass: ['bg-success', 'text-white']
-
-              })
-              this.getTypePropriete()
-             this.router.navigate(['/propriete/list-propriete'])
+              });
+              this.getTypePropriete();
+              this.router.navigate(['/propriete/list-propriete']);
             },
             error: (err: any) => {
               this.snackBar.open("Echec de l'ajout !", "Okay", {
@@ -154,29 +163,32 @@ openDialog2() {
                 horizontalPosition: "right",
                 verticalPosition: "top",
                 panelClass: ['bg-danger', 'text-white']
-              })
+              });
             }
-          })
+          });
         }
-     })
+      });
   }
+
   saveDataPropriete() {
     if (this.Propriete.valid) {
-           const formData = convertObjectInFormData(this.Propriete.value);
-      // Si un fichier a été sélectionné, ajoute-le à FormData
+      const formData = convertObjectInFormData(this.Propriete.value);
 
-      // console.log("propriete", this.Propriete.value.poster);
-
+      // Ajout de l'image principale
       if (this.selectedFile) {
         formData.append('file', this.selectedFile, this.selectedFile.name);
-        console.log("this.selectedFile", this.selectedFile.name);
-        // this.Propriete.value.poster = this.selectedFile.name
-
       }
+
+      // Ajout de toutes les images de la galerie
+      if (this.selectedFiles.length > 0) {
+        this.selectedFiles.forEach((file) => {
+          formData.append('files[]', file, file.name);
+        });
+      }
+
       // Envoie les données au serveur
       this.service.create('propriete', 'create.php', formData).subscribe({
         next: (response) => {
-
           this.snackBar.open(response, "Okay", {
             duration: 3000,
             horizontalPosition: "right",
@@ -185,10 +197,11 @@ openDialog2() {
           });
           this.router.navigate(['/propriete/list-propriete']);
           this.getPropriete();
-          this.Propriete.reset()
-
-
-
+          this.Propriete.reset();
+          this.imagePreview = null;
+          this.imagePreviews = [];
+          this.selectedFile = null;
+          this.selectedFiles = [];
         },
         error: (err: any) => {
           this.snackBar.open("Erreur lors de l'ajout !", "Okay", {

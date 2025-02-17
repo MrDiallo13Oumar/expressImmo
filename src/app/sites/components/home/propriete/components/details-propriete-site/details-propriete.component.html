@@ -76,9 +76,9 @@
                         <p><i class="fa fa-briefcase text-primary me-2"></i>Etat : <span class="text-success">{{infoPropriete.etat}} </span> </p>
                         <p><i class="bi bi-house-door-fill text-primary me-2"></i>Quartier : <span class="text-success">{{infoPropriete.quartier?.libelle}} </span></p>
                     </div>
-                                    
 
-                    
+
+
                     <hr>
                     <div class=" text-center">
                     <button type="button"
@@ -90,39 +90,43 @@
 
         <!-- IMAGE CAROUSEL -->
         <div class="col-12 col-md-8">
-            <div class="card">
-                <div class="card-body">
-                    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
-                        <div class="carousel-inner">
-                            <div class="carousel-item active position-relative" >
-                                <img [src]=this.infoPropriete.poster class="d-block w-100"  alt="">
-                            </div>
-                            
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade"
-                            data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade"
-                            data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
-                    </div>
+          <div class="card">
+            <div class="card-body">
+              <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <!-- Utilisation de *ngFor pour créer une slide par image -->
+                  <div *ngFor="let imageUrl of getGalleryImages(); let i = index" [ngClass]="{'carousel-item': true, 'active': i === 0}">
+                    <img
+                      [src]="imageUrl"
+                      class="d-block w-100 img-fluid rounded"
+                      alt="Image de la galerie"
+                      style="height: 400px; object-fit: cover;"
+                    />
+                  </div>
                 </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
             </div>
+          </div>
 
-            <!-- DESCRIPTION -->
-            <div class="card mt-4">
-                <div class="card-header fs-3 text-center">Description</div>
-                <div class="card-body fs-6">
-                    <p>
-                        {{this.infoPropriete.descriptions}}
-                    </p>
-                </div>
+          <!-- DESCRIPTION -->
+          <div class="card mt-4">
+            <div class="card-header fs-3 text-center">Description</div>
+            <div class="card-body fs-6">
+              <p>
+                {{ infoPropriete.descriptions }}
+              </p>
             </div>
+          </div>
         </div>
+
     </div>
 
 

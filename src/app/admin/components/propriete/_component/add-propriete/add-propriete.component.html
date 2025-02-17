@@ -104,25 +104,33 @@
                   </div>
                 </div>
 
-                <!-- Image -->
+                <!-- Image principale -->
                 <div class="mb-4">
-                  <label for="image" class="form-label">Image</label>
+                  <label for="image" class="form-label">Image principale</label>
                   <input type="file" id="image" (change)="onFileChange($event)" formControlName="poster" class="form-control" />
-                  <div class="image-preview-container text-end mt-3" *ngIf="imagePreview">
-                    <img [src]="imagePreview" class="image-preview img-fluid" />
-                  </div>
+                  <div class="image-preview-container text-end mt-3" *ngIf="imagePreviews.length > 0">
+                    <img *ngFor="let img of imagePreviews" [src]="img" class="image-preview img-fluid me-2" width="100" />
+                  </div>
                 </div>
 
+                <!-- Galerie d'images -->
+                <div class="mb-4">
+                  <label for="gallery" class="form-label">Galerie d'images</label>
+                  <input type="file" id="gallery" (change)="onFilesChange($event)" multiple class="form-control" />
+                  <div class="image-preview-container text-end mt-3" *ngIf="imagePreviews.length > 0">
+                    <img *ngFor="let img of imagePreviews" [src]="img" class="image-preview img-fluid me-2" width="100" />
+                  </div>
+                </div>
 
-
+                <!-- Description -->
                 <div class="mb-3">
                   <mat-form-field appearance="fill" class="w-100">
                     <mat-label>Description</mat-label>
-                    <textarea matInput formControlName="descriptions" placeholder="Decrivez la Propriete"></textarea>
+                    <textarea matInput formControlName="descriptions" placeholder="Décrivez la propriété"></textarea>
                   </mat-form-field>
                 </div>
-
               </form>
+
 
 
             </div>

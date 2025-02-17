@@ -59,6 +59,20 @@ export class DetailsProprieteComponent {
       },
     });
   }
+  getGalleryImages(): string[] {
+    if (!this.infoPropriete.gallery) {
+      return [];
+    }
+    // Si c'est une chaîne, on la transforme en tableau
+    if (typeof this.infoPropriete.gallery === 'string') {
+      return this.infoPropriete.gallery.split(',').map((img:any) => img.trim());
+    }
+    // Si c'est déjà un tableau, on le retourne directement
+    if (Array.isArray(this.infoPropriete.gallery)) {
+      return this.infoPropriete.gallery;
+    }
+    return [];
+  }
 
   Partenaire : any =[]
   getPartenaire () {
