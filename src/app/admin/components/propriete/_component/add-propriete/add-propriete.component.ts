@@ -175,7 +175,6 @@ openDialog2() {
       }
       // Envoie les données au serveur
       this.service.create('propriete', 'create.php', formData).subscribe({
-
         next: (response) => {
 
           this.snackBar.open(response, "Okay", {
@@ -183,8 +182,8 @@ openDialog2() {
             horizontalPosition: "right",
             verticalPosition: "top",
             panelClass: ['bg-success', 'text-white']
-          })
-          this.router.navigate(['/propriete/list-propriete'])
+          });
+          this.router.navigate(['/propriete/list-propriete']);
           this.getPropriete();
           this.Propriete.reset()
 
@@ -192,17 +191,14 @@ openDialog2() {
 
         },
         error: (err: any) => {
-
-          this.snackBar.open(err, "Okay", {
+          this.snackBar.open("Erreur lors de l'ajout !", "Okay", {
             duration: 3000,
             horizontalPosition: "right",
             verticalPosition: "top",
             panelClass: ['bg-danger', 'text-white']
           });
-
         }
       });
-
     }
   }
 }
