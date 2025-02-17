@@ -1,8 +1,8 @@
-<div class=" bg-white p-0">
+<div class="bg-white p-0">
     <!-- Header Start -->
     <app-navbar></app-navbar>
     <!-- Header End -->
-    
+
     <!-- Booking Start -->
     <div class="container-xxl py-5">
         <div class="container">
@@ -11,48 +11,47 @@
                 <h1 class="mb-5">Renseigner les champs pour <span class="text-primary text-uppercase">Réserver</span></h1>
             </div>
             <div class="row g-5">
-                <div class="col-lg-6">
+                <div class="col-lg-6 col-md-12">
                     <div class="row g-3">
-                        <div class="col-6 text-end">
+                        <div class="col-6 col-sm-6 text-end">
                             <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.1s"
                                 src="assets/sites/img/DAME1.JPG" style="margin-top: 25%;">
                         </div>
-                        <div class="col-6 text-start">
+                        <div class="col-6 col-sm-6 text-start">
                             <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.3s"
                                 src="assets/sites/img/_DSC7497.JPG">
                         </div>
-                        <div class="col-6 text-end">
+                        <div class="col-6 col-sm-6 text-end">
                             <img class="img-fluid rounded w-50 wow zoomIn" data-wow-delay="0.5s"
                                 src="assets/sites/img/_DSC7537.JPG">
                         </div>
-                        <div class="col-6 text-start">
+                        <div class="col-6 col-sm-6 text-start">
                             <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.7s"
                                 src="assets/sites/img/DAME2.JPG">
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-6 col-md-12">
                     <div class="wow fadeInUp" data-wow-delay="0.2s">
                         <form [formGroup]="Reservation">
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <input type="text" class="form-control" id="nom" formControlName="nom" required>
-                                        <label for="name">Votre Nom</label>
+                                        <label for="nom">Votre Nom</label>
                                     </div>
-                                    
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <input type="text" class="form-control" id="prenom" formControlName="prenom" required>
-                                        <label for="name">Votre prenom</label>
+                                        <label for="prenom">Votre Prénom</label>
                                     </div>
                                 </div>
-                                
+
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="prenom" formControlName="adresse" required>
-                                        <label for="name">Votre Adresse</label>
+                                        <input type="text" class="form-control" id="adresse" formControlName="adresse" required>
+                                        <label for="adresse">Votre Adresse</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -60,63 +59,44 @@
                                         <input type="text" class="form-control" id="telephone" formControlName="telephone" required>
                                         <label for="telephone">Votre numéro de téléphone WhatsApp</label>
                                         <div *ngIf="telephoneControl?.invalid && (telephoneControl?.dirty || telephoneControl?.touched)" class="text-danger">
-                                            Le numéro de téléphone whatsaap est requis.
+                                            Le numéro de téléphone WhatsApp est requis.
                                         </div>
                                     </div>
                                 </div>
-                                <!-- <div class="col-md-12">
-                                    <div class="form-floating">
-                                        <input type="email" class="form-control" id="email" formControlName="email" required>
-                                        <label for="name">Votre adresse mail</label>
-                                    </div>
-                                </div> -->
+
                                 <div class="col-md-12">
                                     <div class="form-floating">
                                         <input type="date" class="form-control" id="date_reservation" formControlName="date_reservation" required>
-                                        <label for="name">Date de reservation</label>
+                                        <label for="date_reservation">Date de réservation</label>
                                     </div>
                                 </div>
-                                <!-- Email -->
-                                <!-- <div class="col-md-12">
-                                    <div class="form-floating">
-                                        <input type="email" class="form-control" id="email" placeholder="Votre Email" formControlName="email" required>
-                                    </div>
-                                </div> -->
-                                
-                                <p class="text-center"> -- Service non inclus dans le tarif de reservation --</p>
-                                
+
+                                <p class="text-center">-- Service non inclus dans le tarif de réservation --</p>
+
                                 <div class="d-flex justify-content-between">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="wifi"formControlName="wifi" >
-                                        <label class="form-check-label" for="flexCheckDefault">
-                                            WIFI
-                                        </label>
+                                        <input class="form-check-input" type="checkbox" id="wifi" formControlName="wifi">
+                                        <label class="form-check-label" for="wifi">WIFI</label>
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" id="conciergerie" formControlName="conciergerie">
-                                        <label class="form-check-label" for="flexCheckChecked">
-                                            Conciergerie
-                                        </label>
+                                        <label class="form-check-label" for="conciergerie">Conciergerie</label>
                                     </div>
                                 </div>
-            
+
                                 <div class="d-flex justify-content-between">
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" id="blanchisserie" formControlName="blanchisserie">
-                                        <label class="form-check-label" for="flexCheckDefault2">
-                                            Blanchisserie
-                                        </label>
+                                        <label class="form-check-label" for="blanchisserie">Blanchisserie</label>
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" id="restauration" formControlName="restauration">
-                                        <label class="form-check-label" for="flexCheckChecked2">
-                                            Restauration
-                                        </label>
+                                        <label class="form-check-label" for="restauration">Restauration</label>
                                     </div>
                                 </div>
 
                                 <div class="col-12">
-                                    <button class="btn btn-primary w-100 py-3" type="submit"  (click)="saveDataReservations()">Reserver</button>
+                                    <button class="btn btn-primary w-100 py-3" type="submit" (click)="saveDataReservations()">Réserver</button>
                                 </div>
                             </div>
                         </form>
@@ -149,15 +129,7 @@
     <app-footer></app-footer>
     <!-- Footer End -->
 
-
     <!-- Back to Top -->
-
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
-
     <a class="btn btn-lg btn-primary btn-lg-square back-to-top" (click)="scrollToTop()"><i class="bi bi-arrow-up text-white"></i></a>
 </div>
-
-
-
-
-  

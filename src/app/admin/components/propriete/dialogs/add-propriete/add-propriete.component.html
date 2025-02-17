@@ -107,10 +107,10 @@
                 <!-- Image -->
                 <div class="mb-4">
                   <label for="image" class="form-label">Image</label>
-                  <input type="file" id="image" (change)="onFileChange($event)" formControlName="poster" class="form-control" />
-                  <div class="image-preview-container text-end mt-3" *ngIf="imagePreview">
-                    <img [src]="imagePreview" class="image-preview img-fluid" />
-                  </div>
+                  <input type="file" id="image" (change)="onFileChange($event)" formControlName="poster" class="form-control" multiple/>
+                  <div class="image-preview-container text-end mt-3" *ngIf="imagePreviews.length > 0">
+                    <img *ngFor="let img of imagePreviews" [src]="img" class="image-preview img-fluid me-2" width="100" />
+                  </div>                  
                 </div>
               </form>
   

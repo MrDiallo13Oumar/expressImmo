@@ -86,25 +86,29 @@ export class AddProprieteComponent {
     })
   }
 
-
+  selectedFiles: File[] = []; // Stocke plusieurs fichiers
+  imagePreviews: string[] = []; // Stocke les prévisualisations
+  
   imagePreview: string | ArrayBuffer | null = null
   selectedFile: any
   uploadResponse: string | null = null
   onFileChange(event: any) {
-    const file: File = event.target.files[0]
-    if (file) {
-      const reader = new FileReader()
-      reader.onload = (e: any) => {
-        this.imagePreview = e.target.result
+    this.selectedFiles = []; // Réinitialise les fichiers sélectionnés
+    this.imagePreviews = []; // Réinitialise les prévisualisations
+    
+    if (event.target.files && event.target.files.length > 0) {
+      for (let file of event.target.files) {
+        const reader = new FileReader();
+        reader.onload = (e: any) => {
+          this.imagePreviews.push(e.target.result); // Ajoute l'aperçu
+        };
+        reader.readAsDataURL(file);
+        this.selectedFiles.push(file); // Ajoute le fichier au tableau
       }
-      reader.readAsDataURL(file)
-      console.log("file", file);
-
-      this.selectedFile = file
-      console.log("SelectedFile", file);
-
     }
   }
+  
+
   dataSource = new MatTableDataSource([]);
   getPropriete() {
     this.service.getall('propriete', 'readAll.php').subscribe({
@@ -161,47 +165,50 @@ openDialog2() {
   }
   saveDataPropriete() {
     if (this.Propriete.valid) {
-           const formData = convertObjectInFormData(this.Propriete.value);
-      // Si un fichier a été sélectionné, ajoute-le à FormData
-
-      // console.log("propriete", this.Propriete.value.poster);
-
-      if (this.selectedFile) {
-        formData.append('file', this.selectedFile, this.selectedFile.name);
-        console.log("this.selectedFile", this.selectedFile.name);
-        // this.Propriete.value.poster = this.selectedFile.name
-
+      
+      
+  
+      // Ajouter les autres champs du formulaire
+      const formData = convertObjectInFormData(this.Propriete.value);
+      Object.keys(this.Propriete.controls).forEach((key) => {
+        const control = this.Propriete.get(key);
+        if (control && control.value !== null) {
+          formData.append(key, control.value);
+        }
+      });
+      
+      // Ajouter plusieurs fichiers
+      if (this.selectedFiles.length > 0) {
+        for (let file of this.selectedFiles) {
+          formData.append('file[]', file, file.name);
+        }
       }
-      // Envoie les données au serveur
+      
+     // Envoi des données
       this.service.create('propriete', 'create.php', formData).subscribe({
-
         next: (response) => {
-        
-          this.snackBar.open(response, "Okay", {
+          this.snackBar.open("Propriété ajoutée avec succès !", "Okay", {
             duration: 3000,
             horizontalPosition: "right",
             verticalPosition: "top",
             panelClass: ['bg-success', 'text-white']
-          })
-          this.router.navigate(['/propriete/list-propriete'])
+          });
+          this.router.navigate(['/propriete/list-propriete']);
           this.getPropriete();
-          this.Propriete.reset()
-
-        
-
+          this.Propriete.reset();
+          this.imagePreviews = [];
         },
         error: (err: any) => {
-
-          this.snackBar.open(err, "Okay", {
+          this.snackBar.open("Erreur lors de l'ajout !", "Okay", {
             duration: 3000,
             horizontalPosition: "right",
             verticalPosition: "top",
             panelClass: ['bg-danger', 'text-white']
           });
-
         }
       });
-
     }
   }
+  
+  
 }
