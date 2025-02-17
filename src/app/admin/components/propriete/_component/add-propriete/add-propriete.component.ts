@@ -8,6 +8,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AddTypeProprieteComponent } from '../add-type-propriete/add-type-propriete.component';
 
+
 @Component({
   selector: 'app-add-propriete',
   templateUrl: './add-propriete.component.html',
@@ -16,7 +17,7 @@ import { AddTypeProprieteComponent } from '../add-type-propriete/add-type-propri
 export class AddProprieteComponent {
   displayedColumns: string[] = ['id','reference', 'adresse','statut', 'partenaire', 'action'];
   created_by = localStorage.getItem('id_user');
-  
+
   Propriete = new FormGroup({
     partenaire_id: new FormControl(''),
     quartier_id: new FormControl(''),
@@ -176,7 +177,7 @@ openDialog2() {
       this.service.create('propriete', 'create.php', formData).subscribe({
 
         next: (response) => {
-        
+
           this.snackBar.open(response, "Okay", {
             duration: 3000,
             horizontalPosition: "right",
@@ -187,7 +188,7 @@ openDialog2() {
           this.getPropriete();
           this.Propriete.reset()
 
-        
+
 
         },
         error: (err: any) => {

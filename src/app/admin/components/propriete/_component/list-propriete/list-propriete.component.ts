@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { AddProprieteComponent } from '../../dialogs/add-propriete/add-propriete.component';
+import { AddProprieteComponent } from '../add-propriete/add-propriete.component';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -8,7 +8,7 @@ import { ProprieteService } from '../../_services/propriete.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { convertObjectInFormData } from 'src/app/app.component';
 import { DeletePopupComponent } from 'src/app/shared/dialogs/delete-popup/delete-popup.component';
-import { AddTypeProprieteComponent } from '../../dialogs/add-type-propriete/add-type-propriete.component';
+import { AddTypeProprieteComponent } from '../add-type-propriete/add-type-propriete.component';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -259,7 +259,7 @@ getPropriete () {
           this.service.create('propriete', 'create.php', formData).subscribe({
 
             next: (response) => {
-            
+
               this.snackBar.open(response, "Okay", {
                 duration: 3000,
                 horizontalPosition: "right",
@@ -268,7 +268,7 @@ getPropriete () {
               })
               this.getPropriete();
               this.Propriete.reset()
-            
+
 
             },
             error: (err: any) => {

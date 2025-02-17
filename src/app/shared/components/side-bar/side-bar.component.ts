@@ -19,13 +19,13 @@ export class SideBarComponent {
     { label: 'Contrats', icon: 'icon-grid menu-icon', link: '/contrat/list-contrat' },
     { label: 'Opérations', icon: 'icon-badge menu-icon', link: '/operation/list-operation' },
     { label: 'Rapports', icon: 'icon-note menu-icon', link: '/rapport/rapport' },
-    { label: 'Paramétrage', icon: 'icon-notebook menu-icon', link: '/parametrage' },
+    { label: 'Paramétrage', icon: 'icon-notebook menu-icon', link: '/parametrage/parametrage' },
     { label: 'Utilisateurs', icon: 'icon-user menu-icon', link: '/utilisateur/list-utilisateur' },
   ];
 
   constructor(private router: Router) {
     this.activeRoute = this.router.url;
-    
+
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.activeRoute = event.url;

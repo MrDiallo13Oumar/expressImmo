@@ -1,0 +1,18 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ParametrageComponent } from './parametrage/parametrage.component';
+import { RouterModule } from '@angular/router';
+import { parametrageRouting } from './parametrage.routing';
+
+
+
+@NgModule({
+  declarations: [
+    ParametrageComponent,
+  ],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(parametrageRouting),
+  ]
+})
+export class ParametrageModule { }

@@ -2,6 +2,7 @@ import { Routes } from "@angular/router";
 import { LoginComponent } from "./_component/login/login.component";
 import { DashboardComponent } from "./_component/dashboard/dashboard.component";
 import { AddUserComponent } from "../utilisateurs/dialogs/add-user/add-user.component";
+import { AuthGuard } from "../../guards/auth.guard";
 
 export const homeAdminRouting: Routes = [
 
@@ -18,7 +19,7 @@ export const homeAdminRouting: Routes = [
   {
     path: 'dashboard',
     component:DashboardComponent ,
-
+    canActivate: [AuthGuard],
   },
 
 

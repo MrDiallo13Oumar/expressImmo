@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component } from '@angular/core';
 import { AuthService } from 'src/app/admin/guards/service/auth.service';
 
@@ -9,7 +10,9 @@ import { AuthService } from 'src/app/admin/guards/service/auth.service';
 export class TopBarComponent {
   isDropdownOpen = false;
 
-  constructor(private service: AuthService) {}
+  constructor(private service: AuthService,
+    public Location: Location,
+  ) {}
 
   toggleDropdown(state: boolean) {
     this.isDropdownOpen = state;

@@ -75,6 +75,12 @@ export const AppRouting: Routes = [
           import('../app/admin/components/rapport/rapport.module').then(m => m.RapportModule),
         canActivate: [AuthGuard],
       },
+      {
+        path: 'parametrage',
+        loadChildren: () =>
+          import('../app/admin/components/parametrage/parametrage.module').then(m => m.ParametrageModule),
+        canActivate: [AuthGuard],
+      },
        // Gestion des routes non trouvées
        {
         path: '**',
