@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ParametrageComponent } from './parametrage/parametrage.component';
 import { RouterModule } from '@angular/router';
 import { parametrageRouting } from './parametrage.routing';
+import { DemoMaterialModule } from 'src/app/demo-material-module';
 
 
 
@@ -12,6 +13,7 @@ import { parametrageRouting } from './parametrage.routing';
   ],
   imports: [
     CommonModule,
+    DemoMaterialModule,
     RouterModule.forChild(parametrageRouting),
   ]
 })

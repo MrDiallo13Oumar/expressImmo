@@ -45,11 +45,11 @@ displayedColumns: string[] = ['id', 'nom','prenom','adresse', 'telephone', 'emai
   getLocataire () {
      this.locataire.getall('locataire', 'readAll.php').subscribe({
        next: (reponse: any) => {
-          console.log('REPONSE SUCCESS : ', reponse)
+          //console.log('REPONSE SUCCESS : ', reponse)
          this.dataSource.data = reponse
        },
        error: (err: any) => {
-         console.log('REPONSE ERROR : ', err)
+         //console.log('REPONSE ERROR : ', err)
        }
      })
    }
@@ -59,7 +59,7 @@ displayedColumns: string[] = ['id', 'nom','prenom','adresse', 'telephone', 'emai
        }) .afterClosed()
         .subscribe((result) => {
           if (result?.event && result.event === "insert") {
-            // console.log(result.data);
+            // //console.log(result.data);
              const formData = convertObjectInFormData(result.data);
             this.dataSource.data.splice(0, this.dataSource.data.length);
             //Envoyer dans la Base
@@ -88,7 +88,7 @@ displayedColumns: string[] = ['id', 'nom','prenom','adresse', 'telephone', 'emai
     }
 
       // DELETE
-      
+
       deleteFunction(id: any, table: string) {
         this.dialog
           .open(DeletePopupComponent, {
@@ -115,7 +115,7 @@ displayedColumns: string[] = ['id', 'nom','prenom','adresse', 'telephone', 'emai
                   });
                 },
                 error: (err: any) => {
-                  console.error('Error : ', err);
+                  //console.error('Error : ', err);
                 },
               });
               this.getLocataire()

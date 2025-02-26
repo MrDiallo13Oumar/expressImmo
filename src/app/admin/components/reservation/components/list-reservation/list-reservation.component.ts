@@ -44,9 +44,9 @@ displayedColumns: string[] = ['id', 'nom', 'source', 'statut', 'created_at', 'pr
     getReservation () {
        this.service.getall('reservation', 'readAll.php').subscribe({
          next: (reponse: any) => {
-            console.log('REPONSE SUCCESS : ', reponse)
+          //  console.log('REPONSE SUCCESS : ', reponse)
            this.dataSource.data = reponse
-           console.log('Liste reservation',this.dataSource.data);
+          // console.log('Liste reservation',this.dataSource.data);
 
          },
          error: (err: any) => {
@@ -58,7 +58,7 @@ displayedColumns: string[] = ['id', 'nom', 'source', 'statut', 'created_at', 'pr
      getNombreReservation () {
       this.service.getall('reservation', 'nombreReservation.php').subscribe({
         next: (reponse: any) => {
-           console.log('REPONSE SUCCESS : ', reponse)
+         //  console.log('REPONSE SUCCESS : ', reponse)
            this.nombreReservation  = reponse
 
         },

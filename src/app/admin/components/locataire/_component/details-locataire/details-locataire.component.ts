@@ -44,15 +44,15 @@ export class DetailsLocataireComponent {
       }
       infoLocataire: any = {};
       getOneLocataire() {
-        console.log('ID en GET : ', this.idLocataire);
+        //console.log('ID en GET : ', this.idLocataire);
         this.service.getOne('locataire', 'getOne.php', this.idLocataire).subscribe({
           next: (response: any) => {
-            console.log('Info : ', response);
+            //console.log('Info : ', response);
             this.infoLocataire = response;
             this.Locataire.patchValue(this.infoLocataire);
           },
           error: (error: any) => {
-            console.log('Error : ', error);
+            //console.log('Error : ', error);
           },
         });
       }
@@ -60,12 +60,12 @@ export class DetailsLocataireComponent {
     getPropriete () {
       this.service.getall('propriete', 'readAll.php').subscribe({
         next: (reponse: any) => {
-           console.log('REPONSE SUCCESS : ', reponse)
+           //console.log('REPONSE SUCCESS : ', reponse)
           this.Propriete = reponse
 
         },
         error: (err: any) => {
-          console.log('REPONSE ERROR : ', err)
+          //console.log('REPONSE ERROR : ', err)
         }
       })
     }
@@ -73,14 +73,14 @@ export class DetailsLocataireComponent {
         // Appliquez la transformation
 
         const formData = convertObjectInFormData(this.Locataire.value);
-        console.log('Form Data Before Sending:', formData); // Vérifiez les données après la transformation
+        //console.log('Form Data Before Sending:', formData); // Vérifiez les données après la transformation
 
         this.service
           .update('locataire', 'update.php', formData)
           .subscribe({
             next: (response: any) => {
               this.infoLocataire = response;
-              console.log('Modification:', this.infoLocataire);
+              //console.log('Modification:', this.infoLocataire);
               this.snackBar.open('Modification effectuée avec succès !', 'Okay', {
                 duration: 3000,
                 horizontalPosition: 'right',
@@ -91,7 +91,7 @@ export class DetailsLocataireComponent {
 
             },
             error: (error: any) => {
-              console.log('Error : ', error);
+              //console.log('Error : ', error);
               this.snackBar.open('Modification impossible !', 'Okay', {
                 duration: 3000,
                 horizontalPosition: 'right',

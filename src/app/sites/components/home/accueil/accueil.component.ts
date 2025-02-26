@@ -8,8 +8,8 @@ import { Propriete } from 'src/assets/Models/propriete';
   styleUrls: ['./accueil.component.scss']
 })
 export class AccueilComponent implements OnInit {
-  email = "expressimmo@gmail.com"
-  
+  email = "expressimmo224@gmail.com"
+
 constructor(private service : ProprieteService
 ){}
   ngOnInit(): void {
@@ -22,13 +22,13 @@ constructor(private service : ProprieteService
   getPropriete () {
     this.service.getall('propriete', 'readAll.php').subscribe({
       next: (reponse: any) => {
-        console.log('REPONSE SUCCESS : ', reponse)
+        //console.log('REPONSE SUCCESS : ', reponse)
         this.data = reponse
-         console.log("Data de cheick", this.data);
-        
+         //console.log("Data de cheick", this.data);
+
       },
       error: (err: any) => {
-        console.log('REPONSE ERROR : ', err)
+        //console.log('REPONSE ERROR : ', err)
       }
     })
   }
@@ -42,11 +42,11 @@ constructor(private service : ProprieteService
   getDashbord() {
     this.service.getall('dashboard', 'statistiquesJour.php').subscribe({
       next: (reponse: any) => {
-        console.log('REPONSE SUCCESS : ', reponse);
+        //console.log('REPONSE SUCCESS : ', reponse);
         this.infoDashBoard = reponse;
       },
       error: (err: any) => {
-        console.log('REPONSE ERROR : ', err);
+        //console.log('REPONSE ERROR : ', err);
       },
     });
   }

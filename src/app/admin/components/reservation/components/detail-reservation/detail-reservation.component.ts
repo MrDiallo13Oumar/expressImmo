@@ -42,10 +42,10 @@ export class DetailReservationComponent {
       }
       infoReservation: any = {};
       getOneReservation() {
-        console.log('ID en GET : ', this.idReservation);
+       // console.log('ID en GET : ', this.idReservation);
         this.service.getOne('reservation', 'getOne.php', this.idReservation).subscribe({
           next: (response: any) => {
-            console.log('Info : ', response);
+         //   console.log('Info : ', response);
             this.infoReservation = response[0] ;
            // this.Reservation.patchValue(this.infoReservation);
 
@@ -74,7 +74,7 @@ export class DetailReservationComponent {
 
         // Convertir les données en FormData
         const formData = convertObjectInFormData(contratData);
-        console.log('contratInfo', contratData);
+       // console.log('contratInfo', contratData);
 
         // Envoi des données au backend
         this.service.create('contrat', 'create.php', formData).subscribe({
@@ -103,14 +103,17 @@ export class DetailReservationComponent {
       const  constReservationData = {
           id: this.infoReservation.id,
           statut: 'confirmée',
-          modify_by:this.modify_by
+         modify_by:this.modify_by,
+         table:'reservations'
+
         }
+      //  console.log("Données envoyées :", constReservationData);
         const formData2 = convertObjectInFormData(constReservationData);
-        this.service.update('reservation', 'update.php', formData2).subscribe({
+        this.service.update('public', 'update.php', formData2).subscribe({
           next: (response) => {
-              console.log('message',response)
+            //  console.log('message',response)
             this.data=response
-            console.log('message',this.data)
+           // console.log('message',this.data)
           },
           error: (err: any) => {
             console.log('message',err)

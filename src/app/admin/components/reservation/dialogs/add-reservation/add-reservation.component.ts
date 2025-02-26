@@ -41,7 +41,7 @@ saveDataPropriete: any;
   getPropriete() {
     this.service.getall('propriete', 'readAll.php').subscribe({
       next: (reponse: any) => {
-        console.log('LISTE DES PROPRIETES REPONSE SUCCESS : ', reponse)
+       // console.log('LISTE DES PROPRIETES REPONSE SUCCESS : ', reponse)
         this.Propriete = reponse
         console.log(this.Propriete);
 

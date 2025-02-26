@@ -28,7 +28,7 @@ export class AllProprietesComponent implements OnInit {
   constructor(private router: Router, private proprieteService: ProprieteService) {}
 
   ngOnInit() {
-    
+
     this.getAllProprietes()
     this.getVilles(); // Charger les villes au démarrage
   }
@@ -38,10 +38,10 @@ export class AllProprietesComponent implements OnInit {
       next: (response: any) => {
         // this.proprietes = response;
         this.dataSource.data = response // Mettre à jour les données du tableau
-        console.log("DataSource", this.dataSource.data); 
+        //console.log("DataSource", this.dataSource.data);
       },
       error: (err: any) => {
-        console.error('Erreur lors du chargement des propriétés : ', err);
+        //console.error('Erreur lors du chargement des propriétés : ', err);
       }
     });
   }
@@ -51,20 +51,20 @@ export class AllProprietesComponent implements OnInit {
     this.proprieteService.getall('ville', 'readAll.php').subscribe({
       next: (response: any) => {
         this.villes = response;
-        console.log("Entrer dans Ville : ", response);
-        
-        
+        //console.log("Entrer dans Ville : ", response);
+
+
       },
       error: (err: any) => {
-        console.error('Erreur lors du chargement des villes : ', err);
+        //console.error('Erreur lors du chargement des villes : ', err);
       }
     });
   }
 
   // Charger les communes en fonction de la ville sélectionnée
   getCommunes(villeId: number) {
-    console.log("Ville ID",villeId);
-    
+    //console.log("Ville ID",villeId);
+
     this.selectedCommune = null;
     this.selectedQuartier = null;
     this.quartiers = []; // Réinitialiser les quartiers
@@ -74,27 +74,27 @@ export class AllProprietesComponent implements OnInit {
       next: (response: any) => {
            // this.dataSource.data = response
            this.communes = response;
-           console.log("Communes",this.communes);
+           //console.log("Communes",this.communes);
 
         this.proprieteService.getOne('propriete', 'readByVille.php', villeId).subscribe({
           next: (response: any) => {
-           
+
             this.dataSource.data = response
-            
+
             //  this.communes = response;
-             console.log("DataSource",this.dataSource.data);
-            
+             //console.log("DataSource",this.dataSource.data);
+
           },
           error: (err: any) => {
-            console.error('Erreur lors du chargement des communes : ', err);
+            //console.error('Erreur lors du chargement des communes : ', err);
           }
         });
 
 
-        
+
       },
       error: (err: any) => {
-        console.error('Erreur lors du chargement des communes : ', err);
+        //console.error('Erreur lors du chargement des communes : ', err);
       }
     });
   }
@@ -107,19 +107,19 @@ export class AllProprietesComponent implements OnInit {
     this.proprieteService.getOne('propriete', 'readByQuartier.php', communeId).subscribe({
       next: (response: any) => {
         this.quartiers = response;
-        console.log("Entrer dans Quartier : ", response);
+        //console.log("Entrer dans Quartier : ", response);
       },
       error: (err: any) => {
-        console.error('Erreur lors du chargement des quartiers : ', err);
+        //console.error('Erreur lors du chargement des quartiers : ', err);
       }
     });
     this.proprieteService.getOne('propriete', 'readProprieteByCommune.php', communeId).subscribe({
       next: (response: any) => {
         this.dataSource.data = response;
-        
+
       },
       error: (err: any) => {
-        console.error('Erreur lors du chargement des quartiers : ', err);
+        //console.error('Erreur lors du chargement des quartiers : ', err);
       }
     });
   }
@@ -130,31 +130,31 @@ export class AllProprietesComponent implements OnInit {
       next: (response: any) => {
         // this.proprietes = response;
         this.dataSource.data = response // Mettre à jour les données du tableau
-        
+
       },
       error: (err: any) => {
-        console.error('Erreur lors du chargement des propriétés : ', err);
+        //console.error('Erreur lors du chargement des propriétés : ', err);
       }
     });
   }
 
   // Lorsque la sélection de ville change
   onVilleChange(event: any) {
-    console.log("Entrer dans onVileChange");
+    //console.log("Entrer dans onVileChange");
     this.getCommunes(event.value);
-    
+
   }
 
   // Lorsque la sélection de commune change
   onCommuneChange(event: any) {
     this.getQuartiers(event.value);
-    console.log("Entrer dans onCommuneChange");
+    //console.log("Entrer dans onCommuneChange");
   }
 
   // Lorsque la sélection de quartier change
   onQuartierChange(event: any) {
     this.getProprietes(event.value);
-    console.log("Entrer dans onQuartierChange");
+    //console.log("Entrer dans onQuartierChange");
   }
 
   scrollToTop(): void {

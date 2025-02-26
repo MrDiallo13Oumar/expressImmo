@@ -45,7 +45,7 @@ export class LoginComponent {
       },
       error: (err: any) => {
         // Gestion des erreurs
-        console.error('Erreur :', err);
+        //console.error('Erreur :', err);
         const errorMessage =
           err.error?.message || "Une erreur s'est produite lors de la connexion.";
 

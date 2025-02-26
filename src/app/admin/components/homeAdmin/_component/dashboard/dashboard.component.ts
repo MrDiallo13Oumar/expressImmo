@@ -16,11 +16,11 @@ export class DashboardComponent {
   getDashbord() {
     this.service.getall('dashboard', 'statistiquesJour.php').subscribe({
       next: (reponse: any) => {
-        console.log('REPONSE SUCCESS : ', reponse);
+        //console.log('REPONSE SUCCESS : ', reponse);
         this.infoDashBoard = reponse;
       },
       error: (err: any) => {
-        console.log('REPONSE ERROR : ', err);
+        //console.log('REPONSE ERROR : ', err);
       },
     });
   }
@@ -28,11 +28,11 @@ export class DashboardComponent {
   getContratDashbord() {
     this.service.getall('dashboard', 'contrat.php').subscribe({
       next: (reponse: any) => {
-        console.log('REPONSE SUCCESS : ', reponse);
+        //console.log('REPONSE SUCCESS : ', reponse);
         this.infoContratDashBoard = reponse.contrats || [];
       },
       error: (err: any) => {
-        console.log('REPONSE ERROR : ', err);
+        //console.log('REPONSE ERROR : ', err);
       },
     });
   }

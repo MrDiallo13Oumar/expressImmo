@@ -48,7 +48,7 @@ export class DetailsProprieteComponent {
     console.log('ID en GET : ', this.idPropriete);
     this.service.getOne('propriete', 'getOne.php', this.idPropriete).subscribe({
       next: (response: any) => {
-        console.log('Info : ', response);
+       // console.log('Info : ', response);
         this.infoPropriete = response;
         this.Propriete.patchValue(this.infoPropriete);
 
@@ -78,7 +78,7 @@ export class DetailsProprieteComponent {
   getPartenaire () {
     this.service.getall('partenaire', 'readAll.php').subscribe({
       next: (reponse: any) => {
-         console.log('REPONSE SUCCESS : ', reponse)
+      //   console.log('REPONSE SUCCESS : ', reponse)
         this.Partenaire = reponse
 
       },
@@ -92,7 +92,7 @@ export class DetailsProprieteComponent {
   getQuartier () {
     this.service.getall('quartier', 'readAll.php').subscribe({
       next: (reponse: any) => {
-         console.log('REPONSE SUCCESS : ', reponse)
+     //    console.log('REPONSE SUCCESS : ', reponse)
         this.Quartier = reponse
 
       },

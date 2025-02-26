@@ -46,7 +46,7 @@ ngOnInit() {
 getPartenaire () {
    this.service.getall('partenaire', 'readAll.php').subscribe({
      next: (reponse: any) => {
-        console.log('REPONSE SUCCESS : ', reponse)
+       // console.log('REPONSE SUCCESS : ', reponse)
        this.dataSource.data = reponse
      },
      error: (err: any) => {

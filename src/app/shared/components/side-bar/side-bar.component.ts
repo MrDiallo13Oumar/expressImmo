@@ -19,7 +19,7 @@ export class SideBarComponent {
     { label: 'Contrats', icon: 'icon-grid menu-icon', link: '/contrat/list-contrat' },
     { label: 'Opérations', icon: 'icon-badge menu-icon', link: '/operation/list-operation' },
     { label: 'Rapports', icon: 'icon-note menu-icon', link: '/rapport/rapport' },
-    { label: 'Paramétrage', icon: 'icon-notebook menu-icon', link: '/parametrage/parametrage' },
+    { label: 'Message', icon: 'icon-notebook menu-icon', link: '/parametrage/parametrage' },
     { label: 'Utilisateurs', icon: 'icon-user menu-icon', link: '/utilisateur/list-utilisateur' },
   ];
 

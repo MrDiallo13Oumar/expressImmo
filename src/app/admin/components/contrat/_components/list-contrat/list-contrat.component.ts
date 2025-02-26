@@ -45,12 +45,12 @@ export class ListContratComponent {
   getContrat() {
     this.service.getall('contrat', 'readAll.php').subscribe({
       next: (reponse: any) => {
-        console.log('REPONSE SUCCESS : ', reponse);
+      //  //console.log('REPONSE SUCCESS : ', reponse);
         this.dataSource.data = reponse;
         this.infoContrat = reponse;
       },
       error: (err: any) => {
-        console.log('REPONSE ERROR : ', err);
+        //console.log('REPONSE ERROR : ', err);
       },
     });
   }
@@ -102,7 +102,7 @@ modify_by = localStorage.getItem('id_user');
     };
     // Convertir les données en FormData
     const formData = convertObjectInFormData(contratData);
-    console.log('contratInfo', contratData);
+    //console.log('contratInfo', contratData);
     // Envoi des données au backend
     this.service.create('public', 'update.php', formData).subscribe({
       next: (response) => {
@@ -126,7 +126,7 @@ modify_by = localStorage.getItem('id_user');
 
       },
       error: (err: any) => {
-        console.log(err);
+        //console.log(err);
       },
     });
   }
@@ -160,7 +160,7 @@ modify_by = localStorage.getItem('id_user');
               });
             },
             error: (err: any) => {
-              console.error('Error : ', err);
+              //console.error('Error : ', err);
             },
           });
           this.getContrat();

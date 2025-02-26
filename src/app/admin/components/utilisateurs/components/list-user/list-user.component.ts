@@ -48,13 +48,13 @@ ngOnInit() {
 getUtilisateur () {
    this.service.getall('authentification', 'readAll.php').subscribe({
      next: (reponse: any) => {
-        console.log('REPONSE SUCCESS : ', reponse)
+      //  //console.log('REPONSE SUCCESS : ', reponse)
        this.dataSource.data = reponse
-       console.log('Liste Utilisateur',this.dataSource.data);
+      // //console.log('Liste Utilisateur',this.dataSource.data);
 
      },
      error: (err: any) => {
-       console.log('REPONSE ERROR : ', err)
+       //console.log('REPONSE ERROR : ', err)
      }
    })
  }
@@ -64,7 +64,7 @@ getUtilisateur () {
      }).afterClosed()
       .subscribe((result) => {
         if (result?.event && result.event === "insert") {
-          // console.log(result.data);
+          // //console.log(result.data);
            const formData = convertObjectInFormData(result.data);
           this.dataSource.data.splice(0, this.dataSource.data.length);
           //Envoyer dans la Base
@@ -118,7 +118,7 @@ getUtilisateur () {
                       });
                     },
                     error: (err: any) => {
-                      console.error('Error : ', err);
+                      //console.error('Error : ', err);
                     },
                   });
                   this.getUtilisateur()

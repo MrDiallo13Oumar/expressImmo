@@ -56,10 +56,10 @@ export class DetailsPartenaireComponent {
     }
     infoPartenaire: any = {};
     getOnePartenaire() {
-      console.log('ID en GET : ', this.idPartenaire);
+      //console.log('ID en GET : ', this.idPartenaire);
       this.service.getOne('partenaire', 'getOne.php', this.idPartenaire).subscribe({
         next: (response: any) => {
-          console.log('Info : ', response);
+         // console.log('Info : ', response);
           this.infoPartenaire = response;
           this.Partenaire.patchValue(this.infoPartenaire);
           this.dataSource.data = this.infoPartenaire.proprietes || [] ;
@@ -73,7 +73,7 @@ export class DetailsPartenaireComponent {
     getPartenaire () {
       this.service.getall('partenaire', 'readAll.php').subscribe({
         next: (reponse: any) => {
-           console.log('REPONSE SUCCESS : ', reponse)
+         //  console.log('REPONSE SUCCESS : ', reponse)
           this.Society = reponse
         },
         error: (err: any) => {
@@ -85,7 +85,7 @@ export class DetailsPartenaireComponent {
       // Appliquez la transformation
 
       const formData = convertObjectInFormData(this.Partenaire.value);
-      console.log('Form Data Before Sending:', formData); // Vérifiez les données après la transformation
+     // console.log('Form Data Before Sending:', formData); // Vérifiez les données après la transformation
 
       this.service
         .update('partenaire', 'update.php', formData)

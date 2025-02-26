@@ -33,17 +33,17 @@ navigate(){
     }
     infoPropriete: any = {};
     getOnePropriete() {
-      console.log('ID en GET : ', this.idPropriete);
+      //console.log('ID en GET : ', this.idPropriete);
       this.service.getOne('propriete', 'getOne.php', this.idPropriete).subscribe({
         next: (response: any) => {
-          console.log('Info : ', response);
+          //console.log('Info : ', response);
           this.infoPropriete = response;
           // this.Propriete.patchValue(this.infoPropriete);
 
 
         },
         error: (error: any) => {
-          console.log('Error : ', error);
+          //console.log('Error : ', error);
         },
       });
     }

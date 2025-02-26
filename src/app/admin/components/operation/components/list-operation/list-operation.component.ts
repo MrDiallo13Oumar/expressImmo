@@ -57,25 +57,25 @@ ngOnInit() {
 getOperation () {
    this.service.getall('caisse', 'readAll.php').subscribe({
      next: (reponse: any) => {
-        console.log('REPONSE SUCCESS : ', reponse)
+       // console.log('REPONSE SUCCESS : ', reponse)
 
        this.dataSource.data = reponse ['transactions']
        this.infoCaisse = reponse['totaux'];
 
      },
      error: (err: any) => {
-       console.log('REPONSE ERROR : ', err)
+      // console.log('REPONSE ERROR : ', err)
      }
    })
  }
    getPaiement () {
      this.service.getall('paiement', 'readAll.php').subscribe({
        next: (reponse: any) => {
-          console.log('REPONSE SUCCESS : ', reponse)
+         // console.log('REPONSE SUCCESS : ', reponse)
          this.dataSource2.data = reponse
        },
        error: (err: any) => {
-         console.log('REPONSE ERROR : ', err)
+        // console.log('REPONSE ERROR : ', err)
        }
      })
    }
@@ -140,7 +140,7 @@ getOperation () {
                   });
                 },
                 error: (err: any) => {
-                  console.error('Error : ', err);
+                 // console.error('Error : ', err);
                 },
               });
               this.getOperation()

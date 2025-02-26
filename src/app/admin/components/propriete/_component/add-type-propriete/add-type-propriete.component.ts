@@ -51,7 +51,7 @@ ngOnInit(){
 getTypePropriete() {
   this.service.getall('typePropriete', 'readAll.php').subscribe({
     next: (reponse: any) => {
-      console.log('REPONSE SUCCESS : ', reponse)
+   //   console.log('REPONSE SUCCESS : ', reponse)
       this.dataSource.data = reponse
     },
     error: (err: any) => {

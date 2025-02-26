@@ -62,10 +62,8 @@ applyFilter (event: Event) {
  }
 }
 ngOnInit() {
-  this.getPropriete(),
-  this.getPartenaire();
-  this.getTypePropriete();
-  this.getQuartier();
+  this.getPropriete();
+
  }
 getPropriete () {
    this.service.getall('propriete', 'readAll.php').subscribe({
@@ -135,39 +133,39 @@ getPropriete () {
   });
 }
 
-  openDialog2() {
-    this.dialog.open(AddTypeProprieteComponent, {
-     }) .afterClosed()
-      .subscribe((result) => {
-        if (result?.event && result.event === "insert") {
-          // console.log(result.data);
-           const formData = convertObjectInFormData(result.data);
-          this.dataSource.data.splice(0, this.dataSource.data.length);
-          //Envoyer dans la Base
-          this.service.create('typePropriete','create.php', formData).subscribe({
-            next: (response) => {
-              this.snackBar.open("Type de Propriété enregistré avec succès !", "Okay", {
-                duration: 3000,
-                horizontalPosition: "right",
-                verticalPosition: "top",
-                panelClass: ['bg-success', 'text-white']
+  // openDialog2() {
+  //   this.dialog.open(AddTypeProprieteComponent, {
+  //    }) .afterClosed()
+  //     .subscribe((result) => {
+  //       if (result?.event && result.event === "insert") {
+  //         // console.log(result.data);
+  //          const formData = convertObjectInFormData(result.data);
+  //         this.dataSource.data.splice(0, this.dataSource.data.length);
+  //         //Envoyer dans la Base
+  //         this.service.create('typePropriete','create.php', formData).subscribe({
+  //           next: (response) => {
+  //             this.snackBar.open("Type de Propriété enregistré avec succès !", "Okay", {
+  //               duration: 3000,
+  //               horizontalPosition: "right",
+  //               verticalPosition: "top",
+  //               panelClass: ['bg-success', 'text-white']
 
-              })
-              this.getTypePropriete()
-             this.router.navigate(['/propriete/list-propriete'])
-            },
-            error: (err: any) => {
-              this.snackBar.open("Echec de l'ajout !", "Okay", {
-                duration: 3000,
-                horizontalPosition: "right",
-                verticalPosition: "top",
-                panelClass: ['bg-danger', 'text-white']
-              })
-            }
-          })
-        }
-     })
-  }
+  //             })
+  //             this.getTypePropriete()
+  //            this.router.navigate(['/propriete/list-propriete'])
+  //           },
+  //           error: (err: any) => {
+  //             this.snackBar.open("Echec de l'ajout !", "Okay", {
+  //               duration: 3000,
+  //               horizontalPosition: "right",
+  //               verticalPosition: "top",
+  //               panelClass: ['bg-danger', 'text-white']
+  //             })
+  //           }
+  //         })
+  //       }
+  //    })
+  // }
     // DELETE
       deleteFunction(id: any, table: string) {
         this.dialog
@@ -203,44 +201,7 @@ getPropriete () {
           });
       }
       typePropriete: any = []
-      getTypePropriete() {
-        this.service.getall('typePropriete', 'readAll.php').subscribe({
-          next: (reponse: any) => {
-            console.log('REPONSE SUCCESS : ', reponse)
-            this.typePropriete = reponse
-          },
-          error: (err: any) => {
-            console.log('REPONSE ERROR : ', err)
-          }
-        })
-      }
-      Partenaire: any = []
-      getPartenaire() {
-        this.service.getall('partenaire', 'readAll.php').subscribe({
-          next: (reponse: any) => {
-            console.log('REPONSE SUCCESS : ', reponse)
-            this.Partenaire = reponse
-
-          },
-          error: (err: any) => {
-            console.log('REPONSE ERROR : ', err)
-          }
-        })
-      }
-
-      Quartier: any = []
-      getQuartier() {
-        this.service.getall('quartier', 'readAll.php').subscribe({
-          next: (reponse: any) => {
-            console.log('REPONSE SUCCESS : ', reponse)
-            this.Quartier = reponse
-
-          },
-          error: (err: any) => {
-            console.log('REPONSE ERROR : ', err)
-          }
-        })
-      }
+   //
 
       saveDataPropriete() {
         if (this.Propriete.valid) {

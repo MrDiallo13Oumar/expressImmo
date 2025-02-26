@@ -42,9 +42,9 @@ export class InscriptionSiteComponent {
       this.getTypePropriete(),
       (this.idPropriete = this.activeroute.snapshot.params['id']),
       this.setProprieteId();
-    console.log("id propriete", this.idPropriete);
+    //console.log("id propriete", this.idPropriete);
 
-    console.log('This is init method');
+    //console.log('This is init method');
     this.scrollToTop()
 
 
@@ -119,10 +119,10 @@ export class InscriptionSiteComponent {
   saveDataReservations() {
     const formData = convertObjectInFormData(this.Reservation.value);
     if (this.Reservation.valid) {
-      console.log("formData", formData);
+      //console.log("formData", formData);
 
       this.reservationService.create('reservation', 'create.php', formData).subscribe((data) => {
-        console.log(data);
+        //console.log(data);
         this.data = data
         Swal.fire('Merci ...', 'De reserver notre propriete!', 'success')
         this.route.navigateByUrl("/home/propriete")
@@ -166,10 +166,10 @@ export class InscriptionSiteComponent {
         this.imagePreview = e.target.result
       }
       reader.readAsDataURL(file)
-      console.log("file", file);
+      //console.log("file", file);
 
       this.selectedFile = file
-      console.log("SelectedFile", file);
+      //console.log("SelectedFile", file);
 
     }
   }
@@ -177,11 +177,11 @@ export class InscriptionSiteComponent {
   getPropriete() {
     this.reservationService.getall('propriete', 'readAll.php').subscribe({
       next: (reponse: any) => {
-        console.log('REPONSE SUCCESS : ', reponse)
+        //console.log('REPONSE SUCCESS : ', reponse)
         this.dataSource.data = reponse
       },
       error: (err: any) => {
-        console.log('REPONSE ERROR : ', err)
+        //console.log('REPONSE ERROR : ', err)
       }
     })
   }
@@ -191,13 +191,13 @@ export class InscriptionSiteComponent {
     if (this.Propriete.valid) {
       // if (this.selectedFile) {
       //   // formData.append('file', this.selectedFile, this.selectedFile.name);
-      //   console.log("this.selectedFile", this.selectedFile.name);
+      //   //console.log("this.selectedFile", this.selectedFile.name);
       //   // this.Propriete.value.poster = this.selectedFile.name
 
       // }
       // if (this.selectedFile) {
       //   // formData.append('file', this.selectedFile, this.selectedFile.name);
-      //   console.log("this.selectedFile", this.selectedFile.name);
+      //   //console.log("this.selectedFile", this.selectedFile.name);
       //   // this.Propriete.value.poster = this.selectedFile.name
 
       // }
@@ -205,11 +205,11 @@ export class InscriptionSiteComponent {
       const formData = convertObjectInFormData(this.Propriete.value);
       // Si un fichier a été sélectionné, ajoute-le à FormData
 
-      console.log("propriete", this.Propriete.value.poster);
+      //console.log("propriete", this.Propriete.value.poster);
 
       if (this.selectedFile) {
         formData.append('file', this.selectedFile, this.selectedFile.name);
-        console.log("this.selectedFile", this.selectedFile.name);
+        //console.log("this.selectedFile", this.selectedFile.name);
         // this.Propriete.value.poster = this.selectedFile.name
 
       }
@@ -224,7 +224,7 @@ export class InscriptionSiteComponent {
             verticalPosition: "top",
             panelClass: ['bg-success', 'text-white']
           });
-          console.log("response",response);
+          //console.log("response",response);
           this.getPropriete();
         },
         error: (err: any) => {
@@ -246,11 +246,11 @@ export class InscriptionSiteComponent {
   getTypePropriete() {
     this.reservationService.getall('typePropriete', 'readAll.php').subscribe({
       next: (reponse: any) => {
-        console.log('typePropriete : ', reponse)
+        //console.log('typePropriete : ', reponse)
         this.typePropriete = reponse
       },
       error: (err: any) => {
-        console.log('REPONSE ERROR : ', err)
+        //console.log('REPONSE ERROR : ', err)
       }
     })
   }
@@ -258,12 +258,12 @@ export class InscriptionSiteComponent {
   getPartenaire() {
     this.reservationService.getall('partenaire', 'readAll.php').subscribe({
       next: (reponse: any) => {
-        console.log('Partenaire: ', reponse)
+        //console.log('Partenaire: ', reponse)
         this.Partenaire = reponse
 
       },
       error: (err: any) => {
-        console.log('REPONSE ERROR : ', err)
+        //console.log('REPONSE ERROR : ', err)
       }
     })
   }
@@ -272,12 +272,12 @@ export class InscriptionSiteComponent {
   getQuartier() {
     this.reservationService.getall('quartier', 'readAll.php').subscribe({
       next: (reponse: any) => {
-        console.log('Quartier : ', reponse)
+        //console.log('Quartier : ', reponse)
         this.Quartier = reponse
 
       },
       error: (err: any) => {
-        console.log('REPONSE ERROR : ', err)
+        //console.log('REPONSE ERROR : ', err)
       }
     })
   }

@@ -40,12 +40,12 @@ export class AddContratComponent implements OnInit{
   getReservation () {
     this.service.getall('reservation', 'readAll.php').subscribe({
       next: (reponse: any) => {
-         console.log('REPONSE SUCCESS : ', reponse)
+         //console.log('REPONSE SUCCESS : ', reponse)
         this.Reservation = reponse
 
       },
       error: (err: any) => {
-        console.log('REPONSE ERROR : ', err)
+        //console.log('REPONSE ERROR : ', err)
       }
     })
   }

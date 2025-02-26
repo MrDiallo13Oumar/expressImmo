@@ -10,15 +10,15 @@ import { convertObjectInFormData } from 'src/app/app.component';
   styleUrls: ['./rapport.component.scss']
 })
 export class RapportComponent implements OnInit {
-  
+
   // Définition du formulaire
   reportForm = new FormGroup({
     date_debut: new FormControl(''),
     date_fin: new FormControl(''),
-   
+
   });
 
-  
+
 
   // Tableau des données récupérées
   dataSource: any[] = [];
@@ -40,7 +40,7 @@ export class RapportComponent implements OnInit {
     const formattedData = {
       date_debut: formValues.date_debut instanceof Date ? this.formatDate(formValues.date_debut) : formValues.date_debut,
       date_fin: formValues.date_fin instanceof Date ? this.formatDate(formValues.date_fin) : formValues.date_fin,
-      
+
     };
 
     const formData = convertObjectInFormData(formattedData);
@@ -49,7 +49,7 @@ export class RapportComponent implements OnInit {
 
     this.service.create('caisse', 'getRapportByDate.php', formData).subscribe({
       next: (reponse: any) => {
-        console.log('Réponse reçue : ', reponse);
+      //  console.log('Réponse reçue : ', reponse);
         this.dataSource = reponse; // Mise à jour du tableau avec les données récupérées
 
         if (reponse && reponse.message) {

@@ -42,12 +42,12 @@ export class AddLocataireComponent {
     getPropriete () {
       this.service.getall('propriete', 'readAll.php').subscribe({
         next: (reponse: any) => {
-           console.log('REPONSE SUCCESS : ', reponse)
+           //console.log('REPONSE SUCCESS : ', reponse)
           this.Propriete = reponse
 
         },
         error: (err: any) => {
-          console.log('REPONSE ERROR : ', err)
+          //console.log('REPONSE ERROR : ', err)
         }
       })
     }

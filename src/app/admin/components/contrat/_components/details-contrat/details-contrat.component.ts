@@ -71,19 +71,19 @@ export class DetailsContratComponent {
   infoContrat: any = {};
 
   getOneContrat() {
-    console.log('ID en GET : ', this.idContrat);
+    //console.log('ID en GET : ', this.idContrat);
     this.service.getOne('contrat', 'getOne.php', this.idContrat).subscribe({
       next: (response: any) => {
-        console.log('Info : ', response);
+        //console.log('Info : ', response);
         this.infoContrat = response;
         // Remplir les données du tableau avec les opérations
         this.dataSource.data = Array.isArray(this.infoContrat.paiements) ? this.infoContrat.paiements : [this.infoContrat.paiements];
 
-        console.log('tableau' ,this.infoContrat.paiements);
+        //console.log('tableau' ,this.infoContrat.paiements);
 
       },
       error: (error: any) => {
-        console.log('Error : ', error);
+        //console.log('Error : ', error);
       },
     });
   }
@@ -98,7 +98,7 @@ export class DetailsContratComponent {
             ...result.data,
             contrat_id: this.infoContrat.id,
           };
-          // console.log(result.data);
+          // //console.log(result.data);
           const formData = convertObjectInFormData(PaiementData);
           this.dataSource.data.splice(0, this.dataSource.data.length);
           //Envoyer dans la Base
@@ -154,7 +154,7 @@ export class DetailsContratComponent {
               });
             },
             error: (err: any) => {
-              console.error('Error : ', err);
+              //console.error('Error : ', err);
             },
           });
           this.getOneContrat();
@@ -163,10 +163,10 @@ export class DetailsContratComponent {
   }
   printContract() {
     const printContent = document.querySelector('.contract-content');
-  
+
     if (printContent) {
       const printWindow = window.open('', '', 'height=900,width=800');
-  
+
       if (printWindow) {
         printWindow.document.write(`
           <html>
@@ -189,7 +189,7 @@ export class DetailsContratComponent {
           </body>
           </html>
         `);
-  
+
         printWindow.document.close();
       } else {
         alert("Impossible d'ouvrir la fenêtre d'impression. Vérifiez que les pop-ups sont autorisées.");
@@ -198,17 +198,17 @@ export class DetailsContratComponent {
       alert("Le contenu du contrat est introuvable.");
     }
   }
- 
+
   // @ViewChild('contratContent') contratContent!: ElementRef;
 
   // printContract(){
-    
+
   //   if (this.contratContent) {
   //     this.printService.imprimerDiv(this.contratContent.nativeElement.innerHTML);
   //   } else {
   //     alert("Le contenu du contrat est introuvable.");
   //   }
-  // } 
+  // }
 
 
 }

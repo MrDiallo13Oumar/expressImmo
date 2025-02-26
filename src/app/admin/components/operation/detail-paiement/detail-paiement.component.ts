@@ -20,14 +20,14 @@ export class DetailPaiementComponent {
   }
   infoPaiement: any = {};
   getOnePaiement() {
-    console.log('ID en GET : ', this.idPaiement);
+    //console.log('ID en GET : ', this.idPaiement);
     this.service.getOne('paiement', 'getOne.php', this.idPaiement).subscribe({
       next: (response: any) => {
-        console.log('Info : ', response);
+        //console.log('Info : ', response);
         this.infoPaiement = response;
       },
       error: (error: any) => {
-        console.log('Error : ', error);
+        //console.log('Error : ', error);
       },
     });
   }

@@ -19,9 +19,9 @@ export class ContactComponent {
 
   })
 
- 
+
   ngOnit(){
-     
+
 
 
   }
@@ -39,8 +39,8 @@ export class ContactComponent {
   saveDataContact() {
     if (this.Contact.valid) {
       const formData = convertObjectInFormData(this.Contact.value);
-      console.log("Data", this.Contact.value);
-      
+      //console.log("Data", this.Contact.value);
+
       // Envoie les données au serveur
       this.service.create('contactez_nous', 'create.php', formData).subscribe({
 
@@ -52,7 +52,7 @@ export class ContactComponent {
             verticalPosition: "top",
             panelClass: ['bg-success', 'text-white']
           });
-          console.log("response", response);
+          //console.log("response", response);
           this.Contact.reset();
         },
         error: (err: any) => {
