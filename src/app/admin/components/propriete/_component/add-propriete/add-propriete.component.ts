@@ -170,48 +170,101 @@ export class AddProprieteComponent {
       });
   }
 
-  saveDataPropriete() {
-    if (this.Propriete.valid) {
-      const formData = convertObjectInFormData(this.Propriete.value);
+  // saveDataPropriete() {
+  //   if (this.Propriete.valid) {
+  //     const formData = convertObjectInFormData(this.Propriete.value);
 
-      // Ajout de l'image principale
-      if (this.selectedFile) {
-        formData.append('file', this.selectedFile, this.selectedFile.name);
-      }
+  //     // Ajout de l'image principale
+  //     if (this.selectedFile) {
+  //       formData.append('file', this.selectedFile, this.selectedFile.name);
+  //     }
 
-      // Ajout de toutes les images de la galerie
-      if (this.selectedFiles.length > 0) {
-        this.selectedFiles.forEach((file) => {
-          formData.append('files[]', file, file.name);
-        });
-      }
+  //     // Ajout de toutes les images de la galerie
+  //     if (this.selectedFiles.length > 0) {
+  //       this.selectedFiles.forEach((file) => {
+  //         formData.append('files[]', file, file.name);
+  //       });
+  //     }
 
-      // Envoie les données au serveur
-      this.service.create('propriete', 'create.php', formData).subscribe({
-        next: (response) => {
-          this.snackBar.open(response, "Okay", {
-            duration: 3000,
-            horizontalPosition: "right",
-            verticalPosition: "top",
-            panelClass: ['bg-success', 'text-white']
-          });
-          this.router.navigate(['/propriete/list-propriete']);
-          this.getPropriete();
-          this.Propriete.reset();
-          this.imagePreview = null;
-          this.imagePreviews = [];
-          this.selectedFile = null;
-          this.selectedFiles = [];
-        },
-        error: (err: any) => {
-          this.snackBar.open("Erreur lors de l'ajout !", "Okay", {
-            duration: 3000,
-            horizontalPosition: "right",
-            verticalPosition: "top",
-            panelClass: ['bg-danger', 'text-white']
-          });
-        }
+  //     // Envoie les données au serveur
+  //     this.service.create('propriete', 'create.php', formData).subscribe({
+  //       next: (response) => {
+  //         this.snackBar.open(response, "Okay", {
+  //           duration: 3000,
+  //           horizontalPosition: "right",
+  //           verticalPosition: "top",
+  //           panelClass: ['bg-success', 'text-white']
+  //         });
+  //         this.router.navigate(['/propriete/list-propriete']);
+  //         this.getPropriete();
+  //         this.Propriete.reset();
+  //         this.imagePreview = null;
+  //         this.imagePreviews = [];
+  //         this.selectedFile = null;
+  //         this.selectedFiles = [];
+  //       },
+  //       error: (err: any) => {
+  //         this.snackBar.open("Erreur lors de l'ajout !", "Okay", {
+  //           duration: 3000,
+  //           horizontalPosition: "right",
+  //           verticalPosition: "top",
+  //           panelClass: ['bg-danger', 'text-white']
+  //         });
+  //       }
+  //     });
+  //   }
+  // }
+  isLoading = false; // Variable pour gérer l'état du chargement
+
+saveDataPropriete() {
+  if (this.Propriete.valid) {
+    this.isLoading = true; // Active le chargement
+    const formData = convertObjectInFormData(this.Propriete.value);
+
+    // Ajout de l'image principale
+    if (this.selectedFile) {
+      formData.append('file', this.selectedFile, this.selectedFile.name);
+    }
+
+    // Ajout des images de la galerie
+    if (this.selectedFiles.length > 0) {
+      this.selectedFiles.forEach((file) => {
+        formData.append('files[]', file, file.name);
       });
     }
+
+    // Envoie des données au serveur
+    this.service.create('propriete', 'create.php', formData).subscribe({
+      next: (response) => {
+        this.isLoading = false; // Désactive le chargement
+
+        this.snackBar.open(response, "Okay", {
+          duration: 3000,
+          horizontalPosition: "right",
+          verticalPosition: "top",
+          panelClass: ['bg-success', 'text-white']
+        });
+
+        this.router.navigate(['/propriete/list-propriete']);
+        this.getPropriete();
+        this.Propriete.reset();
+        this.imagePreview = null;
+        this.imagePreviews = [];
+        this.selectedFile = null;
+        this.selectedFiles = [];
+      },
+      error: (err: any) => {
+        this.isLoading = false; // Désactive le chargement en cas d'erreur
+
+        this.snackBar.open("Erreur lors de l'ajout !", "Okay", {
+          duration: 3000,
+          horizontalPosition: "right",
+          verticalPosition: "top",
+          panelClass: ['bg-danger', 'text-white']
+        });
+      }
+    });
   }
+}
+
 }
