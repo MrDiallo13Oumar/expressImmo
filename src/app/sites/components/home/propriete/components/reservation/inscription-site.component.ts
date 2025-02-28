@@ -14,7 +14,7 @@ import Swal from 'sweetalert2'
 })
 export class InscriptionSiteComponent {
   idPropriete: any;
-  email = "expressimmo@gmail.com"
+  email = "expressimmo224@gmail.com"
   constructor(private snackBar: MatSnackBar, private route: Router, private reservationService: ReservationService, private activeroute: ActivatedRoute) { }
 
   get telephoneControl() {
@@ -26,7 +26,7 @@ export class InscriptionSiteComponent {
     nom: new FormControl(''),
     prenom: new FormControl(''),
     telephone: new FormControl('', Validators.required),
-    adresse: new FormControl(''),
+    email: new FormControl(''),
     statut: new FormControl('en attente'),
     source: new FormControl('en ligne'),
     wifi: new FormControl(''),
@@ -122,8 +122,8 @@ export class InscriptionSiteComponent {
       //console.log("formData", formData);
 
       this.reservationService.create('reservation', 'create.php', formData).subscribe((data) => {
-        //console.log(data);
         this.data = data
+        console.log(data);
         Swal.fire('Merci ...', 'De reserver notre propriete!', 'success')
         this.route.navigateByUrl("/home/propriete")
       }

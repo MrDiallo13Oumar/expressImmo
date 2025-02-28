@@ -46,7 +46,7 @@ export class ContactComponent {
 
         next: (response) => {
 
-          this.snackBar.open(response, "Okay", {
+          this.snackBar.open(response.message, "Okay", {
             duration: 3000,
             horizontalPosition: "right",
             verticalPosition: "top",

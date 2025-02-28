@@ -50,14 +50,14 @@
 
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="adresse" formControlName="adresse" required>
-                                        <label for="adresse">Votre Adresse</label>
+                                        <input type="email" class="form-control" id="adresse" formControlName="adresse" required>
+                                        <label for="adresse">Votre Email</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <input type="text" class="form-control" id="telephone" formControlName="telephone" required>
-                                        <label for="telephone">Votre numéro de téléphone WhatsApp</label>
+                                        <label for="telephone">Votre numéro WhatsApp</label>
                                         <div *ngIf="telephoneControl?.invalid && (telephoneControl?.dirty || telephoneControl?.touched)" class="text-danger">
                                             Le numéro de téléphone WhatsApp est requis.
                                         </div>
