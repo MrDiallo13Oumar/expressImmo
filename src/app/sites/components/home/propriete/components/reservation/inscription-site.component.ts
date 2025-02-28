@@ -26,7 +26,7 @@ export class InscriptionSiteComponent {
     nom: new FormControl(''),
     prenom: new FormControl(''),
     telephone: new FormControl('', Validators.required),
-    adresse: new FormControl(''),
+    email: new FormControl(''),
     statut: new FormControl('en attente'),
     source: new FormControl('en ligne'),
     wifi: new FormControl(''),
@@ -122,7 +122,7 @@ export class InscriptionSiteComponent {
       //console.log("formData", formData);
 
       this.reservationService.create('reservation', 'create.php', formData).subscribe((data) => {
-        //console.log(data);
+        console.log(data);
         this.data = data
         Swal.fire('Merci ...', 'De reserver notre propriete!', 'success')
         this.route.navigateByUrl("/home/propriete")
@@ -145,7 +145,7 @@ export class InscriptionSiteComponent {
     partenaire_id: new FormControl(''),
     quartier_id: new FormControl(''),
     reference: new FormControl(''),
-    adresse: new FormControl(''),
+    email: new FormControl(''),
     descriptions: new FormControl(''),
     etat: new FormControl(''),
     disponible: new FormControl(''),
