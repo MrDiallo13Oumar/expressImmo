@@ -28,7 +28,12 @@ export class HomeService {
    getall (api: string, suffixUrl: string) {
     return this.http.get<any[]>(`${BASE_URL}${api}/${suffixUrl}`)
   }
-
+   // Récupération générique des données
+  //  getData(table: string, params: any = {}) {
+  //   return this.http.get(`${this.apiUrl}`, {
+  //     params: { table, ...params },
+  //   });
+  // }
   // GET
 
   getallParams(api: string, suffixUrl: string, id_: any,idFacture :any) {

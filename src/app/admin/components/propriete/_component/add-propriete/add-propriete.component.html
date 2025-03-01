@@ -23,6 +23,8 @@
         <div class="col mb-4 justify-content-center  ">
           <div class="card shadow-sm rounded">
             <div class="card-body">
+              <mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+
               <h4 class="fw-bold text-dark text-center mb-4">Ajouter une Propriété</h4>
               <form [formGroup]="Propriete" class="w-100">
                 <!-- Sélection du quartier et type de propriété -->
@@ -135,7 +137,11 @@
 
             </div>
             <div class="card-footer d-flex justify-content-center">
-              <button type="submit" class="btn btn-primary btn-lg" (click)="saveDataPropriete()">Ajouter</button>
+              <button mat-raised-button color="primary" [disabled]="isLoading" (click)="saveDataPropriete()">
+                <mat-progress-spinner *ngIf="isLoading" diameter="20" mode="indeterminate"></mat-progress-spinner>
+                <span *ngIf="!isLoading">Enregistrer</span>
+              </button>
+
               <button type="reset" class="btn btn-fill-secondary btn-lg ms-3" routerLink="/propriete/list-propriete">Annuler</button>
             </div>
           </div>

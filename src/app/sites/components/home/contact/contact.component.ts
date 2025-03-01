@@ -31,7 +31,7 @@ export class ContactComponent {
     private snackBar: MatSnackBar
   ) { }
 
-  email = "expressimmo@gmail.com"
+  email = "expressimmo224@gmail.com"
   scrollToTop(): void {
     window.scrollTo({ top: 0, behavior: 'smooth' }); // Le 'smooth' permet un défilement fluide
   }

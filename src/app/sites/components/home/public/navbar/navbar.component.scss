@@ -32,3 +32,14 @@
 .navbar-nav .nav-link.active-navbar-nav:hover::after {
     width: 100%;
 }
+@media (max-width: 991px) { /* Quand l'écran est plus petit que 'lg' */
+    .logo-text {
+        display: none !important; /* Cache uniquement le texte */
+    }
+
+    .logo-img {
+        display: block !important; /* Assure que le logo reste visible */
+        max-width: 100px; /* Ajuste la taille si nécessaire */
+    }
+}
+

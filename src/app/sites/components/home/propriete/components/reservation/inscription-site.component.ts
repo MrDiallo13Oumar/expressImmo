@@ -122,6 +122,7 @@ export class InscriptionSiteComponent {
       //console.log("formData", formData);
 
       this.reservationService.create('reservation', 'create.php', formData).subscribe((data) => {
+
         this.data = data
         console.log(data);
         Swal.fire('Merci ...', 'De reserver notre propriete!', 'success')
@@ -145,7 +146,7 @@ export class InscriptionSiteComponent {
     partenaire_id: new FormControl(''),
     quartier_id: new FormControl(''),
     reference: new FormControl(''),
-    adresse: new FormControl(''),
+    email: new FormControl(''),
     descriptions: new FormControl(''),
     etat: new FormControl(''),
     disponible: new FormControl(''),
