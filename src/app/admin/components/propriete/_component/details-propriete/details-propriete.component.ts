@@ -45,17 +45,17 @@ export class DetailsProprieteComponent {
   }
   infoPropriete: any = {};
   getOnePropriete() {
-    console.log('ID en GET : ', this.idPropriete);
+    //console.log('ID en GET : ', this.idPropriete);
     this.service.getOne('propriete', 'getOne.php', this.idPropriete).subscribe({
       next: (response: any) => {
-       // console.log('Info : ', response);
+       // //console.log('Info : ', response);
         this.infoPropriete = response;
         this.Propriete.patchValue(this.infoPropriete);
 
 
       },
       error: (error: any) => {
-        console.log('Error : ', error);
+        //console.log('Error : ', error);
       },
     });
   }
@@ -78,12 +78,12 @@ export class DetailsProprieteComponent {
   getPartenaire () {
     this.service.getall('partenaire', 'readAll.php').subscribe({
       next: (reponse: any) => {
-      //   console.log('REPONSE SUCCESS : ', reponse)
+      //   //console.log('REPONSE SUCCESS : ', reponse)
         this.Partenaire = reponse
 
       },
       error: (err: any) => {
-        console.log('REPONSE ERROR : ', err)
+        //console.log('REPONSE ERROR : ', err)
       }
     })
   }
@@ -92,12 +92,12 @@ export class DetailsProprieteComponent {
   getQuartier () {
     this.service.getall('quartier', 'readAll.php').subscribe({
       next: (reponse: any) => {
-     //    console.log('REPONSE SUCCESS : ', reponse)
+     //    //console.log('REPONSE SUCCESS : ', reponse)
         this.Quartier = reponse
 
       },
       error: (err: any) => {
-        console.log('REPONSE ERROR : ', err)
+        //console.log('REPONSE ERROR : ', err)
       }
     })
   }
@@ -105,14 +105,14 @@ export class DetailsProprieteComponent {
          // Appliquez la transformation
 
          const formData = convertObjectInFormData(this.Propriete.value);
-         console.log('Form Data Before Sending:', formData); // Vérifiez les données après la transformation
+         //console.log('Form Data Before Sending:', formData); // Vérifiez les données après la transformation
 
          this.service
            .update('propriete', 'update.php', formData)
            .subscribe({
              next: (response: any) => {
                this.infoPropriete = response;
-               console.log('Modification:', this.infoPropriete);
+               //console.log('Modification:', this.infoPropriete);
                this.snackBar.open('Modification effectuée avec succès !', 'Okay', {
                  duration: 3000,
                  horizontalPosition: 'right',
@@ -123,7 +123,7 @@ export class DetailsProprieteComponent {
 
              },
              error: (error: any) => {
-               console.log('Error : ', error);
+               //console.log('Error : ', error);
                this.snackBar.open('Modification impossible !', 'Okay', {
                  duration: 3000,
                  horizontalPosition: 'right',

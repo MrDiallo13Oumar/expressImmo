@@ -68,11 +68,11 @@ ngOnInit() {
 getPropriete () {
    this.service.getall('propriete', 'readAll.php').subscribe({
      next: (reponse: any) => {
-        console.log('REPONSE SUCCESS : ', reponse)
+      //  console.log('REPONSE SUCCESS : ', reponse)
        this.dataSource.data = reponse
      },
      error: (err: any) => {
-       console.log('REPONSE ERROR : ', err)
+     //  console.log('REPONSE ERROR : ', err)
      }
    })
  }
@@ -88,10 +88,10 @@ getPropriete () {
       this.imagePreview = e.target.result
     }
     reader.readAsDataURL(file)
-    console.log("file", file);
+  //  console.log("file", file);
 
     this.selectedFile = file
-    console.log("SelectedFile", file);
+  //  console.log("SelectedFile", file);
 
   }
 }
@@ -193,7 +193,7 @@ getPropriete () {
                   });
                 },
                 error: (err: any) => {
-                  console.error('Error : ', err);
+                 // console.error('Error : ', err);
                 },
               });
               this.getPropriete()
@@ -212,7 +212,7 @@ getPropriete () {
 
           if (this.selectedFile) {
             formData.append('file', this.selectedFile, this.selectedFile.name);
-            console.log("this.selectedFile", this.selectedFile.name);
+           // console.log("this.selectedFile", this.selectedFile.name);
             // this.Propriete.value.poster = this.selectedFile.name
 
           }
