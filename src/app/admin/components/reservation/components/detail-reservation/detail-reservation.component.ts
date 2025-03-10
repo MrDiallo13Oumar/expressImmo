@@ -68,7 +68,8 @@ export class DetailReservationComponent {
         const contratData = {
           reservation_id: this.infoReservation.id,
           statut: 'actif',
-         caution : this.Contrat.value.caution
+         caution : this.Contrat.value.caution,
+        created_by : this.created_by
 
         };
 
@@ -105,7 +106,7 @@ export class DetailReservationComponent {
           statut: 'confirmée',
          modify_by:this.modify_by,
          table:'reservations'
-
+        
         }
       //  console.log("Données envoyées :", constReservationData);
         const formData2 = convertObjectInFormData(constReservationData);
