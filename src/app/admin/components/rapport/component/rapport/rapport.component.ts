@@ -11,74 +11,161 @@ import { convertObjectInFormData } from 'src/app/app.component';
 })
 export class RapportComponent implements OnInit {
 
-  // Définition du formulaire
   reportForm = new FormGroup({
     date_debut: new FormControl(''),
     date_fin: new FormControl(''),
-
   });
 
-
-
-  // Tableau des données récupérées
   dataSource: any[] = [];
+  isRapport : boolean=true
+  hasPaiementType: boolean = false;
 
   constructor(
     private service: RapportService,
     private snackBar: MatSnackBar
   ) {}
 
-  ngOnInit() {}
-
-  /**
-   * Génère le rapport en envoyant les critères au backend
-   */
-  generateReport() {
-    const formValues: any = this.reportForm.value;
-
-    // Formater les données avant envoi
-    const formattedData = {
-      date_debut: formValues.date_debut instanceof Date ? this.formatDate(formValues.date_debut) : formValues.date_debut,
-      date_fin: formValues.date_fin instanceof Date ? this.formatDate(formValues.date_fin) : formValues.date_fin,
-
-    };
-
-    const formData = convertObjectInFormData(formattedData);
-
-    console.log('Données envoyées :', formData);
-
-    this.service.create('caisse', 'getRapportByDate.php', formData).subscribe({
-      next: (reponse: any) => {
-      //  console.log('Réponse reçue : ', reponse);
-        this.dataSource = reponse; // Mise à jour du tableau avec les données récupérées
-
-        if (reponse && reponse.message) {
-          this.snackBar.open(reponse.message, "Okay", {
-            duration: 3000,
-            horizontalPosition: "right",
-            verticalPosition: "top",
-            panelClass: ['bg-success', 'text-white']
-          });
-        }
-      },
-      error: (err: any) => {
-        console.log('Erreur : ', err);
-
-        const errorMessage = err.error?.message || "Une erreur s'est produite lors de la génération du rapport.";
-
-        this.snackBar.open(errorMessage, "Okay", {
-          duration: 3000,
-          horizontalPosition: "right",
-          verticalPosition: "top",
-          panelClass: ['bg-danger', 'text-white']
-        });
-      }
-    });
+  ngOnInit() {
+    this.hasPaiementType = this.dataSource.some(el => el.type === 'paiement');
+  
   }
 
-  /**
-   * Applique un filtre sur les données affichées
-   */
+generateReport() {
+  const formValues: any = this.reportForm.value;
+  const formattedData = {
+    date_debut: formValues.date_debut instanceof Date ? this.formatDate(formValues.date_debut) : formValues.date_debut,
+    date_fin: formValues.date_fin instanceof Date ? this.formatDate(formValues.date_fin) : formValues.date_fin,
+  };
+
+  const formData = convertObjectInFormData(formattedData);
+
+  this.service.create('caisse', 'getRapportByDate.php', formData).subscribe({
+    next: (reponse: any) => {
+      this.dataSource = this.normalizeData(reponse);
+
+      // Réinitialiser hasPaiementType lors de la génération du rapport
+      this.isRapport=true
+      this.hasPaiementType = false;
+
+      // Affichage d'un snack bar de succès
+      const message = reponse?.message || 'Rapport généré avec succès!';
+      this.snackBar.open(message, 'Fermer', {
+        duration: 3000,
+        verticalPosition: 'top',
+        horizontalPosition: 'center'
+      });
+    },
+    error: (err: any) => {
+      const errorMessage = err?.error?.message || "Échec de generation du rapport !";
+      // Affichage d'un snack bar d'erreur
+      this.snackBar.open('Pas Operation entre ces Date', 'Fermer', {
+        duration: 5000,
+        verticalPosition: 'top',
+        horizontalPosition: 'center'
+      });
+      console.log('Erreur : ', err);
+    }
+  });
+}
+
+generateReservation() {
+  const formValues: any = this.reportForm.value;
+  const formattedData = {
+    date_debut: formValues.date_debut instanceof Date ? this.formatDate(formValues.date_debut) : formValues.date_debut,
+    date_fin: formValues.date_fin instanceof Date ? this.formatDate(formValues.date_fin) : formValues.date_fin,
+  };
+
+  const formData = convertObjectInFormData(formattedData);
+
+  this.service.create('caisse', 'getReservationByDate.php', formData).subscribe({
+    next: (reponse: any) => {
+      this.dataSource = reponse;
+
+      // Si les données sont des réservations, ajuster le titre des colonnes
+      this.hasPaiementType = false; // Ce n'est pas un type de paiement
+      const isReservationData = this.dataSource.length > 0 && this.dataSource[0].type === 'reservations';
+      if (isReservationData) {
+        this.hasPaiementType = true;
+        this.isRapport=false
+      }
+
+      // Affichage d'un snack bar de succès
+      const message = reponse?.message || 'Réservation récupérée avec succès!';
+      this.snackBar.open(message, 'Fermer', {
+        duration: 3000,
+        verticalPosition: 'top',
+        horizontalPosition: 'center'
+      });
+    },
+    error: (err: any) => {
+      const errorMessage = err?.error?.message || "Échec de generation du rapport !";
+      // Affichage d'un snack bar d'erreur
+      this.snackBar.open('Pas Operation entre ces Date', 'Fermer', {
+        duration: 5000,
+        verticalPosition: 'top',
+        horizontalPosition: 'center'
+      });
+      console.log('Erreur : ', err);
+    }
+  });
+}
+
+generateContrat() {
+  const formValues: any = this.reportForm.value;
+  const formattedData = {
+    date_debut: formValues.date_debut instanceof Date ? this.formatDate(formValues.date_debut) : formValues.date_debut,
+    date_fin: formValues.date_fin instanceof Date ? this.formatDate(formValues.date_fin) : formValues.date_fin,
+  };
+
+  const formData = convertObjectInFormData(formattedData);
+
+  this.service.create('caisse', 'getContratByDate.php', formData).subscribe({
+    next: (reponse: any) => {
+      this.dataSource = reponse;
+
+      // Si les données sont des Contrats, ajuster le titre des colonnes
+      this.hasPaiementType = false;  // Ce n'est pas un type de paiement
+      const isContratData = this.dataSource.length > 0 && this.dataSource[0].type === 'contrats';
+      if (isContratData) {
+        this.hasPaiementType = true;
+        this.isRapport=false
+      }
+
+      // Affichage d'un snack bar de succès
+      const message = reponse?.message || 'Contrat récupéré avec succès!';
+      this.snackBar.open(message, 'Fermer', {
+        duration: 3000,
+        verticalPosition: 'top',
+        horizontalPosition: 'center'
+      });
+    },
+    error: (err: any) => {
+      // Affichage d'un snack bar d'erreur
+      const errorMessage = err?.error?.message || "Échec de generation du rapport !";
+      this.snackBar.open('Pas Operation entre ces Date', 'Fermer', {
+        duration: 5000,
+        verticalPosition: 'top',
+        horizontalPosition: 'center'
+      });
+      console.log('Erreur : ', err);
+    }
+  });
+}
+
+
+  private normalizeData(data: any[]): any[] {
+    return data.map(item => ({
+      type: item.type,
+      montant: item.montant,
+      motif: item.motif || item.type_transaction,
+      type_transaction: item.type_transaction,
+      created_by: item.created_by,
+      mode_paiement: item.mode_paiement || 'N/A',
+      propriete_reference: item.propriete_reference || '',
+      reservation: item.reservation || '',
+    }));
+  }
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
     this.dataSource = this.dataSource.filter((item: any) =>
@@ -89,9 +176,6 @@ export class RapportComponent implements OnInit {
     );
   }
 
-  /**
-   * Fonction pour imprimer le rapport
-   */
   printTable() {
     const printContent = document.getElementById('maTable')?.outerHTML;
     const originalContent = document.body.innerHTML;
@@ -109,9 +193,6 @@ export class RapportComponent implements OnInit {
     document.body.innerHTML = originalContent;
   }
 
-  /**
-   * Formate une date au format YYYY-MM-DD
-   */
   private formatDate(date: Date): string {
     return date.toISOString().split('T')[0];
   }
