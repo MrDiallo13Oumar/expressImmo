@@ -1,78 +1,100 @@
 <div class="content-body">
   <div class="container-fluid">
-    <div class="card col rounded p-3 mt-4">
+    <div class="card shadow-lg rounded-3 mt-4 bg-white">
       <div class="card-body">
-        <h4 class="card-title mb-3">Rapport des Opérations</h4>
-        <div class=" mb-2 d-flex justify-content-center">
-          <button type="button" class="btn btn-danger btn-sm text-white px-4 d-flex align-items-center" (click)="printTable()">
+        <h4 class="card-title mb-4 text-dark fw-bold text-center">📊 Rapport des Opérations</h4>
+
+        <div class="d-flex justify-content-center mb-3">
+          <button type="button" class="btn btn-danger text-white px-4 d-flex align-items-center shadow-sm"
+            (click)="imprimerRapport()">
             <mat-icon class="me-2">print</mat-icon> Imprimer
           </button>
         </div>
-        <div class="mt-3 d-flex justify-content-between align-items-center gap-3">
-          <form [formGroup]="reportForm" class="d-flex w-100">
-            <mat-form-field appearance="outline" class="flex-fill">
-              <mat-label>Date de début</mat-label>
-              <input matInput [matDatepicker]="startPicker" placeholder="Choisir une date" formControlName="date_debut">
-              <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
-              <mat-datepicker #startPicker></mat-datepicker>
-            </mat-form-field>
 
-            <mat-form-field appearance="outline" class="flex-fill">
-              <mat-label>Date de fin</mat-label>
-              <input matInput [matDatepicker]="endPicker" placeholder="Choisir une date" formControlName="date_fin">
-              <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
-              <mat-datepicker #endPicker></mat-datepicker>
-            </mat-form-field>
-          </form>
+        <form [formGroup]="reportForm" class="d-flex gap-3 w-100">
+          <mat-form-field appearance="outline" class="flex-fill">
+            <mat-label>Date de début</mat-label>
+            <input matInput [matDatepicker]="startPicker" placeholder="Choisir une date" formControlName="date_debut">
+            <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+            <mat-datepicker #startPicker></mat-datepicker>
+          </mat-form-field>
 
-       
+          <mat-form-field appearance="outline" class="flex-fill">
+            <mat-label>Date de fin</mat-label>
+            <input matInput [matDatepicker]="endPicker" placeholder="Choisir une date" formControlName="date_fin">
+            <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+            <mat-datepicker #endPicker></mat-datepicker>
+          </mat-form-field>
+        </form>
+
+        <div class="d-flex justify-content-center ">
+          <button mat-raised-button color="primary" class="px-5 py-2 fw-bold shadow-sm" (click)="generateReservation()">
+            📅 Générer Rapport
+          </button>
         </div>
-       <div class="d-flex justify-content-between   ">
-       
-        <button mat-raised-button color="primary" (click)="generateContrat()">Contrat</button>
-        <button mat-raised-button color="primary" (click)="generateReport()">Rapport</button>
-        <button mat-raised-button color="primary" (click)="generateReservation()">Reservation</button>
-       
-       </div>
       </div>
     </div>
 
+
     <mat-card>
-      <div class="table-responsive mt-4">
+      <div class="table-responsive " id="rapportAImprimer">
         <table class="table table-bordered table-striped" id="maTable">
           <thead class="thead-info">
             <tr>
               <th>#</th>
-              <th *ngIf="isRapport">Montant</th>
-              <th *ngIf="isRapport">Description</th>
-              <th *ngIf="isRapport">Type Opération</th>
-              <th >Fait Par</th>
-              <th *ngIf="hasPaiementType">Type Réservation</th>
-              <th *ngIf="hasPaiementType">Référence</th>
-              <th *ngIf="hasPaiementType">Statut</th>
-              <th *ngIf="hasPaiementType">Nom du Client</th>
-              <th *ngIf="hasPaiementType">Email Partenaire</th>
-              <th *ngIf="hasPaiementType">Téléphone Partenaire</th>
+              <!-- <th>Montant</th>
+              <th>Description</th>
+              <th>Type Opération</th> -->
+              <th>Etat</th>
+              <th>Réservation</th>
+              <th>Ref</th>
+              <th>Statut</th>
+              <th>Client</th>
+              <th>Email</th>
+              <th>Téléphone</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let element of dataSource; let i = index">
               <td>{{ i + 1 }}</td>
-              <td *ngIf="isRapport">{{ element.montant }}</td>
+              <!-- <td *ngIf="isRapport">{{ element.montant }}</td>
               <td *ngIf="isRapport" >{{ element.motif || element.type_transaction }}</td>
-              <td *ngIf="isRapport">{{ element.type_transaction }}</td>
-              <td>{{ element.created_by }}</td>
-              <td *ngIf="hasPaiementType">{{ element.source }}</td> 
-              <td *ngIf="hasPaiementType">{{ element.reference }}</td>
-              <td *ngIf="hasPaiementType">{{ element.statut }}</td>
-              <td *ngIf="hasPaiementType">{{ element.reservation_nom_prenom }}</td>
-              <td *ngIf="hasPaiementType">{{ element.partenaire_email }}</td>
-              <td *ngIf="hasPaiementType">{{ element.partenaire_telephone }}</td>
+              <td *ngIf="isRapport">{{ element.type_transaction }}</td> -->
+              <td>{{ element.statut === 'confirmée' ? 'Contrat' : (element.statut === 'en attente' ? 'Réservation' :
+                element.created_by) }}</td>
+
+              <td>{{ element.source }}</td>
+              <td>{{ element.reference }}</td>
+              <td>{{ element.statut }}</td>
+              <td>{{ element.reservation_nom_prenom }}</td>
+              <td>{{ element.partenaire_email }}</td>
+              <td>{{ element.partenaire_telephone }}</td>
             </tr>
           </tbody>
         </table>
+        <h2 *ngIf="dataSourceRapport && dataSourceRapport.length > 0" class="text-gold text-center">📊 Rapport Des Opérations</h2>
+        <table *ngIf="dataSourceRapport && dataSourceRapport.length > 0" class="table table-bordered table-striped"
+          id="maTable">
+          <thead class="thead-info">
+            <tr>
+              <th>#</th>
+              <th>Montant</th>
+              <th>Description</th>
+              <th>Type Opération</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let element of dataSourceRapport; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ element.montant }}</td>
+              <td>{{ element.motif || element.type_transaction }}</td>
+              <td>{{ element.type_transaction }}</td>
+            </tr>
+          </tbody>
+        </table>
+
+
       </div>
     </mat-card>
-    
   </div>
 </div>

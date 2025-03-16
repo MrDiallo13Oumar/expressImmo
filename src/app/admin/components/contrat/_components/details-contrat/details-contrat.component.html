@@ -4,33 +4,27 @@
       <div class="card-body d-flex align-items-center justify-content-between">
         <h4 class="card-title mb-0 text-primary fw-bold">Détails Contrats</h4>
         <div class="d-flex gap-3">
-          <button
-            type="button"
-            class="btn btn-danger btn-sm text-white px-4 d-flex align-items-center"
-            (click)=" printContract()"
-          >
+          <button type="button" class="btn btn-danger btn-sm text-white px-4 d-flex align-items-center"
+            (click)=" printContract()">
             <mat-icon class="me-2">print</mat-icon> Imprimer
           </button>
 
-          <button
-            type="button"
-            class="btn btn-dark btn-sm text-white px-4 d-flex align-items-center"
-            (click)="openDialog()"
-          >
+          <button type="button" class="btn btn-dark btn-sm text-white px-4 d-flex align-items-center"
+            (click)="openDialog()">
             <mat-icon class="me-2">add</mat-icon> Effectuer un paiement
           </button>
         </div>
       </div>
     </div>
-  <mat-card>
-   
+    <mat-card>
+
 
 
       <mat-tab-group>
         <mat-tab>
           <ng-template mat-tab-label>Contrat</ng-template>
           <mat-card class="contract-container">
-            <div class="contract-content">
+            <!-- <div class="contract-content">
               <mat-card-header class="contract-header">
                 <div class="header-content">
                   <img src="assets/admin/images/logo.jpg" alt="Logo" class="contract-logo" />
@@ -77,10 +71,88 @@
                   <p><strong>Signature du locataire :</strong> ___________________</p>
                 </div>
               </mat-card-content>
+            </div> -->
+            <div class="contrat-container">
+              <h1 class="h">RESIDENCE DOUMBOUYA</h1>
+              <h2 class="cb">CONTRAT DE BAIL</h2>
+
+              <hr class="separator" />
+
+              <p><strong>ENTRE :</strong> Mme ROCK…………………………………………………………………...,</p>
+              <p class="ml" style="margin-left: 70px;">Domiciliée à ………………………………………………………………,</p>
+              <p class="ml" style="margin-left: 70px;">Dénommée <strong>le Gestionnaire</strong>.</p>
+              <p class="text-right"><strong>D’UNE PART,</strong></p>
+
+              <p ><strong>ET :</strong><span style="margin-left: 30px;">Mr/Mme/Mlle, {{ infoContrat?.reservation?.nom }} {{
+                  infoContrat?.reservation?.prenom }}……………………………………………,</span></p>
+              <p style="margin-left: 70px;">Détenteur de la pièce numéro : <span>Carte d’identité</span>,</p>
+              <p style="margin-left: 70px;">Domicilié à <span>{{ infoContrat?.reservation?.adresse
+                  }}………………………………………………………………,</span></p>
+              <p style="margin-left: 70px;">Dénommé <strong>le Locataire</strong>.</p>
+              <p class="text-right"><strong>D’AUTRE PART,</strong></p>
+
+              <h3>1. DESCRIPTION DES LOCAUX</h3>
+              <p>Le Gestionnaire loue au Locataire l’appartement <span>{{ infoContrat?.reservation?.reference }}</span>
+                de la résidence DOUMBOUYA située à Gbessia-Behanzin, Matoto.</p>
+              <ul>
+                <li>1 Salon meublé</li>
+                <li>2 Toilettes</li>
+                <li>2 Chambres meublées</li>
+                <li>1 Cuisine équipée</li>
+              </ul>
+
+              <h3>2. ACCORD ET DURÉE DU CONTRAT</h3>
+              <p><strong>La durée du contrat de bail :</strong> Le présent contrat prend effet le
+                <span>..............................................................</span> et prend fin le
+                <span>............................................</span>.
+              </p>
+              <p>Total en jours : <span>..............</span></p>
+              <p class="highlighted-text"><strong>Prorogation Du Contrat :</strong> Les parties peuvent proroger le
+                contrat par accord mutuel écrit en fonction de la nouvelle durée, et le Locataire devra le notifier au
+                Gestionnaire avant la date d’expiration du présent contrat de location.</p>
+
+              <h3>3. LOYER ET CHARGES</h3>
+              <p>Montant du loyer : <span>{{ infoContrat?.reservation?.prix_mensuel }}</span> GNF.</p>
+              <p>La caution déposée est de <span>..................................................</span> GNF.</p>
+              <p>Le loyer doit être payé avant l’entrée dans l’appartement.</p>
+
+              <h3>4. USAGE DE LA PROPRIÉTÉ</h3>
+              <p>Les locaux sont exclusivement destinés à l’habitation.</p>
+              <p>Le locataire ne peut ni sous-louer ni modifier l’usage prévu.</p>
+
+              <h3>5. IMPÔTS, ASSURANCES ET SERVICES</h3>
+              <p>Les charges (eau, électricité, gardiennage…) sont à la charge du Gestionnaire.</p>
+              <p>Le Gestionnaire assure la résidence.</p>
+
+              <h3>6. RÉPARATIONS</h3>
+              <p>Le locataire doit maintenir le bien en bon état.</p>
+              <p>Les décorations nécessitent l’accord écrit du Gestionnaire.</p>
+
+              <h3>7. RÈGLEMENT DES DIFFÉRENDS</h3>
+              <p>Les litiges seront réglés à l’amiable ou devant le tribunal compétent.</p>
+
+              <h3>Signatures</h3>
+
+
+              <div class="d-flex justify-content-between signature">
+                <div>
+                  <p><strong>LE GESTIONNAIRE :</strong> Mme ROCK</p>
+                  <p>Signature : _______________________</p>
+                </div>
+                <div>
+                  <p><strong>LE LOCATAIRE :</strong> <span>{{ infoContrat?.reservation?.nom }} {{
+                      infoContrat?.reservation?.prenom }}</span></p>
+                  <p>Signature : _______________________</p>
+                </div>
+              </div>
+              <p><strong>Pièces jointes : </strong>État des lieux Copie de la pièce d’identité du locataire</p>
+
             </div>
+
+
           </mat-card>
         </mat-tab>
-        
+
 
 
         <mat-tab>
@@ -90,15 +162,14 @@
             <div class="col">
               <mat-card>
                 <mat-card-header>
-                  <div class="  " style="color: green;">Solde =  {{infoContrat?.total_paiement}}  </div >
+                  <div class="  " style="color: green;">Solde = {{infoContrat?.total_paiement}} </div>
                 </mat-card-header>
                 <mat-card-content>
                   <mat-form-field class="w-100" appearance="outline">
                     <mat-label>Rechercher...</mat-label>
-                    <input matInput (keyup)="applyFilter($event)"
-                      placeholder="Rechercher" #input>
+                    <input matInput (keyup)="applyFilter($event)" placeholder="Rechercher" #input>
                   </mat-form-field>
-                  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="width: 100%;"id="maTable">
+                  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="width: 100%;" id="maTable">
                     <!-- ID Column -->
                     <ng-container matColumnDef="id">
                       <th mat-header-cell *matHeaderCellDef>#</th>
@@ -116,14 +187,14 @@
                     <ng-container matColumnDef="mode_paiement">
                       <th mat-header-cell *matHeaderCellDef>Mode Paiement</th>
                       <td mat-cell *matCellDef="let element">
-                        <span >{{ element.mode_paiement }}</span>
+                        <span>{{ element.mode_paiement }}</span>
                       </td>
                     </ng-container>
 
                     <ng-container matColumnDef="date_debut">
                       <th mat-header-cell *matHeaderCellDef>Date Debut</th>
                       <td mat-cell *matCellDef="let element">
-                        <span >{{ element.date_debut }}</span>
+                        <span>{{ element.date_debut }}</span>
                       </td>
                     </ng-container>
 
@@ -140,7 +211,7 @@
                       <th mat-header-cell *matHeaderCellDef class="text-center">Action</th>
                       <td mat-cell *matCellDef="let element" class="text-center">
                         <button mat-icon-button color="primary" routerLink="/operation/detail-paiement/{{element.id}}">
-                          <mat-icon >edit</mat-icon>
+                          <mat-icon>edit</mat-icon>
                         </button>
                         <button mat-icon-button color="warn" (click)="deleteFunction(element.id ,'paiements')">
                           <mat-icon>delete</mat-icon>
@@ -152,15 +223,15 @@
                     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                   </table>
-                    <!-- Paginator -->
-                    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+                  <!-- Paginator -->
+                  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
                 </mat-card-content>
               </mat-card>
             </div>
           </div>
         </mat-tab>
       </mat-tab-group>
-  </mat-card>
+    </mat-card>
 
   </div>
 </div>

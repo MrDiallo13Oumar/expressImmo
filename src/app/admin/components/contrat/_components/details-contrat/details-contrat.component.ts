@@ -161,43 +161,90 @@ export class DetailsContratComponent {
         }
       });
   }
-  printContract() {
-    const printContent = document.querySelector('.contract-content');
+  printContract() { 
+    const printContent = document.querySelector('.contrat-container');
 
     if (printContent) {
-      const printWindow = window.open('', '', 'height=900,width=800');
+        const printWindow = window.open('', '', 'height=1000,width=900');
 
-      if (printWindow) {
-        printWindow.document.write(`
-          <html>
-          <head>
-            <title>Contrat de location</title>
-            <style>
-              @page { size: A4; margin: 20mm; }
-              body { font-family: 'Roboto', sans-serif; color: #333; margin: 0; padding: 0; }
-              .contract-content { max-width: 800px; margin: auto; padding: 20px; }
-              h3, .center-text { text-align: center; color: #0277bd; font-weight: bold; }
-              .signature-section { display: flex; justify-content: space-between; margin-top: 40px; }
-              .signature-section p { width: 48%; text-align: center; font-size: 16px; font-weight: bold; }
-              .contract-logo { display: block; margin: 0 auto 20px; max-width: 120px; }
-            </style>
-          </head>
-          <body onload="window.print(); window.onafterprint = function() { window.close(); }">
-            <div class="contract-content">
-              ${printContent.innerHTML}
-            </div>
-          </body>
-          </html>
-        `);
+        if (printWindow) {
+            printWindow.document.write(`
+                <html>
+                <head>
+                    <title>Contrat de location</title>
+                    <style>
+                        body {
+                            font-family: "Times New Roman", Times, serif;
+                            line-height: 1.6;
+                            margin: 20px;
+                        }
+                        .contract-content {
+                            width: 90%;
+                            margin: auto;
+                        }
+                        .h {
+                            background:rgb(132, 131, 131);
+                            text-align: center;
+                            padding: 10px;
+                            font-size: 24px;
+                            font-weight: bold;
+                            color: #555;
+                        }
+                        .cb {
+                            text-align: center;
+                            
+                        }
+                        .separator {
+                            border-top: 3px solid black;
+                            margin-bottom: 20px;
+                        }
+                        .text-right {
+                            text-align: right;
+                        }
+                        h3 {
+                            font-weight: bold;
+                            text-decoration: underline;
+                        }
+                        ul {
+                            margin-left: 40px;
+                        }
+                        .highlighted-text {
+                            background-color: #f5f5f5;
+                            padding: 5px;
+                            border-left: 4px solid #000;
+                        }
+                        p span {
+                            font-weight: bold;
+                        }
+                            .signature{
+                            display: flex;
+                            justify-content: space-between;
+                            }
+                            
+                        @media print {
+                            body {
+                                margin: 10mm;
+                            }
+                        }
+                    </style>
+                </head>
+                <body onload="window.print(); window.onafterprint = function() { window.close(); }">
+                    <div class="contract-content">
+                        ${printContent.innerHTML}
+                    </div>
+                </body>
+                </html>
+            `);
 
-        printWindow.document.close();
-      } else {
-        alert("Impossible d'ouvrir la fenêtre d'impression. Vérifiez que les pop-ups sont autorisées.");
-      }
+            printWindow.document.close();
+        } else {
+            alert("Impossible d'ouvrir la fenêtre d'impression. Vérifiez que les pop-ups sont autorisées.");
+        }
     } else {
-      alert("Le contenu du contrat est introuvable.");
+        alert("Le contenu du contrat est introuvable.");
     }
-  }
+}
+
 
   // @ViewChild('contratContent') contratContent!: ElementRef;
 

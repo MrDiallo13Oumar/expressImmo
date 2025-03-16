@@ -1,155 +1,48 @@
-/* Style général du contrat */
-.contract-container {
-  max-width: 900px;
-  margin: 40px auto;
-  padding: 30px;
-  background-color: #ffffff;
-  font-family: 'Roboto', sans-serif;
-  color: #333;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+.contrat-container {
+  width: 80%;
+  margin: 20px auto;
+  font-family: "Times New Roman", Times, serif;
+  line-height: 1.6;
 }
 
-/* Entête du contrat */
-.contract-header {
+.h {
+  background: #d3d3d3;
   text-align: center;
-  margin-bottom: 30px;
-  padding-bottom: 15px;
-  border-bottom: 3px solid #0277bd;
-}
-
-.header-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
-.contract-logo {
-  max-width: 120px;
-  height: auto;
-  object-fit: contain;
-  margin-bottom: 10px;
-}
-
-.contract-title h3 {
-  font-size: 26px;
-  color: #0277bd;
+  padding: 10px;
+  // font-size: 24px;
   font-weight: bold;
-  text-transform: uppercase;
+  color: #555;
 }
 
-.contract-title mat-card-title {
-  font-size: 18px;
-  color: #0277bd;
-  font-weight: bold;
-}
-
-/* Détails du contrat */
-.center-text {
+.cb {
   text-align: center;
-  font-size: 16px;
-  color: #0277bd;
-  font-weight: bold;
 }
 
-/* Signature */
-.signature-section {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 40px;
+.separator {
+  border-top: 3px solid black;
+  margin-bottom: 20px;
+  
 }
 
-.signature-section p {
-  width: 48%;
-  text-align: center;
-  font-size: 16px;
-  font-weight: bold;
-  color: #333;
+.text-right {
+  text-align: right;
 }
 
-/* Spécifique à l'impression */
-@media print {
-  body {
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
-    padding: 0;
-  }
-
-  .contract-container {
-    padding: 0;
-    max-width: 100%;
-    box-shadow: none;
-    border: none;
-  }
-
-  /* Masquer les autres éléments */
-  .contract-container > *:not(.contract-content) {
-    display: none;
-  }
-
-  .contract-content {
-    padding: 0;
-    max-width: 100%;
-  }
-
-  /* Réduction de la taille des éléments pour l'impression */
-  h3, p, th, td {
-    font-size: 12px;
-    line-height: 1.6;
-  }
-
-  .signature-section p {
-    width: 45%;
-    font-size: 12px;
-  }
-
-  button {
-    display: none;
-  }
-
-  .contract-logo {
-    display: none;
-  }
-}
-/* Augmentation de la taille du texte */
 h3 {
-  font-size: 28px;
+  font-weight: bold;
+  text-decoration: underline;
 }
 
-p, th, td {
-  font-size: 16px;
-  line-height: 1.8;
+ul {
+  margin-left: 40px;
 }
 
-/* Permettre l'impression sur plusieurs pages */
-@media print {
-  .contract-content {
-    page-break-before: auto;
-    page-break-after: auto;
-    page-break-inside: avoid;
-  }
+.highlighted-text {
+  background-color: #f5f5f5;
+  padding: 5px;
+  border-left: 4px solid #000;
+}
 
-  .contract-container {
-    max-width: 100%;
-    padding: 20px;
-    box-shadow: none;
-    border: none;
-  }
-
-  h3, p, th, td {
-    font-size: 16px;
-  }
-
-  .signature-section {
-    page-break-before: always;
-  }
-
-  button {
-    display: none;
-  }
-
-  .contract-logo {
-    display: none;
-  }
+p span {
+  font-weight: bold;
 }
