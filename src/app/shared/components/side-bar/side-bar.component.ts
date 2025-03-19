@@ -15,7 +15,7 @@ export class SideBarComponent {
     { label: 'Réservation', icon: 'icon-envelope menu-icon', link: '/reservation/list-reservation' },
     { label: 'Propriétés', icon: 'icon-home menu-icon', link: '/propriete/list-propriete' },
     { label: 'Partenaire', icon: 'icon-screen-tablet menu-icon', link: '/partenaire/list-partenaire' },
-    { label: 'Locataire', icon: 'icon-graph menu-icon', link: '/locataire/list-locataire' },
+    // { label: 'Locataire', icon: 'icon-graph menu-icon', link: '/locataire/list-locataire' },
     { label: 'Contrats', icon: 'icon-grid menu-icon', link: '/contrat/list-contrat' },
     { label: 'Opérations', icon: 'icon-badge menu-icon', link: '/operation/list-operation' },
     { label: 'Rapports', icon: 'icon-note menu-icon', link: '/rapport/rapport' },

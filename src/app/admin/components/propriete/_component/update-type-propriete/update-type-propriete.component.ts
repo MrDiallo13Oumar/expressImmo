@@ -29,8 +29,8 @@ export class UpdateTypeProprieteComponent {
      constructor(
         private service :ProprieteService,
         private snackBar :MatSnackBar,
-         private activeroute: ActivatedRoute,
-         private router :Router
+        private activeroute: ActivatedRoute,
+        private router :Router
 
       ) { }
   @ViewChild(MatPaginator) paginator!: MatPaginator;

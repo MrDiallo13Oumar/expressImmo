@@ -68,7 +68,7 @@ getPartenaire () {
           //Envoyer dans la Base
           this.service.create('partenaire','create.php', formData).subscribe({
             next: (response) => {
-              this.snackBar.open("Propriété enregistré avec succès !", "Okay", {
+              this.snackBar.open(response.message, "Okay", {
                 duration: 3000,
                 horizontalPosition: "right",
                 verticalPosition: "top",

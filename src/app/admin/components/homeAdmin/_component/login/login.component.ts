@@ -11,6 +11,7 @@ import { convertObjectInFormData } from 'src/app/app.component';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
+  hidePassword = true;
 
   loginForm = this.fb.group({
     email: ['', Validators.required],

@@ -3,113 +3,66 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
 }
 
-/* Login Container */
+/* Background en plein écran */
 .login-container {
-  display: flex;
   width: 100%;
   height: 100vh;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-}
-
-/* Left Column */
-.col-left {
-
-  width: 60%;
-  position: relative;
   background: url('https://static.vecteezy.com/ti/vecteur-libre/p1/2789298-immobilier-entreprise-illustration-concept-gratuit-vectoriel.jpg') no-repeat center center;
   background-size: cover;
-}
-
-/* Right Column */
-.col-right {
-  width: 40%;
-  background-color: #83c7b7c4;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
 }
 
-.overlay {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: white;
-  padding: 50px;
-}
-
-.overlay h2 {
-  font-size: 4rem;
-  color: white;
-  margin-bottom: 15px;
-}
-
-.overlay p {
-  font-size: 1.6rem;
-  line-height: 2;
-}
-
-
+/* Formulaire centré */
 .form-container {
-  width: 80%;
-  background-color: white;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.9);
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
+  width: 100%;
+  max-width: 400px;
 }
 
+/* Titre */
 .form-container h2 {
-  font-size: 1.8rem;
+  font-size: 2rem;
   margin-bottom: 20px;
   color: #632121;
+  font-weight: 700;
 }
 
-.form-group {
-  margin-bottom: 15px;
-  text-align: left;
+/* Image du logo */
+.form-container img {
+  width: 100px;
+  margin-bottom: 20px;
 }
 
-.form-group label {
-  display: block;
-  font-size: 0.9rem;
-  margin-bottom: 5px;
-}
-
-.form-group input {
+/* Bouton */
+.btn-connect {
   width: 100%;
-  padding: 10px;
-  font-size: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  outline: none;
-}
-
-.form-group input:focus {
-  border-color: #632121;
-}
-
-button {
-  width: 100%;
-  padding: 10px;
+  padding: 12px;
   background-color: #632121;
   color: white;
   border: none;
-  border-radius: 5px;
-  font-size: 1rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease;
 }
 
-button:hover {
+.btn-connect:hover {
   background-color: #804545;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .form-container {
+    max-width: 90%;
+    padding: 30px;
+  }
 }
