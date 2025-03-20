@@ -246,16 +246,6 @@ export class DetailsContratComponent {
 }
 
 
-  // @ViewChild('contratContent') contratContent!: ElementRef;
-
-  // printContract(){
-
-  //   if (this.contratContent) {
-  //     this.printService.imprimerDiv(this.contratContent.nativeElement.innerHTML);
-  //   } else {
-  //     alert("Le contenu du contrat est introuvable.");
-  //   }
-  // }
 
 
 }

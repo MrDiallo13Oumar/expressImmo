@@ -29,6 +29,8 @@ export class InscriptionSiteComponent {
     email: new FormControl(''),
     statut: new FormControl('en attente'),
     source: new FormControl('en ligne'),
+    numero_piece: new FormControl(''),
+    adresse: new FormControl(''),
     wifi: new FormControl(''),
     restauration: new FormControl(''),
     conciergerie: new FormControl(''),

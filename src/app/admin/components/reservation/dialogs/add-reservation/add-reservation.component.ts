@@ -20,6 +20,8 @@ export class AddReservationComponent implements OnInit{
     telephone: new FormControl(''),
     email: new FormControl(''),
     statut: new FormControl('en attente'),
+    numero_piece: new FormControl(''),
+    adresse: new FormControl(''),
     propriete_id: new FormControl(''),
     date_souhaite: new FormControl(''),
     source: new FormControl('sur place',Validators.required),

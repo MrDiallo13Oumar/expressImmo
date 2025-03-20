@@ -1,0 +1,84 @@
+.reservation-card {
+    width: 21cm; /* Largeur d'une feuille A4 */
+    height: 29.7cm; /* Hauteur d'une feuille A4 */
+    margin: auto;
+    padding: 30px;
+    border: 2px solid #d4af37;
+    border-radius: 10px;
+    font-family: 'Arial', sans-serif;
+    background: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.reservation-content {
+    flex-grow: 1; /* Prend toute la place disponible */
+}
+
+.gold-text {
+    color: #d4af37;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.btn-custom {
+    display: flex;
+    align-items: center;
+    background-color: #d4af37 !important;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.btn-custom:hover {
+    background-color: #b89e30 !important;
+}
+
+/* Cacher le bouton d'impression lors de l'impression */
+
+@media print {
+    /* Empêcher la modification du format de la fiche */
+    .reservation-card {
+        width: 100%;
+        height: auto;
+        padding: 20mm;
+        border: none;
+        box-shadow: none;
+    }
+
+    /* Cacher le bouton d'impression */
+    .hide-print {
+        display: none !important;
+    }
+
+    /* Forcer l'affichage correct des checkboxes */
+    mat-checkbox {
+        visibility: visible !important;
+        display: inline-block !important;
+    }
+
+    /* Corriger le problème d'affichage des checkboxes */
+    .mat-mdc-checkbox {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: left !important;
+        transform: scale(1.2); /* Agrandir un peu pour être bien visible */
+    }
+
+    /* Optionnel : Si les checkboxes disparaissent, utiliser une alternative */
+    .mat-mdc-checkbox input[type="checkbox"] {
+        appearance: auto !important;
+        -webkit-appearance: checkbox !important;
+        -moz-appearance: checkbox !important;
+    }
+}

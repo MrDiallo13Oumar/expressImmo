@@ -6,6 +6,7 @@ import { DemoMaterialModule } from 'src/app/demo-material-module';
 import { RouterModule } from '@angular/router';
 import { reservationRouting } from './reservation.routing';
 import { DetailReservationComponent } from './components/detail-reservation/detail-reservation.component';
+import { FicheReservationComponent } from './components/fiche-reservation/fiche-reservation.component';
 
 
 
@@ -13,7 +14,8 @@ import { DetailReservationComponent } from './components/detail-reservation/deta
   declarations: [
     ListReservationComponent,
     AddReservationComponent,
-    DetailReservationComponent
+    DetailReservationComponent,
+    FicheReservationComponent
   ],
   imports: [
     CommonModule,

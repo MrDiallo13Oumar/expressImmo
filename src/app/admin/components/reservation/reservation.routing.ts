@@ -2,6 +2,7 @@ import { Routes } from "@angular/router";
 import { ListReservationComponent } from "./components/list-reservation/list-reservation.component";
 import { AddContratComponent } from "../contrat/dialogs/add-contrat/add-contrat.component";
 import { DetailReservationComponent } from "./components/detail-reservation/detail-reservation.component";
+import { FicheReservationComponent } from "./components/fiche-reservation/fiche-reservation.component";
 
 export const reservationRouting: Routes = [
 
@@ -13,6 +14,10 @@ export const reservationRouting: Routes = [
   {
    path :'propri-reservation/:id',
        component: AddContratComponent,
+  },
+  {
+   path :'fiche-reservation/:id',
+       component: FicheReservationComponent,
   },
 
     {
