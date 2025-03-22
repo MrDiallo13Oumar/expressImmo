@@ -7,6 +7,7 @@ import { contratRouting } from './contrat.routing';
 import { AddContratComponent } from './dialogs/add-contrat/add-contrat.component';
 import { DetailsContratComponent } from './_components/details-contrat/details-contrat.component';
 import { AddPaiementComponent } from './dialogs/add-paiement/add-paiement.component';
+import { FicheLocataireComponent } from './_components/fiche-locataire/fiche-locataire.component';
 
 
 
@@ -15,7 +16,8 @@ import { AddPaiementComponent } from './dialogs/add-paiement/add-paiement.compon
     ListContratComponent,
     AddContratComponent,
     DetailsContratComponent,
-    AddPaiementComponent
+    AddPaiementComponent,
+    FicheLocataireComponent
   ],
   imports: [
     CommonModule,

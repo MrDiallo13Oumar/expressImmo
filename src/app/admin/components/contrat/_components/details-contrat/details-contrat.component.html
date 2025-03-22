@@ -95,10 +95,10 @@
               <p>Le Gestionnaire loue au Locataire l’appartement <span>{{ infoContrat?.reservation?.reference }}</span>
                 de la résidence DOUMBOUYA située à Gbessia-Behanzin, Matoto.</p>
               <ul>
-                <li>... Salon meublé</li>
-                <li>... Toilettes</li>
-                <li>... Chambres meublées</li>
-                <li>... Cuisine équipée</li>
+                <li>...  Salon meublé</li>
+                <li>...  Toilettes</li>
+                <li>...  Chambres meublées</li>
+                <li>...  Cuisine équipée</li>
               </ul>
 
               <h3>2. ACCORD ET DURÉE DU CONTRAT</h3>
@@ -112,8 +112,8 @@
                 Gestionnaire avant la date d’expiration du présent contrat de location.</p>
 
               <h3>3. LOYER ET CHARGES</h3>
-              <p>Montant du loyer : <span>{{ infoContrat?.reservation?.prix_mensuel }}</span> GNF.</p>
-              <p>La caution déposée est de <span>{{ infoContrat?.caution }}..................................................</span> GNF.</p>
+              <p>Montant du loyer : <span>{{ infoContrat?.reservation?.propriete?.prix_journalier }}</span> GNF/Jour.</p>
+              <p>La caution déposée est de <span>{{ infoContrat?.caution }} </span> GNF.</p>
               <p>Le loyer doit être payé avant l’entrée dans l’appartement.</p>
 
               <h3>4. USAGE DE LA PROPRIÉTÉ</h3>

@@ -17,6 +17,8 @@ import { DeletePopupComponent } from 'src/app/shared/dialogs/delete-popup/delete
 export class ListContratComponent {
   displayedColumns: string[] = ['id', 'reservation_nom','propriete_reference' ,'caution','statut', 'action'];
   dataSource = new MatTableDataSource([]);
+  displayedColumns1: string[] = ['id', 'propriete_reference', 'reservation_nom','paiement_date_debut','paiement_date_fin', 'action'];
+  dataSource1 = new MatTableDataSource([]);
 
   constructor(
     private dialog: MatDialog,
@@ -26,20 +28,30 @@ export class ListContratComponent {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild(MatPaginator) paginator1!: MatPaginator;
+  @ViewChild(MatSort) sort1!: MatSort;
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+  
+    this.dataSource1.paginator = this.paginator1;
+    this.dataSource1.sort = this.sort1;
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.dataSource1.filter = filterValue.trim().toLowerCase();
 
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+    if (this.dataSource1.paginator) {
+      this.dataSource1.paginator.firstPage();
+    }
   }
   ngOnInit() {
     this.getContrat();
+    this.getSituationAppart()
   }
   infoContrat: any;
   getContrat() {
@@ -47,7 +59,21 @@ export class ListContratComponent {
       next: (reponse: any) => {
       //  //console.log('REPONSE SUCCESS : ', reponse);
         this.dataSource.data = reponse;
+        // this.dataSource1.data = reponse;
         this.infoContrat = reponse;
+      },
+      error: (err: any) => {
+        //console.log('REPONSE ERROR : ', err);
+      },
+    });
+  }
+  getSituationAppart() {
+    this.service.getall('contrat', 'situationAppart.php').subscribe({
+      next: (reponse: any) => {
+      //  //console.log('REPONSE SUCCESS : ', reponse);
+        this.dataSource1.data = reponse;
+        console.log("situationAppart",this.dataSource1.data);
+        
       },
       error: (err: any) => {
         //console.log('REPONSE ERROR : ', err);

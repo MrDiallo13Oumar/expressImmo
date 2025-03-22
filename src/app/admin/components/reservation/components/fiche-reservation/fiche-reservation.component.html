@@ -11,36 +11,41 @@
                 <h4 class="gold-text text-center">AEROPORT QUARTIER BEHAZIN</h4>
                 <h5 class="gold-text text-center">Tél : 626 88 36 21/ 627 01 83 73</h5>
                 <h3 class="gold-text text-center">BON DE RÉSERVATION</h3>
+                <div>
+                    <h3 >Informations du client</h3>
+                    <p><strong>Nom :</strong> {{ infoReservation.nom || 'Non renseigné' }} </p>
+                    <p><strong>Prénom :</strong> {{ infoReservation.prenom || 'Non renseigné' }}</p>
+                    <p><strong>Téléphone :</strong> {{ infoReservation.telephone || 'Non renseigné' }}</p>
+                    <p><strong>Adresse :</strong> {{ infoReservation.adresse || 'Non renseignée' }}</p>
+                    <p><strong>N° de pièce :</strong> {{ infoReservation.numero_piece }}</p>
+                    <p><strong>Adulte :</strong> </p>
+                    <p><strong>Enfant :</strong> </p>
 
-                <h3>Informations du client</h3>
-                <p><strong>Nom :</strong> {{ infoReservation.nom || 'Non renseigné' }} </p>
-                <p><strong>Prénom :</strong> {{ infoReservation.prenom || 'Non renseigné' }}</p>
-                <p><strong>Téléphone :</strong> {{ infoReservation.telephone || 'Non renseigné' }}</p>
-                <p><strong>Adresse :</strong> {{ infoReservation.adresse || 'Non renseignée' }}</p>
-                <p><strong>N° de pièce :</strong> {{ infoReservation.numero_piece }}</p>
-                <p><strong>Adulte :</strong> </p>
-                <p><strong>Enfant :</strong> </p>
+                    <h3>Services demandés</h3>
+                    <p><strong>Wi-Fi :</strong> {{ infoReservation.wifi === 'true' ? 'Oui' : 'Non' }}</p>
+                    <p><strong>Restauration :</strong> {{ infoReservation.restauration ? 'Oui' : 'Non' }}</p>
+                    <p><strong>Blanchisserie :</strong> {{ infoReservation.blanchisserie ? 'Oui' : 'Non' }}</p>
+                    <p><strong>Conciergerie :</strong> {{ infoReservation.conciergerie ? 'Oui' : 'Non' }}</p>
 
-                <h3>Services demandés</h3>
-                <p><strong>Wi-Fi :</strong> {{ infoReservation.wifi === 'true' ? 'Oui' : 'Non' }}</p>
-                <p><strong>Restauration :</strong> {{ infoReservation.restauration ? 'Oui' : 'Non' }}</p>
-                <p><strong>Blanchisserie :</strong> {{ infoReservation.blanchisserie ? 'Oui' : 'Non' }}</p>
-                <p><strong>Conciergerie :</strong> {{ infoReservation.conciergerie ? 'Oui' : 'Non' }}</p>
+                    <h3>Statut de la réservation</h3>
+                    <p><strong>Statut :</strong> {{ infoReservation.statut || 'Non renseigné' }}</p>
+                    <p><strong>Source :</strong> {{ infoReservation.source || 'Non renseigné' }}</p>
 
-                <h3>Statut de la réservation</h3>
-                <p><strong>Statut :</strong> {{ infoReservation.statut || 'Non renseigné' }}</p>
-                <p><strong>Source :</strong> {{ infoReservation.source || 'Non renseigné' }}</p>
-
-                <h3 >Détails de la propriété</h3>
-                <p><strong>Référence :</strong> {{ infoReservation.propriete?.reference || 'Non renseignée' }}</p>
-                <p><strong>Adresse :</strong> {{ infoReservation.propriete?.adresse || 'Non renseignée' }}</p>
-                <p><strong>État :</strong> {{ infoReservation.propriete?.etat || 'Non renseigné' }}</p>
-                <p><strong>Disponibilité :</strong> {{ infoReservation.propriete?.disponible === 0 ? 'Indisponible' : 'Disponible' }}</p>
-                <p><strong>Prix journalier :</strong> {{ infoReservation.propriete?.prix_journalier ? infoReservation.propriete.prix_journalier + ' GNF' : 'Non renseigné' }}</p>
-                <p><strong>Prix mensuel :</strong> {{ infoReservation.propriete?.prix_mensuel && infoReservation.propriete.prix_mensuel !== '0' ? infoReservation.propriete.prix_mensuel + ' GNF' : 'Non renseigné' }}</p>
-                <p><strong>Transport depuis l’aéroport :</strong> </p>
-
-                <p class="text-center text-start"><em>Numéro compte ECOBANK 0080224617553301 Ets Abdoulaye Doumbouya & Frères !</em></p>
+                    <h3>Détails de la propriété</h3>
+                    <p><strong>Référence :</strong> {{ infoReservation.propriete?.reference || 'Non renseignée' }}</p>
+                    <p><strong>Adresse :</strong> {{ infoReservation.propriete?.adresse || 'Non renseignée' }}</p>
+                    <p><strong>État :</strong> {{ infoReservation.propriete?.etat || 'Non renseigné' }}</p>
+                    <p><strong>Disponibilité :</strong> {{ infoReservation.propriete?.disponible === 0 ? 'Indisponible'
+                        : 'Disponible' }}</p>
+                    <p><strong>Prix journalier :</strong> {{ infoReservation.propriete?.prix_journalier ?
+                        infoReservation.propriete.prix_journalier + ' GNF' : 'Non renseigné' }}</p>
+                    <p><strong>Prix mensuel :</strong> {{ infoReservation.propriete?.prix_mensuel &&
+                        infoReservation.propriete.prix_mensuel !== '0' ? infoReservation.propriete.prix_mensuel + ' GNF'
+                        : 'Non renseigné' }}</p>
+                    <p><strong>Transport depuis l’aéroport :</strong> </p>
+                </div>
+                <p class="text-center text-start"><em>Numéro compte ECOBANK 0080224617553301 Ets Abdoulaye Doumbouya &
+                        Frères !</em></p>
 
             </div>
         </div>

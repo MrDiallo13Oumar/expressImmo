@@ -1,0 +1,46 @@
+<div class="content fiche-contrat-container mt-4">
+    <div class="fiche-contrat">
+      <header class="fiche-header">
+        <h1>Fiche Locataire</h1>
+        <p><strong>Client:</strong> {{ infoContrat?.reservation?.nom || 'Non renseigné' }} {{ infoContrat?.reservation?.prenom || 'Non renseigné' }}</p>
+        <p><strong>Adresse :</strong> {{ infoContrat?.reservation?.adresse || 'Non renseignée' }}</p>
+      </header>
+  
+      <section class="fiche-body">
+        <!-- Carte Propriété -->
+        <div class="card">
+          <h3>Propriété</h3>
+          <p><strong>Référence:</strong> {{ infoContrat?.reservation?.propriete?.reference || 'Non renseignée' }}</p>
+          <p><strong>Adresse:</strong> {{ infoContrat?.reservation?.propriete?.adresse || 'Non renseignée' }}</p>
+          <p><strong>Caution:</strong> {{ infoContrat?.caution | currency:'GNF':'symbol' }}</p>
+        </div>
+  
+        <!-- Carte Paiement -->
+        <div class="card">
+          <h3>Paiement</h3>
+          <p><strong>Date de début:</strong> {{ infoContrat?.last_payment?.date_debut | date:'dd/MM/yyyy' }}</p>
+          <p><strong>Date de fin:</strong> {{ infoContrat?.last_payment?.date_fin | date:'dd/MM/yyyy' }}</p>
+          <p><strong>Montant:</strong> {{ infoContrat?.reservation?.propriete?.prix_journalier }} GNF/Jour</p>
+        </div>
+  
+        <!-- Carte Partenaire -->
+        <div class="card">
+          <h3>Partenaire</h3>
+          <p><strong>Nom:</strong> {{ infoContrat?.reservation?.propriete?.partenaire?.libelle }}</p>
+          <p><strong>Contact:</strong> {{ infoContrat?.reservation?.propriete?.partenaire?.telephone }}</p>
+          <p><strong>Email:</strong> {{ infoContrat?.reservation?.propriete?.partenaire?.email }}</p>
+        </div>
+  
+        <!-- Carte Dates -->
+        <div class="card">
+          <h3>Dates</h3>
+          <p><strong>Jours Restants:</strong> {{ infoContrat?.duree_contrat_jours }} jours</p>
+        </div>
+      </section>
+  
+      <footer class="fiche-footer">
+        <button (click)="imprimerFiche()" class="imprimer-btn">Imprimer</button>
+      </footer>
+    </div>
+  </div>
+  
