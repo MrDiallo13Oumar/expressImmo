@@ -106,6 +106,23 @@
             </form>
           </div>
 
+
+          <div class="mb-4">
+            <label for="image" class="form-label">Image principale</label>
+            <input type="file" id="image" (change)="onFileChange($event)" formControlName="poster" class="form-control" />
+            <div class="image-preview-container text-end mt-3" *ngIf="imagePreview">
+              <img [src]="imagePreview" class="image-preview img-fluid me-2" width="100" />
+            </div>
+          </div>
+
+          <!-- Galerie d'images -->
+          <div class="mb-4">
+            <label for="gallery" class="form-label">Galerie d'images</label>
+            <input type="file" id="gallery" (change)="onFilesChange($event)" multiple class="form-control" />
+           <div class="image-preview-container text-end mt-3" *ngIf="imagePreviews.length > 0">
+              <img  [src]="imagePreview" class="image-preview img-fluid me-2" width="100" />
+            </div>
+          </div>
           <div class="card-footer">
             <div class="d-flex justify-content-center">
               <button mat-raised-button color="primary" class="btn btn-rounded btn-lg mt-3" (click)="confirmEditing(Propriete)">
