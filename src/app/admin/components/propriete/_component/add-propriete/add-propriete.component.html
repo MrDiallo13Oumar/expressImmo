@@ -6,12 +6,8 @@
           <h4 class="card-title fw-bold text-dark mb-0">
             <mat-icon class="me-2 text-primary">home</mat-icon> Propriétés
           </h4>
-          <button
-            mat-raised-button
-            color="accent"
-            class="d-flex align-items-center"
-           routerLink="/propriete/type-propriete"
-          >
+          <button mat-raised-button color="accent" class="d-flex align-items-center"
+            routerLink="/propriete/type-propriete">
             <mat-icon class="me-2">add</mat-icon>
             Nouveau Type de Propriété
           </button>
@@ -95,13 +91,15 @@
                   <div class="col-md-6 mb-3">
                     <mat-form-field appearance="fill" class="w-100">
                       <mat-label>Prix Journalier</mat-label>
-                      <input matInput type="number" formControlName="prix_journalier" placeholder="Entrez le prix journalier" />
+                      <input matInput type="number" formControlName="prix_journalier"
+                        placeholder="Entrez le prix journalier" />
                     </mat-form-field>
                   </div>
                   <div class="col-md-6 mb-3">
                     <mat-form-field appearance="fill" class="w-100">
                       <mat-label>Prix Mensuel</mat-label>
-                      <input matInput type="number" formControlName="prix_mensuel" placeholder="Entrez le prix mensuel" />
+                      <input matInput type="number" formControlName="prix_mensuel"
+                        placeholder="Entrez le prix mensuel" />
                     </mat-form-field>
                   </div>
                 </div>
@@ -109,7 +107,8 @@
                 <!-- Image principale -->
                 <div class="mb-4">
                   <label for="image" class="form-label">Image principale</label>
-                  <input type="file" id="image" (change)="onFileChange($event)" formControlName="poster" class="form-control" />
+                  <input type="file" id="image" (change)="onFileChange($event)" formControlName="poster"
+                    class="form-control" />
                   <div class="image-preview-container text-end mt-3" *ngIf="imagePreview">
                     <img [src]="imagePreview" class="image-preview img-fluid" />
                   </div>
@@ -119,9 +118,10 @@
                 <div class="mb-4">
                   <label for="gallery" class="form-label">Galerie d'images</label>
                   <input type="file" id="gallery" (change)="onFilesChange($event)" multiple class="form-control" />
-                 <div class="image-preview-container text-end mt-3" *ngIf="imagePreviews.length > 0">
-                    <img  [src]="imagePreview" class="image-preview img-fluid me-2" width="100" />
-                  </div>
+                  <div class="image-preview-container text-end mt-3" *ngIf="imagePreviews.length > 0">
+                    <img [src]="imagePreview" class="image-preview img-fluid me-2" width="100" />
+                              
+                  </div>
                 </div>
 
                 <!-- Description -->
@@ -142,7 +142,8 @@
                 <span *ngIf="!isLoading">Enregistrer</span>
               </button>
 
-              <button type="reset" class="btn btn-fill-secondary btn-lg ms-3" routerLink="/propriete/list-propriete">Annuler</button>
+              <button type="reset" class="btn btn-fill-secondary btn-lg ms-3"
+                routerLink="/propriete/list-propriete">Annuler</button>
             </div>
           </div>
         </div>

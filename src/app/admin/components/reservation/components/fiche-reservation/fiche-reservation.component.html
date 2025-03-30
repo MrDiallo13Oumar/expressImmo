@@ -1,4 +1,4 @@
-<div class="content-body">
+<!-- <div class="content-body">
     <div class="container-fluid">
         <div class="card reservation-card" #ficheReservation>
             <button mat-raised-button color="accent" class="btn-custom hide-print" (click)="imprimer()">
@@ -50,4 +50,122 @@
             </div>
         </div>
     </div>
+</div> -->
+<div class="content-body">
+
+    <div class="container mt-2 reservation-card" id="fiche-reservation">
+        <!-- En-tête -->
+        <div class="h">
+            <br>        <button mat-raised-button color="accent" class="t align-items-center btn-custom hide-print text-center" (click)="imprimer()">
+                <mat-icon class="me-2 text-white">print</mat-icon>
+                Imprimer
+            </button><br><br>
+        </div>
+
+        <div class="title">
+            <img class="w-25 logo-img " src="assets/admin/images/logo.jpg" alt="Logo">
+            FICHE RÉSERVATION
+        </div>
+
+
+        <!-- Infos Hôtel -->
+        <div class="section">
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <td>REFERENCE</td>
+                        <td>{{ infoReservation.propriete?.reference || 'Non renseignée' }}</td>
+                    </tr>
+                    <tr>
+                        <td>PRIX JOURNALIER</td>
+                        <td>{{ infoReservation.propriete?.prix_journalier ? infoReservation.propriete.prix_journalier +
+                            ' GNF' : 'Non renseigné' }}</td>
+                    </tr>
+                    <tr>
+                        <td>TÉLÉPHONE</td>
+                        <td>+224 621 94 13 93</td>
+                    </tr>
+                    <tr>
+                        <td>E-MAIL</td>
+                        <td> {{email}} </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Infos Client -->
+        <div class="section">
+            <div class="sec client">CLIENT</div>
+            <table class="table table-bordered">
+                <!-- <thead class="sec client">chzick</thead> -->
+
+                <tbody>
+
+                    <tr>
+                        <td>NOM ET PRÉNOM</td>
+                        <td>{{ infoReservation.prenom || 'Non renseigné' }} {{ infoReservation.nom || 'Non renseigné' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>ADRESSE</td>
+                        <td>{{ infoReservation.adresse || 'Non renseigné' }}</td>
+                    </tr>
+                    <tr>
+                        <td>TÉLÉPHONE</td>
+                        <td>{{ infoReservation.telephone || 'Non renseigné' }}</td>
+                    </tr>
+                    <tr>
+                        <td>E-MAIL</td>
+                        <td>{{ infoReservation.email || 'Non renseigné' }}</td>
+                    </tr>
+                    <tr>
+                        <td>TYPE DE PIÈCE D’IDENTITÉ</td>
+                        <td>Passport / Carte d'identité</td>
+                    </tr>
+                    <tr>
+                        <td>N° DE PIÈCE D’IDENTITÉ</td>
+                        <td>{{ infoReservation.numero_piece || 'Non renseigné' }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Détails Réservation -->
+        <div class="section">
+            <div class="sec reservation">DÉTAILS DE LA RÉSERVATION</div>
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <td>DATE ARRIVER</td>
+                        <td>{{ infoReservation.date_souhaite}}</td>
+                    </tr>
+                    <tr>
+                        <td>SOURCE</td>
+                        <td>{{ infoReservation.source}}</td>
+                    </tr>
+                    <tr>
+                        <td>RESTAURATION</td>
+                        <td>{{ infoReservation.restauration ? 'Oui' : 'Non' }}</td>
+                    </tr>
+                    <tr>
+                        <td>WIFI</td>
+                        <td>{{ infoReservation.wifi ? 'Oui' : 'Non' }}</td>
+                    </tr>
+                    <tr>
+                        <td>CONCIERGERIE</td>
+                        <td>{{ infoReservation.conciergerie ? 'Oui' : 'Non' }}</td>
+                    </tr>
+                    <tr>
+                        <td>BLANCHISSERIE</td>
+                        <td>{{ infoReservation.Blanchisserie ? 'Oui' : 'Non' }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p class="t text-center text-start align-items-center"><em>Numéro compte ECOBANK 0080224617553301 Ets Abdoulaye
+                Doumbouya &
+                Frères !</em></p>
+
+    </div>
+
 </div>

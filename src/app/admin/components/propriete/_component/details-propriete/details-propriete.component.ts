@@ -81,20 +81,28 @@ export class DetailsProprieteComponent {
   }
   infoPropriete: any = {};
   getOnePropriete() {
-    //console.log('ID en GET : ', this.idPropriete);
     this.service.getOne('propriete', 'getOne.php', this.idPropriete).subscribe({
       next: (response: any) => {
-        // //console.log('Info : ', response);
+        console.log('Info : ', response);
         this.infoPropriete = response;
-        this.Propriete.patchValue(this.infoPropriete);
-
-
+  
+        // Vérifie si les objets quartier et partenaire existent avant d'extraire les IDs
+        const quartier_id = response.quartier ? response.quartier.id : null;
+        const partenaire_id = response.partenaire ? response.partenaire.id : null;
+  
+        // Mise à jour du formulaire
+        this.Propriete.patchValue({
+          ...this.infoPropriete, // Applique les autres valeurs normalement
+          quartier_id: quartier_id, // Affecte uniquement l'ID du quartier
+          partenaire_id: partenaire_id, // Affecte uniquement l'ID du partenaire
+        });
       },
       error: (error: any) => {
-        //console.log('Error : ', error);
+        console.log('Error : ', error);
       },
     });
   }
+  
   getGalleryImages(): string[] {
     if (!this.infoPropriete.gallery) {
       return [];
@@ -137,7 +145,7 @@ export class DetailsProprieteComponent {
       }
     })
   }
-  confirmEditing(form: FormGroup): void {
+  confirmEditing(): void {
     // Appliquez la transformation
 
     const formData = convertObjectInFormData(this.Propriete.value);
