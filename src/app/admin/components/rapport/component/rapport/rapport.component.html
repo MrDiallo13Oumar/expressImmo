@@ -12,6 +12,15 @@
         </div>
 
         <form [formGroup]="reportForm" class="d-flex gap-3 w-100">
+          <!-- <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Choisir Le Partenaire</mat-label>
+            <mat-select formControlName="partenaire_id">
+              <mat-option *ngFor="let partenaire of Partenaire" [value]="partenaire.id">
+                {{ partenaire.libelle }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field> -->
+
           <mat-form-field appearance="outline" class="flex-fill">
             <mat-label>Date de début</mat-label>
             <input matInput [matDatepicker]="startPicker" placeholder="Choisir une date" formControlName="date_debut">
@@ -37,6 +46,10 @@
 
 
     <mat-card>
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Rechercher...</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Rechercher" #input>
+      </mat-form-field>
       <div class="table-responsive " id="rapportAImprimer">
         <table class="table table-bordered table-striped" id="maTable">
           <thead class="thead-info">
@@ -50,7 +63,7 @@
               <th>Ref</th>
               <th>Statut</th>
               <th>Client</th>
-              <th>Email</th>
+              <th>Email Partenaire</th>
               <th>Téléphone</th>
             </tr>
           </thead>

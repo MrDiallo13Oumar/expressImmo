@@ -119,9 +119,12 @@
                   <label for="gallery" class="form-label">Galerie d'images</label>
                   <input type="file" id="gallery" (change)="onFilesChange($event)" multiple class="form-control" />
                   <div class="image-preview-container text-end mt-3" *ngIf="imagePreviews.length > 0">
-                    <img [src]="imagePreview" class="image-preview img-fluid me-2" width="100" />
-                              
+                    <img *ngFor="let preview of imagePreviews" 
+                         [src]="preview" 
+                         class="image-preview img-fluid me-2 mb-2" 
+                         width="100" />
                   </div>
+                  
                 </div>
 
                 <!-- Description -->

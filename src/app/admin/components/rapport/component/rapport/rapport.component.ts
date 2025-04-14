@@ -14,6 +14,7 @@ export class RapportComponent implements OnInit {
   reportForm = new FormGroup({
     date_debut: new FormControl(''),
     date_fin: new FormControl(''),
+    // partenaire_id: new FormControl(''),
   });
 
   dataSource: any[] = [];
@@ -28,7 +29,22 @@ export class RapportComponent implements OnInit {
 
   ngOnInit() {
     this.hasPaiementType = this.dataSource.some(el => el.type === 'paiement');
+  this.getPartenaire()
+  
+  }
 
+  Partenaire: any = []
+  getPartenaire() {
+    this.service.getall('partenaire', 'readAll.php').subscribe({
+      next: (reponse: any) => {
+        console.log('Partenaire : ', reponse)
+        this.Partenaire = reponse
+
+      },
+      error: (err: any) => {
+        //console.log('REPONSE ERROR : ', err)
+      }
+    })
   }
 
   generateRaport() {
@@ -42,8 +58,9 @@ export class RapportComponent implements OnInit {
 
     this.service.create('caisse', 'getRapportByDate.php', formData).subscribe({
       next: (reponse: any) => {
+        
         this.dataSourceRapport = this.normalizeData(reponse);
-
+        
         // Réinitialiser hasPaiementType lors de la génération du rapport
         this.isRapport = true
         this.hasPaiementType = false;
@@ -80,6 +97,8 @@ export class RapportComponent implements OnInit {
 
     this.service.create('caisse', 'getReservationByDate.php', formData).subscribe({
       next: (reponse: any) => {
+        this.dataSource = reponse;
+    this.originalDataSource = [...reponse]; // Ajoute ceci ici !
         this.dataSource = reponse;
         this.generateRaport()
         console.log(reponse);
@@ -160,16 +179,25 @@ export class RapportComponent implements OnInit {
       reservation: item.reservation || '',
     }));
   }
+  originalDataSource: any[] = []; // Copie initiale non filtrée
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value.trim().toLowerCase();
-    this.dataSource = this.dataSource.filter((item: any) =>
-      item.montant.toString().toLowerCase().includes(filterValue) ||
-      item.motif.toLowerCase().includes(filterValue) ||
-      item.type_transaction.toLowerCase().includes(filterValue) ||
-      item.created_by.toLowerCase().includes(filterValue)
+  
+    this.dataSource = this.originalDataSource.filter((item: any) =>
+      item.montant?.toString().toLowerCase().includes(filterValue) ||
+      item.motif?.toLowerCase().includes(filterValue) ||
+      item.type_transaction?.toLowerCase().includes(filterValue) ||
+      item.partenaire_email?.toLowerCase().includes(filterValue) ||
+      item.created_by?.toLowerCase().includes(filterValue) ||
+      item.statut?.toLowerCase().includes(filterValue) ||
+      item.reservation_nom_prenom?.toLowerCase().includes(filterValue) ||
+      item.partenaire_telephone?.toLowerCase().includes(filterValue) ||
+      item.source?.toLowerCase().includes(filterValue) ||
+      item.reference?.toLowerCase().includes(filterValue)
     );
   }
+  
 
   imprimerRapport() {
     const printContent = document.getElementById('rapportAImprimer')?.outerHTML;
