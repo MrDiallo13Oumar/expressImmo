@@ -46,9 +46,12 @@
 
 
     <mat-card>
+      <mat-card-header>
+        <mat-card-title>Filtrer Par Partenaire</mat-card-title>
+      </mat-card-header>
       <mat-form-field class="w-100" appearance="outline">
-        <mat-label>Rechercher...</mat-label>
-        <input matInput (keyup)="applyFilter($event)" placeholder="Rechercher" #input>
+        <mat-label>Rechercher</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Rechercher par mail du partenaire" #input>
       </mat-form-field>
       <div class="table-responsive " id="rapportAImprimer">
         <table class="table table-bordered table-striped" id="maTable">
