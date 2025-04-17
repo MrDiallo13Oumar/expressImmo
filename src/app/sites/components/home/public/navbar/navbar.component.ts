@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
-email !: "expressimmo224@gmail.com"
+email = "expressimmo224ckry@gmail.com"
 }

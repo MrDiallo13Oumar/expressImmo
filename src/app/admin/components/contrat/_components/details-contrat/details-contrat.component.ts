@@ -104,7 +104,7 @@ export class DetailsContratComponent {
           //Envoyer dans la Base
           this.service.create('paiement', 'create.php', formData).subscribe({
             next: (response) => {
-              const message = response?.message || "Contrat enregistré avec succès !";
+              const message = response?.message || "Paiement effectué avec succès !";
               this.snackBar.open(message, 'Okay', {
                 duration: 3000,
                 horizontalPosition: 'right',
